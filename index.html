@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colin John | SEO, Digital Marketing & Front-End Development</title>
+  <link rel="canonical" href="https://colinjanoshegyi.com/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/pdf/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/pdf/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/pdf/favicon-16x16.png">
+  <link rel="manifest" href="assets/pdf/site.webmanifest">
+  <meta name="description" content="Colin explores marketing, technology, and ideas across cultures. Born in Indonesia, shaped by Cambodia, refined in Hungary." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Colin — Marketing, Technology & Ideas" />
+  <meta name="description" content="Digital marketer and front-end developer specializing in SEO, branding, and web experiences across cultures.">
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://colinjanoshegyi.com/assets/preview.png">
+  <meta property="og:url" content="https://colinjanoshegyi.com/">
+  <!-- Cormorant Garamond (editorial display) + Geist (refined sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       DESIGN TOKENS & RESET
+    ═══════════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:   #FFFFFF;
+      --near-white: #FAFAFA;
+      --ink:     #111111;
+      --mid:     #666666;
+      --faint:   rgba(17,17,17,0.06);
+      --border:  rgba(17,17,17,0.09);
+      --serif:   'Cormorant Garamond', 'Georgia', serif;
+      --sans:    'Outfit', system-ui, sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out:   cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: auto;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       CUSTOM CURSOR
+    ═══════════════════════════════════════════════════════════════ */
+    #cursor-dot, #cursor-ring {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    #cursor-dot {
+      width: 6px; height: 6px;
+      background: var(--ink);
+      transition: transform 0.15s, opacity 0.3s;
+    }
+    #cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(17,17,17,0.25);
+      transition: width 0.4s var(--ease-out-expo),
+                  height 0.4s var(--ease-out-expo),
+                  border-color 0.3s,
+                  background 0.3s;
+    }
+    #cursor-ring.hover {
+      width: 60px; height: 60px;
+      border-color: var(--ink);
+      background: rgba(17,17,17,0.04);
+    }
+    @media (hover: none) {
+      #cursor-dot, #cursor-ring { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HEADER — STICKY SHRINKING
+    ═══════════════════════════════════════════════════════════════ */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: transparent;
+      transition:
+        height 0.5s var(--ease-out-expo),
+        background 0.4s ease,
+        box-shadow 0.4s ease,
+        padding 0.5s var(--ease-out-expo);
+    }
+
+    #header.scrolled {
+      height: 60px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .header-logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      color: var(--ink);
+      opacity: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .header-nav a {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .header-nav a:hover { color: var(--ink); }
+
+    /* "Work With Me" CTA — ALWAYS VISIBLE */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--ink);
+      color: var(--white) !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      transition:
+        transform 0.3s var(--ease-out-expo),
+        background 0.3s,
+        box-shadow 0.3s !important;
+      white-space: nowrap;
+    }
+    .cta-btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 24px rgba(17,17,17,0.18);
+    }
+
+    @media (max-width: 680px) {
+      .header-nav > a { display: none; }
+      #header { padding: 0 5vw; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION BASE
+    ═══════════════════════════════════════════════════════════════ */
+    .section {
+      padding: 14vh 5vw;
+      position: relative;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--mid);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 100px 5vw 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-inner {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Grain overlay */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .hero-greeting {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(4rem, 10vw, 9.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+    }
+    .hero-name .clip { overflow: hidden; display: block; }
+    .hero-name .clip span { display: block; transform: translateY(105%); }
+
+    .hero-tagline {
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      color: var(--mid);
+      font-weight: 300;
+      max-width: 46ch;
+      margin: 0 auto;
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    /* Decorative ring */
+    .hero-ring {
+      position: absolute;
+      width: clamp(300px, 50vw, 700px);
+      height: clamp(300px, 50vw, 700px);
+      border-radius: 50%;
+      border: 1px solid var(--faint);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-ring:nth-child(2) { width: calc(clamp(300px, 50vw, 700px) * 1.4); height: calc(clamp(300px, 50vw, 700px) * 1.4); }
+    .hero-ring:nth-child(3) { width: calc(clamp(300px, 50vw, 700px) * 1.9); height: calc(clamp(300px, 50vw, 700px) * 1.9); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      opacity: 0;
+    }
+    .scroll-ticker {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-ticker::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--mid);
+      animation: tickDown 1.6s ease-in-out infinite;
+    }
+    @keyframes tickDown {
+      0%   { top: -100%; }
+      100% { top: 100%; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       IDENTITY
+    ═══════════════════════════════════════════════════════════════ */
+    #identity {
+      background: var(--near-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .identity-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .identity-block {
+      overflow: hidden;
+    }
+
+    .identity-text {
+      font-family: var(--serif);
+      font-size: clamp(1.65rem, 3.2vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .identity-text em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .timeline-spine {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+    }
+
+    .timeline-fill {
+      width: 100%;
+      height: 0%;
+      background: var(--ink);
+      transform-origin: top;
+    }
+
+    .timeline-node {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      position: relative;
+      z-index: 2;
+      margin-bottom: calc(25% + 1rem);
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .timeline-node.lit {
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+    .timeline-node:last-child { margin-bottom: 0; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       THOUGHTS / PHILOSOPHY
+    ═══════════════════════════════════════════════════════════════ */
+    #thoughts {
+      background: var(--ink);
+      color: #FAFAFA;
+      text-align: center;
+      padding: 18vh 5vw;
+    }
+
+    .thoughts-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,250,250,0.35);
+      margin-bottom: 7rem;
+    }
+
+    .thought-block {
+      margin-bottom: 7rem;
+    }
+    .thought-block:last-child { margin-bottom: 0; }
+
+    .thought-text {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      color: rgba(250,250,250,0.92);
+      max-width: 700px;
+      margin: 0 auto;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .thought-dim {
+      color: rgba(250,250,250,0.38) !important;
+    }
+
+    
+    /* ═══════════════════════════════════════════════════════════════
+       WORK + CV
+    ═══════════════════════════════════════════════════════════════ */
+    #work { }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    /* FIX 1: Remove underline from work card links */
+    .work-card {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      position: relative;
+      cursor: default;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: background 0.4s;
+      text-decoration: none; /* ← removes underline */
+    }
+    .work-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--faint);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.5s var(--ease-out-expo);
+    }
+    .work-card:hover::before { transform: scaleY(1); }
+
+    .work-card-inner { position: relative; z-index: 1; }
+
+    .work-num {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--mid);
+      margin-bottom: 3rem;
+    }
+
+    .work-card h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .work-card p {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    .work-arrow {
+      margin-top: 2.5rem;
+      font-size: 1rem;
+      color: var(--mid);
+      display: inline-block;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .work-card:hover .work-arrow {
+      transform: translate(4px, -4px);
+      color: var(--ink);
+    }
+
+    /* CV Section */
+    .cv-section {
+      margin-top: 8rem;
+      padding-top: 6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .cv-header {
+      margin-bottom: 3rem;
+    }
+
+    /* FIX 2: CV title and subtitle — plain, non-clickable text */
+    .cv-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      transform: translateY(20px);
+      cursor: default;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .cv-subtitle {
+      font-size: 0.92rem;
+      color: var(--mid);
+      opacity: 0;
+      transform: translateY(16px);
+      cursor: default;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .cv-viewer {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow:
+        0 4px 6px rgba(0,0,0,0.02),
+        0 10px 40px rgba(0,0,0,0.06),
+        0 0 0 1px var(--border);
+      height: 700px;
+      opacity: 0;
+      transform: translateY(30px);
+      background: var(--near-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cv-viewer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .cv-placeholder {
+      text-align: center;
+      color: var(--mid);
+    }
+    .cv-placeholder p { font-size: 0.9rem; margin-top: 0.5rem; }
+
+    .pdf-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 1.25rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* FIX 3: Download CV button — tidy icon alignment */
+    .cv-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 2rem;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(12px);
+      line-height: 1;
+    }
+    .cv-download svg {
+      flex-shrink: 0;
+      display: block;
+      position: relative;
+      top: 1px; /* subtle optical alignment */
+    }
+    .cv-download:hover {
+      transform: scale(1.03) translateY(0);
+      box-shadow: 0 8px 28px rgba(17,17,17,0.2);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════════════════════════════ */
+    #contact {
+      background: var(--near-white);
+      border-top: 1px solid var(--border);
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-inner { width: 100%; }
+
+    .contact-heading {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 300;
+      letter-spacing: -0.035em;
+      line-height: 1;
+      margin-bottom: 3.5rem;
+      overflow: hidden;
+    }
+    .contact-heading .clip { display: block; overflow: hidden; }
+    .contact-heading .clip span { display: block; transform: translateY(110%); }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: color 0.3s;
+    }
+    .contact-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 100%; height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+    .contact-link:hover { color: var(--ink); }
+    .contact-link:hover::after { transform: scaleX(1); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════════════ */
+    footer {
+      padding: 2.5rem 5vw;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--white);
+    }
+    footer p {
+      font-size: 0.72rem;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PROGRESS BAR
+    ═══════════════════════════════════════════════════════════════ */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: var(--ink);
+      width: 0%;
+      z-index: 9999;
+      transform-origin: left;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════════ */
+    @media (max-width: 860px) {
+      .journey-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .journey-timeline,
+      .journey-right { display: none; }
+
+      .journey-entry { padding: 3rem 0; }
+      .journey-entry:first-child { border-top: 1px solid var(--border); }
+
+      .work-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .section { padding: 10vh 6vw; }
+      .work-grid { grid-template-columns: 1fr; }
+      .contact-links { flex-direction: column; gap: 1.75rem; }
+      .cv-viewer { height: 450px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reading progress bar -->
+  <div id="progress"></div>
+
+  <!-- Custom cursor (desktop only) -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════════════════════ -->
+  <header id="header" role="banner">
+    <a href="#" class="header-logo" aria-label="Colin — Home">Colin</a>
+
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="#identity">About</a>
+      <a href="#work">Work</a>
+      <!-- PERSISTENT CTA — always visible -->
+      <a href="#contact" class="cta-btn" aria-label="Work with me">
+        Work With Me
+      </a>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 1 — HERO
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="hero" aria-labelledby="hero-name">
+    <!-- decorative rings -->
+    <div class="hero-ring" aria-hidden="true"></div>
+    <div class="hero-ring" aria-hidden="true"></div>
+    <div class="hero-ring" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <p class="hero-greeting" aria-hidden="true">Digital Marketer</p>
+
+      <h1 class="hero-name" id="hero-name">
+        <span class="clip"><span>Hi, I'm Colin.</span></span>
+      </h1>
+
+      <p class="hero-tagline">
+        Technically my legal last name is John.<br>
+        But Janoshegyi just sounds cooler. <br><br><br>
+      </p>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="scroll-ticker"></span>
+      <span>Scroll</span>
+    </div>
+  </section>
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 2 — IDENTITY
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="identity" class="section" aria-label="Identity">
+    <p class="section-label">Who I am</p>
+
+    <div class="identity-blocks">
+      <div class="identity-block">
+        <p class="identity-text">
+          I was born in <em>Indonesia</em>, shaped by <em>Cambodia</em>,<br>
+          and refined in <em>Hungary</em>.
+        </p>
+      </div>
+      <div class="identity-block">
+        <p class="identity-text">
+          Living across different countries taught me<br>
+          how people think, choose, and connect.
+        </p>
+      </div>
+      <div class="identity-block">
+        <p class="identity-text">
+          Today, I focus on marketing, digital strategy,<br>
+          and building meaningful ideas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 3 — THOUGHTS
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="thoughts" aria-label="Philosophy">
+    <p class="thoughts-eyebrow">Philosophy</p>
+
+    <div class="thought-block">
+      <p class="thought-text">
+        "The best advertising is done by satisfied customers." <br>
+        - Philip Kotler
+      </p>
+    </div>
+
+    <div class="thought-block">
+      <p class="thought-text">
+        “What is the point of being alive if you don't at least try to do something remarkable?” <br>
+        - John Green
+      </p>
+    </div>
+
+    <div class="thought-block">
+      <p class="thought-text">
+        “I have a lot of proof that the world is conspiring to make me happy.” <br>
+        - Matthew McConaughey
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 4 — WORK + CV
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="work" class="section" aria-label="Selected work and CV">
+    <p class="section-label">Selected work</p>
+
+    <!-- Work cards — FIX: properly closed with </a>, not </article> -->
+    <div class="work-grid" role="list">
+
+      <a href="works/graces-resto/index.html" class="work-card" role="listitem">
+        <div class="work-card-inner">
+          <p class="work-num">01</p>
+          <h3>Grace's Resto</h3>
+          <p>Branding and cultural adaptation for a restaurant bridging Chinese-Indonesian cuisine and local tastes.</p>
+          <span class="work-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="works/spawtify/index.html" class="work-card" role="listitem">
+        <div class="work-card-inner">
+          <p class="work-num">02</p>
+          <h3>Personal Website Development</h3>
+          <p>SEO-focused front-end development — fast, accessible, and built to be discovered.</p>
+          <span class="work-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="works/brandstorm/index.html" class="work-card" role="listitem">
+        <div class="work-card-inner">
+          <p class="work-num">03</p>
+          <h3>L'Oreal Brandstorm Competition</h3>
+          <p>AI-powered fragrance personalization concept for Gen-Z in L'Oréal's global innovation competition.</p>
+          <span class="work-arrow">↗</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- CV Section -->
+    <div class="cv-section" aria-label="Curriculum Vitae">
+      <div class="cv-header">
+        <!-- FIX 2: Plain h2 and p — no link wrapping, pointer-events: none in CSS -->
+        <h2 class="cv-title">Curriculum Vitae</h2>
+        <p class="cv-subtitle">View or download my professional experience.</p>
+        <p class="seo-summary">Digital marketer, SEO specialist, and front-end developer focused on branding, multilingual marketing, and modern web experiences.</p>
+      </div>
+
+      <!-- PDF Viewer -->
+      <div class="cv-viewer" id="cv-viewer-box">
+        <iframe 
+          src="assets/pdf/colin-john-cv.pdf" 
+          title="Colin's Curriculum Vitae" 
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Download button -->
+      <div style="text-align:center; margin-top: 2.5rem;">
+        <a href="assets/pdf/colin-john-cv.pdf" download class="cv-download" aria-label="Download CV as PDF">
+          <!-- FIX 3: Cleaner SVG with proper spacing -->
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7.5" y1="1.5" x2="7.5" y2="10"/>
+            <polyline points="4.5,7 7.5,10 10.5,7"/>
+            <line x1="1.5" y1="12.5" x2="13.5" y2="12.5"/>
+          </svg>
+          Download CV
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 5 — CONTACT
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="contact" class="section" aria-label="Contact">
+    <div class="contact-inner">
+      <h2 class="contact-heading">
+        <span class="clip"><span>Let's connect.</span></span>
+      </h2>
+
+      <nav class="contact-links" aria-label="Contact links">
+        <a href="mailto:colinjohn1974@gmail.com" class="contact-link" aria-label="Send email to colinjohn1974@gmail.com">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
+            <rect x="1" y="3" width="12" height="9" rx="1.5"/>
+            <path d="M1 4l6 4.5L13 4"/>
+          </svg>
+          colinjohn1974@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/colin-john/" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="LinkedIn profile">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
+            <path d="M9 5a3 3 0 013 3v4M1 5v8M1 2.5a.5.5 0 100 1 .5.5 0 000-1zM6 13V8.5A.5.5 0 016.5 8"/>
+          </svg>
+          LinkedIn
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
+    <p>Made with intention.</p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════════════════════════ -->
+  <script>
+    /* ─── 1. LENIS SMOOTH SCROLL ──────────────────────────────── */
+    const lenis = new Lenis({
+      duration: 1.35,
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo out
+      smooth: true,
+      mouseMultiplier: 1.1,
+      smoothTouch: false,
+    });
+
+    // Tick loop
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Sync with GSAP ticker
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    /* ─── 2. READING PROGRESS BAR ────────────────────────────── */
+    lenis.on('scroll', ({ progress }) => {
+      document.getElementById('progress').style.width = (progress * 100) + '%';
+    });
+
+    /* ─── 3. HEADER SHRINK ON SCROLL ─────────────────────────── */
+    const header = document.getElementById('header');
+    lenis.on('scroll', ({ scroll }) => {
+      header.classList.toggle('scrolled', scroll > 50);
+    });
+
+    /* ─── 4. CUSTOM CURSOR ───────────────────────────────────── */
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    (function animateCursor() {
+      dot.style.left  = mx + 'px';
+      dot.style.top   = my + 'px';
+      rx += (mx - rx) * 0.1;
+      ry += (my - ry) * 0.1;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animateCursor);
+    })();
+
+    document.querySelectorAll('a, button, .work-card').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+    });
+
+    /* ─── 5. SMOOTH ANCHOR SCROLL ───────────────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) lenis.scrollTo(target, { offset: -80, duration: 1.6 });
+      });
+    });
+
+    /* ─── 6. HERO ENTRANCE ANIMATIONS ───────────────────────── */
+    const heroTl = gsap.timeline({ delay: 0.2 });
+
+    heroTl
+      .to('.hero-greeting', {
+        opacity: 1, y: 0,
+        duration: 0.9, ease: 'power3.out'
+      })
+      .to('.hero-name .clip span', {
+        y: '0%',
+        duration: 1.1, ease: 'power4.out',
+        stagger: 0.12
+      }, '-=0.5')
+      .to('.hero-tagline', {
+        opacity: 1, y: 0,
+        duration: 1, ease: 'power3.out'
+      }, '-=0.6')
+      .to('.hero-scroll', {
+        opacity: 1,
+        duration: 0.8, ease: 'power3.out'
+      }, '-=0.2')
+      .to('.header-logo', {
+        opacity: 1,
+        duration: 0.8, ease: 'power3.out'
+      }, '-=0.6');
+
+    /* ─── 7. HERO RINGS PARALLAX ─────────────────────────────── */
+    gsap.utils.toArray('.hero-ring').forEach((ring, i) => {
+      gsap.to(ring, {
+        y: (i + 1) * 60,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1 + i * 0.5
+        }
+      });
+    });
+
+    /* ─── 8. IDENTITY BLOCKS ────────────────────────────────── */
+    gsap.utils.toArray('.identity-text').forEach((el, i) => {
+      gsap.to(el, {
+        opacity: 1, y: 0,
+        duration: 1, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 82%',
+        },
+        delay: i * 0.07
+      });
+    });
+    /* ─── 10. THOUGHTS / PHILOSOPHY ────────────────────────── */
+    gsap.utils.toArray('.thought-text').forEach((el, i) => {
+      gsap.to(el, {
+        opacity: 1, y: 0,
+        duration: 1.1, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+        },
+        delay: i * 0.1
+      });
+    });
+
+    /* ─── 11. WORK CARDS ───────────────────────────────────── */
+    gsap.to('.work-card', {
+      opacity: 1, y: 0,
+      duration: 0.85, ease: 'power3.out',
+      stagger: 0.14,
+      scrollTrigger: {
+        trigger: '.work-grid',
+        start: 'top 80%'
+      }
+    });
+
+    /* ─── 12. CV SECTION ────────────────────────────────────── */
+    gsap.to('.cv-title', {
+      opacity: 1, y: 0,
+      duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: '.cv-title', start: 'top 85%' }
+    });
+    gsap.to('.cv-subtitle', {
+      opacity: 1, y: 0,
+      duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: '.cv-subtitle', start: 'top 85%' },
+      delay: 0.1
+    });
+    gsap.to('.cv-viewer', {
+      opacity: 1, y: 0,
+      duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: '#cv-viewer-box', start: 'top 82%' }
+    });
+    gsap.to('.cv-download', {
+      opacity: 1, y: 0,
+      duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: '.cv-download', start: 'top 90%' }
+    });
+
+    /* ─── 13. CONTACT ───────────────────────────────────────── */
+    gsap.to('#contact .clip span', {
+      y: '0%',
+      duration: 1.1, ease: 'power4.out',
+      scrollTrigger: { trigger: '#contact', start: 'top 72%' }
+    });
+
+    gsap.to('.contact-link', {
+      opacity: 1, y: 0,
+      duration: 0.8, ease: 'power3.out',
+      stagger: 0.15,
+      scrollTrigger: { trigger: '.contact-links', start: 'top 85%' }
+    });
+
+    /* ─── 14. SECTION LABELS ───────────────────────────────── */
+    gsap.utils.toArray('.section-label').forEach(el => {
+      gsap.from(el, {
+        opacity: 0, x: -12,
+        duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%' }
+      });
+    });
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Colin John",
+  "alternateName": "Janoshegyi",
+  "url": "https://colinjanoshegyi.com",
+  "jobTitle": "Digital Marketer and Front-End Developer",
+  "sameAs": [
+    "https://www.linkedin.com/in/colin-john/"
+  ]
+}
+</script>
+</body>
+</html>

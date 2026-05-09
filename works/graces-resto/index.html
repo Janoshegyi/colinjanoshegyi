@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grace's Resto | Restoran Indonesia di Sihanoukville Kamboja ($3 Menu)</title>
+<meta name="description" content="Restoran Indonesia di Sihanoukville, Kamboja dengan menu murah $3. Nasi goreng, mie Jawa, seafood, ayam geprek, dan masakan Tionghoa-Indonesia autentik.">
+<link rel="canonical" href="https://colinjanoshegyi.com" />
+<link rel="apple-touch-icon" sizes="180x180" href="fotomenu/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="fotomenu/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="fotomenu/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:title" content="Grace's Resto – Restoran Indonesia di Sihanoukville">
+<meta property="og:description" content="Menu Indonesia murah $3. Nasi goreng, mie, seafood, ayam geprek.">
+<meta property="og:image" content="https://colinjanoshegyi.com/assets/logo/graceresto-logo.png">
+<meta property="og:url" content="https://colinjanoshegyi.com/graces-resto">
+<meta property="og:type" content="restaurant">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grace's Resto – Indonesian Food in Sihanoukville">
+<meta name="twitter:description" content="Authentic Indonesian food for just $3.">
+<meta name="twitter:image" content="https://colinjanoshegyi.com/assets/logo/graceresto-logo.png">
+<link rel="alternate" hreflang="en" href="https://colinjanoshegyi.com?lang=en" />
+<link rel="alternate" hreflang="id" href="https://colinjanoshegyi.com?lang=id" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body {
+  overflow-x: hidden;
+}
+  :root {
+    --maroon:      #7A1418;
+    --maroon-deep: #4E0D10;
+    --maroon-light:#B02428;
+    --gold:        #C8963C;
+    --gold-light:  #E8C07A;
+    --cream:       #FAF5EC;
+    --parchment:   #F0E8D8;
+    --charcoal:    #1C1410;
+    --warm-gray:   #8A7E74;
+    --white:       #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ===== LANG BAR ===== */
+  #lang-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 32px;
+    background: var(--maroon-deep);
+    border-bottom: 1px solid rgba(200,150,60,0.3);
+  }
+  #lang-bar .brand-mini {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .lang-btns { display: flex; gap: 6px; }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid rgba(200,150,60,0.5);
+    color: var(--gold-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    padding: 4px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-transform: uppercase;
+  }
+  .lang-btn:hover, .lang-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 110px 32px 70px;
+    overflow: hidden;
+    background: var(--maroon-deep);
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('fotomenu/batagor.png') center/cover no-repeat;
+    opacity: 0.14;
+  }
+  /* Outer glow ring */
+  #hero::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: min(560px, 90vw);
+    border: 1px solid rgba(200,150,60,0.15);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pulse-ring 5s ease-in-out infinite;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.2; }
+    50%       { transform: translate(-50%,-50%) scale(1.05); opacity: 0.5; }
+  }
+
+  .hero-logo-img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease both;
+    filter: drop-shadow(0 0 24px rgba(200,150,60,0.3));
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(200,150,60,0.5);
+    padding: 6px 22px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: 0.06em;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.9s 0.2s ease both;
+    text-shadow: 0 4px 32px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+  }
+  .hero-title .grace {
+    display: block;
+    color: var(--gold-light);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .hero-sub {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+    color: var(--gold-light);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 14px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.9s 0.35s ease both;
+  }
+  .hero-divider {
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 24px auto;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.9s 0.45s ease both;
+  }
+  .hero-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-style: italic;
+    color: rgba(250,245,236,0.75);
+    max-width: 500px;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.9s 0.5s ease both;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 36px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.9s 0.6s ease both;
+  }
+  .btn-primary, .btn-secondary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary { background: var(--gold); color: var(--charcoal); font-weight: 600; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,150,60,0.4); }
+  .btn-secondary { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.35); }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky;
+    top: 41px;
+    z-index: 900;
+    background: var(--maroon);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    border-bottom: 2px solid var(--gold);
+  }
+  nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 16px 28px;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+  }
+  nav a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+  /* ===== SECTION BASE ===== */
+  section { padding: 90px 24px; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--maroon-deep);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+  .section-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--maroon-light);
+    font-size: 1.15em;
+    letter-spacing: 0.06em;
+  }
+  .section-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.18rem;
+    line-height: 1.85;
+    color: var(--warm-gray);
+    max-width: 620px;
+  }
+  hr.ornament {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 20px 0 40px;
+    width: 120px;
+  }
+
+  /* ===== STRIP ===== */
+  #about-strip { background: var(--maroon); padding: 0; }
+  #about-strip .inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+  }
+  .strip-item {
+    padding: 44px 24px;
+    border-right: 1px solid rgba(200,150,60,0.2);
+  }
+  .strip-item:last-child { border-right: none; }
+  .strip-icon-img {
+    max-width: 100%;
+    width: 32px; height: 32px;
+    object-fit: contain;
+    margin: 0 auto 12px;
+    display: block;
+    filter: brightness(0) invert(1) opacity(0.6);
+  }
+  .strip-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .strip-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  /* ===== ABOUT ===== */
+  #about .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  #about .img-wrap { position: relative; }
+  #about .img-wrap img {
+    width: 100%; height: 500px;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  #about .img-wrap::before {
+    content: '';
+    position: absolute;
+    top: -14px; left: -14px;
+    right: 14px; bottom: 14px;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  #about .img-wrap .caption {
+    position: absolute;
+    bottom: 24px; right: -16px;
+    background: var(--maroon);
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    padding: 12px 22px;
+    z-index: 2;
+    border-left: 3px solid var(--gold);
+    letter-spacing: 0.06em;
+  }
+
+  /* ===== GALLERY ===== */
+  #gallery {
+    background: var(--parchment);
+    max-width: 100%;
+    padding: 90px 24px;
+  }
+
+  #gallery .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .g-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    aspect-ratio: 1 / 1;
+    background: var(--maroon-deep);
+  }
+
+  .g-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease, filter 0.4s;
+    filter: brightness(0.9);
+  }
+
+  .g-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+  }
+
+  .g-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 14px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .g-item:hover .g-label {
+    opacity: 1;
+  }
+
+  /* ===== MENU ===== */
+  #menu { background: var(--cream); }
+  .menu-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 48px;
+    border-bottom: 2px solid var(--parchment);
+  }
+  .menu-tab {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    padding: 14px 26px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.25s;
+  }
+  .menu-tab:hover { color: var(--maroon); }
+  .menu-tab.active { color: var(--maroon); border-bottom-color: var(--maroon); font-weight: 600; }
+
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; }
+
+  .price-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--maroon);
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    padding: 12px 28px;
+    border-radius: 40px;
+    margin-bottom: 36px;
+    font-style: italic;
+    border: 1px solid rgba(200,150,60,0.4);
+    letter-spacing: 0.04em;
+  }
+  .price-badge strong {
+    color: var(--gold);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 8px;
+  }
+  .menu-item {
+    background: var(--white);
+    border: 1px solid rgba(200,150,60,0.12);
+    border-radius: 2px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--maroon);
+    transform: scaleY(0);
+    transition: transform 0.25s;
+    transform-origin: bottom;
+  }
+  .menu-item:hover { border-color: rgba(200,150,60,0.35); box-shadow: 0 4px 18px rgba(122,20,24,0.07); }
+  .menu-item:hover::before { transform: scaleY(1); }
+  .menu-dot {
+    width: 6px; height: 6px;
+    min-width: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 6px;
+  }
+  .menu-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    font-weight: 400;
+    line-height: 1.35;
+  }
+  .menu-name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    color: var(--warm-gray);
+    font-style: italic;
+    display: block;
+    margin-top: 3px;
+  }
+  .menu-section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--maroon);
+    margin: 30px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--parchment);
+  }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--maroon-deep); max-width: 100%; padding: 90px 24px; }
+  #contact .inner { max-width: 1200px; margin: 0 auto; }
+  #contact .section-title { color: var(--white); }
+  #contact .section-label { color: var(--gold); }
+  #contact .section-body { color: rgba(250,245,236,0.65); }
+
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,150,60,0.22);
+    border-radius: 3px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .contact-card:hover { background: rgba(200,150,60,0.08); border-color: var(--gold); transform: translateY(-4px); }
+  .contact-card .cc-icon-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 14px;
+    display: block;
+    letter-spacing: 0.05em;
+  }
+  .contact-card .cc-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .contact-card .cc-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    font-style: italic;
+  }
+  .contact-card a { color: var(--gold-light); text-decoration: none; }
+  .contact-card a:hover { color: var(--gold); }
+
+  .location-card {
+  cursor: pointer;
+}
+.location-card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--charcoal);
+    text-align: center;
+    padding: 32px 24px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+  footer span { color: var(--gold); }
+
+  /* ===== HORIZ LOGO in lang bar ===== */
+  .horiz-logo-img {
+  height: 60px;
+  max-width: 60%;
+  object-fit: contain;
+}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+  #about .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* Mobile gallery: 2 columns */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #about-strip .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .strip-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(200,150,60,0.2);
+  }
+
+  nav {
+    flex-wrap: wrap;
+    top: 39px;
+  }
+
+  nav a {
+    padding: 12px 14px;
+    font-size: 0.64rem;
+  }
+
+  .menu-tab {
+    padding: 12px 16px;
+    font-size: 0.64rem;
+  }
+
+  /* FIX LANGUAGE BAR */
+  #lang-bar {
+    padding: 8px 16px;
+  }
+
+  .horiz-logo-img {
+    height: 60px;
+    max-width: 50%;
+  }
+
+  .lang-btn {
+    padding: 4px 10px;
+    font-size: 0.65rem;
+  }
+}
+
+  /* ===== LANGUAGE ===== */
+  body.lang-id .en { display: none; }
+  body.lang-en .id { display: none; }
+</style>
+</head>
+<body class="lang-en">
+
+<!-- LANG BAR -->
+<div id="lang-bar">
+  <img class="horiz-logo-img" src="fotomenu/graces-resto-banner.png" alt="Grace's Resto" />
+  <div class="lang-btns">
+    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">English</button>
+    <button class="lang-btn" onclick="setLang('id')" id="btn-id">Bahasa</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <img class="hero-logo-img" src="fotomenu/graceresto-logo.png" alt="Grace's Resto Logo" />
+  <div class="hero-badge en">Chinese-Indonesian Fusion · Est. Sihanoukville</div>
+  <div class="hero-badge id">Masakan Tionghoa-Indonesia · Sihanoukville</div>
+  <h1 class="hero-title">
+    <span class="grace">Grace's</span>
+    Resto
+  </h1>
+  <div class="hero-sub en">Indonesian Cuisine</div>
+  <div class="hero-sub id">Masakan Indonesia</div>
+  <br>
+  <p class="hero-desc en">Authentic flavours of the Indonesian archipelago, lovingly crafted and served in the heart of Sihanoukville, Cambodia.</p>
+  <p class="hero-desc id">Cita rasa autentik dari kepulauan Indonesia, dimasak dengan penuh cinta di jantung kota Sihanoukville, Kamboja.</p>
+  <div class="hero-cta">
+    <a href="#menu" class="btn-primary en">View Menu</a>
+    <a href="#menu" class="btn-primary id">Lihat Menu</a>
+    <a href="#contact" class="btn-secondary en">Find Us</a>
+    <a href="#contact" class="btn-secondary id">Temukan Kami</a>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <a href="#about" class="en">About</a>
+  <a href="#about" class="id">Tentang Kami</a>
+  <a href="#gallery" class="en">Gallery</a>
+  <a href="#gallery" class="id">Galeri</a>
+  <a href="#menu" class="en">Menu</a>
+  <a href="#menu" class="id">Menu</a>
+  <a href="#contact" class="en">Contact</a>
+  <a href="#contact" class="id">Kontak</a>
+</nav>
+
+<!-- STRIP -->
+<div id="about-strip">
+  <div class="inner">
+    <div class="strip-item reveal">
+      <div class="strip-label en">Cuisine</div>
+      <div class="strip-label id">Masakan</div>
+      <div class="strip-value en">Chinese-Indonesian Fusion</div>
+      <div class="strip-value id">Fusion Tionghoa-Indonesia</div>
+    </div>
+    <div class="strip-item reveal">
+      <div class="strip-label en">Location</div>
+      <div class="strip-label id">Lokasi</div>
+      <div class="strip-value en">TRIMULIA Hotel, 801 Phum 2, Sangkat 2 Khan Mittapheap, Sihanoukville</div>
+      <div class="strip-value id">TRIMULIA Hotel, 801 Phum 2, Sangkat 2 Khan Mittapheap, Sihanoukville</div>
+    </div>
+    <div class="strip-item reveal">
+      <div class="strip-label en">Price</div>
+      <div class="strip-label id">Harga</div>
+      <div class="strip-value">All items $3</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="grid">
+    <div class="img-wrap reveal">
+      <img src="fotomenu/ayamtelurasin.png" alt="Indonesian food spread" loading="lazy" />
+      <div class="caption en">Crafted with care</div>
+      <div class="caption id">Dimasak dengan cinta</div>
+    </div>
+    <div class="reveal">
+      <span class="section-label en">Our Story</span>
+      <span class="section-label id">Tentang Kami</span>
+      <h2 class="section-title en">A Taste of <em>Home</em></h2>
+      <h2 class="section-title id">Rasa <em>Rumah</em></h2>
+      <hr class="ornament" />
+      <p class="section-body en">Grace's Resto brings the vibrant, bold flavours of Indonesian and Chinese-Indonesian cooking to Sihanoukville. From smoky grilled duck with green chilli to golden honey-glazed prawns, every plate is made fresh to order, the way it has always been done.</p>
+      <p class="section-body id">Grace's Resto menghadirkan cita rasa masakan Indonesia dan Tionghoa-Indonesia yang kaya dan berani ke Sihanoukville. Dari bebek bakar beraroma dengan cabai hijau hingga udang berlapis madu, setiap hidangan dimasak segar sesuai pesanan, seperti yang selalu dilakukan sejak dulu.</p>
+      <br/>
+      <p class="section-body en">Our menu covers daily specials, chicken dishes, seafood plates, and noodle bowls, all priced at just <strong>$3</strong>. Follow us on Telegram <strong>@gracerestomulia</strong> for today's specials.</p>
+      <p class="section-body id">Menu kami mencakup menu spesial harian, hidangan ayam, hidangan seafood, dan aneka mie, semuanya dengan harga hanya <strong>$3</strong>. Ikuti kami di Telegram <strong>@gracerestomulia</strong> untuk melihat menu spesial hari ini.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div id="gallery">
+  <div class="inner">
+    <span class="section-label reveal en">A Feast for the Eyes</span>
+    <span class="section-label reveal id">Sajian Mata</span>
+    <h2 class="section-title reveal en">Our <em>Kitchen</em></h2>
+    <h2 class="section-title reveal id">Dapur <em>Kami</em></h2>
+    <hr class="ornament reveal" />
+    <div class="gallery-grid">
+      <div class="g-item reveal">
+        <img src="fotomenu/capcai.png" alt="Duck rice" loading="lazy" />
+        <div class="g-label en">Capcay Rice</div>
+        <div class="g-label id">Nasi Capcai</div>
+      </div>
+      <div class="g-item reveal">
+        <img src="fotomenu/ikansambal.png" alt="Ayam goreng" loading="lazy" />
+        <div class="g-label en">Fried Indian Mackerel and Chili Sambal</div>
+        <div class="g-label id">Nasi Ikan Goreng Kembung Sambel</div>
+      </div>
+      <div class="g-item reveal">
+        <img src="fotomenu/loempia.png" alt="Noodles" loading="lazy" />
+        <div class="g-label en">Fried Chicken Wontons</div>
+        <div class="g-label id">Pangsit Goreng Isi Ayam</div>
+      </div>
+      <div class="g-item reveal">
+        <img src="fotomenu/miejawaseafood.png" alt="Seafood rice" loading="lazy" />
+        <div class="g-label en">Javanese Fried Noodle with Seafood</div>
+        <div class="g-label id">Mie Jawa Seafood</div>
+      </div>
+      <div class="g-item reveal">
+        <img src="fotomenu/nasgorayam.png" alt="Nasi goreng" loading="lazy" />
+        <div class="g-label en">Special Chicken Fried Rice </div>
+        <div class="g-label id">Nasi Goreng Ayam Spesial</div>
+      </div>
+      <div class="g-item reveal">
+        <img src="fotomenu/nasiayam.png" alt="New Dish" loading="lazy" />
+        <div class="g-label en">Indonesian Chicken Rice</div>
+        <div class="g-label id">Nasi Ayam Spesial</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <span class="section-label reveal en">All Items $3</span>
+  <span class="section-label reveal id">Semua Menu $3</span>
+  <h2 class="section-title reveal en">Our <em>Menu</em></h2>
+  <h2 class="section-title reveal id"><em>Menu</em> Kami</h2>
+  <hr class="ornament reveal" />
+  <div class="menu-tabs reveal">
+    <button class="menu-tab active" onclick="switchTab('daily', this)">
+      <span class="en">Daily Menu</span><span class="id">Menu Harian</span>
+    </button>
+    <button class="menu-tab" onclick="switchTab('chicken', this)">
+      <span class="en">Chicken</span><span class="id">Ayam</span>
+    </button>
+    <button class="menu-tab" onclick="switchTab('seafood', this)">
+      <span class="en">Seafood</span><span class="id">Seafood</span>
+    </button>
+  </div>
+
+  <!-- DAILY -->
+  <div id="tab-daily" class="menu-panel active reveal">
+    <div class="price-badge">
+      <span class="en">Daily Specials — all at</span>
+      <span class="id">Menu Harian — semua</span>
+      <strong>$3</strong>
+    </div>
+    <div class="menu-section-label en">Duck &amp; Protein Rice</div>
+    <div class="menu-section-label id">Nasi Bebek &amp; Protein</div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Bebek Cabe Ijo<span class="menu-name-en en">Duck Rice · Green Chilli</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Bebek Grg Madu<span class="menu-name-en en">Duck Rice · Honey Fried</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Bebek Grg Kecap<span class="menu-name-en en">Duck Rice · Sweet Soy</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Grg Madu<span class="menu-name-en en">Prawn Rice · Honey Fried</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Grg Madu<span class="menu-name-en en">Squid Rice · Honey Fried</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Grg Madu<span class="menu-name-en en">Chicken Rice · Honey Fried</span></div></div>
+    </div>
+    <div class="menu-section-label en">Noodles &amp; Fried Rice</div>
+    <div class="menu-section-label id">Mie &amp; Nasi Goreng</div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Kwetiaw<span class="menu-name-en en">Flat Rice Noodles</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Mie Jawa<span class="menu-name-en en">Javanese Noodles</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Ifumie<span class="menu-name-en en">Crispy Egg Noodles</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Bihun<span class="menu-name-en en">Rice Vermicelli</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasgor · Indomie<span class="menu-name-en en">Fried Rice / Instant Noodles</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasgor Cabe Ijo<span class="menu-name-en en">Fried Rice · Green Chilli</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasgor Chasio Ayam<span class="menu-name-en en">Fried Rice · Chicken Char Siu</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Mie Jawa Chasio Ayam<span class="menu-name-en en">Javanese Noodles · Chicken</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Bihun Grg Chasio Ayam<span class="menu-name-en en">Fried Vermicelli · Chicken</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Kwetiaw Grg Chasio Ayam<span class="menu-name-en en">Fried Flat Noodles · Chicken</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Indomie Grg Chasio Ayam<span class="menu-name-en en">Fried Indomie · Chicken</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Ifumie Grg Chasio Ayam<span class="menu-name-en en">Crispy Noodles · Chicken</span></div></div>
+    </div>
+    <div class="menu-section-label en">Special Rice Dishes</div>
+    <div class="menu-section-label id">Hidangan Nasi Spesial</div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sapo Tahu<span class="menu-name-en en">Claypot Tofu Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sup Pangsit Ayam<span class="menu-name-en en">Chicken Dumpling Soup Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi BBQ Baso Sosis Ayam<span class="menu-name-en en">BBQ Meatball Sausage Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Telur Ponti<span class="menu-name-en en">Pontianak-style Egg Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Kangkung Belacan + Telur<span class="menu-name-en en">Water Spinach · Shrimp Paste + Egg</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sop Telur Bakso<span class="menu-name-en en">Egg Meatball Soup Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Fuyunghai<span class="menu-name-en en">Fuyunghai Omelette Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ikan Sarden<span class="menu-name-en en">Sardine Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Capchai Seafood<span class="menu-name-en en">Mixed Vegetable Seafood Rice</span></div></div>
+    </div>
+  </div>
+
+  <!-- CHICKEN -->
+  <div id="tab-chicken" class="menu-panel reveal">
+    <div class="price-badge">
+      <span class="en">Chicken Menu — all at</span>
+      <span class="id">Menu Ayam — semua</span>
+      <strong>$3</strong>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sup Baso Ayam<span class="menu-name-en en">Chicken Meatball Soup Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Hotdog Ayam<span class="menu-name-en en">Chicken Hotdog Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Kecap<span class="menu-name-en en">Sweet Soy Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sosis Grg<span class="menu-name-en en">Fried Sausage Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sosis Dadar<span class="menu-name-en en">Omelette Sausage Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Saos Wijen<span class="menu-name-en en">Sesame Sauce Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Grg Kipas<span class="menu-name-en en">Fan Fried Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Grg Terasi<span class="menu-name-en en">Shrimp Paste Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Chasio Ayam<span class="menu-name-en en">Chicken Char Siu Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Kentang Saos Ayam<span class="menu-name-en en">Chicken Sauce Potato Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Telur Dadar Bakar Ayam Suwir<span class="menu-name-en en">Grilled Omelette Shredded Chicken</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Teriyaki<span class="menu-name-en en">Teriyaki Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Bistik Ayam + Kentang<span class="menu-name-en en">Chicken Steak + Potato Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Dendeng Ayam<span class="menu-name-en en">Chicken Jerky Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Lada Hitam<span class="menu-name-en en">Black Pepper Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Cabe Ijo<span class="menu-name-en en">Green Chilli Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi BBQ Chicken<span class="menu-name-en en">BBQ Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Katsu<span class="menu-name-en en">Chicken Katsu Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Saos Telur<span class="menu-name-en en">Egg Sauce Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Pop<span class="menu-name-en en">Padang Pop Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Bakar Legend<span class="menu-name-en en">Legendary Grilled Chicken</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Kriuk<span class="menu-name-en en">Crispy Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Penyet<span class="menu-name-en en">Smashed Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Geprek<span class="menu-name-en en">Crushed Chilli Chicken</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Sambal<span class="menu-name-en en">Sambal Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Saos Tiram<span class="menu-name-en en">Oyster Sauce Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Saos Padang<span class="menu-name-en en">Padang Sauce Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Grg Tepung<span class="menu-name-en en">Battered Fried Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Grg Mentega<span class="menu-name-en en">Butter Fried Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Grg Bawang<span class="menu-name-en en">Shallot Fried Chicken Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Telur Asin<span class="menu-name-en en">Salted Egg Chicken Rice</span></div></div>
+    </div>
+  </div>
+
+  <!-- SEAFOOD -->
+  <div id="tab-seafood" class="menu-panel reveal">
+    <div class="price-badge">
+      <span class="en">Seafood Menu — all at</span>
+      <span class="id">Menu Seafood — semua</span>
+      <strong>$3</strong>
+    </div>
+    <div class="menu-section-label en">Squid (Cumi)</div>
+    <div class="menu-section-label id">Cumi</div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Cabe Ijo<span class="menu-name-en en">Squid Rice · Green Chilli</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Lada Hitam<span class="menu-name-en en">Squid Rice · Black Pepper</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Sambal<span class="menu-name-en en">Squid Rice · Sambal</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Saos Tiram<span class="menu-name-en en">Squid Rice · Oyster Sauce</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Saos Padang<span class="menu-name-en en">Squid Rice · Padang Sauce</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Grg Tepung<span class="menu-name-en en">Battered Fried Squid Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Grg Mentega<span class="menu-name-en en">Butter Fried Squid Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Grg Bawang<span class="menu-name-en en">Shallot Fried Squid Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Telur Asin<span class="menu-name-en en">Salted Egg Squid Rice</span></div></div>
+    </div>
+    <div class="menu-section-label en">Prawn (Udang)</div>
+    <div class="menu-section-label id">Udang</div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Cabe Ijo<span class="menu-name-en en">Prawn Rice · Green Chilli</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Lada Hitam<span class="menu-name-en en">Prawn Rice · Black Pepper</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Bakar<span class="menu-name-en en">Grilled Prawn Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Sambal<span class="menu-name-en en">Prawn Rice · Sambal</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Saos Tiram<span class="menu-name-en en">Prawn Rice · Oyster Sauce</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Saos Padang<span class="menu-name-en en">Prawn Rice · Padang Sauce</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Grg Tepung<span class="menu-name-en en">Battered Fried Prawn Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Grg Mentega<span class="menu-name-en en">Butter Fried Prawn Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Grg Bawang<span class="menu-name-en en">Shallot Fried Prawn Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Telur Asin<span class="menu-name-en en">Salted Egg Prawn Rice</span></div></div>
+    </div>
+    <div class="menu-section-label en">Tilapia Fish (Ikan Nila)</div>
+    <div class="menu-section-label id">Ikan Nila</div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ikan Nila Bakar<span class="menu-name-en en">Grilled Tilapia Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ikan Nila Goreng<span class="menu-name-en en">Fried Tilapia Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ikan Nila Sambel<span class="menu-name-en en">Sambal Tilapia Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ikan Nila Tauco<span class="menu-name-en en">Fermented Bean Tilapia Rice</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="inner">
+    <span class="section-label reveal en">Get in Touch</span>
+    <span class="section-label reveal id">Hubungi Kami</span>
+    <h2 class="section-title reveal en">Find <em>Us</em></h2>
+    <h2 class="section-title reveal id">Temukan <em>Kami</em></h2>
+    <hr class="ornament reveal" />
+    <p class="section-body reveal en">Visit us in Sihanoukville or reach out via WhatsApp and Telegram for reservations and today's specials.</p>
+    <p class="section-body reveal id">Kunjungi kami di Sihanoukville atau hubungi via WhatsApp dan Telegram untuk reservasi dan menu hari ini.</p>
+    <div class="contact-cards">
+      <div class="contact-card reveal">
+        <span class="cc-icon-text">WA</span>
+        <div class="cc-label">WhatsApp</div>
+        <div class="cc-value"><a href="https://wa.me/6282123359900">+62 821-2335-9900</a></div>
+      </div>
+      <div class="contact-card reveal">
+        <span class="cc-icon-text">TG</span>
+        <div class="cc-label">Telegram</div>
+        <div class="cc-value"><a href="https://Telegram.com/gracerestomulia" target="_blank">@gracerestomulia</a></div>
+      </div>
+      <div class="contact-card reveal location-card" onclick="openMap()">
+          <span class="cc-icon-text">KH</span>
+          <div class="cc-label en">Location</div>
+          <div class="cc-label id">Lokasi</div>
+          <div class="cc-value">
+            TRIMULIA Hotel, 801 Phum 2, Sangkat 2 Khan Mittapheap, Sihanoukville, Cambodia
+          </div>
+        </div>
+      <div class="contact-card reveal">
+        <span class="cc-icon-text" style="color:var(--gold);">$3</span>
+        <div class="cc-label en">All menu items</div>
+        <div class="cc-label id">Semua menu</div>
+        <div class="cc-value" style="color:var(--gold-light);">Per dish</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 <span>Grace's Resto</span> &nbsp;&middot;&nbsp; Sihanoukville, Cambodia &nbsp;&middot;&nbsp; <span>@gracerestomulia</span></p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-' + lang).classList.add('active');
+    document.documentElement.lang = lang;
+  }
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    btn.classList.add('active');
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  
+  function openMap() {
+  window.open(
+    "https://www.google.com/maps/search/?api=1&query=TRIMULIA+Hotel+Sihanoukville",
+    "_blank"
+  );
+}
+</script>
+<!--Add JSON-LD Schema-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Grace's Resto",
+  "image": "https://colinjanoshegyi.com/assets/logo/graceresto-logo.png",
+  "url": "https://colinjanoshegyi.com/graces-resto",
+  "telephone": "+6282123359900",
+  "servesCuisine": ["Indonesian", "Chinese-Indonesian", "Asian"],
+  "priceRange": "$ (approx. $3 meals)",
+  "openingHours": "Mo-Su 10:00-22:00",
+  "@id": "https://colinjanoshegyi.com/graces-resto#restaurant"
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "TRIMULIA Hotel, 801 Phum 2, Sangkat 2",
+    "addressLocality": "Sihanoukville",
+    "addressCountry": "Cambodia"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 10.625,
+    "longitude": 103.523
+  },
+  "sameAs": [
+    "https://t.me/gracerestomulia",
+    "https://wa.me/6282123359900"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+   {
+     "@type": "Question",
+     "name": "Berapa harga makanan di Grace's Resto?",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Semua menu hanya $3."
+     }
+   },
+   {
+     "@type": "Question",
+     "name": "Apakah tersedia makanan Indonesia di Sihanoukville?",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ya, Grace's Resto menyediakan makanan Indonesia autentik di Sihanoukville."
+     }
+   }
+ ]
+}
+</script>
+</body>
+</html>
