@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes — Colin John | SEO, Digital Marketing & Front-End Development</title>
+  <link rel="canonical" href="https://colinjanoshegyi.com/works/notesandthoughts/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/pdf/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/pdf/favicon-16x16.png">
+  <meta name="description" content="Long-form notes on SEO, digital marketing, branding, and front-end development by Colin John." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Notes — Colin John" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/" />
+  <meta property="og:image" content="https://colinjanoshegyi.com/assets/preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:      #FFFFFF;
+      --near-white: #FAFAFA;
+      --ink:        #111111;
+      --mid:        #666666;
+      --faint:      rgba(17,17,17,0.06);
+      --border:     rgba(17,17,17,0.09);
+      --serif:      'Cormorant Garamond', Georgia, serif;
+      --sans:       'Outfit', system-ui, sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: auto; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── PROGRESS ── */
+    #progress {
+      position: fixed; top: 0; left: 0;
+      height: 2px; background: var(--ink);
+      width: 0%; z-index: 9999;
+    }
+
+    /* ── CURSOR ── */
+    #cursor-dot, #cursor-ring {
+      position: fixed; border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    #cursor-dot { width: 6px; height: 6px; background: var(--ink); transition: transform .15s, opacity .3s; }
+    #cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(17,17,17,0.25);
+      transition: width .4s var(--ease-out-expo), height .4s var(--ease-out-expo), border-color .3s, background .3s;
+    }
+    #cursor-ring.hover { width: 60px; height: 60px; border-color: var(--ink); background: rgba(17,17,17,0.04); }
+    @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } }
+
+    /* ── HEADER ── */
+    #header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 100px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 5vw;
+      background: transparent;
+      transition: height .5s var(--ease-out-expo), background .4s ease, box-shadow .4s ease;
+    }
+    #header.scrolled {
+      height: 60px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .header-logo {
+      font-family: var(--serif); font-size: 1.35rem;
+      font-weight: 400; letter-spacing: .03em; color: var(--ink);
+    }
+    .header-nav { display: flex; align-items: center; gap: 2.5rem; }
+    .header-nav a {
+      font-size: .75rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--mid); transition: color .3s;
+    }
+    .header-nav a:hover { color: var(--ink); }
+    .header-nav a.active { color: var(--ink); }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--ink); color: var(--white) !important;
+      font-size: .72rem !important; letter-spacing: .14em;
+      text-transform: uppercase; padding: .75rem 1.5rem;
+      border-radius: 100px;
+      transition: transform .3s var(--ease-out-expo), box-shadow .3s !important;
+      white-space: nowrap;
+    }
+    .cta-btn:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(17,17,17,0.18); }
+    @media (max-width: 680px) { .header-nav > a:not(.cta-btn) { display: none; } }
+
+    /* ── HERO ── */
+    #blog-hero {
+      padding: 18vh 5vw 10vh;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    #blog-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: .6; pointer-events: none;
+    }
+    .blog-hero-eyebrow {
+      font-size: .68rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--mid);
+      margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;
+      opacity: 0; transform: translateY(12px);
+    }
+    .blog-hero-eyebrow::before {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--mid);
+    }
+    .blog-hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      font-weight: 300; line-height: 1.0;
+      letter-spacing: -.025em;
+      max-width: 12ch;
+      opacity: 0; transform: translateY(30px);
+    }
+    .blog-hero-title em { font-style: italic; }
+    .blog-hero-desc {
+      margin-top: 2.5rem;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: var(--mid); max-width: 48ch; line-height: 1.8;
+      opacity: 0; transform: translateY(16px);
+    }
+
+    /* ── FILTER TAGS ── */
+    .filter-bar {
+      padding: 2.5rem 5vw;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: .65rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--mid);
+    }
+    .filter-tag {
+      font-size: .68rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--mid);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: .35rem .9rem; cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+      background: transparent;
+      font-family: var(--sans);
+    }
+    .filter-tag:hover, .filter-tag.active {
+      background: var(--ink); color: var(--white); border-color: var(--ink);
+    }
+
+    /* ── POST LIST ── */
+    #post-list {
+      padding: 0 5vw 12vh;
+    }
+
+    /* Featured post */
+    .post-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6vw;
+      padding: 6rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: end;
+      opacity: 0; transform: translateY(28px);
+    }
+    .post-featured-meta {
+      font-size: .65rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--mid);
+      margin-bottom: 1.5rem; display: flex; gap: 1.5rem;
+    }
+    .post-featured-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 300; line-height: 1.2;
+      letter-spacing: -.015em; margin-bottom: 1.5rem;
+    }
+    .post-featured-title em { font-style: italic; }
+    .post-featured-excerpt {
+      font-size: .95rem; color: var(--mid); line-height: 1.9; max-width: 44ch;
+    }
+    .post-featured-right {
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding-bottom: .5rem;
+    }
+    .post-read-link {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .72rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--mid);
+      margin-top: 2.5rem;
+      transition: color .3s, gap .3s;
+    }
+    .post-read-link:hover { color: var(--ink); gap: 1rem; }
+    .post-featured-number {
+      font-family: var(--serif); font-size: clamp(5rem, 10vw, 10rem);
+      font-weight: 300; color: var(--faint); line-height: 1;
+      letter-spacing: -.04em; user-select: none;
+    }
+
+    /* Post grid */
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-left: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    .post-card {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2.5rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(20px);
+      transition: background .4s;
+    }
+    .post-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--faint); transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .5s var(--ease-out-expo);
+    }
+    .post-card:hover::before { transform: scaleY(1); }
+    .post-card-inner { position: relative; z-index: 1; }
+    .post-card-meta {
+      font-size: .62rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--mid);
+      margin-bottom: 1.5rem; display: flex; gap: 1.2rem;
+    }
+    .post-card h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+      font-weight: 400; letter-spacing: -.01em;
+      line-height: 1.25; margin-bottom: .8rem;
+    }
+    .post-card p {
+      font-size: .85rem; color: var(--mid); line-height: 1.85;
+    }
+    .post-card .post-read-link { margin-top: 2rem; }
+
+    /* Empty state */
+    #empty-state {
+      padding: 8rem 0; text-align: center; display: none;
+    }
+    #empty-state p {
+      font-family: var(--serif); font-size: 1.5rem;
+      font-weight: 300; color: var(--mid); font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 5vw;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: .72rem; color: var(--mid); letter-spacing: .06em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .post-featured { grid-template-columns: 1fr; gap: 2rem; }
+      .post-featured-right { display: none; }
+    }
+    @media (max-width: 620px) {
+      .post-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- HEADER -->
+<header id="header" role="banner">
+  <a href="https://colinjanoshegyi.com/" class="header-logo">Colin</a>
+  <nav class="header-nav" aria-label="Main navigation">
+    <a href="https://colinjanoshegyi.com/#identity">About</a>
+    <a href="https://colinjanoshegyi.com/#work">Work</a>
+    <a href="https://colinjanoshegyi.com/works/notesandthoughts/" class="active">Notes</a>
+    <a href="https://colinjanoshegyi.com/#contact" class="cta-btn">Work With Me</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="blog-hero">
+  <p class="blog-hero-eyebrow">Ideas, strategy &amp; craft</p>
+  <h1 class="blog-hero-title">Notes &amp; <em>Thoughts</em></h1>
+  <p class="blog-hero-desc">
+    A collection of thoughts on the ideas that fascinate me, from marketing and strategy to the topics that resonate on a more personal level. Everything is written here.
+  </p>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filter-bar">
+  <span class="filter-label">Filter —</span>
+  <!-- Tags are injected by JS -->
+</div>
+
+<!-- POST LIST -->
+<main id="post-list" role="main" aria-label="Blog posts">
+  <!-- Injected by JS -->
+  <div id="empty-state">
+    <p>No posts found for this filter.</p>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
+  <p><a href="https://colinjanoshegyi.com/">← Back to main site</a></p>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   ✏️  POSTS — Add a new entry here every time you publish.
+   Fields:
+     title    — headline of the post
+     date     — publish date "YYYY-MM-DD"
+     slug     — filename without .html (e.g. "why-seo-matters" → why-seo-matters.html)
+     tags     — array of strings (used for filtering)
+     excerpt  — one or two sentence teaser
+     featured — set ONE post to true; it gets the large hero treatment
+═══════════════════════════════════════════════════════════════════════ */
+const POSTS = [
+  {
+    title: "Why Indonesian Football Will Never Produce a World Class Player",
+    date: "2026-05-17",
+    slug: "why-indonesian-football-will-never-produce-a-world-class-player",
+    tags: ["Football", "Indonesia", "Analysis"],
+    excerpt: "Indonesia has 270 million people and one of the world's most passionate football cultures. So why has it failed to consistently produce elite-level footballers?",
+    featured: true,
+  },
+];
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Everything below handles rendering — you rarely need to edit this.
+═══════════════════════════════════════════════════════════════════════ */
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function buildTagSet(posts) {
+  const tags = new Set();
+  posts.forEach(p => p.tags.forEach(t => tags.add(t)));
+  return ['All', ...Array.from(tags).sort()];
+}
+
+let activeTag = 'All';
+
+function render(filter) {
+  const list   = document.getElementById('post-list');
+  const empty  = document.getElementById('empty-state');
+  const sorted = [...POSTS].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const filtered = filter === 'All' ? sorted : sorted.filter(p => p.tags.includes(filter));
+
+  // Clear previous posts (keep empty state node)
+  list.querySelectorAll('.post-featured, .post-grid').forEach(el => el.remove());
+
+  if (filtered.length === 0) {
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  const featured = filtered.find(p => p.featured) || filtered[0];
+  const rest     = filtered.filter(p => p !== featured);
+
+  // ── Featured post ──
+  const feat = document.createElement('div');
+  feat.className = 'post-featured';
+  feat.innerHTML = `
+    <div>
+      <p class="post-featured-meta">
+        <span>${formatDate(featured.date)}</span>
+        <span>${featured.tags.join(', ')}</span>
+      </p>
+      <h2 class="post-featured-title">${featured.title}</h2>
+      <p class="post-featured-excerpt">${featured.excerpt}</p>
+      <a href="blog/why-indonesian-football-will-never-produce-a-world-class-player.html" class="post-read-link">Read article →</a>
+    </div>
+    <div class="post-featured-right">
+      <p class="post-featured-number">01</p>
+    </div>`;
+  list.insertBefore(feat, empty);
+
+  // ── Rest as grid ──
+  if (rest.length > 0) {
+    const grid = document.createElement('div');
+    grid.className = 'post-grid';
+    rest.forEach((post, i) => {
+      const card = document.createElement('a');
+      card.href = `${post.slug}.html`;
+      card.className = 'post-card';
+      card.innerHTML = `
+        <div class="post-card-inner">
+          <p class="post-card-meta">
+            <span>${formatDate(post.date)}</span>
+            <span>${post.tags.join(', ')}</span>
+          </p>
+          <h3>${post.title}</h3>
+          <p>${post.excerpt}</p>
+          <span class="post-read-link">Read →</span>
+        </div>`;
+      grid.appendChild(card);
+    });
+    list.insertBefore(grid, empty);
+  }
+
+  // Animate new elements in
+  requestAnimationFrame(() => {
+    gsap.to('.post-featured', { opacity: 1, y: 0, duration: .9, ease: 'power3.out', delay: .1 });
+    gsap.to('.post-card', { opacity: 1, y: 0, duration: .7, ease: 'power3.out', stagger: .1, delay: .2 });
+  });
+}
+
+function buildFilters() {
+  const bar  = document.getElementById('filter-bar');
+  const tags = buildTagSet(POSTS);
+  tags.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-tag' + (tag === 'All' ? ' active' : '');
+    btn.textContent = tag;
+    btn.addEventListener('click', () => {
+      activeTag = tag;
+      bar.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render(tag);
+    });
+    bar.appendChild(btn);
+  });
+}
+
+// ── Lenis ──
+const lenis = new Lenis({ duration: 1.35, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+(function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
+gsap.registerPlugin(ScrollTrigger);
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(t => lenis.raf(t * 1000));
+gsap.ticker.lagSmoothing(0);
+
+lenis.on('scroll', ({ progress }) => {
+  document.getElementById('progress').style.width = (progress * 100) + '%';
+});
+
+// ── Header shrink ──
+const header = document.getElementById('header');
+lenis.on('scroll', ({ scroll }) => header.classList.toggle('scrolled', scroll > 50));
+
+// ── Custom cursor ──
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animateCursor() {
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+  rx += (mx - rx) * .1; ry += (my - ry) * .1;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+})();
+document.addEventListener('mouseover', e => {
+  if (e.target.closest('a, button')) ring.classList.add('hover');
+  else ring.classList.remove('hover');
+});
+
+// ── Hero entrance ──
+gsap.to('.blog-hero-eyebrow', { opacity: 1, y: 0, duration: .9, ease: 'power3.out', delay: .2 });
+gsap.to('.blog-hero-title',   { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', delay: .35 });
+gsap.to('.blog-hero-desc',    { opacity: 1, y: 0, duration: 1,   ease: 'power3.out', delay: .5 });
+
+// ── Init ──
+buildFilters();
+render('All');
+</script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Notes — Colin John",
+  "url": "https://colinjanoshegyi.com/works/notesandthoughts/",
+  "author": {
+    "@type": "Person",
+    "name": "Colin John",
+    "url": "https://colinjanoshegyi.com"
+  },
+  "description": "Long-form writing on SEO, digital marketing, branding, and front-end development."
+}
+</script>
+</body>
+</html>
