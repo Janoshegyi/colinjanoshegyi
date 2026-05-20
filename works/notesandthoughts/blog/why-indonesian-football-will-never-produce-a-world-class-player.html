@@ -123,9 +123,14 @@
     }
     .stat-cell:last-child { border-right: none; }
     .stat-number {
-      font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300; letter-spacing: -.02em; color: var(--ink);
-      line-height: 1.1; margin-bottom: .4rem;
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      color: var(--ink);
+      line-height: 0.95;
+      margin-bottom: .45rem;
     }
     .stat-label { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); }
     @media (max-width: 600px) {
@@ -234,6 +239,11 @@
     }
     .feature-image img {
       width: 100%;
+      height: auto;
+      display: block;
+    }
+    .feature-image img {
+      width: 100%;
       border-radius: 8px;
       object-fit: cover;
       max-height: 520px;
@@ -305,7 +315,7 @@
     <span class="article-tag">Football</span>
     <span class="article-tag">Indonesia</span>
     <span class="article-tag">Analysis</span>
-    <span>12 min read</span>
+    <span>15 min read</span>
   </p>
   <h1 class="article-title">Why Indonesian Football Will <em>Never</em> Produce a World Class Player</h1>
   <p class="article-subtitle">Structural economics, not talent. A look at how broken incentives, rapid naturalization policies, and institutional instability are failing 270 million people.</p>
@@ -321,8 +331,8 @@
 
     
     <figure class="feature-image">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Indonesia_national_football_team_2024.jpg" alt="Indonesia national football team" referrerpolicy="no-referrer">
-      <figcaption>The current Indonesia national football team during the federation’s modern rebuilding era. The federation has increasingly relied on overseas recruitment and naturalized talent to accelerate competitiveness.</figcaption>
+      <img loading="lazy" src="https://asset.kompas.com/crops/PEG09r_FbCQwFwAOoLNUC7YemTs=/55x60:695x487/750x500/data/photo/2025/10/18/68f30c591e94d.jpeg" alt="Indonesia national football team">
+      <figcaption>Source: <i>Kompas.com</i><br>The current Indonesia national football team during the federation’s modern rebuilding era. The federation has increasingly relied on overseas recruitment and naturalized talent to accelerate competitiveness.</figcaption>
     </figure>
 
     <div class="stat-row">
@@ -331,7 +341,9 @@
         <p class="stat-label">Indonesia's population</p>
       </div>
       <div class="stat-cell">
-        <p class="stat-number">4M</p>
+        <p class="stat-number">
+  <span class="stat-value">4</span><span class="stat-unit">M</span></p>
+
         <p class="stat-label">Croatia's population , multiple World Cup finalists</p>
       </div>
       <div class="stat-cell">
@@ -345,9 +357,19 @@
     </p>
 
     <h2>What Football Actually Means Here</h2>
+    <figure class="feature-image">
+     <img loading="lazy"
+       src="https://assetd.kompas.id/-UrZZVfJZF1Xa5VHNTRW7IaiENo=/1024x683/smart/filters:format(webp):quality(80)/https://kompas.id/wp-content/uploads/2018/02/20180218DRI4.jpg"
+       alt="Gelora Bung Karno Stadium with Persija supporters">
+      <figcaption>
+        Gelora Bung Karno Stadium remains the symbolic heart of Indonesian football culture.
+        <br>
+        Source: <i>Kompas.id</i>
+      </figcaption>
+    </figure>
 
     <p>
-      Before the economics, you need to understand the stakes. This is not a country that is indifferent to football. <a href="https://www.jakmania.org" target="_blank" rel="noopener noreferrer">The Jakmania</a> , Persija Jakarta's supporter group , has over four million registered members. That is more than the entire population of New Zealand. Aremania, Bobotoh, Bonek , these are not fan clubs. These are movements. Indonesian supporters have literally died for their clubs. Rivalries here are not metaphorical.
+      Before the economics, you need to understand the stakes. This is not a country that is indifferent to football. <a href="https://persija.id" target="_blank" rel="noopener noreferrer">The Jakmania</a> , Persija Jakarta's supporter group , has over four million registered members. That is more than the entire population of New Zealand. Aremania, Bobotoh, Bonek , these are not fan clubs. These are movements. Indonesian supporters have literally died for their clubs. Rivalries here are not metaphorical.
     </p>
 
     <p>
@@ -355,7 +377,9 @@
     </p>
 
     <blockquote>
-      "Why does all of this love, all of this passion, all of this obsession , why does none of it produce greatness?"
+      The pride of a football player is playing for the national team. It was never about the money... I can tell that to my children and grandchildren later.
+      <br>
+      - <i>Boaz Solossa, Persipura</i>
     </blockquote>
 
     <p>
@@ -364,8 +388,11 @@
 
     
     <figure class="feature-image">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Dutch_East_Indies_1938_World_Cup.jpg" alt="Dutch East Indies 1938 World Cup team" referrerpolicy="no-referrer">
-      <figcaption>The Dutch East Indies team at the 1938 FIFA World Cup, the first Asian side to appear at the tournament.</figcaption>
+      <img loading="lazy" src="https://assets.the-afc.com/migration/r/t/rtj42mbbo2qu65arl9qb.jpg" alt="Dutch East Indies 1938 World Cup team">
+      <figcaption>The Dutch East Indies team at the 1938 FIFA World Cup, the first Asian side to appear at the tournament.
+        <br>
+        Source: <i>The Asian Football Confederation</i>
+      </figcaption>
     </figure>
 
     <h2>A History of Dysfunction</h2>
@@ -373,7 +400,9 @@
     <p>
       <a href="https://en.wikipedia.org/wiki/Football_Association_of_Indonesia" target="_blank" rel="noopener noreferrer">PSSI</a> , the Football Association of Indonesia , was founded in 1930, making it one of the oldest football associations in Asia. Indonesia even sent a team to the 1938 World Cup under Dutch colonial rule, before most of Europe had qualified. But independence brought a different kind of problem: football became a political tool. Presidents, military generals, and regional governors used club ownership and association control to build loyalty and signal prestige. The sport that should belong to the people began to belong to the powerful.
     </p>
-
+    <p>
+    The Dutch East Indies team would enter the history books as the only Asian side to appear at a FIFA World Cup before the formation of the Asian Football Confederation , an organization Indonesia itself would later help found in 1954. Since then, the closest the country has come to returning to football’s biggest stage was during the 1986 World Cup qualification campaign, where they were eliminated by South Korea in the penultimate round. For a nation obsessed with the sport, the dream of returning has never disappeared. It has only become more painful with time.
+    </p>
     <p>
       The clearest symptom came in 2011, when <a href="https://www.fifa.com" target="_blank" rel="noopener noreferrer">FIFA</a> banned Indonesia from international competition , not for match-fixing or doping, but because the government directly attempted to take over PSSI and install their own appointees. FIFA's rules on government interference are unambiguous. Indonesia ignored them. The country that invented one of Asia's oldest football associations was suspended from the game it helped build.
     </p>
@@ -384,8 +413,11 @@
 
     
     <figure class="feature-image">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/7/76/Erick_Thohir_2024.jpg" alt="Erick Thohir" referrerpolicy="no-referrer">
-      <figcaption>PSSI chairman Erick Thohir has become the public face of Indonesia's aggressive naturalization strategy and football restructuring efforts.</figcaption>
+      <img loading="lazy" src="https://cdn.antaranews.com/cache/1200x800/2026/04/15/kerja-sama-pelatihan-sepak-bola-wanita-dengan-fff-2772568.jpg" alt="Erick Thohir">
+      <figcaption>PSSI chairman Erick Thohir has become the public face of Indonesia's aggressive naturalization strategy and football restructuring efforts.
+        <br>
+        Source: <i>Antaranews.com</i>
+      </figcaption>
     </figure>
 
     <h2>The Economics of Underachievement</h2>
@@ -468,7 +500,8 @@
     </p>
 
     <blockquote>
-      "Individual rationality. Collective failure."
+      "Individual rationality. Collective failure." <br>
+      - The Stanford Encyclopedia of Philosophy (Winter 2023 Edition)
     </blockquote>
 
     <p>
@@ -506,8 +539,24 @@
       What Croatia had was a deliberate system. The Croatian Football Federation created a centralised youth development model. Every qualified youth coach in the country was trained under the same methodology. <a href="https://gnkdinamo.hr/en" target="_blank" rel="noopener noreferrer">Dinamo Zagreb's academy</a> became a deliberate feeder to Europe. The culture was not 'play football' , it was 'become European-ready.'
     </p>
 
+    <figure class="feature-image">
+      <img loading="lazy"
+          src="https://cdn-assets.jawapos.com/images/1/2024/11/16/Snapinstaapp_467323218_18065937358677792_3276774666292702839_n_1080-2910416654.jpg"
+          alt="Indonesian children posing with Ole Romeny after playing a game together">
+      <figcaption>
+        Ole Romeny with enthusiastic Indonesian children after playing football with them.
+        Grassroots football remains widespread across Indonesia, but infrastructure and development pathways remain inconsistent.
+      <br>
+      Source: <i>Jawa Pos</i>
+      </figcaption>
+    </figure>
+
     <p>
-      Luka Modrić did not become Luka Modrić because Croatia is genetically gifted. He became Modrić because at nine years old, he entered a system that knew exactly what to do with him. Indonesia has found no equivalent , not because there isn't one. But because the nine-year-old version of him is probably playing on a concrete pitch with no coach, no pathway, and no structural reason to believe the system will catch him.
+      Luka Modrić did not become Luka Modrić because Croatia is genetically gifted. He became Modrić because, at nine years old, he entered a system that knew what to do with his talent.
+    </p>
+
+    <p>
+      Indonesia has likely produced children with similar potential. The difference is not ability, but structure. Somewhere, the Indonesian equivalent of a young Modrić is playing on a concrete pitch without coaching, without a development pathway, and without any real reason to believe the system will ever find him. Meanwhile, the same institutions that claim to invest in children struggle to provide even the most basic nutrients standard reliably.
     </p>
 
     <hr />
