@@ -3,32 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Colin John | SEO, Digital Marketing & Front-End Development</title>
+  <title>Colin John | SEO Specialist, Digital Marketer & Front-End Developer</title>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Colin John | SEO & Digital Marketing" />
+  <meta name="twitter:description" content="SEO, branding, and front-end development across cultures." />
+  <meta name="twitter:image" content="https://colinjanoshegyi.com/assets/preview.png" />
   <link rel="canonical" href="https://colinjanoshegyi.com/" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/pdf/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/pdf/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/pdf/favicon-16x16.png">
   <link rel="manifest" href="assets/pdf/site.webmanifest">
-  <meta name="description" content="Colin explores marketing, technology, and ideas across cultures. Born in Indonesia, shaped by Cambodia, refined in Hungary." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Colin — Marketing, Technology & Ideas" />
+  <meta property="og:title" content="Colin John | SEO Specialist, Digital Marketer & Front-End Developer" />
   <meta name="description" content="Digital marketer and front-end developer specializing in SEO, branding, and web experiences across cultures.">
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://colinjanoshegyi.com/assets/preview.png">
   <meta property="og:url" content="https://colinjanoshegyi.com/">
-  <!-- Cormorant Garamond (editorial display) + Geist (refined sans) -->
+  <meta property="og:description" content="Digital marketer and front-end developer specializing in SEO, branding, and web experiences across cultures." />
+  <link rel="alternate" hreflang="en" href="https://colinjanoshegyi.com/" />
+  <link rel="alternate" hreflang="id" href="https://colinjanoshegyi.com/id/" />
+  <link rel="alternate" hreflang="x-default" href="https://colinjanoshegyi.com/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
-  <!-- Lenis smooth scroll -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <!-- GSAP + ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <style>
-    /* ═══════════════════════════════════════════════════════════════
-       DESIGN TOKENS & RESET
-    ═══════════════════════════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -63,9 +64,6 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; }
 
-    /* ═══════════════════════════════════════════════════════════════
-       CUSTOM CURSOR
-    ═══════════════════════════════════════════════════════════════ */
     #cursor-dot, #cursor-ring {
       position: fixed;
       border-radius: 50%;
@@ -95,9 +93,6 @@
       #cursor-dot, #cursor-ring { display: none; }
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       HEADER — STICKY SHRINKING
-    ═══════════════════════════════════════════════════════════════ */
     #header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -178,9 +173,6 @@
       #header { padding: 0 5vw; }
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       SECTION BASE
-    ═══════════════════════════════════════════════════════════════ */
     .section {
       padding: 14vh 5vw;
       position: relative;
@@ -204,9 +196,6 @@
       background: var(--mid);
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════════════════════════ */
     #hero {
       min-height: 100vh;
       display: grid;
@@ -222,7 +211,6 @@
       z-index: 1;
     }
 
-    /* Grain overlay */
     #hero::before {
       content: '';
       position: absolute;
@@ -317,9 +305,6 @@
       100% { top: 100%; }
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       IDENTITY
-    ═══════════════════════════════════════════════════════════════ */
     #identity {
       background: var(--near-white);
       border-top: 1px solid var(--border);
@@ -388,9 +373,6 @@
     }
     .timeline-node:last-child { margin-bottom: 0; }
 
-    /* ═══════════════════════════════════════════════════════════════
-       THOUGHTS / PHILOSOPHY
-    ═══════════════════════════════════════════════════════════════ */
     #thoughts {
       background: var(--ink);
       color: #FAFAFA;
@@ -429,10 +411,6 @@
       color: rgba(250,250,250,0.38) !important;
     }
 
-    
-    /* ═══════════════════════════════════════════════════════════════
-       WORK + CV
-    ═══════════════════════════════════════════════════════════════ */
     #work { }
 
     .work-grid {
@@ -443,7 +421,6 @@
       margin-top: 4rem;
     }
 
-    /* FIX 1: Remove underline from work card links */
     .work-card {
       border-right: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -454,7 +431,7 @@
       opacity: 0;
       transform: translateY(24px);
       transition: background 0.4s;
-      text-decoration: none; /* ← removes underline */
+      text-decoration: none; 
     }
     .work-card::before {
       content: '';
@@ -514,7 +491,6 @@
       margin-bottom: 3rem;
     }
 
-    /* FIX 2: CV title and subtitle — plain, non-clickable text */
     .cv-title {
       font-family: var(--serif);
       font-size: clamp(2rem, 4vw, 3rem);
@@ -581,7 +557,6 @@
       color: var(--ink);
     }
 
-    /* FIX 3: Download CV button — tidy icon alignment */
     .cv-download {
       display: inline-flex;
       align-items: center;
@@ -604,16 +579,13 @@
       flex-shrink: 0;
       display: block;
       position: relative;
-      top: 1px; /* subtle optical alignment */
+      top: 1px; 
     }
     .cv-download:hover {
       transform: scale(1.03) translateY(0);
       box-shadow: 0 8px 28px rgba(17,17,17,0.2);
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       CONTACT
-    ═══════════════════════════════════════════════════════════════ */
     #contact {
       background: var(--near-white);
       border-top: 1px solid var(--border);
@@ -672,9 +644,6 @@
     .contact-link:hover { color: var(--ink); }
     .contact-link:hover::after { transform: scaleX(1); }
 
-    /* ═══════════════════════════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════════════════════════ */
     footer {
       padding: 2.5rem 5vw;
       border-top: 1px solid var(--border);
@@ -689,9 +658,6 @@
       letter-spacing: 0.06em;
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       PROGRESS BAR
-    ═══════════════════════════════════════════════════════════════ */
     #progress {
       position: fixed;
       top: 0; left: 0;
@@ -702,9 +668,6 @@
       transform-origin: left;
     }
 
-    /* ═══════════════════════════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════════════════════════ */
     @media (max-width: 860px) {
       .journey-layout {
         grid-template-columns: 1fr;
@@ -736,9 +699,6 @@
   <div id="cursor-dot"></div>
   <div id="cursor-ring"></div>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       HEADER
-  ═══════════════════════════════════════════════════════════════ -->
   <header id="header" role="banner">
     <a href="#" class="header-logo" aria-label="Colin — Home">Colin</a>
 
@@ -752,9 +712,6 @@
     </nav>
   </header>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 1 — HERO
-  ═══════════════════════════════════════════════════════════════ -->
   <section id="hero" aria-labelledby="hero-name">
     <!-- decorative rings -->
     <div class="hero-ring" aria-hidden="true"></div>
@@ -779,9 +736,7 @@
       <span>Scroll</span>
     </div>
   </section>
-  <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 2 — IDENTITY
-  ═══════════════════════════════════════════════════════════════ -->
+
   <section id="identity" class="section" aria-label="Identity">
     <p class="section-label">Who I am</p>
 
@@ -807,9 +762,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 3 — THOUGHTS
-  ═══════════════════════════════════════════════════════════════ -->
   <section id="thoughts" aria-label="Philosophy">
     <p class="thoughts-eyebrow">Philosophy</p>
 
@@ -835,13 +787,9 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 4 — WORK + CV
-  ═══════════════════════════════════════════════════════════════ -->
   <section id="work" class="section" aria-label="Selected work and CV">
     <p class="section-label">Selected work</p>
 
-    <!-- Work cards — FIX: properly closed with </a>, not </article> -->
     <div class="work-grid" role="list">
 
       <a href="works/graces-resto/index.html" class="work-card" role="listitem">
@@ -873,16 +821,13 @@
 
     </div>
 
-    <!-- CV Section -->
     <div class="cv-section" aria-label="Curriculum Vitae">
       <div class="cv-header">
-        <!-- FIX 2: Plain h2 and p — no link wrapping, pointer-events: none in CSS -->
         <h2 class="cv-title">Curriculum Vitae</h2>
         <p class="cv-subtitle">View or download my professional experience.</p>
         <p class="seo-summary">Digital marketer, SEO specialist, and front-end developer focused on branding, multilingual marketing, and modern web experiences.</p>
       </div>
 
-      <!-- PDF Viewer -->
       <div class="cv-viewer" id="cv-viewer-box">
         <iframe 
           src="assets/pdf/colin-john-cv.pdf" 
@@ -891,10 +836,8 @@
         </iframe>
       </div>
 
-      <!-- Download button -->
       <div style="text-align:center; margin-top: 2.5rem;">
         <a href="assets/pdf/colin-john-cv.pdf" download class="cv-download" aria-label="Download CV as PDF">
-          <!-- FIX 3: Cleaner SVG with proper spacing -->
           <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="7.5" y1="1.5" x2="7.5" y2="10"/>
             <polyline points="4.5,7 7.5,10 10.5,7"/>
@@ -907,9 +850,6 @@
 
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       SECTION 5 — CONTACT
-  ═══════════════════════════════════════════════════════════════ -->
   <section id="contact" class="section" aria-label="Contact">
     <div class="contact-inner">
       <h2 class="contact-heading">
@@ -934,17 +874,11 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════════════════════ -->
   <footer role="contentinfo">
     <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
     <p>Made with intention.</p>
   </footer>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════════════════════════════ -->
   <script>
     /* ─── 1. LENIS SMOOTH SCROLL ──────────────────────────────── */
     const lenis = new Lenis({
@@ -1132,17 +1066,14 @@
       });
     });
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Colin John",
-  "alternateName": "Janoshegyi",
-  "url": "https://colinjanoshegyi.com",
-  "jobTitle": "Digital Marketer and Front-End Developer",
-  "sameAs": [
-    "https://www.linkedin.com/in/colin-john/"
-  ]
+  "url": "https://colinjanoshegyi.com/",
+  "jobTitle": "Digital Marketer & Front-End Developer",
+  "description": "SEO, branding, and web experience specialist across cultures"
 }
 </script>
 </body>
