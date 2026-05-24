@@ -49,14 +49,12 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── PROGRESS ── */
     #progress {
       position: fixed; top: 0; left: 0;
       height: 2px; background: var(--ink);
       width: 0%; z-index: 9999;
     }
 
-    /* ── CURSOR ── */
     #cursor-dot, #cursor-ring {
       position: fixed; border-radius: 50%;
       pointer-events: none; z-index: 9999;
@@ -71,7 +69,6 @@
     #cursor-ring.hover { width: 60px; height: 60px; border-color: var(--ink); background: rgba(17,17,17,0.04); }
     @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } }
 
-    /* ── HEADER ── */
     #header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       height: 100px; display: flex; align-items: center;
@@ -109,7 +106,6 @@
     .cta-btn:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(17,17,17,0.18); }
     @media (max-width: 680px) { .header-nav > a:not(.cta-btn) { display: none; } }
 
-    /* ── HERO ── */
     #blog-hero {
       padding: 18vh 5vw 10vh;
       border-bottom: 1px solid var(--border);
@@ -147,7 +143,6 @@
       opacity: 0; transform: translateY(16px);
     }
 
-    /* ── FILTER TAGS ── */
     .filter-bar {
       padding: 2.5rem 5vw;
       border-bottom: 1px solid var(--border);
@@ -170,12 +165,10 @@
       background: var(--ink); color: var(--white); border-color: var(--ink);
     }
 
-    /* ── POST LIST ── */
     #post-list {
       padding: 0 5vw 12vh;
     }
 
-    /* Featured post */
     .post-featured {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -218,7 +211,6 @@
       letter-spacing: -.04em; user-select: none;
     }
 
-    /* Post grid */
     .post-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -258,7 +250,6 @@
     }
     .post-card .post-read-link { margin-top: 2rem; }
 
-    /* Empty state */
     #empty-state {
       padding: 8rem 0; text-align: center; display: none;
     }
@@ -267,7 +258,6 @@
       font-weight: 300; color: var(--mid); font-style: italic;
     }
 
-    /* ── FOOTER ── */
     footer {
       padding: 2.5rem 5vw;
       border-top: 1px solid var(--border);
@@ -275,7 +265,6 @@
     }
     footer p { font-size: .72rem; color: var(--mid); letter-spacing: .06em; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       .post-featured { grid-template-columns: 1fr; gap: 2rem; }
       .post-featured-right { display: none; }
@@ -291,7 +280,6 @@
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
 
-<!-- HEADER -->
 <header id="header" role="banner">
   <a href="https://colinjanoshegyi.com/" class="header-logo">Colin</a>
   <nav class="header-nav" aria-label="Main navigation">
@@ -302,7 +290,6 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="blog-hero">
   <p class="blog-hero-eyebrow">Ideas, strategy &amp; craft</p>
   <h1 class="blog-hero-title">Notes &amp; <em>Thoughts</em></h1>
@@ -311,52 +298,41 @@
   </p>
 </section>
 
-<!-- FILTER BAR -->
 <div class="filter-bar" id="filter-bar">
   <span class="filter-label">Filter —</span>
-  <!-- Tags are injected by JS -->
 </div>
 
-<!-- POST LIST -->
 <main id="post-list" role="main" aria-label="Blog posts">
-  <!-- Injected by JS -->
   <div id="empty-state">
     <p>No posts found for this filter.</p>
   </div>
 </main>
 
-<!-- FOOTER -->
 <footer role="contentinfo">
   <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
   <p><a href="https://colinjanoshegyi.com/">← Back to main site</a></p>
 </footer>
 
 <script>
-/* ═══════════════════════════════════════════════════════════════════════
-   ✏️  POSTS — Add a new entry here every time you publish.
-   Fields:
-     title    — headline of the post
-     date     — publish date "YYYY-MM-DD"
-     slug     — filename without .html (e.g. "why-seo-matters" → why-seo-matters.html)
-     tags     — array of strings (used for filtering)
-     excerpt  — one or two sentence teaser
-     featured — set ONE post to true; it gets the large hero treatment
-═══════════════════════════════════════════════════════════════════════ */
 const POSTS = [
+  {
+    title: "Google’s New AI Search Experience and the Future of Information",
+    date: "2026-05-24",
+    slug: "googles-new-ai-search-experience-and-the-future-of-information",
+    tags: ["AI", "Google", "Search"],
+    excerpt: "As Google transforms search with AI-generated answers and conversational discovery, the internet may be entering its biggest shift since the rise of social media.",
+    featured: true,
+  },
+
   {
     title: "Why Indonesian Football Will Never Produce a World Class Player",
     date: "2026-05-17",
     slug: "why-indonesian-football-will-never-produce-a-world-class-player",
     tags: ["Football", "Indonesia", "Analysis"],
     excerpt: "Indonesia has 270 million people and one of the world's most passionate football cultures. So why has it failed to consistently produce elite-level footballers?",
-    featured: true,
+    featured: false,
   },
 ];
-
-/* ═══════════════════════════════════════════════════════════════════════
-   Everything below handles rendering — you rarely need to edit this.
-═══════════════════════════════════════════════════════════════════════ */
-
 function formatDate(iso) {
   const d = new Date(iso);
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -376,7 +352,6 @@ function render(filter) {
   const sorted = [...POSTS].sort((a, b) => new Date(b.date) - new Date(a.date));
   const filtered = filter === 'All' ? sorted : sorted.filter(p => p.tags.includes(filter));
 
-  // Clear previous posts (keep empty state node)
   list.querySelectorAll('.post-featured, .post-grid').forEach(el => el.remove());
 
   if (filtered.length === 0) {
@@ -385,10 +360,9 @@ function render(filter) {
   }
   empty.style.display = 'none';
 
-  const featured = filtered.find(p => p.featured) || filtered[0];
-  const rest     = filtered.filter(p => p !== featured);
+  const featured = filtered[0];
+  const rest = filtered.slice(1);
 
-  // ── Featured post ──
   const feat = document.createElement('div');
   feat.className = 'post-featured';
   feat.innerHTML = `
@@ -399,14 +373,13 @@ function render(filter) {
       </p>
       <h2 class="post-featured-title">${featured.title}</h2>
       <p class="post-featured-excerpt">${featured.excerpt}</p>
-      <a href="blog/why-indonesian-football-will-never-produce-a-world-class-player.html" class="post-read-link">Read article →</a>
+      <a href="blog/${featured.slug}.html" class="post-read-link">Read article →</a>
     </div>
     <div class="post-featured-right">
       <p class="post-featured-number">01</p>
     </div>`;
   list.insertBefore(feat, empty);
 
-  // ── Rest as grid ──
   if (rest.length > 0) {
     const grid = document.createElement('div');
     grid.className = 'post-grid';
@@ -429,7 +402,6 @@ function render(filter) {
     list.insertBefore(grid, empty);
   }
 
-  // Animate new elements in
   requestAnimationFrame(() => {
     gsap.to('.post-featured', { opacity: 1, y: 0, duration: .9, ease: 'power3.out', delay: .1 });
     gsap.to('.post-card', { opacity: 1, y: 0, duration: .7, ease: 'power3.out', stagger: .1, delay: .2 });
@@ -453,7 +425,6 @@ function buildFilters() {
   });
 }
 
-// ── Lenis ──
 const lenis = new Lenis({ duration: 1.35, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
 (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
 gsap.registerPlugin(ScrollTrigger);
@@ -465,11 +436,9 @@ lenis.on('scroll', ({ progress }) => {
   document.getElementById('progress').style.width = (progress * 100) + '%';
 });
 
-// ── Header shrink ──
 const header = document.getElementById('header');
 lenis.on('scroll', ({ scroll }) => header.classList.toggle('scrolled', scroll > 50));
 
-// ── Custom cursor ──
 const dot = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -485,17 +454,14 @@ document.addEventListener('mouseover', e => {
   else ring.classList.remove('hover');
 });
 
-// ── Hero entrance ──
 gsap.to('.blog-hero-eyebrow', { opacity: 1, y: 0, duration: .9, ease: 'power3.out', delay: .2 });
 gsap.to('.blog-hero-title',   { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', delay: .35 });
 gsap.to('.blog-hero-desc',    { opacity: 1, y: 0, duration: 1,   ease: 'power3.out', delay: .5 });
 
-// ── Init ──
 buildFilters();
 render('All');
 </script>
 
-<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
