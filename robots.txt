@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.colinjanoshegyi.com/sitemap.xml
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://colinjanoshegyi.com/sitemap.xml
