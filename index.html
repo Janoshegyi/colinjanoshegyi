@@ -1070,12 +1070,43 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Colin John",
-  "alternateName": "Colin Janoshegyi",
-  "url": "https://colinjanoshegyi.com/",
-  "jobTitle": "Digital Marketer & Front-End Developer",
-  "description": "SEO, branding, and web experience specialist across cultures"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://colinjanoshegyi.com/#website",
+      "url": "https://colinjanoshegyi.com",
+      "name": "Colin Janoshegyi",
+      "description": "Official website of Colin Janoshegyi (Colin John), Digital Marketer and SEO Specialist.",
+      "publisher": { "@id": "https://colinjanoshegyi.com/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://colinjanoshegyi.com/#person",
+      "name": "Colin Janoshegyi",
+      "alternateName": "Colin John",
+      "url": "https://colinjanoshegyi.com",
+      "jobTitle": "Digital Marketer, SEO Specialist & Front-End Web Developer",
+      "description": "Business Administration graduate specialising in SEO, content marketing, and front-end web development. Works with SMEs, hospitality businesses, and international brands.",
+      "sameAs": [
+        "https://colinjanoshegyi.com",
+        "https://www.linkedin.com/in/colin-john/",
+        "https://colinjanoshegyi.com/ai-instructions"
+      ],
+      "knowsAbout": [
+        "Search Engine Optimization",
+        "Technical SEO",
+        "Content Marketing",
+        "Social Media Marketing",
+        "Front-End Web Development",
+        "Digital Strategy",
+        "Consumer Behavior"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Szeged"
+      }
+    }
+  ]
 }
 </script>
 </body>
