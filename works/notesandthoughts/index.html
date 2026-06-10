@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +8,13 @@
   <link rel="canonical" href="https://colinjanoshegyi.com/works/notesandthoughts/" />
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/pdf/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../assets/pdf/favicon-16x16.png">
-  <meta name="description" content="Long-form notes on SEO, digital marketing, branding, and front-end development by Colin John." />
+  <meta name="description" content="Long-form notes on SEO, digital marketing, branding, and front-end development by Colin John (Janoshegyi)." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Notes — Colin John" />
+  <meta property="og:title" content="Notes & Thoughts — Colin John" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/" />
   <meta property="og:image" content="https://colinjanoshegyi.com/assets/preview.png" />
+  <meta property="og:description" content="Long-form notes on SEO, digital marketing, branding, and front-end development by Colin John." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -165,9 +167,7 @@
       background: var(--ink); color: var(--white); border-color: var(--ink);
     }
 
-    #post-list {
-      padding: 0 5vw 12vh;
-    }
+    #post-list { padding: 0 5vw 12vh; }
 
     .post-featured {
       display: grid;
@@ -258,6 +258,18 @@
       font-weight: 300; color: var(--mid); font-style: italic;
     }
 
+    #static-post-index {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     footer {
       padding: 2.5rem 5vw;
       border-top: 1px solid var(--border);
@@ -290,6 +302,37 @@
   </nav>
 </header>
 
+<section id="static-post-index" aria-label="All articles by Colin John">
+
+  <h2>All articles by Colin John (Janoshegyi) — Notes &amp; Thoughts</h2>
+  <p>Written by Colin John, digital marketer and SEO specialist based in Cambodia.</p>
+
+  <article>
+    <h3>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/blog/googles-new-ai-search-experience-and-the-future-of-information.html">
+        Google's New AI Search Experience and the Future of Information
+      </a>
+    </h3>
+    <p>As Google transforms search with AI-generated answers and conversational discovery, the internet may be entering its biggest shift since the rise of social media.</p>
+    <time datetime="2026-05-24">24 May 2026</time>
+    <span>Tags: AI, Google, Search</span>
+    <span>Author: Colin John</span>
+  </article>
+
+  <article>
+    <h3>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/blog/why-indonesian-football-will-never-produce-a-world-class-player.html">
+        Why Indonesian Football Will Never Produce a World Class Player
+      </a>
+    </h3>
+    <p>Indonesia has 270 million people and one of the world's most passionate football cultures. So why has it failed to consistently produce elite-level footballers?</p>
+    <time datetime="2026-05-17">17 May 2026</time>
+    <span>Tags: Football, Indonesia, Analysis</span>
+    <span>Author: Colin John</span>
+  </article>
+
+</section>
+
 <section id="blog-hero">
   <p class="blog-hero-eyebrow">Ideas, strategy &amp; craft</p>
   <h1 class="blog-hero-title">Notes &amp; <em>Thoughts</em></h1>
@@ -303,16 +346,6 @@
 </div>
 
 <main id="post-list" role="main" aria-label="Blog posts">
-
-  <nav aria-label="All posts" style="display:none">
-    <a href="blog/googles-new-ai-search-experience-and-the-future-of-information.html">
-      Google's New AI Search Experience and the Future of Information
-    </a>
-    <a href="blog/why-indonesian-football-will-never-produce-a-world-class-player.html">
-      Why Indonesian Football Will Never Produce a World Class Player
-    </a>
-  </nav>
-
   <div id="empty-state">
     <p>No posts found for this filter.</p>
   </div>
@@ -324,16 +357,16 @@
 </footer>
 
 <script>
+
 const POSTS = [
   {
-    title: "Google’s New AI Search Experience and the Future of Information",
+    title: "Google's New AI Search Experience and the Future of Information",
     date: "2026-05-24",
     url: "blog/googles-new-ai-search-experience-and-the-future-of-information.html",
     tags: ["AI", "Google", "Search"],
     excerpt: "As Google transforms search with AI-generated answers and conversational discovery, the internet may be entering its biggest shift since the rise of social media.",
     featured: true,
   },
-
   {
     title: "Why Indonesian Football Will Never Produce a World Class Player",
     date: "2026-05-17",
@@ -343,6 +376,7 @@ const POSTS = [
     featured: false,
   },
 ];
+
 function formatDate(iso) {
   const d = new Date(iso);
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -393,7 +427,7 @@ function render(filter) {
   if (rest.length > 0) {
     const grid = document.createElement('div');
     grid.className = 'post-grid';
-    rest.forEach((post, i) => {
+    rest.forEach((post) => {
       const card = document.createElement('a');
       card.href = post.url;
       card.className = 'post-card';
@@ -414,7 +448,7 @@ function render(filter) {
 
   requestAnimationFrame(() => {
     gsap.to('.post-featured', { opacity: 1, y: 0, duration: .9, ease: 'power3.out', delay: .1 });
-    gsap.to('.post-card', { opacity: 1, y: 0, duration: .7, ease: 'power3.out', stagger: .1, delay: .2 });
+    gsap.to('.post-card',     { opacity: 1, y: 0, duration: .7, ease: 'power3.out', stagger: .1, delay: .2 });
   });
 }
 
@@ -464,7 +498,7 @@ document.addEventListener('mouseover', e => {
   else ring.classList.remove('hover');
 });
 
-gsap.to('.blog-hero-eyebrow', { opacity: 1, y: 0, duration: .9, ease: 'power3.out', delay: .2 });
+gsap.to('.blog-hero-eyebrow', { opacity: 1, y: 0, duration: .9,  ease: 'power3.out', delay: .2 });
 gsap.to('.blog-hero-title',   { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', delay: .35 });
 gsap.to('.blog-hero-desc',    { opacity: 1, y: 0, duration: 1,   ease: 'power3.out', delay: .5 });
 
@@ -476,15 +510,48 @@ render('All');
 {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "Notes — Colin John",
+  "name": "Notes & Thoughts — Colin John",
   "url": "https://colinjanoshegyi.com/works/notesandthoughts/",
   "author": {
     "@type": "Person",
     "name": "Colin John",
+    "alternateName": "Colin Janoshegyi",
     "url": "https://colinjanoshegyi.com"
   },
-  "description": "Long-form writing on SEO, digital marketing, branding, and front-end development."
+  "description": "Long-form writing on SEO, digital marketing, branding, and front-end development by Colin John (Janoshegyi).",
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Google's New AI Search Experience and the Future of Information",
+      "url": "https://colinjanoshegyi.com/works/notesandthoughts/blog/googles-new-ai-search-experience-and-the-future-of-information.html",
+      "datePublished": "2026-05-24",
+      "author": {
+        "@type": "Person",
+        "name": "Colin John",
+        "alternateName": "Colin Janoshegyi",
+        "url": "https://colinjanoshegyi.com"
+      },
+      "description": "As Google transforms search with AI-generated answers and conversational discovery, the internet may be entering its biggest shift since the rise of social media.",
+      "keywords": ["AI", "Google", "Search", "SEO"]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Why Indonesian Football Will Never Produce a World Class Player",
+      "url": "https://colinjanoshegyi.com/works/notesandthoughts/blog/why-indonesian-football-will-never-produce-a-world-class-player.html",
+      "datePublished": "2026-05-17",
+      "author": {
+        "@type": "Person",
+        "name": "Colin John",
+        "alternateName": "Colin Janoshegyi",
+        "url": "https://colinjanoshegyi.com"
+      },
+      "description": "Indonesia has 270 million people and one of the world's most passionate football cultures. So why has it failed to consistently produce elite-level footballers?",
+      "keywords": ["Football", "Indonesia", "Analysis"]
+    }
+  ]
 }
 </script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
