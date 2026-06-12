@@ -376,8 +376,38 @@
     #thoughts {
       background: var(--ink);
       color: #FAFAFA;
-      text-align: center;
+      text-align: left;
       padding: 18vh 5vw;
+    }
+
+    #thoughts .thoughts-eyebrow {
+      text-align: center;
+    }
+
+    #thoughts .cv-section {
+      text-align: left;
+    }
+
+    #thoughts .cv-title,
+    #thoughts .cv-description h3 {
+      color: #FAFAFA;
+    }
+
+    #thoughts .cv-subtitle,
+    #thoughts .seo-summary,
+    #thoughts .cv-description p {
+      color: rgba(250,250,250,0.75);
+    }
+
+    #thoughts .expertise-list span {
+      border-color: rgba(250,250,250,0.15);
+      color: #FAFAFA;
+    }
+
+    #thoughts .cv-section {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
     }
 
     .thoughts-eyebrow {
@@ -385,7 +415,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: rgba(250,250,250,0.35);
-      margin-bottom: 7rem;
+      margin-bottom: 2rem;
     }
 
     .thought-block {
@@ -514,48 +544,82 @@
       pointer-events: none;
     }
 
-    .cv-viewer {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow:
-        0 4px 6px rgba(0,0,0,0.02),
-        0 10px 40px rgba(0,0,0,0.06),
-        0 0 0 1px var(--border);
-      height: 700px;
-      opacity: 0;
-      transform: translateY(30px);
-      background: var(--near-white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        .seo-summary {
+      margin-top: 0.75rem;
+      max-width: 850px;
+      color: var(--mid);
+      font-size: 0.95rem;
+      line-height: 1.8;
     }
 
-    .cv-viewer iframe {
+    .cv-content {
+      display: grid;
+      grid-template-columns: minmax(450px, 500px) 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .cv-image img {
       width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
+      max-width: 450px;
+      aspect-ratio: 816 / 1056;
+      object-fit: contain;
+      object-position: top;
+    }
+
+    .cv-description h3 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .cv-description p {
+      color: var(--mid);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .expertise-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 2rem 0;
+    }
+
+    .expertise-list span {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .cv-placeholder {
-      text-align: center;
-      color: var(--mid);
-    }
-    .cv-placeholder p { font-size: 0.9rem; margin-top: 0.5rem; }
+        width: 100%;
+        aspect-ratio: 210 / 297;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--soft);
 
-    .pdf-icon {
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 1.25rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      font-weight: 500;
-      color: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: var(--light);
+        font-size: 0.9rem;
     }
+
+    /* CV download button positioning */
+    .cv-image {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cv-download--mobile { display: none; }
+    .cv-download--desktop { display: inline-flex; }
 
     .cv-download {
       display: inline-flex;
@@ -592,29 +656,41 @@
       min-height: 60vh;
       display: flex;
       align-items: center;
-      text-align: center;
     }
 
-    .contact-inner { width: 100%; }
+    .contact-inner {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 6vh 5vw;
+    }
+
+    .contact-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
     .contact-heading {
       font-family: var(--serif);
-      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-size: clamp(3rem, 7vw, 6.5rem);
       font-weight: 300;
       letter-spacing: -0.035em;
       line-height: 1;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
       overflow: hidden;
+      text-align: left;
     }
     .contact-heading .clip { display: block; overflow: hidden; }
     .contact-heading .clip span { display: block; transform: translateY(110%); }
 
     .contact-links {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
     }
 
     .contact-link {
@@ -644,6 +720,79 @@
     .contact-link:hover { color: var(--ink); }
     .contact-link:hover::after { transform: scaleX(1); }
 
+    /* Right side — photo */
+    .contact-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .contact-photo-wrap {
+      position: relative;
+      width: clamp(260px, 28vw, 420px);
+      aspect-ratio: 3/4;
+    }
+
+    /* Decorative frame removed */
+
+    .contact-photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter 0.6s;
+    }
+    .contact-photo:hover { filter: grayscale(0%); }
+
+    .contact-photo-label {
+      position: absolute;
+      bottom: -2.5rem;
+      right: 0;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    /* Floating tag */
+    .contact-tag {
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.9rem;
+      border-radius: 100px;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(8px) rotate(-3deg);
+    }
+
+    @media (max-width: 760px) {
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .contact-right {
+        order: -1;
+      }
+      .contact-photo-wrap {
+        width: clamp(200px, 60vw, 320px);
+      }
+      .contact-heading {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+      }
+    }
     footer {
       padding: 2.5rem 5vw;
       border-top: 1px solid var(--border);
@@ -686,7 +835,32 @@
       .section { padding: 10vh 6vw; }
       .work-grid { grid-template-columns: 1fr; }
       .contact-links { flex-direction: column; gap: 1.75rem; }
-      .cv-viewer { height: 450px; }
+      .cv-content {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2rem;
+      }
+
+      .cv-download--desktop { display: none; }
+      .cv-download--mobile {
+        display: inline-flex;
+        align-self: center;
+      }
+
+      .cv-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cv-image img {
+        width: 100%;
+        max-width: 450px;
+      }
+
+      .cv-description {
+        text-align: left;
+      }
     }
   </style>
 </head>
@@ -762,30 +936,74 @@
     </div>
   </section>
 
-  <section id="thoughts" aria-label="Philosophy">
-    <p class="thoughts-eyebrow">Philosophy</p>
+<section id="thoughts" aria-label="Professional Profile">
+  <p class="thoughts-eyebrow">Professional Profile</p>
 
-    <div class="thought-block">
-      <p class="thought-text">
-        "The best advertising is done by satisfied customers." <br>
-        - Philip Kotler
+  <div class="cv-section" aria-label="Professional Profile">
+      <p class="cv-subtitle">
+        A brief overview of my background, experience, and interests.
       </p>
+
+    <p class="seo-summary">
+      Living across different countries taught me how people think, choose, and connect. That curiosity eventually led me to marketing, where understanding human behavior is just as important as understanding algorithms.
+    </p>
+  </div>
+
+  <div class="cv-content">
+
+    <div class="cv-image">
+      <img
+        src="assets/pdf/colin-john-cv.png"
+        alt="Curriculum Vitae of Colin John"
+        loading="lazy"
+      />
     </div>
 
-    <div class="thought-block">
-      <p class="thought-text">
-        “What is the point of being alive if you don't at least try to do something remarkable?” <br>
-        - John Green
+    <div class="cv-description">
+      <h3>
+      Digital Marketer, SEO Specialist & Front-End Developer
+      </h3>
+      
+      <p>
+        Today, I focus on SEO, content strategy, and web development. I enjoy building websites that are fast, accessible, and genuinely useful for the people who visit them. My work combines technical implementation with marketing strategy, helping brands improve their visibility across search engines and AI-powered platforms.
       </p>
-    </div>
 
-    <div class="thought-block">
-      <p class="thought-text">
-        “I have a lot of proof that the world is conspiring to make me happy.” <br>
-        - Matthew McConaughey
+      <p>
+        My goal is simple: help websites become more visible, more useful, and easier to discover.
       </p>
+
+      <p>
+        I am particularly interested in the future of search, including Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), entity-based SEO, and AI-driven search experiences. As search engines and AI assistants increasingly shape how people find information, I enjoy exploring how brands can adapt and remain discoverable.
+      </p>
+
+      <p>
+        My academic background at the University of Szeged provided a foundation in business strategy, consumer behavior, and marketing principles that continue to influence my approach to SEO and digital marketing today.
+      </p>
+
+      <div class="expertise-list">
+        <span>SEO Strategy</span>
+        <span>Technical SEO</span>
+        <span>Content Marketing</span>
+        <span>Front-End Development</span>
+      </div>
+
+      <!-- Mobile: button before image (appears after description, before cv-image in column-reverse) -->
+      <a href="assets/pdf/colin-john-cv.png"
+         download
+         class="cv-download cv-download--mobile"
+         aria-label="Download CV as PDF">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7.5" y1="1.5" x2="7.5" y2="10"/>
+          <polyline points="4.5,7 7.5,10 10.5,7"/>
+          <line x1="1.5" y1="12.5" x2="13.5" y2="12.5"/>
+        </svg>
+        Download CV
+      </a>
+
     </div>
-  </section>
+  </div>
+</div>
+</section>
 
   <section id="work" class="section" aria-label="Selected work and CV">
     <p class="section-label">Selected work</p>
@@ -820,44 +1038,19 @@
       </a>
 
     </div>
-
-    <div class="cv-section" aria-label="Curriculum Vitae">
-      <div class="cv-header">
-        <h2 class="cv-title">Curriculum Vitae</h2>
-        <p class="cv-subtitle">View or download my professional experience.</p>
-        <p class="seo-summary">Colin John, Digital marketer, SEO specialist, and front-end developer focused on SEO strategy, content marketing, web development, with a special interest in GEO, and AEO.</p>
-      </div>
-
-      <div class="cv-viewer" id="cv-viewer-box">
-        <iframe 
-          src="assets/pdf/colin-john-cv.pdf" 
-          title="Colin's Curriculum Vitae" 
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <div style="text-align:center; margin-top: 2.5rem;">
-        <a href="assets/pdf/colin-john-cv.pdf" download class="cv-download" aria-label="Download CV as PDF">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="7.5" y1="1.5" x2="7.5" y2="10"/>
-            <polyline points="4.5,7 7.5,10 10.5,7"/>
-            <line x1="1.5" y1="12.5" x2="13.5" y2="12.5"/>
-          </svg>
-          Download CV
-        </a>
-      </div>
-    </div>
-
   </section>
 
-  <section id="contact" class="section" aria-label="Contact">
-    <div class="contact-inner">
+<section id="contact" class="section" aria-label="Contact">
+  <div class="contact-inner">
+
+    <div class="contact-left">
       <h2 class="contact-heading">
-        <span class="clip"><span>Let's connect.</span></span>
+        <span class="clip"><span>Let's</span></span>
+        <span class="clip"><span>connect.</span></span>
       </h2>
 
       <nav class="contact-links" aria-label="Contact links">
-        <a href="mailto:colinjohn1974@gmail.com" class="contact-link" aria-label="Send email to colinjohn1974@gmail.com">
+        <a href="mailto:colinjohn1974@gmail.com" class="contact-link" aria-label="Send email">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
             <rect x="1" y="3" width="12" height="9" rx="1.5"/>
             <path d="M1 4l6 4.5L13 4"/>
@@ -872,7 +1065,22 @@
         </a>
       </nav>
     </div>
-  </section>
+
+    <div class="contact-right">
+      <div class="contact-photo-wrap">
+        <img 
+          src="assets/pdf/colin-john-portrait.png" 
+          alt="Colin John — Digital Marketer & SEO Specialist" 
+          class="contact-photo"
+          width="420"
+          height="560"
+        />
+        <p class="contact-photo-label">Colin John · Janoshegyi</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <footer role="contentinfo">
     <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
@@ -880,7 +1088,7 @@
     <p>Made with intention.</p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     /* ─── 1. LENIS SMOOTH SCROLL ──────────────────────────────── */
     const lenis = new Lenis({
       duration: 1.35,
@@ -1033,11 +1241,6 @@
       scrollTrigger: { trigger: '.cv-subtitle', start: 'top 85%' },
       delay: 0.1
     });
-    gsap.to('.cv-viewer', {
-      opacity: 1, y: 0,
-      duration: 1, ease: 'power3.out',
-      scrollTrigger: { trigger: '#cv-viewer-box', start: 'top 82%' }
-    });
     gsap.to('.cv-download', {
       opacity: 1, y: 0,
       duration: 0.9, ease: 'power3.out',
@@ -1048,6 +1251,7 @@
     gsap.to('#contact .clip span', {
       y: '0%',
       duration: 1.1, ease: 'power4.out',
+      stagger: 0.12,
       scrollTrigger: { trigger: '#contact', start: 'top 72%' }
     });
 
@@ -1058,15 +1262,20 @@
       scrollTrigger: { trigger: '.contact-links', start: 'top 85%' }
     });
 
-    /* ─── 14. SECTION LABELS ───────────────────────────────── */
-    gsap.utils.toArray('.section-label').forEach(el => {
-      gsap.from(el, {
-        opacity: 0, x: -12,
-        duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 85%' }
-      });
+    gsap.to('.contact-tag', {
+      opacity: 1, y: 0,
+      duration: 0.7, ease: 'back.out(1.4)',
+      scrollTrigger: { trigger: '.contact-right', start: 'top 80%' }
+    });
+
+    gsap.to('.contact-photo-label', {
+      opacity: 1, y: 0,
+      duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: '.contact-right', start: 'top 75%' },
+      delay: 0.3
     });
   </script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1109,5 +1318,6 @@
   ]
 }
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
