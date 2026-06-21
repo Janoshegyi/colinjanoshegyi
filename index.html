@@ -1277,7 +1277,6 @@
       delay: 0.3
     });
   </script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1288,34 +1287,94 @@
       "url": "https://colinjanoshegyi.com",
       "name": "Colin Janoshegyi",
       "description": "Official website of Colin Janoshegyi (Colin John), Digital Marketer and SEO Specialist.",
-      "publisher": { "@id": "https://colinjanoshegyi.com/#person" }
+      "publisher": {
+        "@id": "https://colinjanoshegyi.com/#person"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://colinjanoshegyi.com/#homepage",
+      "url": "https://colinjanoshegyi.com",
+      "name": "Colin Janoshegyi",
+      "isPartOf": {
+        "@id": "https://colinjanoshegyi.com/#website"
+      },
+      "mainEntity": {
+        "@id": "https://colinjanoshegyi.com/#person"
+      }
     },
     {
       "@type": "Person",
       "@id": "https://colinjanoshegyi.com/#person",
       "name": "Colin Janoshegyi",
       "alternateName": "Colin John",
+      "givenName": "Colin",
+      "familyName": "Janoshegyi",
       "url": "https://colinjanoshegyi.com",
       "jobTitle": "Digital Marketer, SEO Specialist & Front-End Web Developer",
-      "description": "Business Administration graduate specialising in SEO, content marketing, and front-end web development. Works with SMEs, hospitality businesses, and international brands.",
+      "description": "Business Administration graduate specialising in SEO, content marketing, digital marketing, and front-end web development. Works with SMEs, hospitality businesses, and international brands.",
+      "image": {
+        "@type": "ImageObject",
+        "@id": "https://colinjanoshegyi.com/assets/pdf/colin-john-portrait.png",
+        "url": "https://colinjanoshegyi.com/assets/pdf/colin-john-portrait.png"
+      },
       "sameAs": [
-        "https://colinjanoshegyi.com",
         "https://www.linkedin.com/in/colin-john/",
-        "https://colinjanoshegyi.com/ai-instructions"
+        "https://uniszegedalumni.com/user/e6fbea43-bdb5-4c4c-9973-26f83cf010a4",
+        "https://medium.com/@colinjohn1974",
+        "https://github.com/Janoshegyi"
+      ],
+      "knowsLanguage": [
+        "English",
+        "Indonesian",
+        "Dutch",
+        "Mandarin Chinese"
       ],
       "knowsAbout": [
         "Search Engine Optimization",
         "Technical SEO",
         "Content Marketing",
+        "Digital Marketing",
         "Social Media Marketing",
         "Front-End Web Development",
         "Digital Strategy",
         "Consumer Behavior"
       ],
+      "hasOccupation": [
+        {
+          "@type": "Occupation",
+          "name": "SEO Specialist",
+          "description": "Specializes in SEO strategy, content optimization, and digital marketing."
+        },
+        {
+          "@type": "Occupation",
+          "name": "Digital Marketer"
+        },
+        {
+          "@type": "Occupation",
+          "name": "Front-End Web Developer"
+        }
+      ],
+      "award": [
+        "MNB Excellence Scholarship",
+        "GTK Faculty Scholarship"
+      ],
       "alumniOf": {
         "@type": "CollegeOrUniversity",
-        "name": "University of Szeged"
-      }
+        "name": "University of Szeged",
+        "sameAs": "https://www.u-szeged.hu/"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "professional",
+        "url": "https://colinjanoshegyi.com/contact"
+      },  
+      "subjectOf": [
+        {
+          "@type": "WebPage",
+          "url": "https://colinjanoshegyi.com/ai-instructions"
+        }
+      ]
     }
   ]
 }
