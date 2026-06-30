@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -309,6 +308,18 @@
 
   <article>
     <h3>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/blog/how-my-dad-accidentally-gave-me-an-seo-problem.html">
+        How My Dad Accidentally Gave Me an SEO Problem
+      </a>
+    </h3>
+    <p>Competing against the abundance of Colin Johns on the internet.</p>
+    <time datetime="2026-06-28">28 June 2026</time>
+    <span>Tags: SEO, Branding, Personal</span>
+    <span>Author: Colin John</span>
+  </article>
+
+  <article>
+    <h3>
       <a href="https://colinjanoshegyi.com/works/notesandthoughts/blog/googles-new-ai-search-experience-and-the-future-of-information.html">
         Google's New AI Search Experience and the Future of Information
       </a>
@@ -360,12 +371,20 @@
 
 const POSTS = [
   {
+    title: "How My Dad Accidentally Gave Me an SEO Problem",
+    date: "2026-06-28",
+    url: "blog/how-my-dad-accidentally-gave-me-an-seo-problem.html",
+    tags: ["SEO", "Branding", "Personal"],
+    excerpt: "Competing against the abundance of Colin Johns on the internet.",
+    featured: true,
+  },
+  {
     title: "Google's New AI Search Experience and the Future of Information",
     date: "2026-05-24",
     url: "blog/googles-new-ai-search-experience-and-the-future-of-information.html",
     tags: ["AI", "Google", "Search"],
     excerpt: "As Google transforms search with AI-generated answers and conversational discovery, the internet may be entering its biggest shift since the rise of social media.",
-    featured: true,
+    featured: false,
   },
   {
     title: "Why Indonesian Football Will Never Produce a World Class Player",
@@ -520,6 +539,20 @@ render('All');
   },
   "description": "Long-form writing on SEO, digital marketing, branding, and front-end development by Colin John (Janoshegyi).",
   "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "How My Dad Accidentally Gave Me an SEO Problem",
+      "url": "https://colinjanoshegyi.com/works/notesandthoughts/blog/how-my-dad-accidentally-gave-me-an-seo-problem.html",
+      "datePublished": "2026-06-28",
+      "author": {
+        "@type": "Person",
+        "name": "Colin John",
+        "alternateName": "Colin Janoshegyi",
+        "url": "https://colinjanoshegyi.com"
+      },
+      "description": "Competing against the abundance of Colin Johns on the internet.",
+      "keywords": ["SEO", "Branding", "Personal"]
+    },
     {
       "@type": "BlogPosting",
       "headline": "Google's New AI Search Experience and the Future of Information",
