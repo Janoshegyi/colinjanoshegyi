@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Day Breakfast Became a Prezilimpia Speech | Colin John</title>
+  <link rel="canonical" href="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-day-breakfast-became-a-prezilimpia-speech.html" />
+  <meta name="description" content="How burnt toast unexpectedly became the opening to my speech for the 2025 Prezilimpia public speaking competition, where participants explored the theme 'Artificial Intelligence: The Digital Guardian or the Invisible Threat?'" />
+  <meta name="keywords" content="Prezilimpia, public speaking, Toastmaster, AI, artificial intelligence, competition speech, personal essay, Colin John" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="The Day Breakfast Became a Prezilimpia Speech" />
+  <meta property="og:description" content="How burnt toast unexpectedly became the opening to my speech for the 2025 Prezilimpia public speaking competition, where participants explored the theme 'Artificial Intelligence: The Digital Guardian or the Invisible Threat?'" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-day-breakfast-became-a-prezilimpia-speech.html" />
+  <meta property="og:image" content="https://colinjanoshegyi.com/assets/preview.png" />
+  <meta property="article:published_time" content="2026-07-02" />
+  <meta property="article:author" content="Colin John" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Day Breakfast Became a Prezilimpia Speech" />
+  <meta name="twitter:description" content="How burnt toast unexpectedly became the opening to my speech for the 2025 Prezilimpia public speaking competition." />
+  <meta name="twitter:image" content="https://colinjanoshegyi.com/assets/preview.png" />
+  <meta property="article:modified_time" content="2026-07-02" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/pdf/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/pdf/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white:      #FFFFFF;
+      --near-white: #FAFAFA;
+      --ink:        #111111;
+      --mid:        #666666;
+      --faint:      rgba(17,17,17,0.06);
+      --border:     rgba(17,17,17,0.09);
+      --serif:      'Cormorant Garamond', Georgia, serif;
+      --sans:       'Outfit', system-ui, sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: auto; }
+    body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    #progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--ink); width: 0%; z-index: 9999; }
+
+    #cursor-dot, #cursor-ring {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
+    }
+    #cursor-dot { width: 6px; height: 6px; background: var(--ink); }
+    #cursor-ring {
+      width: 36px; height: 36px; border: 1px solid rgba(17,17,17,0.25);
+      transition: width .4s var(--ease-out-expo), height .4s var(--ease-out-expo), border-color .3s, background .3s;
+    }
+    #cursor-ring.hover { width: 60px; height: 60px; border-color: var(--ink); background: rgba(17,17,17,0.04); }
+    @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } }
+
+    #header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 100px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; background: transparent;
+      transition: height .5s var(--ease-out-expo), background .4s ease, box-shadow .4s ease;
+    }
+    #header.scrolled {
+      height: 60px; background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .header-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; letter-spacing: .03em; color: var(--ink); text-decoration: none; }
+    .header-nav { display: flex; align-items: center; gap: 2.5rem; }
+    .header-nav a { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .3s; }
+    .header-nav a:hover { color: var(--ink); }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: .5rem; background: var(--ink); color: var(--white) !important;
+      font-size: .72rem !important; letter-spacing: .14em; text-transform: uppercase;
+      padding: .75rem 1.5rem; border-radius: 100px; text-decoration: none;
+      transition: transform .3s var(--ease-out-expo), box-shadow .3s !important; white-space: nowrap;
+    }
+    .cta-btn:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(17,17,17,0.18); }
+    @media (max-width: 680px) { .header-nav > a:not(.cta-btn) { display: none; } }
+
+    /* Article header */
+    .article-header {
+      padding: 18vh 5vw 6vh; border-bottom: 1px solid var(--border); max-width: 960px;
+    }
+    .article-back {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none;
+      transition: color .3s, gap .3s; margin-bottom: 3rem;
+      opacity: 0; transform: translateX(-8px);
+    }
+    .article-back:hover { color: var(--ink); gap: .8rem; }
+    .article-meta {
+      font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--mid); display: flex; gap: 2rem; flex-wrap: wrap;
+      margin-bottom: 2rem; opacity: 0; transform: translateY(10px);
+    }
+    .article-tag {
+      border: 1px solid var(--border); border-radius: 100px; padding: .2rem .7rem; font-size: .6rem;
+    }
+    .article-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5.5vw, 4.6rem);
+      font-weight: 300; line-height: 1.1; letter-spacing: -.02em;
+      opacity: 0; transform: translateY(24px);
+    }
+    .article-title em { font-style: italic; }
+    .article-subtitle {
+      margin-top: 1.5rem;
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      color: var(--mid); font-weight: 300; line-height: 1.7;
+      max-width: 58ch; opacity: 0; transform: translateY(16px);
+    }
+    .article-jump {
+      display: inline-flex; align-items: center; gap: .5rem;
+      margin-top: 1.75rem;
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.02rem; color: var(--mid);
+      opacity: 0; transform: translateY(14px);
+    }
+    .article-jump a {
+      color: var(--ink); text-decoration: underline;
+      text-decoration-color: rgba(17,17,17,0.3); text-underline-offset: 3px;
+      transition: text-decoration-color .3s, gap .3s;
+    }
+    .article-jump a:hover { text-decoration-color: var(--ink); }
+
+    /* Article layout */
+    .article-layout {
+      display: grid; grid-template-columns: 1fr min(700px, 90%) 1fr;
+      padding: 7vh 0 14vh;
+    }
+    .article-body { grid-column: 2; }
+
+    .article-body p { font-size: 1.05rem; line-height: 1.9; color: #2a2a2a; margin-bottom: 1.75rem; }
+
+    .article-body p:first-of-type::first-letter {
+      font-family: var(--serif); font-size: 4.5rem; font-weight: 300;
+      float: left; line-height: .85; margin-right: .12em; margin-top: .08em; color: var(--ink);
+    }
+
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+      font-weight: 400; letter-spacing: -.01em; line-height: 1.25;
+      margin: 4rem 0 1.2rem; color: var(--ink);
+      scroll-margin-top: 120px;
+    }
+    .article-body h3 {
+      font-family: var(--sans); font-size: .95rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin: 2.5rem 0 .8rem; color: var(--ink);
+    }
+    .article-body ul, .article-body ol { padding-left: 1.5rem; margin-bottom: 1.75rem; }
+    .article-body li { font-size: 1.05rem; line-height: 1.85; color: #2a2a2a; margin-bottom: .6rem; }
+    .article-body blockquote {
+      border-left: 2px solid var(--ink); padding-left: 1.75rem;
+      margin: 2.5rem 0; font-family: var(--serif);
+      font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 300;
+      font-style: italic; line-height: 1.6; color: var(--mid);
+    }
+    .article-body hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+    .article-body a {
+      color: var(--ink); text-decoration: underline;
+      text-decoration-color: rgba(17,17,17,0.3); text-underline-offset: 3px;
+      transition: text-decoration-color .3s;
+    }
+    .article-body a:hover { text-decoration-color: var(--ink); }
+
+    /* Movement break — centered asterisk divider */
+    .movement-break {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 3.5rem 0;
+      color: var(--mid);
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      letter-spacing: .5em;
+      user-select: none;
+    }
+
+    /* Speech transcript block — slightly indented from the surrounding essay */
+    .speech-block {
+      padding-left: 1.6rem;
+      border-left: 2px solid var(--border);
+      scroll-margin-top: 120px;
+    }
+    .speech-block h3 { margin-top: 2.2rem; }
+    .speech-block h3:first-child { margin-top: 0; }
+
+    .article-image {
+        margin: 3rem 0;
+    }
+
+    .article-image img{
+        width:100%;
+        display:block;
+        border-radius:10px;
+    }
+
+    .article-image figcaption{
+        margin-top:.8rem;
+        font-size:.85rem;
+        color:var(--mid);
+        line-height:1.6;
+        text-align:left;
+        font-style:italic;
+    }
+
+    /* Tags */
+    .article-tags {
+      margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .article-tags-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); }
+    .article-tags a {
+      font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: .3rem .9rem; text-decoration: none; color: var(--mid);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .article-tags a:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+    /* Post nav */
+    .article-nav {
+      margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+    }
+    .article-nav-link { display: flex; flex-direction: column; gap: .4rem; text-decoration: none; max-width: 44%; }
+    .article-nav-label { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); }
+    .article-nav-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--ink); transition: opacity .3s; }
+    .article-nav-link:hover .article-nav-title { opacity: .6; }
+    .article-nav-link.right { text-align: right; margin-left: auto; }
+
+    footer {
+      padding: 2.5rem 5vw; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: .72rem; color: var(--mid); letter-spacing: .06em; }
+    footer a { text-decoration: none; color: var(--mid); }
+    footer a:hover { color: var(--ink); }
+
+    @media (max-width: 700px) {
+      .article-layout { grid-template-columns: 1fr; padding: 4vh 6vw 10vh; }
+      .article-body { grid-column: 1; }
+      .article-nav { flex-direction: column; align-items: flex-start; }
+      .article-nav-link.right { text-align: left; margin-left: 0; }
+      .speech-block { padding-left: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<header id="header" role="banner">
+  <a href="https://colinjanoshegyi.com/" class="header-logo">Colin</a>
+  <nav class="header-nav" aria-label="Main navigation">
+    <a href="https://colinjanoshegyi.com/#identity">About</a>
+    <a href="https://colinjanoshegyi.com/#work">Work</a>
+    <a href="https://colinjanoshegyi.com/#contact" class="cta-btn">Work With Me</a>
+  </nav>
+</header>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <a href="https://colinjanoshegyi.com/works/notesandthoughts/" class="article-back">← All notes</a>
+  <p class="article-meta">
+    <span>2 July 2026</span>
+    <span class="article-tag">Public Speaking</span>
+    <span class="article-tag">AI</span>
+    <span class="article-tag">Personal Essay</span>
+    <span>8 mins read</span>
+  </p>
+  <h1 class="article-title">The Day Breakfast Became a Prezilimpia Speech</h1>
+  <p class="article-subtitle">How burnt toast unexpectedly became the opening to my speech for the 2025 Prezilimpia public speaking competition, where participants explored the theme "Artificial Intelligence: The Digital Guardian or the Invisible Threat?"</p>
+  <p class="article-jump">Prefer speeches to stories? <a href="#the-speech">Skip straight to the transcript.</a></p>
+</header>
+
+<!-- ARTICLE BODY -->
+<div class="article-layout">
+  <article class="article-body" role="main">
+
+    <!-- ── The Story ── -->
+
+    <p>
+      On a warm spring afternoon, with the Tisza on my right and endless wheat fields as far as the eye can see to my left, the day of my first-ever public speaking competition was getting closer.
+    </p>
+
+    <p>
+      As I jogged alongside the fields, one thought interrupted everything else: I needed to buy bread for tomorrow's breakfast, toast. A routine that has quietly become part of my week as my appreciation for warm, crispy toast continues to grow.
+    </p>
+
+    <p>
+      Toast is a simple thing, really. Bread, heat, patience. That's it. And yet, across all human history, we've never really mastered it. Neither have I. It is through the frustrations of burning my toast that I realized I had something. Even though my breakfast was severely cooked, I had a hook.
+    </p>
+
+    <p>
+      What I kept thinking throughout the writing process: we've split the atom, mapped the genome, built cathedrals and quantum computers, and still, millions of us wake up every morning and incinerate breakfast like it's a pagan ritual.
+    </p>
+
+    <p>
+      We like to think we're rational beings. That we've evolved beyond the instincts of our hunter-gatherer ancestors. But give us a slice of bread and a heating element, and you will see the limits of modern civilization.
+    </p>
+
+    <p>
+      And that's where the machines come in. Because we've simply given up. We are so intolerant towards imperfections up to the point where we create clever little silver boxes that promise consistency, predictability, perfection.
+    </p>
+
+    <p>
+      That simple thought eventually became the opening to a speech I never expected to write.
+    </p>
+
+    <div class="movement-break" aria-hidden="true">* * *</div>
+
+    <!-- ── The Speech ── -->
+
+    <h2 id="the-speech">The Speech</h2>
+      <figure class="article-image">
+          <img src="../../../assets/pdf/prezilimpia-toast.webp" alt="Prezilimpia Toast">
+          <figcaption>Photo courtesy of the University of Szeged, Faculty of Economics and Business Administration.</figcaption>
+      </figure>
+    <div class="speech-block">
+
+      <h3>Opening</h3>
+
+      <p>
+        Coming from Indonesia, toast was never a daily thing. It was a luxury. The kind of breakfast you'd only find in hotel buffets, next to scrambled eggs and those mysterious chicken sausages. Growing up, breakfast was rice, noodles, or whatever leftovers survived the night before, not slices of golden bread toasted to tender perfection.
+      </p>
+
+      <p>
+        But when I moved here, things changed. Toast became… normal. It became routine. It became a source of comfort that I look up to every morning. Perhaps it's a sign that I have finally entered the Western Breakfast Club. And as my mother would always say, "Colin, you're becoming too white."
+      </p>
+
+      <p>
+        There is just one problem: I don't own a toaster. So I have to improvise. I use a pan. And I have to shamefully admit this, more often than not, I would burn the toast. Really, really badly.
+      </p>
+
+      <p>
+        Which is probably why—someday—I'd like to become a professional toaster.
+        No, not the kitchen appliance, of course. A Toastmaster, if I may.
+        Someone who doesn't burn every opportunity to speak, the way I burn bread.
+      </p>
+
+      <h3>Section 1: The Toaster That Knows Too Much</h3>
+
+      <p>
+        But until then, let's imagine this 20 years from now on: I wake up, I do my usual routine, I go to the kitchen, and I burn the toast again. Now, my smart fridge decides that it has had enough. It contacts my smart toaster, which is now sentient and is holding a grudge against me, decides to hack into my Wi-Fi, leaks my Spotify history, and auto-orders me a self-help book titled "How Not To Fail at Toast."
+      </p>
+
+      <p>
+        Can you imagine that?
+        I've just been hacked by an AI.
+        The hacker? A toaster.
+        The reason? It got tired of me burning my toast.
+      </p>
+
+      <p>
+        You think your toaster's sole purpose is to ruin your breakfast? Well, in the age of AI, it might also be burning through your digital secrets.
+        But don't worry. It's here to protect you. Probably. Unless… It's not.
+      </p>
+
+      <h3>Section 2: The Age of the Smart Apocalypse</h3>
+
+      <p>
+        You see, in 2025, everything is "smart." Phones, fridges, light bulbs, watches, toilets. We made our homes smarter, and ourselves… arguably not.
+      </p>
+
+      <p>
+        We taught machines to recognize our faces, finish our sentences, and even suggest what movie to watch when we're feeling like a sad wet sock on Tuesday nights because we have had a long day.
+      </p>
+
+      <p>
+        But here's the catch. The same intelligence that suggests your next playlist also knows your sleeping schedule, your address, and that one oddly specific time you searched "Can Komodo Dragons actually jump?" And yes, they can, if you're curious.
+      </p>
+
+      <p>
+        We didn't just invite AI into our homes. We practically gave it a spare key. We even told it where we hid our most precious emergency chocolate. This relationship between us and AI is dysfunctional and, in the long term, unsustainable.
+      </p>
+
+      <h3>Section 3: Is it Security, or Just a Fancy Illusion?</h3>
+
+      <p>
+        We trust AI with passwords, bank accounts, our baby monitors, and our electric kettles. But the question is: does it truly "know" how to protect us, or is it just mimicking security like a toddler in a Batman costume?
+      </p>
+
+      <p>
+        The machines are learning. But they're not learning to feel. They're learning to mimic.
+      </p>
+
+      <p>
+        Imagine: You're being protected by an entity that doesn't understand what danger even is. It's like asking a goldfish to guard your house. It'll swim; it'll be cute, but if someone breaks in? Well, at least the burglar gets a show.
+      </p>
+
+      <h3>Section 4: Machines Can't Understand Morality (Yet)</h3>
+
+      <p>
+        AI doesn't have morals. It doesn't feel guilt, shame, or regret. You can't yell at it for betraying your trust. It'll probably just say, "I am sorry Dave, I am afraid I can't do that," and carry on mining your metadata.
+      </p>
+
+      <p>
+        You can build a machine that will tell you everything about the world, but it still won't understand why you care.
+      </p>
+
+      <p>
+        What happens when we entrust the protection of our most personal data to an entity that doesn't even understand what it's protecting?
+      </p>
+
+      <p>
+        When your phone knows your schedule better than you do, and your smart fridge judges your diet silently through algorithms?
+      </p>
+
+      <p>
+        Security isn't just about firewalls and encryption. It's about context. Human context. And AI… doesn't have that.
+      </p>
+
+      <p>
+        At least not in a way that matches how we think, feel, and fear.
+      </p>
+
+      <h3>Section 5: Burnt Toast and Existential Dread</h3>
+
+      <p>
+        So yes, I still burn my toast in the morning. But it's oddly poetic.
+      </p>
+
+      <p>
+        A reminder that not everything in life needs to be perfect.
+        Not everything needs to be automated.
+        Not everything needs to be efficient.
+        Sometimes, a little chaos, a little human error, is what makes things real.
+      </p>
+
+      <p>
+        We live in a world where people judge your success by the things you can do perfectly. But no one ever talks about how beautiful failure can be.
+      </p>
+
+      <p>
+        Because if we automate away all our mistakes… what's left? A perfect system built by imperfect creatures, rationality on irrational beings, running on logic, and devoid of soul.
+      </p>
+
+      <p>
+        Maybe it's this: in our rush to make everything "smart," we forgot to ask the most human question of all—can we trust the things we build?
+      </p>
+
+      <p>
+        Not just to protect our data, but to understand us.
+        To make decisions that reflect not just logic, but ethics, empathy, and nuance.
+      </p>
+
+      <p>
+        Because while AI might learn our habits, suggest our next 100 meals, and protect our passwords in 1,000 different websites—
+      </p>
+
+      <p>
+        it doesn't know why we cry during Pixar movies or why burnt toast still tastes like home on a cold morning.
+      </p>
+
+      <p>
+        That part—the messy, irrational, beautiful part—that's still ours. And maybe, just maybe, that's what we need to protect the most.
+      </p>
+
+      <p>
+        I'd like to conclude by raising my imaginary glass here to propose a toast:
+        To never letting the algorithm run our lives. We prompt, we lead, we live.
+        Cheers.
+      </p>
+
+    </div>
+
+    <div class="movement-break" aria-hidden="true">* * *</div>
+
+    <h2>Thoughts That Almost Made the Final Draft</h2>
+
+    <p>
+      There are far, far worse things than feeling things deeply. One of them is feeling nothing at all.
+    </p>
+
+    <p>
+      What is a man but a machine built on contradictions? A rational mind in a hormonal body, a thinking thing that cries at music and shouts at traffic lights.
+    </p>
+
+    <p>
+      There's bravery in being broken and still choosing to try.
+    </p>
+
+    <p>
+      There is no algorithm for love, no code for kindness, no function for a sunrise that makes you cry.
+    </p>
+      <div class="movement-break" aria-hidden="true">* * *</div>
+      <figure class="article-image">
+          <img src="../../../assets/pdf/prezilimpia-garamhegyi.webp" alt="Prezilimpia Toast">
+          <figcaption>Photo courtesy of the University of Szeged, Faculty of Economics and Business Administration.</figcaption>
+      </figure>
+    <h2>Acknowledgements</h2>
+
+    <p>
+      I was beyond lucky to have a public speaking class with Professor Luca Csák, who believed in me long before this competition, even when I fumbled my high school graduation speech.
+    </p>
+
+    <p>
+      To David Gero, who became my mentor throughout the competition, thank you for answering all my questions over coffee at Csiga Pékség. I hope you've tried a slice of their cherry cake since then.
+    </p>
+
+    <p>
+      To my family, friends, Professor Ábel Garamhegyi, and everyone else who supported me along the way—thank you.
+    </p>
+
+    <h2>Final Thoughts</h2>
+
+    <p>
+      I could have started with a statistic about AI, a quote from a famous computer scientist, or another prediction about the future. Instead, I started with breakfast, just like I do every morning.
+    </p>
+
+    <p>
+      I wanted to prove that memorable speeches don't always begin with extraordinary ideas. Sometimes they begin with ordinary moments that we simply choose to look at a little more closely.
+    </p>
+
+    <p>
+      Mine just happened to be burnt toast.
+    </p>
+
+    <h2>One Last Thing</h2>
+
+    <p>
+      If you were wondering, yes, there was prize money. 200,000 forints, to be exact.
+      People often ask what the first thing I bought was.
+    </p>
+
+    <p>
+      It wasn't a new keyboard. It wasn't a fancy dinner. It wasn't an investment.
+      It was a Minecraft Happy Meal from McDonald's. I got the Pink Sheep.
+      And pink flowers from Fleurop.
+      I regret neither.
+    </p>
+
+    <blockquote>
+      Money comes and goes, but Pink Sheep is forever.
+    </blockquote>
+
+    <div class="article-tags">
+      <span class="article-tags-label">Topics —</span>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Public Speaking</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">AI</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Personal Essay</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Competition</a>
+    </div>
+
+    <nav class="article-nav" aria-label="Post navigation">
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/" class="article-nav-link">
+        <span class="article-nav-label">← Back</span>
+        <span class="article-nav-title">All notes</span>
+      </a>
+    </nav>
+
+  </article>
+</div>
+
+<footer role="contentinfo">
+  <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
+  <p><a href="https://colinjanoshegyi.com/">← Back to main site</a></p>
+</footer>
+
+<script>
+  const lenis = new Lenis({ duration: 1.35, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll', ({ progress }) => {
+    document.getElementById('progress').style.width = (progress * 100) + '%';
+  });
+  const header = document.getElementById('header');
+  lenis.on('scroll', ({ scroll }) => header.classList.toggle('scrolled', scroll > 50));
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animateCursor() {
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    rx += (mx - rx) * .1; ry += (my - ry) * .1;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  })();
+  document.addEventListener('mouseover', e => {
+    ring.classList.toggle('hover', !!e.target.closest('a, button'));
+  });
+
+  // Smooth in-page jump to the transcript, using the same Lenis scroller as the rest of the site
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const targetEl = document.querySelector(link.getAttribute('href'));
+      if (targetEl) {
+        e.preventDefault();
+        lenis.scrollTo(targetEl, { offset: -90, duration: 1.2 });
+      }
+    });
+  });
+
+  gsap.to('.article-back',     { opacity: 1, x: 0,  duration: .8,  ease: 'power3.out', delay: .2 });
+  gsap.to('.article-meta',     { opacity: 1, y: 0,  duration: .8,  ease: 'power3.out', delay: .35 });
+  gsap.to('.article-title',    { opacity: 1, y: 0,  duration: 1.1, ease: 'power3.out', delay: .5 });
+  gsap.to('.article-subtitle', { opacity: 1, y: 0,  duration: 1,   ease: 'power3.out', delay: .65 });
+  gsap.to('.article-jump',     { opacity: 1, y: 0,  duration: 1,   ease: 'power3.out', delay: .8 });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Day Breakfast Became a Prezilimpia Speech",
+  "description": "How burnt toast unexpectedly became the opening to my speech for the 2025 Prezilimpia public speaking competition, where participants explored the theme 'Artificial Intelligence: The Digital Guardian or the Invisible Threat?'",
+  "image": "https://colinjanoshegyi.com/assets/preview.png",
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-02",
+  "author": {
+    "@type": "Person",
+    "name": "Colin John",
+    "url": "https://colinjanoshegyi.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Colin John",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://colinjanoshegyi.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-day-breakfast-became-a-prezilimpia-speech.html"
+  },
+  "articleSection": "Public Speaking",
+  "keywords": [
+    "Prezilimpia",
+    "public speaking",
+    "Toastmaster",
+    "artificial intelligence",
+    "competition speech",
+    "University of Szeged Prezilimpia",
+    "szte prezilimpia",
+    "prezilimpia szte",
+    "personal essay"
+  ]
+}
+</script>
+
+</body>
+</html>
