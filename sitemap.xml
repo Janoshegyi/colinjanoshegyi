@@ -12,7 +12,7 @@
     <loc>https://colinjanoshegyi.com/ai-instructions</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
@@ -26,6 +26,13 @@
     <loc>https://colinjanoshegyi.com/works/notesandthoughts</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://colinjanoshegyi.com/works/notesandthoughts/blog/the-day-breakfast-became-a-prezilimpia-speech</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
@@ -33,28 +40,28 @@
     <loc>https://colinjanoshegyi.com/works/notesandthoughts/blog/how-my-dad-accidentally-gave-me-an-seo-problem</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://colinjanoshegyi.com/works/notesandthoughts/blog/googles-new-ai-search-experience-and-the-future-of-information</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://colinjanoshegyi.com/works/notesandthoughts/blog/why-indonesian-football-will-never-produce-a-world-class-player</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://colinjanoshegyi.com/works/brandstorm</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
