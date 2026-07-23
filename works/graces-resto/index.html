@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="fotomenu/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="fotomenu/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="fotomenu/favicon-16x16.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
 <meta property="og:title" content="Grace's Resto – Restoran Indonesia di Sihanoukville">
 <meta property="og:description" content="Menu Indonesia murah $3. Nasi goreng, mie, seafood, ayam geprek.">
 <meta property="og:image" content="https://colinjanoshegyi.com/works/graces-resto/fotomenu/android-chrome-192x192">
@@ -18,7 +19,10 @@
 <meta name="twitter:title" content="Grace's Resto – Indonesian Food in Sihanoukville">
 <meta name="twitter:description" content="Authentic Indonesian food for just $3.">
 <meta name="twitter:image" content="https://colinjanoshegyi.com/assets/logo/graceresto-logo.png">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta property="og:locale" content="id_ID">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Grace's Resto">
 <link rel="alternate" hreflang="en" href="https://colinjanoshegyi.com/works/graces-resto/" />
 <link rel="alternate" hreflang="id" href="https://colinjanoshegyi.com/works/graces-resto/" />
 <link rel="alternate" hreflang="x-default" href="https://colinjanoshegyi.com/works/graces-resto/" />
@@ -500,6 +504,16 @@
     font-family: 'Cinzel', serif;
   }
 
+  .menu-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--warm-gray);
+    max-width: 640px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
   .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -553,67 +567,216 @@
   }
   .menu-section-label {
     font-family: 'Cinzel', serif;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--maroon);
-    margin: 30px 0 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--parchment);
+    margin: 38px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .menu-section-label svg {
+    width: 22px; height: 22px;
+    color: var(--gold);
+    flex: none;
+  }
+  .menu-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, rgba(200,150,60,0.15) 70%, transparent 100%);
+  }
+  .menu-header-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 28px;
+    margin-bottom: 36px;
+  }
+  .board-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--maroon);
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .board-link:hover { background: var(--maroon); color: var(--gold-light); border-color: var(--maroon); }
+  .board-link svg { width: 15px; height: 15px; color: var(--gold); flex: none; }
+  .board-link:hover svg { color: var(--gold-light); }
+
+  /* ===== MENU BOARD LIGHTBOX ===== */
+  #board-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(28,20,16,0.92);
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+  #board-lightbox.active { display: flex; }
+  .board-lb-frame {
+    position: relative;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+  }
+  .board-lb-frame img {
+    max-width: 100%;
+    max-height: 78vh;
+    border-radius: 3px;
+    border: 1px solid rgba(200,150,60,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: inline-block;
+  }
+  .board-lb-caption {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-top: 18px;
+  }
+  .board-lb-close {
+    position: absolute;
+    top: -18px; right: -18px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--maroon);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .board-lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(122,20,24,0.85);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .board-lb-prev { left: -8px; }
+  .board-lb-next { right: -8px; }
+  @media (max-width: 720px) {
+    .board-lb-frame { max-width: 100%; }
+    .board-lb-close { top: -50px; right: 0; }
+    .board-lb-prev { left: -4px; }
+    .board-lb-next { right: -4px; }
   }
 
-  /* ===== CONTACT ===== */
-  #contact { background: var(--maroon-deep); max-width: 100%; padding: 90px 24px; }
-  #contact .inner { max-width: 1200px; margin: 0 auto; }
-  #contact .section-title { color: var(--white); }
-  #contact .section-label { color: var(--gold); }
-  #contact .section-body { color: rgba(250,245,236,0.65); }
+/* ===== CONTACT ===== */
 
-  .contact-cards {
+#contact {
+    background: var(--maroon-deep);
+    max-width: 100%;
+    padding: 90px 24px;
+}
+
+#contact .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#contact .section-title {
+    color: var(--white);
+}
+
+#contact .section-label {
+    color: var(--gold);
+}
+
+#contact .section-body {
+    color: rgba(250,245,236,0.65);
+}
+
+.contact-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 16px;
     margin-top: 48px;
-  }
-  .contact-card {
+}
+
+/* KEEP ONLY THIS CONTACT CARD */
+.contact-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(200,150,60,0.22);
     border-radius: 3px;
     padding: 32px 24px;
     text-align: center;
     transition: all 0.3s;
-  }
-  .contact-card:hover { background: rgba(200,150,60,0.08); border-color: var(--gold); transform: translateY(-4px); }
-  .contact-card .cc-icon-text {
+    cursor: pointer;
+}
+
+/* KEEP ONLY THIS HOVER */
+.contact-card:hover {
+    background: rgba(200,150,60,0.08);
+    border-color: var(--gold);
+    transform: translateY(-4px) scale(1.01);
+}
+
+/* For Font Awesome icons */
+.contact-card .cc-icon {
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 14px;
+    display: block;
+}
+
+/* For text icons like $3 */
+.contact-card .cc-icon-text {
     font-family: 'Cinzel', serif;
     font-size: 1.4rem;
     color: var(--gold);
     margin-bottom: 14px;
     display: block;
     letter-spacing: 0.05em;
-  }
-  .contact-card .cc-label {
+}
+
+.contact-card .cc-label {
     font-family: 'Cinzel', serif;
     font-size: 0.6rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 10px;
-  }
-  .contact-card .cc-value {
+}
+
+.contact-card .cc-value {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
     color: var(--white);
     font-style: italic;
-  }
-  .contact-card a { color: var(--gold-light); text-decoration: none; }
-  .contact-card a:hover { color: var(--gold); }
-
-  .location-card {
-  cursor: pointer;
 }
-.location-card:hover {
-  transform: translateY(-4px) scale(1.01);
+
+.contact-card a {
+    color: var(--gold-light);
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: var(--gold);
 }
 
   /* ===== FOOTER ===== */
@@ -672,6 +835,15 @@
     font-size: 0.64rem;
   }
 
+  .menu-header-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .board-link {
+    justify-content: center;
+  }
+
   /* FIX LANGUAGE BAR */
   #lang-bar {
     padding: 8px 16px;
@@ -694,6 +866,17 @@
 </style>
 </head>
 <body class="lang-en">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="menu-seal" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <circle cx="32" cy="32" r="25.5" fill="none" stroke="currentColor" stroke-width="0.6"/>
+    <path d="M20 34c0 7 5.4 12.5 12 12.5S44 41 44 34" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M18.5 34h27" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M24 34c0-4 3.6-7 8-7s8 3 8 7" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+    <line x1="37" y1="17" x2="47" y2="27" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="41" y1="15" x2="51" y2="25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+</svg>
 
 <!-- LANG BAR -->
 <div id="lang-bar">
@@ -794,36 +977,38 @@
     <hr class="ornament reveal" />
     <div class="gallery-grid">
       <div class="g-item reveal">
-        <img src="fotomenu/capcai.png" alt="Duck rice" loading="lazy" />
+        <img src="fotomenu/capcai.png" alt="Capcay rice - Indonesian mixed vegetable stir-fry rice bowl" loading="lazy" />
         <div class="g-label en">Capcay Rice</div>
         <div class="g-label id">Nasi Capcai</div>
       </div>
       <div class="g-item reveal">
-        <img src="fotomenu/ikansambal.png" alt="Ayam goreng" loading="lazy" />
+        <img src="fotomenu/ikansambal.png" alt="Fried Indian mackerel with chili sambal - Indonesian rice dish" loading="lazy" />
         <div class="g-label en">Fried Indian Mackerel and Chili Sambal</div>
         <div class="g-label id">Nasi Ikan Goreng Kembung Sambel</div>
       </div>
       <div class="g-item reveal">
-        <img src="fotomenu/loempia.png" alt="Noodles" loading="lazy" />
+        <img src="fotomenu/loempia.png" alt="Fried chicken wontons - Indonesian pangsit goreng appetizer" loading="lazy" />
         <div class="g-label en">Fried Chicken Wontons</div>
         <div class="g-label id">Pangsit Goreng Isi Ayam</div>
       </div>
       <div class="g-item reveal">
-        <img src="fotomenu/miejawaseafood.png" alt="Seafood rice" loading="lazy" />
+        <img src="fotomenu/miejawaseafood.png" alt="Javanese fried noodles with seafood - mie Jawa seafood" loading="lazy" />
         <div class="g-label en">Javanese Fried Noodle with Seafood</div>
         <div class="g-label id">Mie Jawa Seafood</div>
       </div>
       <div class="g-item reveal">
-        <img src="fotomenu/nasgorayam.png" alt="Nasi goreng" loading="lazy" />
+        <img src="fotomenu/nasgorayam.png" alt="Special chicken fried rice - nasi goreng ayam spesial" loading="lazy" />
         <div class="g-label en">Special Chicken Fried Rice </div>
         <div class="g-label id">Nasi Goreng Ayam Spesial</div>
       </div>
       <div class="g-item reveal">
-        <img src="fotomenu/nasiayam.png" alt="New Dish" loading="lazy" />
+        <img src="fotomenu/nasiayam.png" alt="Indonesian chicken rice - nasi ayam spesial" loading="lazy" />
         <div class="g-label en">Indonesian Chicken Rice</div>
         <div class="g-label id">Nasi Ayam Spesial</div>
       </div>
     </div>
+    <p style="text-align:center; margin-top: 28px; font-family:'Cormorant Garamond',serif; font-style:italic; color: var(--warm-gray); font-size:0.95rem;" class="en">Every dish is cooked fresh to order — from duck and beef to a full seafood line-up, all Indonesian and Chinese-Indonesian classics.</p>
+    <p style="text-align:center; margin-top: 28px; font-family:'Cormorant Garamond',serif; font-style:italic; color: var(--warm-gray); font-size:0.95rem;" class="id">Setiap hidangan dimasak segar sesuai pesanan — mulai dari bebek dan sapi hingga aneka seafood, semuanya masakan klasik Indonesia dan Tionghoa-Indonesia.</p>
   </div>
 </div>
 
@@ -834,15 +1019,22 @@
   <h2 class="section-title reveal en">Our <em>Menu</em></h2>
   <h2 class="section-title reveal id"><em>Menu</em> Kami</h2>
   <hr class="ornament reveal" />
-  <div class="menu-tabs reveal">
-    <button class="menu-tab active" onclick="switchTab('daily', this)">
-      <span class="en">Daily Menu</span><span class="id">Menu Harian</span>
-    </button>
-    <button class="menu-tab" onclick="switchTab('chicken', this)">
-      <span class="en">Chicken</span><span class="id">Ayam</span>
-    </button>
-    <button class="menu-tab" onclick="switchTab('seafood', this)">
-      <span class="en">Seafood</span><span class="id">Seafood</span>
+  <div class="menu-header-row reveal">
+    <div class="menu-tabs" style="margin-bottom:0;">
+      <button class="menu-tab active" onclick="switchTab('daily', this)">
+        <span class="en">Daily Menu</span><span class="id">Menu Harian</span>
+      </button>
+      <button class="menu-tab" onclick="switchTab('chicken', this)">
+        <span class="en">Chicken</span><span class="id">Ayam</span>
+      </button>
+      <button class="menu-tab" onclick="switchTab('seafood', this)">
+        <span class="en">Seafood</span><span class="id">Seafood</span>
+      </button>
+    </div>
+    <button class="board-link" onclick="openBoard(0)">
+      <svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>
+      <span class="en">View Original Menu Board</span>
+      <span class="id">Lihat Papan Menu Asli</span>
     </button>
   </div>
 
@@ -853,18 +1045,29 @@
       <span class="id">Menu Harian — semua</span>
       <strong>$3</strong>
     </div>
-    <div class="menu-section-label en">Duck &amp; Protein Rice</div>
-    <div class="menu-section-label id">Nasi Bebek &amp; Protein</div>
+    <p class="menu-intro en">Our daily menu covers Sihanoukville's favourite comfort plates — honey-fried duck, black pepper beef, Javanese-style noodles, and hearty soup rice bowls like nasi sapo tahu and nasi capcai seafood.</p>
+    <p class="menu-intro id">Menu harian kami menghadirkan hidangan favorit di Sihanoukville — bebek goreng madu, sapi lada hitam, mie Jawa, hingga nasi sop seperti nasi sapo tahu dan nasi capcai seafood.</p>
+    <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Duck &amp; Protein Rice</h3>
+    <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Nasi Bebek &amp; Protein</h3>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Bebek Cabe Ijo<span class="menu-name-en en">Duck Rice · Green Chilli</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Bebek Grg Madu<span class="menu-name-en en">Duck Rice · Honey Fried</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Bebek Grg Kecap<span class="menu-name-en en">Duck Rice · Sweet Soy</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Bebek Grg Madura<span class="menu-name-en en">Duck Rice · Madura Style</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Grg Madu<span class="menu-name-en en">Prawn Rice · Honey Fried</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Grg Madu<span class="menu-name-en en">Squid Rice · Honey Fried</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ayam Grg Madu<span class="menu-name-en en">Chicken Rice · Honey Fried</span></div></div>
     </div>
-    <div class="menu-section-label en">Noodles &amp; Fried Rice</div>
-    <div class="menu-section-label id">Mie &amp; Nasi Goreng</div>
+    <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Beef (Sapi)</h3>
+    <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Sapi</h3>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sapi Lada Hitam<span class="menu-name-en en">Beef Rice · Black Pepper</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sapi Saos Teriyaki<span class="menu-name-en en">Beef Rice · Teriyaki Sauce</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sapi Saos Tiram<span class="menu-name-en en">Beef Rice · Oyster Sauce</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sapi Grg Crispy<span class="menu-name-en en">Crispy Fried Beef Rice</span></div></div>
+    </div>
+    <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Noodles &amp; Fried Rice</h3>
+    <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Mie &amp; Nasi Goreng</h3>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Kwetiaw<span class="menu-name-en en">Flat Rice Noodles</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Mie Jawa<span class="menu-name-en en">Javanese Noodles</span></div></div>
@@ -879,8 +1082,8 @@
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Indomie Grg Chasio Ayam<span class="menu-name-en en">Fried Indomie · Chicken</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Ifumie Grg Chasio Ayam<span class="menu-name-en en">Crispy Noodles · Chicken</span></div></div>
     </div>
-    <div class="menu-section-label en">Special Rice Dishes</div>
-    <div class="menu-section-label id">Hidangan Nasi Spesial</div>
+    <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Special Rice Dishes</h3>
+    <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Hidangan Nasi Spesial</h3>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sapo Tahu<span class="menu-name-en en">Claypot Tofu Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sup Pangsit Ayam<span class="menu-name-en en">Chicken Dumpling Soup Rice</span></div></div>
@@ -888,6 +1091,7 @@
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Telur Ponti<span class="menu-name-en en">Pontianak-style Egg Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Kangkung Belacan + Telur<span class="menu-name-en en">Water Spinach · Shrimp Paste + Egg</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sop Telur Bakso<span class="menu-name-en en">Egg Meatball Soup Rice</span></div></div>
+      <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sup Ayam Herbal<span class="menu-name-en en">Herbal Chicken Soup Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Fuyunghai<span class="menu-name-en en">Fuyunghai Omelette Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ikan Sarden<span class="menu-name-en en">Sardine Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Capchai Seafood<span class="menu-name-en en">Mixed Vegetable Seafood Rice</span></div></div>
@@ -901,6 +1105,8 @@
       <span class="id">Menu Ayam — semua</span>
       <strong>$3</strong>
     </div>
+    <p class="menu-intro en">Over 30 ways to eat chicken rice at Grace's Resto — from Sihanoukville favourites like ayam geprek and ayam penyet to salted egg, katsu, and Padang-style sauces.</p>
+    <p class="menu-intro id">Lebih dari 30 pilihan nasi ayam di Grace's Resto — mulai dari ayam geprek dan ayam penyet favorit, hingga telur asin, katsu, dan saos Padang.</p>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sup Baso Ayam<span class="menu-name-en en">Chicken Meatball Soup Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Hotdog Ayam<span class="menu-name-en en">Chicken Hotdog Rice</span></div></div>
@@ -943,8 +1149,10 @@
       <span class="id">Menu Seafood — semua</span>
       <strong>$3</strong>
     </div>
-    <div class="menu-section-label en">Squid (Cumi)</div>
-    <div class="menu-section-label id">Cumi</div>
+    <p class="menu-intro en">Fresh squid, prawn, and tilapia rice bowls — black pepper, oyster sauce, salted egg, and Padang-style, all $3 and cooked to order.</p>
+    <p class="menu-intro id">Nasi cumi, udang, dan ikan nila segar — lada hitam, saos tiram, telur asin, hingga saos Padang, semua $3 dan dimasak sesuai pesanan.</p>
+    <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Squid (Cumi)</h3>
+    <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Cumi</h3>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Cabe Ijo<span class="menu-name-en en">Squid Rice · Green Chilli</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Lada Hitam<span class="menu-name-en en">Squid Rice · Black Pepper</span></div></div>
@@ -956,8 +1164,8 @@
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Grg Bawang<span class="menu-name-en en">Shallot Fried Squid Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Cumi Telur Asin<span class="menu-name-en en">Salted Egg Squid Rice</span></div></div>
     </div>
-    <div class="menu-section-label en">Prawn (Udang)</div>
-    <div class="menu-section-label id">Udang</div>
+    <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Prawn (Udang)</h3>
+    <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Udang</h3>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Cabe Ijo<span class="menu-name-en en">Prawn Rice · Green Chilli</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Lada Hitam<span class="menu-name-en en">Prawn Rice · Black Pepper</span></div></div>
@@ -970,8 +1178,8 @@
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Grg Bawang<span class="menu-name-en en">Shallot Fried Prawn Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Udang Telur Asin<span class="menu-name-en en">Salted Egg Prawn Rice</span></div></div>
     </div>
-    <div class="menu-section-label en">Tilapia Fish (Ikan Nila)</div>
-    <div class="menu-section-label id">Ikan Nila</div>
+    <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Tilapia Fish (Ikan Nila)</h3>
+    <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Ikan Nila</h3>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ikan Nila Bakar<span class="menu-name-en en">Grilled Tilapia Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Ikan Nila Goreng<span class="menu-name-en en">Fried Tilapia Rice</span></div></div>
@@ -991,31 +1199,50 @@
     <hr class="ornament reveal" />
     <p class="section-body reveal en">Visit us in Sihanoukville or reach out via WhatsApp and Telegram for reservations and today's specials.</p>
     <p class="section-body reveal id">Kunjungi kami di Sihanoukville atau hubungi via WhatsApp dan Telegram untuk reservasi dan menu hari ini.</p>
-    <div class="contact-cards">
-      <div class="contact-card reveal">
-        <span class="cc-icon-text">WA</span>
-        <div class="cc-label">WhatsApp</div>
-        <div class="cc-value"><a href="https://wa.me/6282123359900">+62 821-2335-9900</a></div>
-      </div>
-      <div class="contact-card reveal">
-        <span class="cc-icon-text">TG</span>
-        <div class="cc-label">Telegram</div>
-        <div class="cc-value"><a href="https://t.me/gracerestomulia" target="_blank">@gracerestomulia</a></div>
-      </div>
-      <div class="contact-card reveal location-card" onclick="openMap()">
-          <span class="cc-icon-text">KH</span>
-          <div class="cc-label en">Location</div>
-          <div class="cc-label id">Lokasi</div>
-          <div class="cc-value">
-            TRIMULIA Hotel, 801 Phum 2, Sangkat 2 Khan Mittapheap, Sihanoukville, Cambodia
-          </div>
-        </div>
-      <div class="contact-card reveal">
-        <span class="cc-icon-text" style="color:var(--gold);">$3</span>
-        <div class="cc-label en">All menu items</div>
-        <div class="cc-label id">Semua menu</div>
-        <div class="cc-value" style="color:var(--gold-light);">Per dish</div>
-      </div>
+<div class="contact-cards">
+
+<!-- WhatsApp -->
+<div class="contact-card reveal" onclick="openWhatsApp()">
+    <span class="cc-icon">
+        <i class="fa-brands fa-whatsapp"></i>
+    </span>
+    <div class="cc-label">WhatsApp</div>
+    <div class="cc-value">
+        +62 821-2335-9900
+    </div>
+</div>
+
+<!-- Telegram -->
+<div class="contact-card reveal" onclick="openTelegram()">
+    <span class="cc-icon">
+        <i class="fa-brands fa-telegram"></i>
+    </span>
+    <div class="cc-label">Telegram</div>
+    <div class="cc-value">
+        @gracerestomulia
+    </div>
+</div>
+
+<!-- Location -->
+<div class="contact-card reveal" onclick="openMap()">
+    <span class="cc-icon">
+        <i class="fa-solid fa-location-dot"></i>
+    </span>
+    <div class="cc-label en">Location</div>
+    <div class="cc-label id">Lokasi</div>
+    <div class="cc-value">
+        TRIMULIA Hotel, 801 Phum 2, Sangkat 2 Khan Mittapheap,
+        Sihanoukville, Cambodia
+    </div>
+</div>
+
+<!-- Price -->
+<div class="contact-card reveal" onclick="openTelegram()">
+    <span class="cc-icon-text">$3</span>
+    <div class="cc-label en">All Menu Items</div>
+    <div class="cc-label id">Semua Menu</div>
+    <div class="cc-value">Per Dish</div>
+</div>
     </div>
   </div>
 </div>
@@ -1049,6 +1276,53 @@
     "_blank"
   );
 }
+
+  const boardPages = [
+    "fotomenu/board-1.jpg",
+    "fotomenu/board-2.jpg",
+    "fotomenu/board-3.jpg"
+  ];
+  let boardIndex = 0;
+  function renderBoard() {
+    document.getElementById('board-lb-img').src = boardPages[boardIndex];
+    document.getElementById('board-lb-count').textContent = (boardIndex + 1) + ' / ' + boardPages.length;
+  }
+  function openBoard(i) {
+    boardIndex = i || 0;
+    renderBoard();
+    document.getElementById('board-lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBoard() {
+    document.getElementById('board-lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function navBoard(dir) {
+    boardIndex = (boardIndex + dir + boardPages.length) % boardPages.length;
+    renderBoard();
+  }
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('board-lightbox').classList.contains('active')) return;
+    if (e.key === 'Escape') closeBoard();
+    if (e.key === 'ArrowRight') navBoard(1);
+    if (e.key === 'ArrowLeft') navBoard(-1);
+  });
+</script>
+<script>
+function openMap() {
+    window.open(
+        "https://maps.google.com/?q=TRIMULIA+Hotel+801+Phum+2+Sangkat+2+Khan+Mittapheap+Sihanoukville+Cambodia",
+        "_blank"
+    );
+}
+
+function openWhatsApp() {
+    window.open("https://wa.me/6282123359900", "_blank");
+}
+
+function openTelegram() {
+    window.open("https://t.me/gracerestomulia", "_blank");
+}
 </script>
 <!--Add JSON-LD Schema-->
 <script type="application/ld+json">
@@ -1064,7 +1338,7 @@
   "servesCuisine": ["Indonesian", "Chinese-Indonesian", "Asian"],
   "priceRange": "$ (approx. $3 meals)",
   "openingHours": "Mo-Su 10:00-22:00",
-  "hasMenu": "https://colinjanoshegyi.com/works/graces-resto/",
+  "hasMenu": "https://colinjanoshegyi.com/works/graces-resto/#menu",
   "areaServed": "Sihanoukville",
   "currenciesAccepted": "USD",
   "@id": "https://colinjanoshegyi.com/works/graces-resto/#restaurant",
@@ -1095,7 +1369,7 @@
      "name": "Berapa harga makanan di Grace's Resto?",
      "acceptedAnswer": {
        "@type": "Answer",
-       "text": "Semua menu hanya $3."
+       "text": "Semua menu hanya $3, mulai dari nasi ayam, nasi seafood, nasi bebek, nasi sapi, hingga mie dan nasi goreng."
      }
    },
    {
@@ -1103,11 +1377,978 @@
      "name": "Apakah tersedia makanan Indonesia di Sihanoukville?",
      "acceptedAnswer": {
        "@type": "Answer",
-       "text": "Ya, Grace's Resto menyediakan makanan Indonesia autentik di Sihanoukville."
+       "text": "Ya, Grace's Resto menyediakan lebih dari 80 pilihan masakan Indonesia dan Tionghoa-Indonesia autentik di Sihanoukville."
+     }
+   },
+   {
+     "@type": "Question",
+     "name": "Apa saja jam buka Grace's Resto?",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Grace's Resto buka setiap hari dari pukul 10:00 hingga 22:00."
+     }
+   },
+   {
+     "@type": "Question",
+     "name": "Bagaimana cara memesan makanan di Grace's Resto?",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Pesanan dapat dilakukan melalui Telegram @gracerestomulia atau WhatsApp di +62 821-2335-9900."
+     }
+   },
+   {
+     "@type": "Question",
+     "name": "Di mana lokasi Grace's Resto di Sihanoukville?",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Grace's Resto berlokasi di TRIMULIA Hotel, 801 Phum 2, Sangkat 2, Sihanoukville, Kamboja."
      }
    }
  ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "@id": "https://colinjanoshegyi.com/works/graces-resto/#menu",
+  "name": "Grace's Resto Menu",
+  "inLanguage": [
+    "id",
+    "en"
+  ],
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Duck & Protein Rice",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Bebek Cabe Ijo",
+          "description": "Duck Rice · Green Chilli",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Bebek Grg Madu",
+          "description": "Duck Rice · Honey Fried",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Bebek Grg Kecap",
+          "description": "Duck Rice · Sweet Soy",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Bebek Grg Madura",
+          "description": "Duck Rice · Madura Style",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Grg Madu",
+          "description": "Prawn Rice · Honey Fried",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Grg Madu",
+          "description": "Squid Rice · Honey Fried",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Grg Madu",
+          "description": "Chicken Rice · Honey Fried",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Beef (Sapi)",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sapi Lada Hitam",
+          "description": "Beef Rice · Black Pepper",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sapi Saos Teriyaki",
+          "description": "Beef Rice · Teriyaki Sauce",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sapi Saos Tiram",
+          "description": "Beef Rice · Oyster Sauce",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sapi Grg Crispy",
+          "description": "Crispy Fried Beef Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Noodles & Fried Rice",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Kwetiaw",
+          "description": "Flat Rice Noodles",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Mie Jawa",
+          "description": "Javanese Noodles",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Ifumie",
+          "description": "Crispy Egg Noodles",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Bihun",
+          "description": "Rice Vermicelli",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasgor · Indomie",
+          "description": "Fried Rice / Instant Noodles",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasgor Cabe Ijo",
+          "description": "Fried Rice · Green Chilli",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasgor Chasio Ayam",
+          "description": "Fried Rice · Chicken Char Siu",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Mie Jawa Chasio Ayam",
+          "description": "Javanese Noodles · Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Bihun Grg Chasio Ayam",
+          "description": "Fried Vermicelli · Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Kwetiaw Grg Chasio Ayam",
+          "description": "Fried Flat Noodles · Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Indomie Grg Chasio Ayam",
+          "description": "Fried Indomie · Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Ifumie Grg Chasio Ayam",
+          "description": "Crispy Noodles · Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Special Rice Dishes",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sapo Tahu",
+          "description": "Claypot Tofu Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sup Pangsit Ayam",
+          "description": "Chicken Dumpling Soup Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi BBQ Baso Sosis Ayam",
+          "description": "BBQ Meatball Sausage Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Telur Ponti",
+          "description": "Pontianak-style Egg Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Kangkung Belacan + Telur",
+          "description": "Water Spinach · Shrimp Paste + Egg",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sop Telur Bakso",
+          "description": "Egg Meatball Soup Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sup Ayam Herbal",
+          "description": "Herbal Chicken Soup Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Fuyunghai",
+          "description": "Fuyunghai Omelette Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ikan Sarden",
+          "description": "Sardine Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Capchai Seafood",
+          "description": "Mixed Vegetable Seafood Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Chicken (Ayam)",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sup Baso Ayam",
+          "description": "Chicken Meatball Soup Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Hotdog Ayam",
+          "description": "Chicken Hotdog Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Kecap",
+          "description": "Sweet Soy Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sosis Grg",
+          "description": "Fried Sausage Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Sosis Dadar",
+          "description": "Omelette Sausage Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Saos Wijen",
+          "description": "Sesame Sauce Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Grg Kipas",
+          "description": "Fan Fried Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Grg Terasi",
+          "description": "Shrimp Paste Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Chasio Ayam",
+          "description": "Chicken Char Siu Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Kentang Saos Ayam",
+          "description": "Chicken Sauce Potato Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Telur Dadar Bakar Ayam Suwir",
+          "description": "Grilled Omelette Shredded Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Teriyaki",
+          "description": "Teriyaki Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Bistik Ayam + Kentang",
+          "description": "Chicken Steak + Potato Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Dendeng Ayam",
+          "description": "Chicken Jerky Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Lada Hitam",
+          "description": "Black Pepper Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Cabe Ijo",
+          "description": "Green Chilli Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi BBQ Chicken",
+          "description": "BBQ Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Katsu",
+          "description": "Chicken Katsu Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Saos Telur",
+          "description": "Egg Sauce Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Pop",
+          "description": "Padang Pop Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Bakar Legend",
+          "description": "Legendary Grilled Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Kriuk",
+          "description": "Crispy Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Penyet",
+          "description": "Smashed Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Geprek",
+          "description": "Crushed Chilli Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Sambal",
+          "description": "Sambal Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Saos Tiram",
+          "description": "Oyster Sauce Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Saos Padang",
+          "description": "Padang Sauce Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Grg Tepung",
+          "description": "Battered Fried Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Grg Mentega",
+          "description": "Butter Fried Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Grg Bawang",
+          "description": "Shallot Fried Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ayam Telur Asin",
+          "description": "Salted Egg Chicken Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Squid (Cumi)",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Cabe Ijo",
+          "description": "Squid Rice · Green Chilli",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Lada Hitam",
+          "description": "Squid Rice · Black Pepper",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Sambal",
+          "description": "Squid Rice · Sambal",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Saos Tiram",
+          "description": "Squid Rice · Oyster Sauce",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Saos Padang",
+          "description": "Squid Rice · Padang Sauce",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Grg Tepung",
+          "description": "Battered Fried Squid Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Grg Mentega",
+          "description": "Butter Fried Squid Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Grg Bawang",
+          "description": "Shallot Fried Squid Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Cumi Telur Asin",
+          "description": "Salted Egg Squid Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Prawn (Udang)",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Cabe Ijo",
+          "description": "Prawn Rice · Green Chilli",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Lada Hitam",
+          "description": "Prawn Rice · Black Pepper",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Bakar",
+          "description": "Grilled Prawn Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Sambal",
+          "description": "Prawn Rice · Sambal",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Saos Tiram",
+          "description": "Prawn Rice · Oyster Sauce",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Saos Padang",
+          "description": "Prawn Rice · Padang Sauce",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Grg Tepung",
+          "description": "Battered Fried Prawn Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Grg Mentega",
+          "description": "Butter Fried Prawn Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Grg Bawang",
+          "description": "Shallot Fried Prawn Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Udang Telur Asin",
+          "description": "Salted Egg Prawn Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Tilapia Fish (Ikan Nila)",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ikan Nila Bakar",
+          "description": "Grilled Tilapia Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ikan Nila Goreng",
+          "description": "Fried Tilapia Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ikan Nila Sambel",
+          "description": "Sambal Tilapia Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Nasi Ikan Nila Tauco",
+          "description": "Fermented Bean Tilapia Rice",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<div id="board-lightbox" onclick="if(event.target===this) closeBoard()">
+  <div class="board-lb-frame">
+    <button class="board-lb-close" onclick="closeBoard()" aria-label="Close">✕</button>
+    <button class="board-lb-nav board-lb-prev" onclick="navBoard(-1)" aria-label="Previous page">‹</button>
+    <img id="board-lb-img" src="" alt="Grace's Resto printed menu board" />
+    <button class="board-lb-nav board-lb-next" onclick="navBoard(1)" aria-label="Next page">›</button>
+    <div class="board-lb-caption">
+      <span class="en">Menu Board — Page </span><span class="id">Papan Menu — Halaman </span><span id="board-lb-count"></span>
+    </div>
+  </div>
+</div>
 </body>
 </html>
