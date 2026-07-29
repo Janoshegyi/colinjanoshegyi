@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Universe Owes You Nothing (And That's Wonderful) | Colin John</title>
+  <link rel="canonical" href="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-universe-owes-you-nothing-and-thats-wonderful" />
+  <meta name="description" content="A personal essay on grief, love, loss, and absurdism. What happens when the first person you want to tell something to is no longer there?" />
+  <meta name="keywords" content="philosophy, grief, love, loss, meaning, absurdism, personal essay, reflection, starlight, Colin John" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="The Universe Owes You Nothing (And That's Wonderful)" />
+  <meta property="og:description" content="A personal essay on grief, love, loss, and absurdism. What happens when the first person you want to tell something to is no longer there?" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-universe-owes-you-nothing-and-thats-wonderful" />
+  <meta property="og:image" content="https://colinjanoshegyi.com/assets/preview.png" />
+  <meta property="article:published_time" content="2026-05-26" />
+  <meta property="article:author" content="Colin John" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Universe Owes You Nothing (And That's Wonderful)" />
+  <meta name="twitter:description" content="A professor once gave me a cruel little test. It tells you exactly who you love — and exactly what you've lost." />
+  <meta name="twitter:image" content="https://colinjanoshegyi.com/assets/preview.png" />
+  <meta property="article:modified_time" content="2026-05-26" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/pdf/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/pdf/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white:      #FFFFFF;
+      --near-white: #FAFAFA;
+      --ink:        #111111;
+      --mid:        #666666;
+      --faint:      rgba(17,17,17,0.06);
+      --border:     rgba(17,17,17,0.09);
+      --serif:      'Cormorant Garamond', Georgia, serif;
+      --sans:       'Outfit', system-ui, sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: auto; }
+    body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    #progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--ink); width: 0%; z-index: 9999; }
+
+    #cursor-dot, #cursor-ring {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
+    }
+    #cursor-dot { width: 6px; height: 6px; background: var(--ink); }
+    #cursor-ring {
+      width: 36px; height: 36px; border: 1px solid rgba(17,17,17,0.25);
+      transition: width .4s var(--ease-out-expo), height .4s var(--ease-out-expo), border-color .3s, background .3s;
+    }
+    #cursor-ring.hover { width: 60px; height: 60px; border-color: var(--ink); background: rgba(17,17,17,0.04); }
+    @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } }
+
+    #header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 100px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; background: transparent;
+      transition: height .5s var(--ease-out-expo), background .4s ease, box-shadow .4s ease;
+    }
+    #header.scrolled {
+      height: 60px; background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .header-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; letter-spacing: .03em; color: var(--ink); text-decoration: none; }
+    .header-nav { display: flex; align-items: center; gap: 2.5rem; }
+    .header-nav a { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .3s; }
+    .header-nav a:hover { color: var(--ink); }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: .5rem; background: var(--ink); color: var(--white) !important;
+      font-size: .72rem !important; letter-spacing: .14em; text-transform: uppercase;
+      padding: .75rem 1.5rem; border-radius: 100px; text-decoration: none;
+      transition: transform .3s var(--ease-out-expo), box-shadow .3s !important; white-space: nowrap;
+    }
+    .cta-btn:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(17,17,17,0.18); }
+    @media (max-width: 680px) { .header-nav > a:not(.cta-btn) { display: none; } }
+
+    /* Article header */
+    .article-header {
+      padding: 18vh 5vw 6vh; border-bottom: 1px solid var(--border); max-width: 960px;
+    }
+    .article-back {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none;
+      transition: color .3s, gap .3s; margin-bottom: 3rem;
+      opacity: 0; transform: translateX(-8px);
+    }
+    .article-back:hover { color: var(--ink); gap: .8rem; }
+    .article-meta {
+      font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--mid); display: flex; gap: 2rem; flex-wrap: wrap;
+      margin-bottom: 2rem; opacity: 0; transform: translateY(10px);
+    }
+    .article-tag {
+      border: 1px solid var(--border); border-radius: 100px; padding: .2rem .7rem; font-size: .6rem;
+    }
+    .article-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5.5vw, 5rem);
+      font-weight: 300; line-height: 1.1; letter-spacing: -.02em;
+      opacity: 0; transform: translateY(24px);
+    }
+    .article-title em { font-style: italic; }
+    .article-subtitle {
+      margin-top: 1.5rem;
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      color: var(--mid); font-weight: 300; line-height: 1.7;
+      max-width: 54ch; opacity: 0; transform: translateY(16px);
+    }
+
+    /* Article layout */
+    .article-layout {
+      display: grid; grid-template-columns: 1fr min(700px, 90%) 1fr;
+      padding: 7vh 0 14vh;
+    }
+    .article-body { grid-column: 2; }
+
+    .article-body p { font-size: 1.05rem; line-height: 1.9; color: #2a2a2a; margin-bottom: 1.75rem; }
+
+    .article-body p:first-of-type::first-letter {
+      font-family: var(--serif); font-size: 4.5rem; font-weight: 300;
+      float: left; line-height: .85; margin-right: .12em; margin-top: .08em; color: var(--ink);
+    }
+
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+      font-weight: 400; letter-spacing: -.01em; line-height: 1.25;
+      margin: 4rem 0 1.2rem; color: var(--ink);
+    }
+    .article-body h3 {
+      font-family: var(--sans); font-size: .95rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin: 2.5rem 0 .8rem; color: var(--ink);
+    }
+    .article-body ul, .article-body ol { padding-left: 1.5rem; margin-bottom: 1.75rem; }
+    .article-body li { font-size: 1.05rem; line-height: 1.85; color: #2a2a2a; margin-bottom: .6rem; }
+    .article-body blockquote {
+      border-left: 2px solid var(--ink); padding-left: 1.75rem;
+      margin: 2.5rem 0; font-family: var(--serif);
+      font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 300;
+      font-style: italic; line-height: 1.6; color: var(--mid);
+    }
+    .article-body hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+    .article-body a {
+      color: var(--ink); text-decoration: underline;
+      text-decoration-color: rgba(17,17,17,0.3); text-underline-offset: 3px;
+      transition: text-decoration-color .3s;
+    }
+    .article-body a:hover { text-decoration-color: var(--ink); }
+
+    /* Movement break — centered asterisk divider */
+    .movement-break {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 3.5rem 0;
+      color: var(--mid);
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      letter-spacing: .5em;
+      user-select: none;
+    }
+
+    /* Tags */
+    .article-tags {
+      margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .article-tags-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); }
+    .article-tags a {
+      font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: .3rem .9rem; text-decoration: none; color: var(--mid);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .article-tags a:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+    /* Post nav */
+    .article-nav {
+      margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+    }
+    .article-nav-link { display: flex; flex-direction: column; gap: .4rem; text-decoration: none; max-width: 44%; }
+    .article-nav-label { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); }
+    .article-nav-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--ink); transition: opacity .3s; }
+    .article-nav-link:hover .article-nav-title { opacity: .6; }
+    .article-nav-link.right { text-align: right; margin-left: auto; }
+
+    footer {
+      padding: 2.5rem 5vw; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: .72rem; color: var(--mid); letter-spacing: .06em; }
+    footer a { text-decoration: none; color: var(--mid); }
+    footer a:hover { color: var(--ink); }
+
+    @media (max-width: 700px) {
+      .article-layout { grid-template-columns: 1fr; padding: 4vh 6vw 10vh; }
+      .article-body { grid-column: 1; }
+      .article-nav { flex-direction: column; align-items: flex-start; }
+      .article-nav-link.right { text-align: left; margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<header id="header" role="banner">
+  <a href="https://colinjanoshegyi.com/" class="header-logo">Colin</a>
+  <nav class="header-nav" aria-label="Main navigation">
+    <a href="https://colinjanoshegyi.com/#identity">About</a>
+    <a href="https://colinjanoshegyi.com/#work">Work</a>
+    <a href="https://colinjanoshegyi.com/#contact" class="cta-btn">Work With Me</a>
+  </nav>
+</header>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <a href="https://colinjanoshegyi.com/works/notesandthoughts/" class="article-back">← All notes</a>
+  <p class="article-meta">
+    <span>26 May 2026</span>
+    <span class="article-tag">Philosophy</span>
+    <span class="article-tag">Essays</span>
+    <span>7 min read</span>
+  </p>
+  <h1 class="article-title">The Universe Owes You Nothing <em>(And That's Wonderful)</em></h1>
+  <p class="article-subtitle">A professor once gave me a cruel little test. It tells you exactly who you love—and what you've lost.</p>
+</header>
+
+<!-- ARTICLE BODY -->
+<div class="article-layout">
+  <article class="article-body" role="main">
+
+    <!-- ── MOVEMENT I: The Question ── -->
+
+    <p>
+      A professor once gave me a cruel little neat trick. He said, "This dinner right now — if you had to tell someone about it, who's the first person that comes to your mind?" That's it. That's the whole test. And apparently, the first person who comes to your mind is the one whom you love.
+    </p>
+
+    <p>
+      Which, I'll be honest, is a bit of a bastard of a question. Because what if the person you'd tell is gone? Dead? Moved on? Or — the horror — married to someone who enjoys eating raw tomatoes? That's a bad punchline and a worse fate.
+    </p>
+
+    <p>
+      I catch myself on that question. A lot.
+    </p>
+
+    <p>
+      There are always these tiny, ridiculous moments we long to share with people. A meme that makes you choke on your coffee. A sunrise that looks like somebody spilled Fanta across the horizon. The mind-bender that octopuses have three hearts and still seem to manage relationships better than I do. You want to send it. You want to say: "Hey, look at this." But the other chair is empty. A silence at the other end of the phone line.
+    </p>
+
+    <p>
+      And that emptiness isn't the usual missing. It's a weirder cousin. It's not just missing the person. It's missing the version of you who used to sing songs of love in a car in the rain, who used to laugh at the same stupid thing at two in the morning. It's like your own reflection is gone from the mirror you thought you both used. Because — to grieve deeply is to have loved fully. Grief is the price we pay for love.
+    </p>
+
+    <!-- Movement break -->
+    <div class="movement-break" aria-hidden="true">* * *</div>
+
+    <!-- ── MOVEMENT II: The Physics of Holding On ── -->
+
+    <p>
+      And that's when it hits you. You can't keep moments by gripping them. You can't freeze them with clenched fists.
+    </p>
+
+    <p>
+      Moments are sand. The tighter you hold, the quicker they slip. That's physics and poetry, both telling you to relax.
+    </p>
+
+    <p>
+      I realised that I was clenching so hard on moments I know will be in the past. So instead of living in the moment, I was worried about losing it. And by worrying about losing it, I lost it of course. I was thinking of the future, but living in the past. The irony of it all was that I thought I was preserving it but in the end I lost it all.
+    </p>
+
+    <p>
+      Classic move. 10 out of 10, me. Nobel Prize in Self-Sabotage. Medal of honour in irony.
+    </p>
+
+    <p>
+      There is no such thing as nothing matters in this world. Everything we do matters. Nihilism always felt a bit arrogant to me. Like staring at a puzzle too large to comprehend and concluding there was never a picture at all. We're small, sure, but take one out and the picture changes. You notice the missing piece before you even notice the picture's complete.
+    </p>
+
+    <p>
+      Here's the bigger joke: humans are absolutely rubbish at time. We spend half our lives rehearsing a future that may never arrive, and the other half replaying a past that doesn't exist anymore. Defying the space-time continuum in our thoughts, and usually we're the ones sabotaging the trip.
+    </p>
+
+    <p>
+      Meanwhile, light from stars that died millions of years ago is still streaming toward us. We live in old starlight, bathed in echoes of the past that no longer exist.
+    </p>
+
+    <blockquote>
+      Astronomers have a name for this: lookback time. Every time you gaze at the sky, you're looking backwards. Point your face at the sky and you're staring at an old photograph. A star one light-year away: it's already a year in the past. A galaxy a million light-years away: antiquity on display.
+    </blockquote>
+
+    <p>
+      Now imagine you could do that with yourself. Park a cosmic telescope a year away, point it at Earth, and what do you get? You on a loop — laughing at a bad joke, spilling your tea, biting your lip worrying about nonsense. A perfect still of you, preserved. Untouchable. Unchangeable.
+    </p>
+
+    <p>
+      You'd see the moment, perfectly preserved. But you couldn't change it. You couldn't reach it. Just like the star, it's gone — unchangeable, untouchable. All you can do is marvel at it… and maybe hope the next light-year brings something better.
+    </p>
+
+    <p>
+      We're apes, on a damp rock, orbiting a thermonuclear fireball, and somewhere between inventing the electric toaster and the EU bottlecap, we also invented heartbreak. Entropy is doing its thing, photons are travelling at 299,792,458 metres per second, and we're clutching memories we'll never preserve. Bravo, evolution.
+    </p>
+
+    <!-- Movement break -->
+    <div class="movement-break" aria-hidden="true">* * *</div>
+
+    <!-- ── MOVEMENT III: The Return ── -->
+
+    <p>
+      But here's the hopeful bit. In the times of despair, there shall be light. There shall always be light at the end of the tunnel.
+    </p>
+
+    <p>
+      The universe may be expanding faster than we can comprehend, black holes may be swallowing entire galaxies, and the atoms in your body are older than the sun… and yet, we all are in our personal tunnels. So while you're in it, you might as well decorate the bloody thing.
+    </p>
+
+    <p>
+      Hang some fairy lights. Draw a rude picture of a duck on the wall. Plant some <em>humulus lupulus</em>. Have a nice pint. Or borrow the wisdom of a certain fish with anterograde amnesia once said: just keep swimming. Whatever keeps you walking.
+    </p>
+
+    <p>
+      We had dreams once. Shared them, even. And maybe we didn't keep them. Maybe they changed, or maybe we did. But that doesn't make them meaningless. Losing something doesn't make it meaningless. It just means you've made space for something else.
+    </p>
+
+    <blockquote>
+      The ache tells you it mattered. Pain is the stamp that says, "This was real." And though it hurt — it proves we felt, we hoped, we loved.
+    </blockquote>
+
+    <p>
+      We carry people forward, whether we mean to or not. Like starlight bouncing through empty space into your retina, their echoes arrive — small miracles in your chest. Photons of other people's laughter scatter and find you, long after the source is gone.
+    </p>
+
+    <p>
+      And maybe, someday, the next time you ask yourself, "Who's the first person I'd tell?" …they'll already be sitting next to you, laughing at how terrible your joke was, or nicking the last fry off your plate.
+    </p>
+
+    <p>
+      Which, in the grand cosmic absurdity of it all, is about as close as we're going to get to love.
+    </p>
+
+    <div class="article-tags">
+      <span class="article-tags-label">Topics —</span>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Philosophy</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Essays</a>
+    </div>
+
+    <nav class="article-nav" aria-label="Post navigation">
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/" class="article-nav-link">
+        <span class="article-nav-label">← Back</span>
+        <span class="article-nav-title">All notes</span>
+      </a>
+    </nav>
+
+  </article>
+</div>
+
+<footer role="contentinfo">
+  <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
+  <p><a href="https://colinjanoshegyi.com/">← Back to main site</a></p>
+</footer>
+
+<script>
+  const lenis = new Lenis({ duration: 1.35, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll', ({ progress }) => {
+    document.getElementById('progress').style.width = (progress * 100) + '%';
+  });
+  const header = document.getElementById('header');
+  lenis.on('scroll', ({ scroll }) => header.classList.toggle('scrolled', scroll > 50));
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animateCursor() {
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    rx += (mx - rx) * .1; ry += (my - ry) * .1;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  })();
+  document.addEventListener('mouseover', e => {
+    ring.classList.toggle('hover', !!e.target.closest('a, button'));
+  });
+  gsap.to('.article-back',     { opacity: 1, x: 0,  duration: .8,  ease: 'power3.out', delay: .2 });
+  gsap.to('.article-meta',     { opacity: 1, y: 0,  duration: .8,  ease: 'power3.out', delay: .35 });
+  gsap.to('.article-title',    { opacity: 1, y: 0,  duration: 1.1, ease: 'power3.out', delay: .5 });
+  gsap.to('.article-subtitle', { opacity: 1, y: 0,  duration: 1,   ease: 'power3.out', delay: .65 });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Universe Owes You Nothing (And That's Wonderful)",
+  "description": "A personal essay on grief, love, loss, and absurdism. What happens when the first person you want to tell something to is no longer there?",
+  "image": "https://colinjanoshegyi.com/assets/preview.png",
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "timeRequired": "PT7M",
+
+  "author": {
+    "@type": "Person",
+    "name": "Colin John",
+    "url": "https://colinjanoshegyi.com",
+    "description": "Writer, SEO specialist, and Business Administration graduate.",
+    "sameAs": [
+      "https://www.linkedin.com/in/your-linkedin-profile/"
+    ]
+  },
+
+  "publisher": {
+    "@type": "Organization",
+    "name": "Colin John",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://colinjanoshegyi.com/assets/logo.png"
+    }
+  },
+
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-universe-owes-you-nothing-and-thats-wonderful"
+  },
+
+  "articleSection": "Philosophy",
+
+  "keywords": [
+    "philosophy",
+    "grief",
+    "love",
+    "loss",
+    "meaning",
+    "personal essay",
+    "absurdism",
+    "letting go",
+    "human experience",
+    "love and loss",
+    "meaning of life"
+  ],
+
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".article-title",
+      ".article-subtitle",
+      ".article-body p:first-of-type"
+    ]
+  }
+}
+</script>
+
+</body>
+</html>
