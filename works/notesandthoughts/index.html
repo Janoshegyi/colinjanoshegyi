@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -315,6 +316,18 @@
 
   <article>
     <h3>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw">
+        The Café That Google Never Saw
+      </a>
+    </h3>
+    <p>A beginner-friendly walkthrough of website user-agent cloaking, using one real compromised domain that shows two completely different websites depending on who's asking.</p>
+    <time datetime="2026-08-23">23 August 2026</time>
+    <span>Tags: SEO, Security, Cloaking</span>
+    <span>Author: Colin John</span>
+  </article>
+
+  <article>
+    <h3>
       <a href="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-universe-owes-you-nothing-and-thats-wonderful">
         The Universe Owes You Nothing (And That's Wonderful)
       </a>
@@ -402,12 +415,20 @@
 
 const POSTS = [
   {
+    title: "The Café That Google Never Saw",
+    date: "2026-08-23",
+    url: "blog/the-cafe-that-google-never-saw",
+    tags: ["SEO", "Security", "Cloaking"],
+    excerpt: "A beginner-friendly walkthrough of website user-agent cloaking, using one real compromised domain that shows two completely different websites depending on who's asking.",
+    featured: true,
+  },
+  {
     title: "The Universe Owes You Nothing (And That's Wonderful)",
     date: "2026-07-29",
     url: "blog/the-universe-owes-you-nothing-and-thats-wonderful",
     tags: ["Personal"],
     excerpt: "A professor once gave me a cruel little test. It tells you exactly who you love—and what you've lost.",
-    featured: true,
+    featured: false,
   },
   {
     title: "The Day Breakfast Became a Prezilimpia Speech",
@@ -586,6 +607,20 @@ render('All');
   },
   "description": "Long-form writing on SEO, digital marketing, branding, and front-end development by Colin John (Janoshegyi).",
   "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "The Café That Google Never Saw",
+      "url": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw",
+      "datePublished": "2026-08-23",
+      "author": {
+        "@type": "Person",
+        "name": "Colin John",
+        "alternateName": "Colin Janoshegyi",
+        "url": "https://colinjanoshegyi.com"
+      },
+      "description": "A beginner-friendly walkthrough of website user-agent cloaking, using one real compromised domain that shows two completely different websites depending on who's asking.",
+      "keywords": ["SEO", "Security", "Cloaking"]
+    },
     {
       "@type": "BlogPosting",
       "headline": "The Universe Owes You Nothing (And That's Wonderful)",

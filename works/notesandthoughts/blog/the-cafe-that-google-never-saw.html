@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G99Q8NN92D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G99Q8NN92D');
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Café That Google Never Saw: User-Agent Cloaking & SEO Spam | Colin John</title>
+<meta name="description" content="A technical SEO field report on user-agent cloaking, parasite SEO, and search-engine spam. See how a hacked website served Googlebot a different page and how to detect it.">
+<meta name="author" content="Colin John (Janoshegyi)">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="user-agent cloaking, user agent cloaking, SEO cloaking, cloaking SEO, parasite SEO, SEO spam, negative SEO, hacked website, Googlebot cloaking, Googlebot user agent, search engine cloaking, technical SEO, SEO security, website security, SEO forensics, cloaked content, hidden links, search spam">
+<link rel="canonical" href="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw">
+<link rel="alternate" hreflang="en" href="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/pdf/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/pdf/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/pdf/favicon-16x16.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw">
+<meta property="og:title" content="The Café That Google Never Saw: User-Agent Cloaking & SEO Spam">
+<meta property="og:description" content="A technical SEO field report on user-agent cloaking, parasite SEO, and search-engine spam, including how to detect crawler-specific content.">
+<meta property="og:site_name" content="Colin John">
+<meta property="og:locale" content="en_NL">
+<meta property="article:author" content="Colin John">
+<meta property="article:published_time" content="2026-08-23">
+<meta property="article:modified_time" content="2026-08-23">
+<meta property="article:section" content="SEO Forensics">
+<meta property="article:tag" content="User-Agent Cloaking">
+<meta property="article:tag" content="Parasite SEO">
+<meta property="article:tag" content="SEO Spam">
+<meta property="article:tag" content="Technical SEO">
+<meta property="article:tag" content="Website Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Café That Google Never Saw: User-Agent Cloaking & SEO Spam">
+<meta name="twitter:description" content="How a compromised website served Googlebot a different page, why this matters for SEO, and how to detect user-agent cloaking.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw#article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw"
+      },
+      "headline": "The Café That Google Never Saw: User-Agent Cloaking, SEO Spam, and Parasite SEO",
+      "description": "A technical SEO field report investigating user-agent cloaking, search-engine spam, hidden links, and the relationship between compromised websites and parasite SEO.",
+      "author": {
+        "@type": "Person",
+        "@id": "https://colinjanoshegyi.com/#person",
+        "name": "Colin John",
+        "alternateName": "Colin Janoshegyi",
+        "url": "https://colinjanoshegyi.com/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://colinjanoshegyi.com/#person",
+        "name": "Colin John"
+      },
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-08-23",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "user-agent cloaking",
+        "SEO cloaking",
+        "parasite SEO",
+        "SEO spam",
+        "Googlebot cloaking",
+        "technical SEO",
+        "SEO security",
+        "SEO forensics",
+        "hacked website",
+        "hidden links"
+      ],
+      "about": [
+        {"@type": "Thing", "name": "User-agent cloaking"},
+        {"@type": "Thing", "name": "Parasite SEO"},
+        {"@type": "Thing", "name": "SEO spam"},
+        {"@type": "Thing", "name": "Technical SEO"},
+        {"@type": "Thing", "name": "Website security"}
+      ],
+      "mentions": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Cloaker Checker",
+          "url": "https://cloaker-checker.colinjanoshegyi.com/",
+          "applicationCategory": "SecurityApplication",
+          "operatingSystem": "Web"
+        }
+      ],
+      "articleSection": "SEO Forensics",
+      "genre": ["Technical SEO", "Cybersecurity", "SEO Case Study"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://colinjanoshegyi.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Works",
+          "item": "https://colinjanoshegyi.com/works/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Notes & Thoughts",
+          "item": "https://colinjanoshegyi.com/works/notesandthoughts/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Café That Google Never Saw",
+          "item": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://colinjanoshegyi.com/#website",
+      "url": "https://colinjanoshegyi.com/",
+      "name": "Colin John",
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://colinjanoshegyi.com/#person"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://colinjanoshegyi.com/#person",
+      "name": "Colin John",
+      "alternateName": "Colin Janoshegyi",
+      "url": "https://colinjanoshegyi.com/"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EAEAE2;
+    --paper-raised: #F4F4EE;
+    --ink: #1C1F22;
+    --muted: #5B6169;
+    --line: #C7CAC0;
+    --human: #2F6F4E;
+    --human-soft: #DCE7DD;
+    --crawler: #A83B2E;
+    --crawler-soft: #EDDAD5;
+    --stamp: #8A6D3B;
+    --site-sans: 'Outfit', system-ui, sans-serif;
+    --site-border: rgba(17,17,17,0.09);
+    --site-mid: #666666;
+    --ph-white: #FFFFFF;
+    --ph-ink: #111111;
+    --ph-mid: #666666;
+    --ph-border: rgba(17,17,17,0.09);
+    --ph-serif: 'Cormorant Garamond', Georgia, serif;
+    --ph-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .mono{
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  a { color: var(--ink); }
+
+  /* ---------- header / masthead ---------- */
+  .masthead{
+    border-bottom: 3px solid var(--ink);
+    padding: 28px 32px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .masthead-row{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .case-id{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stamp{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--stamp);
+    color: var(--stamp);
+    padding: 3px 8px;
+    border-radius: 2px;
+    transform: rotate(-2deg);
+    display:inline-block;
+  }
+
+  .container{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px 90px;
+  }
+
+  h1.title{
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.08;
+    margin: 18px 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .subhead{
+    font-size: 19px;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 620px;
+    margin: 0 0 6px;
+  }
+  .article-meta{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.025em;
+    margin: 8px 0 0;
+  }
+
+  /* ---------- dual pane hero (signature element) ---------- */
+  .dual-pane{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    margin: 34px 0 6px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+  .pane{
+    background: var(--paper-raised);
+    padding: 18px 18px 20px;
+    min-height: 150px;
+  }
+  .pane.human{ border-top: 5px solid var(--human); }
+  .pane.crawler{ border-top: 5px solid var(--crawler); }
+  .pane-label{
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .pane.human .pane-label{ color: var(--human); }
+  .pane.crawler .pane-label{ color: var(--crawler); }
+  .pane-title{
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+  .pane-meta{ color: var(--muted); font-size: 12px; }
+  .dual-caption{
+    text-align:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin: 10px 0 40px;
+  }
+
+  /* ---------- log entries (part headers) ---------- */
+  .log-entry{
+    margin-top: 56px;
+    padding-top: 4px;
+  }
+  .log-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+  }
+  h2{
+    font-family: 'Source Serif 4', serif;
+    font-size: 27px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    line-height: 1.25;
+  }
+  h3{
+    font-family: 'Source Serif 4', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 26px 0 8px;
+  }
+  p{ margin: 0 0 16px; }
+  ul, ol{ margin: 0 0 16px; padding-left: 22px; }
+  li{ margin-bottom: 6px; }
+
+  /* ---------- code / terminal blocks ---------- */
+  .term{
+    background: #20242A;
+    color: #E4E7E0;
+    border-radius: 6px;
+    padding: 16px 18px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 16px 0 22px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .term .c1{ color: #7FBF8E; }
+  .term .c2{ color: #E0A360; }
+  .term .c3{ color: #6FA8DC; }
+  .term-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 22px 0 -10px;
+  }
+
+  /* ---------- evidence tables ---------- */
+  table{
+    width:100%;
+    border-collapse: collapse;
+    margin: 10px 0 26px;
+    font-size: 15.5px;
+  }
+  th, td{
+    border-bottom: 1px solid var(--line);
+    padding: 9px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    border-bottom: 2px solid var(--ink);
+  }
+  td:first-child{ font-family:'JetBrains Mono', monospace; font-size: 13.5px; color: var(--muted); white-space: nowrap; }
+  tr td:nth-child(2){ }
+  table.compare td:nth-child(2){ background: var(--human-soft); }
+  table.compare td:nth-child(3){ background: var(--crawler-soft); }
+
+  /* ---------- figures ---------- */
+  figure{
+    margin: 26px 0 30px;
+    padding: 20px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  figcaption{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- callouts ---------- */
+  .callout{
+    border-left: 4px solid var(--stamp);
+    background: var(--paper-raised);
+    padding: 14px 18px;
+    margin: 20px 0 26px;
+    font-size: 16.5px;
+  }
+  .callout strong{ color: var(--stamp); font-family:'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; display:block; margin-bottom: 6px; }
+
+  .warn{
+    border-left: 4px solid var(--crawler);
+    background: var(--crawler-soft);
+    padding: 14px 18px;
+    margin: 20px 0 26px;
+    font-size: 16.5px;
+  }
+  .warn strong{ color: var(--crawler); font-family:'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; display:block; margin-bottom: 6px;}
+
+  hr.div{
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 46px 0;
+  }
+
+  .steps{
+    counter-reset: step;
+    padding-left: 0;
+    list-style: none;
+    margin: 16px 0 26px;
+  }
+  .steps li{
+    counter-increment: step;
+    position: relative;
+    padding-left: 46px;
+    margin-bottom: 14px;
+  }
+  .steps li::before{
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 0;
+    width: 30px; height: 30px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .closing{
+    margin-top: 60px;
+    padding: 26px 28px;
+    background: var(--ink);
+    color: var(--paper-raised);
+    border-radius: 8px;
+  }
+  .closing h2{ color: var(--paper-raised); }
+  .closing p:last-child{ margin-bottom:0; }
+
+  /* ---------- site chrome: header (exact match to colinjanoshegyi.com header, background swapped for paper tone) ---------- */
+  #site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    height: 100px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; background: transparent;
+    transition: height .5s var(--ph-ease), background .4s ease, box-shadow .4s ease;
+  }
+  #site-header.scrolled {
+    height: 60px; background: rgba(244,244,238,0.95);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--ph-border);
+  }
+  .site-logo { font-family: var(--ph-serif); font-size: 1.35rem; font-weight: 400; letter-spacing: .03em; color: var(--ph-ink); text-decoration: none; }
+  .site-nav { display: flex; align-items: center; gap: 2.5rem; }
+  .site-nav a { font-family: var(--site-sans); font-weight: 300; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ph-mid); text-decoration: none; transition: color .3s; }
+  .site-nav a:hover { color: var(--ph-ink); }
+  .site-cta {
+    display: inline-flex; align-items: center; gap: .5rem; background: var(--ph-ink); color: var(--ph-white) !important;
+    font-family: var(--site-sans); font-weight: 300;
+    font-size: .72rem !important; letter-spacing: .14em; text-transform: uppercase;
+    padding: .75rem 1.5rem; border-radius: 100px; text-decoration: none;
+    transition: transform .3s var(--ph-ease), box-shadow .3s !important; white-space: nowrap;
+  }
+  .site-cta:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(17,17,17,0.18); }
+  @media (max-width: 680px) { .site-nav > a:not(.site-cta) { display: none; } }
+
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: var(--ph-ink);
+    width: 0%;
+    z-index: 9999;
+    transform-origin: left;
+  }
+
+  .masthead{ padding-top: 128px; }
+  @media (max-width: 640px){ .masthead{ padding-top: 108px; } }
+
+  /* ---------- floating scan button ---------- */
+  html{ scroll-behavior: smooth; }
+  .scan-fab{
+    position: fixed; right: 24px; bottom: 24px; z-index: 400;
+    display:inline-flex; align-items:center; gap: 8px;
+    background: var(--ink); color: var(--paper-raised) !important;
+    font-family:'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.04em;
+    text-decoration:none; padding: 13px 20px; border-radius: 100px;
+    box-shadow: 0 8px 24px rgba(28,31,34,0.28);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .scan-fab:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(28,31,34,0.35); }
+  @media (max-width: 640px){
+    .scan-fab{ right: 16px; bottom: 16px; padding: 11px 16px; font-size: 12px; }
+  }
+
+  /* ---------- scan CTA (tool promo, styled like a case-file exhibit) ---------- */
+  .cta-scan{
+    margin: 60px 0 0;
+    padding: 30px 28px;
+    background: var(--paper-raised);
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .cta-scan .stamp{ margin-bottom: 14px; }
+  .cta-scan h2{ margin: 0 0 10px; }
+  .cta-scan p{
+    max-width: 56ch; margin: 0 auto 22px; color: var(--muted); font-size: 16.5px;
+  }
+  .cta-scan a.scan-btn{
+    display:inline-flex; align-items:center; gap: 8px;
+    background: var(--ink); color: var(--paper-raised) !important;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration:none;
+    padding: 14px 26px; border-radius: 4px; transition: transform .2s, box-shadow .2s;
+  }
+  .cta-scan a.scan-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 20px rgba(28,31,34,0.25); }
+
+  /* ---------- table wrapper for small screens ---------- */
+  .table-scroll{ overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 10px 0 26px; }
+  .table-scroll table{ margin: 0; min-width: 480px; }
+
+  /* ---------- site chrome: footer (matches colinjanoshegyi.com) ---------- */
+  #site-footer{
+    max-width: 900px; margin: 0 auto; padding: 20px 32px 60px;
+    font-family: var(--site-sans); border-top: 1px solid var(--site-border);
+  }
+  .footer-disclaimer{
+    font-family:'JetBrains Mono', monospace; font-size: 11.5px; color: var(--muted);
+    letter-spacing: 0.03em; margin: 18px 0 18px; line-height: 1.6;
+  }
+  .footer-site-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;
+    padding-top: 14px; border-top: 1px solid var(--site-border);
+  }
+  .footer-site-row p{ margin:0; font-size: 0.75rem; color: var(--site-mid); letter-spacing: 0.02em; }
+  .footer-site-row a{ text-decoration:none; color: var(--site-mid); transition: color .2s; }
+  .footer-site-row a:hover{ color: var(--ink); }
+
+  @media (max-width: 640px){
+    body{ font-size: 16.5px; }
+    h1.title{ font-size: 32px; }
+    .dual-pane{ grid-template-columns: 1fr; }
+    .masthead, .container, #site-footer{ padding-left: 20px; padding-right: 20px; }
+    .cta-scan{ padding: 24px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reading progress bar -->
+<div id="progress"></div>
+
+<header id="site-header" role="banner">
+  <a href="https://colinjanoshegyi.com/" class="site-logo">Colin</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="https://colinjanoshegyi.com/#identity">About</a>
+    <a href="https://colinjanoshegyi.com/#work">Work</a>
+    <a href="https://colinjanoshegyi.com/#contact" class="site-cta">Work With Me</a>
+  </nav>
+</header>
+
+<div class="masthead">
+  <div class="masthead-row">
+    <span class="case-id">Field Report · SEO Forensics No. 004</span>
+    <span class="stamp">User-Agent Cloaking Confirmed</span>
+  </div>
+  <h1 class="title">The Café That Google Never Saw: User-Agent Cloaking, SEO Spam, and Parasite SEO</h1>
+  <p class="subhead">A technical SEO field report on user-agent cloaking, showing how a compromised website served Googlebot a completely different page and how to detect crawler-specific SEO spam.</p>
+  <p class="article-meta"><span class="mono">By Colin John</span> · Published August 23, 2026 · Updated August 23, 2026 · SEO Forensics</p>
+</div>
+
+<main class="container">
+
+  <div class="dual-pane">
+    <div class="pane human">
+      <div class="pane-label">Normal visitor · Chrome</div>
+      <div class="pane-title">Riverside Prague Cafe <span style="font-size:11px; color:var(--muted);"></span></div>
+      <div class="pane-meta">Original language · Prague café, menu, events, photos of the venue</div>
+    </div>
+    <div class="pane crawler">
+      <div class="pane-label">Same URL · Googlebot User‑Agent</div>
+      <div class="pane-title">Unauthorized Gambling Site</div>
+      <div class="pane-meta">Different language · unrelated landing page, cloned Shopify template</div>
+    </div>
+  </div>
+  <div class="dual-caption">same domain · same URL · same moment in time · two unrelated websites</div>
+
+  <div class="callout">
+    <strong>A note about the case</strong>
+    <p style="margin-bottom:10px"><strong>The investigation described here is real. For security purposes, I have changed the name of the affected café to Riverside Prague Cafe.</strong> The name is used only as an example and does not identify the actual website examined.</p>
+    <p style="margin-bottom:10px">I reached out to the owner of the affected domain after finding the issue, although I did not receive a response. When I later checked the domain again using Cloaker Checker, the difference was no longer detected. I cannot say exactly when or how it was removed, but I am glad the site no longer appeared to be serving the malicious content.</p>
+  </div>
+  <p>I initially thought this was going to be a fairly ordinary hacked website. The more I compared the responses, the stranger it became.</p>
+  <p>The first thing that caught my attention was that the website looked completely normal in Chrome. Nothing obviously broken. No strange redirects. No gambling ads. Nothing.</p>
+  <p><strong>Googlebot was getting a completely different website.</strong></p>
+  <p>This report walks through how I found that difference, what cloaking is, how a server can decide who's really asking, and how you can safely check your own website.</p>
+
+  <p class="callout"><strong>What this is, and isn't</strong>This isn't an investigation into who carried out the attack. It's an investigation into how the attack was detected. The goal is to help website owners recognize the warning signs on their own websites, not to identify or accuse any particular individual or organization.</p>
+
+  <div class="warn"><strong>Before you try this</strong>Only run these tests on websites you own or are authorized to inspect.</div>
+
+  <hr class="div">
+
+  <!-- PART 1 -->
+  <div class="log-entry">
+    <div class="log-num">Log 01 · Foundations</div>
+    <h2>What happens when you visit a website?</h2>
+    <p>Before cloaking makes sense, it helps to see the plumbing underneath an ordinary page load.</p>
+
+    <figure>
+      <svg viewBox="0 0 720 150" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'JetBrains Mono',monospace;">
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#5B6169"/>
+          </marker>
+        </defs>
+        <g font-size="12" fill="#1C1F22">
+          <rect x="10" y="55" width="110" height="42" rx="4" fill="#F4F4EE" stroke="#1C1F22" stroke-width="1.5"/>
+          <text x="65" y="80" text-anchor="middle">Browser</text>
+
+          <rect x="160" y="55" width="90" height="42" rx="4" fill="#F4F4EE" stroke="#1C1F22" stroke-width="1.5"/>
+          <text x="205" y="80" text-anchor="middle">DNS</text>
+
+          <rect x="290" y="55" width="130" height="42" rx="4" fill="#F4F4EE" stroke="#1C1F22" stroke-width="1.5"/>
+          <text x="355" y="74" text-anchor="middle">CDN / proxy /</text>
+          <text x="355" y="88" text-anchor="middle">edge worker</text>
+
+          <rect x="460" y="55" width="120" height="42" rx="4" fill="#F4F4EE" stroke="#1C1F22" stroke-width="1.5"/>
+          <text x="520" y="80" text-anchor="middle">Origin server</text>
+
+          <rect x="620" y="55" width="90" height="42" rx="4" fill="#DCE7DD" stroke="#2F6F4E" stroke-width="1.5"/>
+          <text x="665" y="80" text-anchor="middle">HTML</text>
+
+          <line x1="120" y1="76" x2="156" y2="76" stroke="#5B6169" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="250" y1="76" x2="286" y2="76" stroke="#5B6169" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="420" y1="76" x2="456" y2="76" stroke="#5B6169" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="580" y1="76" x2="616" y2="76" stroke="#5B6169" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <text x="355" y="130" text-anchor="middle" fill="#5B6169" font-size="11">the origin (or an edge rule sitting in front of it) is where the response gets chosen</text>
+        </g>
+      </svg>
+      <figcaption>Fig. 1, the request path from browser to rendered page</figcaption>
+    </figure>
+
+    <p><strong>DNS</strong> (Domain Name System) is the internet's address book, it translates a domain name into the address responsible for handling it. It tells the browser where to send the request; it doesn't normally decide what the page contains.</p>
+
+    <div class="term-label">Sample HTTP request</div>
+    <div class="term">GET / HTTP/2
+Host: riverside-prague-cafe.example
+<span class="c3">User-Agent: Mozilla/5.0 ... Chrome/...</span>
+Accept: text/html
+Accept-Language: en-US,en;q=0.9</div>
+
+    <p>The request tells the server which page is wanted, what content types the browser accepts, which language is preferred, and, critically, what software claims to be making the request.</p>
+
+    <div class="term-label">Sample HTTP response</div>
+    <div class="term">HTTP/2 <span class="c1">200 OK</span>
+Content-Type: text/html
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;head&gt;&lt;title&gt;Example website&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;...&lt;/body&gt;&lt;/html&gt;</div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="log-entry">
+    <div class="log-num">Log 02 · The Identifying Header</div>
+    <h2>What is a User-Agent?</h2>
+    <p>The most important detail in this whole investigation is the <strong>User-Agent</strong>, a request header that tells the server what software claims to be visiting.</p>
+    <p>A normal Chrome browser sends something like <code class="mono">Mozilla/5.0 (...) Chrome/...</code>. Google's crawler identifies itself with a string containing <code class="mono">Googlebot/2.1</code>.</p>
+    <p>When Chrome DevTools is set to spoof the Googlebot User-Agent, the browser is simply saying <em>"treat me as Googlebot"</em>. It does not become a real Google crawler. That distinction matters: a more careful cloaking system would also verify the visitor's IP address actually belongs to Google. Here, changing the header string alone was enough to trigger the alternate page, which points to a fairly simple check running somewhere in the delivery chain:</p>
+
+    <div class="term-label">Illustrative logic (not recovered source)</div>
+    <div class="term">const userAgent = request.headers.get(<span class="c1">"User-Agent"</span>) || <span class="c1">""</span>;
+
+if (userAgent.includes(<span class="c1">"Googlebot"</span>)) {
+  return <span class="c2">alternatePage</span>;
+}
+
+return <span class="c1">cafePage</span>;</div>
+  </div>
+
+  <!-- PART 3 -->
+  <div class="log-entry">
+    <div class="log-num">Log 03 · Definition</div>
+    <h2>What Is User-Agent Cloaking?</h2>
+    <p>I find cloaking interesting because it attacks one of the assumptions we normally make about the web: that a URL represents a page. It doesn't necessarily. A URL can represent different things to different visitors, and sometimes the difference is deliberate.</p>
+    <p>Cloaking means serving substantially different content depending on who the server believes is visiting. Not every difference is malicious. A mobile layout, a translated page, or an authorized A/B test can all be legitimate. The important question is whether the essential subject stays the same.</p>
+    <p>A mobile café page and a desktop café page are still about the café. A Czech café page and an unrelated spam page are not the same subject wearing different clothes. They're two unrelated websites sharing one address.</p>
+  </div>
+
+  <!-- PART 4 -->
+  <div class="log-entry">
+    <div class="log-num">Log 04 · Motive</div>
+    <h2>Why Search-Engine Cloaking Is Valuable to SEO Spam Campaigns</h2>
+    <p>In this kind of compromised-site case, the goal is usually SEO spam. SEO spam operators benefit from things a brand-new domain doesn't have: age, real backlinks, a history in Google's index, an existing reputation, and regular crawler visits. Rather than building that authority from zero, this scheme borrowed the café's. The same pattern shows up just as often behind a pharmacy spam campaign, a crypto scam, or a page of counterfeit product listings. Whatever content the destination site is selling, it needs search visibility it hasn't earned on its own. In this case, the alternate content happened to promote online gambling.</p>
+
+    <div class="callout"><strong>The strategy in one line</strong>Ordinary visitor sees the real café, so the owner notices nothing. The search crawler sees the alternate content, so the search engine indexes those keywords under a trusted domain.</div>
+
+    <p>That asymmetry, invisible to humans, visible to crawlers, is the entire reason cloaking can run undiscovered for a long time.</p>
+    <p><strong>Where does parasite SEO fit in?</strong> Parasite SEO is a broader search-spam strategy built around exploiting the authority, trust, or existing visibility of another website or platform to rank content that would struggle to rank on its own. In a compromised-site campaign, <strong>user-agent cloaking can act as the delivery mechanism</strong>: normal visitors receive the legitimate site while search-engine crawlers receive the SEO spam. The two concepts overlap, but they describe different parts of the operation.</p>
+  </div>
+
+  <!-- PART 5 & 6 comparison -->
+  <div class="log-entry">
+    <div class="log-num">Log 05–06 · The Two Responses</div>
+    <h2>Reading the evidence side by side</h2>
+    <p>Comparing the raw HTML from both requests gives a clean technical baseline.</p>
+    <div class="table-scroll">
+    <table class="compare">
+      <tr><th>Property</th><th>Normal response</th><th>Googlebot User-Agent response</th></tr>
+      <tr><td>Language</td><td>Original language</td><td>Different language</td></tr>
+      <tr><td>Subject</td><td>Café, cinema, events</td><td>Online gambling</td></tr>
+      <tr><td>Title tag</td><td>Riverside Prague Cafe</td><td>Unauthorized Gambling Site</td></tr>
+      <tr><td>Platform</td><td>Website-builder, /ws/ asset paths</td><td>Cloned Shopify product page</td></tr>
+      <tr><td>Currency refs</td><td>, </td><td>SGD + a second, unrelated currency</td></tr>
+      <tr><td>Template origin</td><td>, </td><td>Singapore Apple retailer storefront</td></tr>
+      <tr><td>Content</td><td>Drinks, food, sponsors, Prague address</td><td>Structured data, FAQs, fake ratings, hidden links</td></tr>
+    </table>
+    </div>
+    <p>Note what this table doesn't include: a redirect. There is no 3xx status code anywhere in this flow, and the address bar never changes. The same 200-OK response simply contains different bytes depending on the request header.</p>
+  </div>
+
+  <!-- PART 7 -->
+  <div class="log-entry">
+    <div class="log-num">Log 07 · Where The Swap Happens</div>
+    <h2>Why the raw HTML response matters</h2>
+    <p>A page can be altered in two very different places, and the distinction changes the entire investigation:</p>
+    <div class="term"><span class="c3">Client-side:</span> normal HTML arrives → JavaScript runs in the browser → the visible page changes afterward
+
+<span class="c2">Server-side / edge-side:</span> request arrives → visitor is classified → the HTML itself is chosen before anything is sent</div>
+    <p>In this case, the alternate markup was already present in <span class="mono">Network → Document → Copy response</span>, meaning the browser never built the café page and then swapped it. The malicious document was sent across the wire as the very first response. That rules out a browser extension or a simple CSS trick, and points at the origin server, a reverse proxy, a CDN edge function, or a compromised hosting integration.</p>
+  </div>
+
+  <!-- PART 8 -->
+  <div class="log-entry">
+    <div class="log-num">Log 08 · Payload Anatomy</div>
+    <h2>The SEO Machinery Hidden Inside a Cloaked Response</h2>
+    <p>The cloaked page wasn't a crude spam banner, it was engineered with the same care a legitimate SEO team would use.</p>
+
+    <h3>Title & meta description</h3>
+    <p>The title becomes the clickable headline in search results; the description often becomes the preview text beneath it. Both were rewritten to promote the alternate content.</p>
+
+    <h3>Robots directive</h3>
+    <div class="term">&lt;meta name=<span class="c1">"robots"</span> content=<span class="c1">"index, follow, nosnippet"</span>&gt;</div>
+    <p><span class="mono">index</span> invites the page into Google's index. <span class="mono">follow</span> invites crawlers to follow its links. <span class="mono">nosnippet</span> asks Google not to show a normal text preview, The configuration allows the page to be indexed while suppressing a normal text snippet. Taken together with the gambling content and hidden links, the setup is consistent with an SEO-spam campaign.  </p>
+
+    <h3>Canonical URL</h3>
+    <div class="term">&lt;link rel=<span class="c1">"canonical"</span> href=<span class="c1">"https://riverside-prague-cafe.example/"</span> /&gt;</div>
+    <p>A canonical tag tells search engines which URL is the preferred version of a document. It is not a redirect. It is a hint. Here, the alternate document declared the café homepage as its canonical URL, attempting to associate the alternate content with that URL.</p>
+
+    <h3>Hreflang, AMP, Open Graph</h3>
+    <p>Several alternate-language and AMP references point to a suspicious subdomain. Open Graph and Twitter card tags were also present, which can control how a page appears when shared or previewed.</p>
+
+    <h3>JSON-LD structured data</h3>
+    <p>Structured data gives search engines machine-readable claims instead of making them infer everything visually. This page claimed to be a product, a brand, an organization, and an FAQ resource, complete with a fabricated 4.9 rating and named customer reviews. Search engines don't have to believe any of it, and misleading structured data can be ignored or penalized, but it's cheap to add and occasionally works.</p>
+  </div>
+
+  <!-- PART 10 - figure requested -->
+  <div class="log-entry">
+    <div class="log-num">Log 09 · The Backlink Network</div>
+    <h2>Hidden Links, SEO Spam, and the Parasite SEO Connection</h2>
+    <p>Buried in the page was a block styled <span class="mono">display:none</span>, invisible to a visitor, but still present in the HTML and still readable by a crawler:</p>
+    <div class="term">&lt;div style=<span class="c1">"display: none;"</span>&gt;
+  &lt;a href=<span class="c1">"[redacted-domain]"</span>&gt;example gambling anchor text&lt;/a&gt;
+  &lt;a href=<span class="c1">"[redacted-domain]"</span>&gt;another example gambling anchor text&lt;/a&gt;
+&lt;/div&gt;</div>
+    <p>The visible words inside a link are its <strong>anchor text</strong>. Repeating spam-flavored anchor text across many hidden links is an attempt to associate the destination domain with those exact search phrases. One compromised café rarely moves the needle alone, the technique only works at scale, across many unrelated compromised sites feeding the same destination:</p>
+
+    <figure>
+      <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'JetBrains Mono',monospace;">
+        <defs>
+          <marker id="arrow2" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="#A83B2E"/>
+          </marker>
+        </defs>
+        <g font-size="13" fill="#1C1F22">
+          <rect x="10" y="16" width="230" height="38" rx="4" fill="#DCE7DD" stroke="#2F6F4E" stroke-width="1.5"/>
+          <text x="125" y="40" text-anchor="middle">Compromised café site</text>
+
+          <rect x="10" y="81" width="230" height="38" rx="4" fill="#DCE7DD" stroke="#2F6F4E" stroke-width="1.5"/>
+          <text x="125" y="105" text-anchor="middle">Compromised school site</text>
+
+          <rect x="10" y="146" width="230" height="38" rx="4" fill="#DCE7DD" stroke="#2F6F4E" stroke-width="1.5"/>
+          <text x="125" y="170" text-anchor="middle">Compromised charity site</text>
+
+          <path d="M240,35 C 320,35 320,100 380,100" fill="none" stroke="#5B6169" stroke-width="1.5"/>
+          <path d="M240,100 L 380,100" fill="none" stroke="#5B6169" stroke-width="1.5"/>
+          <path d="M240,165 C 320,165 320,100 380,100" fill="none" stroke="#5B6169" stroke-width="1.5"/>
+
+          <line x1="380" y1="100" x2="420" y2="100" stroke="#A83B2E" stroke-width="2" marker-end="url(#arrow2)"/>
+
+          <rect x="428" y="76" width="200" height="48" rx="4" fill="#EDDAD5" stroke="#A83B2E" stroke-width="1.5"/>
+          <text x="528" y="96" text-anchor="middle" font-weight="700">Promoted</text>
+          <text x="528" y="112" text-anchor="middle" font-weight="700">spam domain</text>
+        </g>
+      </svg>
+      <figcaption>Fig. 2, many unrelated compromised domains, one destination benefiting from all of them</figcaption>
+    </figure>
+
+    <p>Modern search engines catch and discount plenty of hidden-link schemes, but only a fraction of the links need to survive, and only temporarily. At larger scale, the same technique can be repeated across many unrelated compromised domains.</p>
+  </div>
+
+  <!-- PART 11 -->
+  <div class="log-entry">
+    <div class="log-num">Log 10 · Template Origin</div>
+    <h2>Why is there so much Shopify and Apple code?</h2>
+    <p>The alternate page referenced <span class="mono">example-store.myshopify.com</span> and <span class="mono">example-retailer.example</span>, and even carried a leftover product path for an iPhone listing. That reveals the likely build process:</p>
+    <ol>
+      <li>Copy an existing Shopify product page from another storefront</li>
+      <li>Mirror its HTML, CSS, and JavaScript wholesale</li>
+      <li>Swap the headings, images, and product data for the alternate content</li>
+      <li>Keep the rest of the structure, Shop Pay code, trade-in terms, store-locator widgets, untouched</li>
+      <li>Serve the result from the compromised café domain</li>
+    </ol>
+    <p>Those Shopify and Cloudflare scripts appear to be inherited template components. Their presence alone doesn't tell us where the compromise lives. They're inherited scaffolding from the page that got cloned. This is worth noting so an investigation doesn't waste time chasing the wrong script.</p>
+  </div>
+
+  <!-- PART 12 -->
+  <div class="log-entry">
+    <div class="log-num">Log 11 · Why It Works</div>
+    <h2>The mechanics of staying invisible</h2>
+    <ul>
+      <li><strong>The owner sees the normal website.</strong> Nothing looks broken when they check.</li>
+      <li><strong>Customers see the normal website too.</strong> Direct visitors rarely trigger the alternate path, so complaints stay quiet.</li>
+      <li><strong>Basic uptime monitors can miss it.</strong> Most only check for a 200 response, which this always returns.</li>
+      <li><strong>Crawlers get everything upfront.</strong> The alternate title, description, structured data, and links arrive in the very first response, no JavaScript required.</li>
+      <li><strong>Trust is borrowed, not built.</strong> An established local domain gets crawled and trusted faster than a brand-new spam domain ever could.</li>
+    </ul>
+  </div>
+
+  <!-- PART 13 -->
+  <div class="log-entry">
+    <div class="log-num">Log 12 · Reproducing The Test</div>
+    <h2>How to Detect User-Agent Cloaking on Your Website</h2>
+    <ol class="steps">
+      <li><strong>Open DevTools.</strong> Press <span class="mono">F12</span> or <span class="mono">Ctrl+Shift+I</span>, then select the Network tab.</li>
+      <li><strong>Start clean.</strong> Enable "Disable cache," click "Clear network log."</li>
+      <li><strong>Record the normal version.</strong> Hard-reload with <span class="mono">Ctrl+Shift+R</span>, select the Doc filter, click the main <span class="mono">document</span> request, right-click → Copy → Copy response, save as <span class="mono">normal-homepage.html</span>.</li>
+      <li><strong>Spoof the User-Agent.</strong> Open the DevTools menu → More tools → Network conditions → uncheck "Use browser default" → choose Googlebot.</li>
+      <li><strong>Record the Googlebot User-Agent version.</strong> Clear the log again, reload, confirm the request header now shows <span class="mono">Googlebot/2.1</span>, then copy the response as <span class="mono">googlebot-homepage.html</span>.</li>
+      <li><strong>Diff the two files.</strong> Search both for <span class="mono">&lt;title&gt;</span>, <span class="mono">meta name="description"</span>, <span class="mono">canonical</span>, <span class="mono">robots</span>, <span class="mono">application/ld+json</span>, <span class="mono">display: none</span>, and any unfamiliar outbound domains.</li>
+    </ol>
+    <p>A meaningful difference in topic, language, or destination links between the two files is a strong warning sign. If you want to automate the comparison, <a href="https://cloaker-checker.colinjanoshegyi.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Cloaker Checker can scan your website for user-agent cloaking</a>.</p>
+  </div>
+
+  <!-- PART 14 -->
+  <div class="log-entry">
+    <div class="log-num">Log 13 · Standard Of Evidence</div>
+    <h2>What makes the strongest case</h2>
+    <p>Not a screenshot of the visible page, the combination of the same URL, different User-Agent headers, two materially different raw responses, and alternate content that was already present before anything rendered. A solid evidence package includes a normal-browser HAR, a Googlebot HAR, both raw HTML files, header screenshots, timestamps, DNS records, and any CDN worker or rule configuration you can access.</p>
+    <p class="callout"><strong>A note on HAR files</strong>HTTP Archive exports can contain sensitive information, cookies, tokens, session data. Sanitize before sharing.</p>
+  </div>
+
+  <!-- PART 15/16 -->
+  <div class="log-entry">
+    <div class="log-num">Log 14 · Conclusions</div>
+    <h2>What this investigation proves, and what it doesn't</h2>
+
+    <div class="table-scroll">
+    <table>
+      <tr><th>Established</th><th>Detail</th></tr>
+      <tr><td>Duality</td><td>The same URL served two unrelated websites, a Czech café and an unrelated gambling landing page.</td></tr>
+      <tr><td>Trigger</td><td>Changing the User-Agent to a Googlebot string reliably triggered the alternate response. This demonstrates User-Agent-based branching, but does not by itself prove that a real Googlebot request was involved.</td></tr>
+      <tr><td>Delivery point</td><td>The alternate HTML was server-delivered, present in the raw response before any rendering.</td></tr>
+      <tr><td>Intent</td><td>The page was engineered for search engines, indexing directives, canonical claims, structured data, hidden links.</td></tr>
+      <tr><td>Origin</td><td>The alternate page contains extensive remnants of a Shopify storefront, suggesting that the template or source code was copied or adapted.</td></tr>
+      <tr><td>Interpretation</td><td>The Cloudflare and Shopify scripts appear to be inherited template components. Their presence alone does not establish where the compromise lives.</td></tr>
+    </table>
+    </div>
+
+    <div class="warn">
+      <strong>Not yet established</strong>
+      <p style="margin-bottom:8px">The exact loader that made the decision, a Cloudflare Worker, an .htaccess rule, an Nginx config, a compromised CMS account, a stolen API key, is still unknown from this evidence alone. Nor does this prove who did it, when it began, whether Bingbot is also targeted, or whether the behavior changes by referrer or geography.</p>
+      <p style="margin-bottom:0">Proving the malicious page exists is not the same as proving where the compromise lives.</p>
+    </div>
+  </div>
+
+  <!-- PART 17 -->
+  <div class="log-entry">
+    <div class="log-num">Log 15 · Response Playbook</div>
+    <h2>If this happens to a site you own</h2>
+    <h3>Preserve evidence first</h3>
+    <p>Save HAR files, raw HTML, screenshots, logs, DNS records, and worker configurations with timestamps before changing anything.</p>
+    <h3>Walk the delivery chain</h3>
+    <div class="term">DNS → CDN / edge worker → reverse proxy → hosting platform → application → files & database</div>
+    <p>Check each layer in order, Cloudflare Workers, Snippets, redirect and transform rules, origin rules, DNS records, and account audit logs are the most common hiding spots.</p>
+    <h3>Audit the server itself</h3>
+    <p>Recently modified files, <span class="mono">.htaccess</span>, Nginx config, unknown admin accounts, deployment history, and unfamiliar plugins or integrations.</p>
+    <h3>Rotate everything</h3>
+    <p>Hosting passwords, CDN passwords, API tokens, FTP/SFTP credentials, CMS admin accounts, email passwords, deployment keys, and turn on multi-factor authentication everywhere.</p>
+    <h3>Remove the routing logic, not just the page</h3>
+    <p>Deleting the alternate HTML alone won't help if a worker or server rule is generating it dynamically, it will simply return.</p>
+    <h3>Clean up with search engines</h3>
+    <p>Verify through Search Console, inspect affected URLs, check for manual actions, request recrawling once fixed, and file for reconsideration if needed.</p>
+  </div>
+
+  <div class="closing">
+    <h2>The one-sentence lesson</h2>
+    <p>A website can look completely normal to its owner while serving something else entirely to search engines, a visual check from a browser is not an audit.</p>
+    <p>Security and SEO reviews should periodically compare responses across a normal browser, Googlebot, Bingbot, different referrers, and different countries, and monitor more than uptime: titles, content hashes, response sizes, languages, new canonical tags, and any crawler-specific branching in the response.</p>
+    <p>The internet doesn't always serve everyone the same truth. Sometimes the only way to understand what a website really is, is to ask it from someone else's perspective.</p>
+  </div>
+
+  <div class="cta-scan" id="scan-my-website">
+    <span class="stamp">Try It Yourself</span>
+    <h2>Can you trust what a search crawler sees?</h2>
+    <p>Everything in this report was discovered by comparing responses sent to different visitors.</p>
+    <p>Don't want to repeat these steps manually? Scan your website and compare what Googlebot and normal visitors receive, automatically.</p>
+    <a href="https://cloaker-checker.colinjanoshegyi.com/" class="scan-btn" target="_blank" rel="noopener noreferrer">Scan my website →</a>
+  </div>
+
+</main>
+
+<footer id="site-footer" role="contentinfo">
+  <p class="footer-disclaimer">Field Report · SEO Forensics · for educational and defensive use only. Sensitive hidden-link destinations redacted.</p>
+  <div class="footer-site-row">
+    <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
+    <p><a href="https://colinjanoshegyi.com/">← Back to main site</a></p>
+  </div>
+</footer>
+
+<a href="https://cloaker-checker.colinjanoshegyi.com/" class="scan-fab" target="_blank" rel="noopener noreferrer">🔍 Scan Website</a>
+
+<script>
+  var siteHeader = document.getElementById('site-header');
+  var progressBar = document.getElementById('progress');
+  function onScroll(){
+    siteHeader.classList.toggle('scrolled', window.scrollY > 50);
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+</body>
+</html>

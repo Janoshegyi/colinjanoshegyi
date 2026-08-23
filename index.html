@@ -518,6 +518,186 @@
       color: var(--ink);
     }
 
+    /* ─── Launch announcement (Cloaker Checker) ─────────────── */
+    .launch-section { padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; }
+    /* Trim only the sides of #work/#contact that face this section, so the
+       site's normal 14vh section rhythm is untouched everywhere else. */
+    #work { padding-bottom: 3rem; }
+    #contact { padding-top: 3rem; }
+
+    .launch-panel {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 5rem 4rem;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .launch-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8C2E24;
+      margin-bottom: 1.5rem;
+    }
+    .launch-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #8C2E24;
+      animation: launch-pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes launch-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(140,46,36,0.35); }
+      50%      { box-shadow: 0 0 0 6px rgba(140,46,36,0); }
+    }
+
+    .launch-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.1rem, 3.6vw, 3rem);
+      letter-spacing: -0.01em;
+      line-height: 1.05;
+      margin-bottom: 1.75rem;
+    }
+    .launch-title .clip { overflow: hidden; display: block; }
+    .launch-title .clip span { display: block; transform: translateY(105%); }
+
+    .launch-question {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--ink);
+      max-width: 46ch;
+      margin-bottom: 1rem;
+    }
+
+    .launch-body {
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.8;
+      max-width: 46ch;
+      margin-bottom: 2.25rem;
+    }
+
+    .launch-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #8C2E24;
+      color: var(--white) !important;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 1.75rem;
+      border-radius: 100px;
+      transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+    }
+    .launch-cta:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 24px rgba(140,46,36,0.28);
+    }
+    .launch-cta-arrow { display: inline-block; transition: transform 0.3s; }
+    .launch-cta:hover .launch-cta-arrow { transform: translate(3px, -3px); }
+
+    .launch-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+    .launch-tags span {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.35rem 0.85rem;
+    }
+
+    .launch-preview { display: flex; justify-content: center; }
+    .preview-card {
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.75rem 2.5rem;
+      background: var(--near-white);
+    }
+    .preview-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.4rem;
+    }
+    .preview-stamp {
+      display: inline-block;
+      transform: rotate(-2deg);
+      border: 2px solid #8C2E24;
+      border-radius: 4px;
+      color: #8C2E24;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+      padding: 0.75rem 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .preview-meter-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 1.4rem;
+    }
+    .preview-meter {
+      flex: 1;
+      height: 6px;
+      border-radius: 100px;
+      background: var(--faint);
+      overflow: hidden;
+    }
+    .preview-meter-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 100px;
+      background: #8C2E24;
+      transition: width 1.4s var(--ease-out-expo);
+    }
+    .preview-pct {
+      font-family: var(--sans);
+      font-weight: 500;
+      color: var(--ink);
+      font-size: 0.92rem;
+    }
+    .preview-finding {
+      font-size: 0.78rem;
+      color: var(--mid);
+      line-height: 1.7;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .preview-finding span { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .launch-panel {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.75rem;
+      }
+    }
+
     /* CV Section */
     .cv-section {
       margin-top: 8rem;
@@ -1050,6 +1230,40 @@
     </div>
   </section>
 
+  <section id="launch" class="section launch-section" aria-label="New project: Cloaker Checker">
+    <div class="launch-panel">
+      <div class="launch-copy">
+        <p class="launch-eyebrow"><span class="launch-dot"></span>New project</p>
+        <h2 class="launch-title">
+          <span class="clip"><span>Cloaker</span></span>
+          <span class="clip"><span>Checker</span></span>
+        </h2>
+        <p class="launch-question">Is your website showing Google something it isn't showing you?</p>
+        <p class="launch-body">I built a lightweight diagnostic tool that compares how a website responds to different crawlers and looks for signals of potential cloaking.</p>
+        <a href="https://cloaker-checker.colinjanoshegyi.com" class="launch-cta">Try Cloaker Checker <span class="launch-cta-arrow">→</span></a>
+        <div class="launch-tags">
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>SEO</span>
+          <span>Web Security</span>
+        </div>
+      </div>
+
+      <div class="launch-preview" aria-hidden="true">
+        <div class="preview-card">
+          <p class="preview-label">Investigator's Assessment</p>
+          <div class="preview-stamp">Cloaking Suspected</div>
+          <div class="preview-meter-row">
+            <span>Confidence</span>
+            <div class="preview-meter"><div class="preview-meter-fill" data-target="92"></div></div>
+            <span class="preview-pct"><span class="preview-pct-num">0</span>%</span>
+          </div>
+          <p class="preview-finding">— <span>214 additional outbound links</span> detected in the crawler response</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <section id="contact" class="section" aria-label="Contact">
   <div class="contact-inner">
 
@@ -1236,6 +1450,40 @@
       scrollTrigger: {
         trigger: '.work-grid',
         start: 'top 80%'
+      }
+    });
+
+    /* ─── 11b. LAUNCH ANNOUNCEMENT (Cloaker Checker) ────────── */
+    gsap.to('.launch-panel', {
+      opacity: 1, y: 0,
+      duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: '.launch-panel', start: 'top 82%' }
+    });
+
+    gsap.to('.launch-title .clip span', {
+      y: '0%',
+      duration: 1, ease: 'power4.out',
+      stagger: 0.12,
+      scrollTrigger: { trigger: '.launch-title', start: 'top 85%' }
+    });
+
+    ScrollTrigger.create({
+      trigger: '.preview-card',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        const fill = document.querySelector('.preview-meter-fill');
+        const num = document.querySelector('.preview-pct-num');
+        const target = parseInt(fill.dataset.target, 10);
+        fill.style.width = target + '%';
+        gsap.to({ val: 0 }, {
+          val: target,
+          duration: 1.4,
+          ease: 'power2.out',
+          onUpdate: function () {
+            num.textContent = Math.round(this.targets()[0].val);
+          }
+        });
       }
     });
 
