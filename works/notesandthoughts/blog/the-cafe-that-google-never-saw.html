@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +22,8 @@
 <link rel="canonical" href="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw">
 <link rel="alternate" hreflang="en" href="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/pdf/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/pdf/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/pdf/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/pdf/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/pdf/favicon-16x16.png">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw">
 <meta property="og:title" content="The Café That Google Never Saw: User-Agent Cloaking & SEO Spam">
@@ -101,6 +102,17 @@
       "articleSection": "SEO Forensics",
       "genre": ["Technical SEO", "Cybersecurity", "SEO Case Study"]
     },
+      ,{
+        "@type":"FAQPage",
+        "@id":"https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw#faq",
+        "mainEntity":[
+          {"@type":"Question","name":"What is user-agent cloaking?","acceptedAnswer":{"@type":"Answer","text":"User-agent cloaking is when a website serves different content depending on the User-Agent making the request. In SEO abuse, a compromised site can show normal content to visitors while serving spam or manipulated content to search crawlers."}},
+          {"@type":"Question","name":"What is parasite SEO?","acceptedAnswer":{"@type":"Answer","text":"Parasite SEO is a strategy that uses the authority, trust, backlinks, or existing visibility of another website or platform to help content rank. On a compromised website, cloaking can be used to hide that content from ordinary visitors."}},
+          {"@type":"Question","name":"How can I detect SEO cloaking?","acceptedAnswer":{"@type":"Answer","text":"Compare the response returned to a normal browser with the response returned to a crawler User-Agent. Differences in titles, meta descriptions, canonicals, robots directives, structured data, language, content, or outbound links can indicate cloaking."}},
+          {"@type":"Question","name":"Why is cloaking also a web security problem?","acceptedAnswer":{"@type":"Answer","text":"Cloaking can be a symptom of a compromised website, application, server rule, CDN rule, reverse proxy, or account. A normal visual check may miss the problem because the malicious response is selectively delivered to crawlers."}},
+          {"@type":"Question","name":"What is the difference between SEO cloaking and parasite SEO?","acceptedAnswer":{"@type":"Answer","text":"Cloaking describes how different content is delivered to different requesters. Parasite SEO describes the broader strategy of exploiting an established site's authority or visibility to help unwanted content rank."}}
+        ]
+      },
     {
       "@type": "BreadcrumbList",
       "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-cafe-that-google-never-saw#breadcrumb",
@@ -569,7 +581,52 @@
     .masthead, .container, #site-footer{ padding-left: 20px; padding-right: 20px; }
     .cta-scan{ padding: 24px 18px; }
   }
-</style>
+
+    /* Article jump navigation */
+    .article-jump{
+      max-width:900px; margin:28px auto 34px; padding:0 32px;
+      display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+      font-family:'JetBrains Mono',monospace;
+    }
+    .jump-label{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7A8087; margin-right:4px;}
+    .article-jump a{
+      display:inline-flex; align-items:center; min-height:32px; padding:6px 11px;
+      border:1px solid #D5D6D0; border-radius:999px; background:#F4F4EE;
+      color:#30343A; text-decoration:none; font-size:11px; letter-spacing:.02em;
+      transition:background .2s ease,border-color .2s ease,transform .2s ease,color .2s ease;
+    }
+    .article-jump a:hover,.article-jump a:focus-visible{background:#E8E8E1; border-color:#9EA3A5; color:#111417; transform:translateY(-1px); outline:none;}
+    .anchor-target{display:block; position:relative; top:-90px; visibility:hidden; height:0;}
+
+    /* FAQ accordion */
+    .faq-section{max-width:900px; margin:72px auto 56px; padding:0 32px;}
+    .faq-list{margin-top:24px; border-top:1px solid #D5D6D0;}
+    .faq-item{border-bottom:1px solid #D5D6D0;}
+    .faq-item summary{
+      list-style:none; cursor:pointer; position:relative; padding:20px 42px 20px 0;
+      font-family:'JetBrains Mono',monospace; font-size:14px; line-height:1.5; color:#1C1F22;
+    }
+    .faq-item summary::-webkit-details-marker{display:none;}
+    .faq-item summary::after{
+      content:'+'; position:absolute; right:4px; top:50%; transform:translateY(-50%);
+      font-family:Arial,sans-serif; font-size:22px; font-weight:300; color:#5B6169;
+      transition:transform .2s ease;
+    }
+    .faq-item[open] summary::after{content:'−';}
+    .faq-item summary:focus-visible{outline:2px solid #5B6169; outline-offset:4px;}
+    .faq-answer{padding:0 42px 20px 0; max-width:760px;}
+    .faq-answer p{margin:0; color:#4B5056;}
+
+    @media (max-width:640px){
+      .article-jump{margin:22px auto 30px; padding:0 20px; gap:7px;}
+      .jump-label{width:100%; margin-bottom:2px;}
+      .article-jump a{font-size:10px; min-height:30px; padding:5px 9px;}
+      .faq-section{margin:54px auto 42px; padding:0 20px;}
+      .faq-item summary{padding:17px 34px 17px 0; font-size:12px;}
+      .faq-answer{padding:0 34px 18px 0; font-size:14px; line-height:1.65;}
+    }
+
+  </style>
 </head>
 <body>
 
@@ -592,7 +649,7 @@
   </div>
   <h1 class="title">The Café That Google Never Saw: User-Agent Cloaking, SEO Spam, and Parasite SEO</h1>
   <p class="subhead">A technical SEO field report on user-agent cloaking, showing how a compromised website served Googlebot a completely different page and how to detect crawler-specific SEO spam.</p>
-  <p class="article-meta"><span class="mono">By Colin John</span> · Published August 23, 2026 · Updated August 23, 2026 · SEO Forensics</p>
+  <p class="article-meta"><span class="mono">By Colin John</span> · Published August 23, 2026 · Updated August 26, 2026 · SEO Forensics</p>
 </div>
 
 <main class="container">
@@ -627,7 +684,18 @@
 
   <hr class="div">
 
+  <nav class="article-jump" aria-label="Jump to section">
+    <span class="jump-label">Jump to</span>
+    <a href="#cloaking">Cloaking</a>
+    <a href="#evidence">Evidence</a>
+    <a href="#seo-machinery">SEO machinery</a>
+    <a href="#detection">Detection</a>
+    <a href="#response">Response</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
   <!-- PART 1 -->
+  <span id="cloaking" class="anchor-target" aria-hidden="true"></span>
   <div class="log-entry">
     <div class="log-num">Log 01 · Foundations</div>
     <h2>What happens when you visit a website?</h2>
@@ -728,6 +796,7 @@ return <span class="c1">cafePage</span>;</div>
   </div>
 
   <!-- PART 5 & 6 comparison -->
+  <span id="evidence" class="anchor-target" aria-hidden="true"></span>
   <div class="log-entry">
     <div class="log-num">Log 05–06 · The Two Responses</div>
     <h2>Reading the evidence side by side</h2>
@@ -759,6 +828,7 @@ return <span class="c1">cafePage</span>;</div>
   </div>
 
   <!-- PART 8 -->
+  <span id="seo-machinery" class="anchor-target" aria-hidden="true"></span>
   <div class="log-entry">
     <div class="log-num">Log 08 · Payload Anatomy</div>
     <h2>The SEO Machinery Hidden Inside a Cloaked Response</h2>
@@ -828,6 +898,7 @@ return <span class="c1">cafePage</span>;</div>
   </div>
 
   <!-- PART 11 -->
+  <span id="detection" class="anchor-target" aria-hidden="true"></span>
   <div class="log-entry">
     <div class="log-num">Log 10 · Template Origin</div>
     <h2>Why is there so much Shopify and Apple code?</h2>
@@ -871,6 +942,7 @@ return <span class="c1">cafePage</span>;</div>
   </div>
 
   <!-- PART 14 -->
+  <span id="response" class="anchor-target" aria-hidden="true"></span>
   <div class="log-entry">
     <div class="log-num">Log 13 · Standard Of Evidence</div>
     <h2>What makes the strongest case</h2>
@@ -927,6 +999,34 @@ return <span class="c1">cafePage</span>;</div>
     <p>Security and SEO reviews should periodically compare responses across a normal browser, Googlebot, Bingbot, different referrers, and different countries, and monitor more than uptime: titles, content hashes, response sizes, languages, new canonical tags, and any crawler-specific branching in the response.</p>
     <p>The internet doesn't always serve everyone the same truth. Sometimes the only way to understand what a website really is, is to ask it from someone else's perspective.</p>
   </div>
+
+
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="log-num">FAQ · QUICK ANSWERS</div>
+    <h2 id="faq-title">Cloaking, Parasite SEO, and SEO Security FAQ</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is user-agent cloaking?</summary>
+        <div class="faq-answer"><p>User-agent cloaking is when a website serves different content depending on the User-Agent making the request. In SEO abuse, a compromised site can show normal content to visitors while serving spam or manipulated content to Googlebot and other crawlers.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is parasite SEO?</summary>
+        <div class="faq-answer"><p>Parasite SEO is a strategy that uses the authority, trust, backlinks, or existing visibility of another website or platform to help content rank. On a compromised website, cloaking can be used to hide that content from ordinary visitors.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>How can I detect SEO cloaking?</summary>
+        <div class="faq-answer"><p>Compare the response returned to a normal browser with the response returned to a crawler User-Agent. Differences in titles, meta descriptions, canonicals, robots directives, structured data, language, content, or outbound links can indicate cloaking.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Why is cloaking also a web security problem?</summary>
+        <div class="faq-answer"><p>Cloaking can be a symptom of a compromised website, application, server rule, CDN rule, reverse proxy, or account. A normal visual check may miss the problem because the malicious response is selectively delivered to crawlers.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the difference between SEO cloaking and parasite SEO?</summary>
+        <div class="faq-answer"><p>Cloaking describes how different content is delivered to different requesters. Parasite SEO describes the broader strategy of exploiting an established site's authority or visibility to help unwanted content rank.</p></div>
+      </details>
+    </div>
+  </section>
 
   <div class="cta-scan" id="scan-my-website">
     <span class="stamp">Try It Yourself</span>
