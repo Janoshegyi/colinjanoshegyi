@@ -33,7 +33,7 @@
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://colinjanoshegyi.com/#colin-john",
+        "@id": "https://colinjanoshegyi.com/#person",
         "name": "Colin John",
         "alternateName": ["Colin Janoshegyi", "Colin John Janoshegyi"],
         "url": "https://colinjanoshegyi.com/",
@@ -65,8 +65,8 @@
         "description": "An AI-powered, personalized fragrance discovery and layering concept created for Valentino as part of L'Oréal Brandstorm 2026, the EOCCS Certified Youth Innovation Competition.",
         "url": "https://colinjanoshegyi.com/works/brandstorm",
         "image": "https://colinjanoshegyi.com/assets/preview.png",
-        "author": { "@id": "https://colinjanoshegyi.com/#colin-john" },
-        "creator": { "@id": "https://colinjanoshegyi.com/#colin-john" },
+        "author": { "@id": "https://colinjanoshegyi.com/#person" },
+        "creator": { "@id": "https://colinjanoshegyi.com/#person" },
         "about": [
           { "@id": "https://www.loreal.com/#organization" },
           { "@id": "https://colinjanoshegyi.com/works/brandstorm#brand-valentino" }
@@ -84,12 +84,12 @@
         "url": "https://colinjanoshegyi.com/works/brandstorm",
         "name": "L'Oréal Brandstorm 2026 – Born in Roma | Colin John",
         "description": "Born in Roma — an AI-powered fragrance personalization ecosystem for Valentino, created by Colin John (Colin Janoshegyi) for L'Oréal Brandstorm 2026.",
-        "author": { "@id": "https://colinjanoshegyi.com/#colin-john" },
+        "author": { "@id": "https://colinjanoshegyi.com/#person" },
         "mainEntity": { "@id": "https://colinjanoshegyi.com/works/brandstorm#creativework" },
         "breadcrumb": {
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Colin Janoshegyi", "item": "https://colinjanoshegyi.com/" },
+            { "@type": "ListItem", "position": 1, "name": "Colin John", "item": "https://colinjanoshegyi.com/" },
             { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://colinjanoshegyi.com/works/" },
             { "@type": "ListItem", "position": 3, "name": "L'Oréal Brandstorm 2026", "item": "https://colinjanoshegyi.com/works/brandstorm" }
           ]
@@ -549,7 +549,6 @@
 
 <section class="bs-section" aria-label="L'Oréal Brandstorm 2026">
 
-  <!-- Header -->
   <div class="bs-header">
     <p class="bs-eyebrow">L'Oréal Brandstorm 2026</p>
     <h1 class="bs-title">Born in Roma</h1>
@@ -562,7 +561,6 @@
     </p>
   </div>
 
-  <!-- Product Image 1 -->
   <div class="bs-product-frame">
     <div class="bs-product-glow"></div>
     <img
@@ -574,7 +572,6 @@
     />
   </div>
 
-  <!-- Story -->
   <div class="bs-story">
 
     <p>I signed up for L'Oréal Brandstorm a couple of months before it began. If I'm being completely honest, the free Adobe Express trial caught my attention first. The competition itself had been sitting in the back of my mind ever since my E-commerce professor mentioned it in class, so I figured I might as well register.</p>
@@ -645,7 +642,6 @@
 
   </div>
 
-  <!-- Product Image 2 -->
   <div class="bs-product-frame">
     <div class="bs-product-glow"></div>
     <img
@@ -657,7 +653,6 @@
     />
   </div>
 
-  <!-- Story continued -->
   <div class="bs-story">
 
     <h2 class="bs-story-heading">The Result</h2>
@@ -686,7 +681,6 @@
 
   </div>
 
-  <!-- Certificate -->
   <div class="bs-cert-section">
     <p class="bs-cert-eyebrow">Certificate of Recognition</p>
     <h2 class="bs-cert-heading">L'Oréal Brandstorm 2026</h2>
@@ -717,8 +711,6 @@
         Download Certificate
       </a>
     </div>
-
-    <!-- Colophon -->
     <div class="bs-colophon">
       <div class="bs-colophon-brand">
         <div class="bs-colophon-loreal">L'ORÉAL</div>
@@ -730,11 +722,22 @@
         <div class="bs-colophon-name-sub">Valentino</div>
       </div>
     </div>
-
   </div>
-
 </section>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://colinjanoshegyi.com/#website",
+  "url": "https://colinjanoshegyi.com/",
+  "name": "Colin John",
+  "alternateName": "Colin Janoshegyi",
+  "publisher": {
+    "@id": "https://colinjanoshegyi.com/#person"
+  },
+  "inLanguage": "en"
+}
+</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

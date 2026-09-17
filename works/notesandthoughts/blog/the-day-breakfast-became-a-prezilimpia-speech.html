@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -652,12 +653,7 @@
       },
 
       "publisher": {
-        "@type": "Organization",
-        "name": "Colin John",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://colinjanoshegyi.com/assets/logo.png"
-        }
+        "@id": "https://colinjanoshegyi.com/#person"
       },
 
       "mainEntityOfPage": {
@@ -711,7 +707,12 @@
       "@type": "Person",
       "@id": "https://colinjanoshegyi.com/#person",
       "name": "Colin John",
-      "alternateName": "Colin Janoshegyi",
+      "alternateName": [
+        "Colin Janoshegyi",
+        "Colin John Janoshegyi"
+      ],
+      "givenName": "Colin",
+      "familyName": "John",
       "url": "https://colinjanoshegyi.com",
       "award": [
         "Winner, Prezilimpia 2025",
@@ -778,11 +779,12 @@
 
     {
       "@type": "BreadcrumbList",
+      "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-day-breakfast-became-a-prezilimpia-speech#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Colin John",
+          "name": "Home",
           "item": "https://colinjanoshegyi.com/"
         },
         {
@@ -801,6 +803,20 @@
     }
 
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://colinjanoshegyi.com/#website",
+  "url": "https://colinjanoshegyi.com/",
+  "name": "Colin John",
+  "alternateName": "Colin Janoshegyi",
+  "publisher": {
+    "@id": "https://colinjanoshegyi.com/#person"
+  },
+  "inLanguage": "en"
 }
 </script>
 </body>

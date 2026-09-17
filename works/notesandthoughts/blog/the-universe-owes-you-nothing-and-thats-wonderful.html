@@ -36,7 +36,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -417,64 +416,85 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "The Universe Owes You Nothing (And That's Wonderful)",
-  "description": "A personal essay on grief, love, loss, and absurdism. What happens when the first person you want to tell something to is no longer there?",
-  "image": "https://colinjanoshegyi.com/assets/preview.png",
-  "datePublished": "2026-05-26",
-  "dateModified": "2026-05-26",
-  "timeRequired": "PT7M",
-
-  "author": {
-    "@type": "Person",
-    "name": "Colin John",
-    "url": "https://colinjanoshegyi.com",
-    "description": "Writer, SEO specialist, and Business Administration graduate.",
-    "sameAs": [
-      "https://www.linkedin.com/in/your-linkedin-profile/"
-    ]
-  },
-
-  "publisher": {
-    "@type": "Organization",
-    "name": "Colin John",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://colinjanoshegyi.com/assets/logo.png"
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-universe-owes-you-nothing-and-thats-wonderful#article",
+      "headline": "The Universe Owes You Nothing (And That's Wonderful)",
+      "description": "A personal essay on grief, love, loss, and absurdism. What happens when the first person you want to tell something to is no longer there?",
+      "image": "https://colinjanoshegyi.com/assets/preview.png",
+      "datePublished": "2026-05-26",
+      "dateModified": "2026-05-26",
+      "timeRequired": "PT7M",
+      "author": {
+        "@id": "https://colinjanoshegyi.com/#person"
+      },
+      "publisher": {
+        "@id": "https://colinjanoshegyi.com/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-universe-owes-you-nothing-and-thats-wonderful"
+      },
+      "isPartOf": {
+        "@id": "https://colinjanoshegyi.com/works/notesandthoughts/#blog"
+      },
+      "articleSection": "Philosophy",
+      "keywords": [
+        "philosophy",
+        "grief",
+        "love",
+        "loss",
+        "meaning",
+        "personal essay",
+        "absurdism",
+        "letting go",
+        "human experience",
+        "love and loss",
+        "meaning of life"
+      ],
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".article-title",
+          ".article-subtitle",
+          ".article-body p:first-of-type"
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://colinjanoshegyi.com/#person",
+      "name": "Colin John",
+      "alternateName": [
+        "Colin Janoshegyi",
+        "Colin John Janoshegyi"
+      ],
+      "description": "Writer, SEO specialist, and Business Administration graduate.",
+      "sameAs": [
+        "https://colinjanoshegyi.com/",
+        "https://www.linkedin.com/in/colin-john/",
+        "https://github.com/Janoshegyi",
+        "https://www.goodreads.com/janoshegyi"
+      ]
     }
-  },
-
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/the-universe-owes-you-nothing-and-thats-wonderful"
-  },
-
-  "articleSection": "Philosophy",
-
-  "keywords": [
-    "philosophy",
-    "grief",
-    "love",
-    "loss",
-    "meaning",
-    "personal essay",
-    "absurdism",
-    "letting go",
-    "human experience",
-    "love and loss",
-    "meaning of life"
-  ],
-
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-      ".article-title",
-      ".article-subtitle",
-      ".article-body p:first-of-type"
-    ]
-  }
+  ]
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://colinjanoshegyi.com/#website",
+  "url": "https://colinjanoshegyi.com/",
+  "name": "Colin John",
+  "alternateName": "Colin Janoshegyi",
+  "publisher": {
+    "@id": "https://colinjanoshegyi.com/#person"
+  },
+  "inLanguage": "en"
+}
+</script>
 </body>
 </html>
