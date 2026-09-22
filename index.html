@@ -996,6 +996,15 @@
       color: var(--mid);
       letter-spacing: 0.06em;
     }
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    footer a {
+      text-decoration: none;
+    }
 
     #progress {
       position: fixed;
@@ -1307,8 +1316,10 @@
 </section>
 
   <footer role="contentinfo">
-    <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
-    <p><a href="/ai-instructions">AI Instructions</a></p>
+    <div class="footer-left">
+      <p>© 2026 Colin John (Janoshegyi). <br> All rights reserved.</p>
+      <p><a href="/ai-instructions">AI Instructions</a></p>
+    </div>
     <p>Made with intention.</p>
   </footer>
 
