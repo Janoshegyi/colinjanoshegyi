@@ -533,9 +533,200 @@
     @media (prefers-reduced-motion: reduce) {
       .bs-ring, .bs-glow { animation: none; }
     }
+
+    /* ─── Reading progress bar ──────────────────────────────── */
+    #bsProgress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      z-index: 400;
+      transition: width 0.1s ease-out;
+    }
+
+    /* ─── Scroll-in header ──────────────────────────────────── */
+    .bs-scroll-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 250;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: var(--bs-topbar-height);
+      padding: 0 6vw;
+      background: rgba(17,17,17,0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      transform: translateY(-100%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bs-scroll-header.visible { transform: translateY(0); }
+
+    .bs-scroll-header-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    /* Desktop: header is always on, and gains the nav links */
+    .bs-scroll-header-nav { display: none; }
+
+    @media (min-width: 681px) {
+      .bs-scroll-header {
+        transform: translateY(0);
+        justify-content: space-between;
+      }
+      .bs-scroll-header-nav {
+        display: flex;
+        align-items: center;
+        gap: 2.25rem;
+      }
+    }
+
+    .bs-header-link {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .bs-header-link:hover,
+    .bs-header-link:focus-visible { color: var(--gold-light); }
+
+    .bs-header-cta {
+      background: var(--gold);
+      color: var(--dark) !important;
+      font-weight: 500;
+      padding: 0.55rem 1.4rem;
+      border-radius: 100px;
+    }
+    .bs-header-cta:hover,
+    .bs-header-cta:focus-visible { background: var(--gold-light); }
+
+    /* ─── Mobile menu toggle (3 lines) ─────────────────────── */
+    :root { --bs-topbar-height: 64px; }
+
+    .bs-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      position: fixed;
+      top: calc((var(--bs-topbar-height) - 40px) / 2);
+      right: 5vw;
+      z-index: 300;
+    }
+    .bs-menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--gold-light);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    }
+    .bs-menu-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .bs-menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .bs-menu-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    @media (max-width: 680px) {
+      .bs-menu-toggle { display: flex; }
+    }
+
+    /* ─── Mobile menu panel ─────────────────────────────────── */
+    #bsMobileMenu {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 6vw 2.25rem;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(-100%);
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 280;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.55);
+    }
+    #bsMobileMenu.open { transform: translateY(0); }
+
+    @media (min-width: 681px) {
+      #bsMobileMenu { display: none; }
+    }
+
+    .bs-menu-link {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      padding: 1.05rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.25s ease;
+    }
+    .bs-menu-link:hover,
+    .bs-menu-link:focus-visible { color: var(--gold-light); }
+    .bs-menu-link:nth-last-of-type(2) { border-bottom: none; }
+
+    .bs-menu-cta {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: var(--dark) !important;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      padding: 1rem 1.5rem;
+      border-radius: 100px;
+      border-bottom: none !important;
+    }
+    .bs-menu-cta:hover,
+    .bs-menu-cta:focus-visible {
+      background: var(--gold-light);
+      color: var(--dark) !important;
+    }
+
+    body.bs-menu-open { overflow: hidden; }
   </style>
 </head>
 <body>
+
+<div id="bsProgress" aria-hidden="true"></div>
+
+<button class="bs-menu-toggle" id="bsMenuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="bsMobileMenu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="bs-scroll-header" id="bsScrollHeader" aria-hidden="true">
+  <p class="bs-scroll-header-text">L'ORÉAL BRANDSTORM 2026</p>
+  <nav class="bs-scroll-header-nav" aria-label="Desktop navigation">
+    <a href="https://colinjanoshegyi.com/#identity" class="bs-header-link">About</a>
+    <a href="https://colinjanoshegyi.com/#work" class="bs-header-link">Work</a>
+    <a href="https://colinjanoshegyi.com/#contact" class="bs-header-link bs-header-cta">Work With Me</a>
+  </nav>
+</div>
+
+<nav id="bsMobileMenu" aria-label="Mobile navigation">
+  <a href="https://colinjanoshegyi.com/#identity" class="bs-menu-link">About</a>
+  <a href="https://colinjanoshegyi.com/#work" class="bs-menu-link">Work</a>
+  <a href="https://colinjanoshegyi.com/works/notesandthoughts/" class="bs-menu-link">Notes and Thoughts</a>
+  <a href="https://cloaker-checker.colinjanoshegyi.com/" class="bs-menu-link">Cloaker Checker</a>
+  <a href="https://colinjanoshegyi.com/#contact" class="bs-menu-link bs-menu-cta">Work With Me</a>
+</nav>
 
 <div class="bs-rings-bg" aria-hidden="true">
   <div class="bs-ring"></div>
@@ -739,5 +930,60 @@
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>
+  (function () {
+    var toggle = document.getElementById('bsMenuToggle');
+    var menu = document.getElementById('bsMobileMenu');
+    var scrollHeader = document.getElementById('bsScrollHeader');
+    var progress = document.getElementById('bsProgress');
+    var links = menu.querySelectorAll('a');
+
+    function openMenu() {
+      toggle.classList.add('active');
+      menu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('bs-menu-open');
+    }
+
+    function closeMenu() {
+      toggle.classList.remove('active');
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('bs-menu-open');
+    }
+
+    toggle.addEventListener('click', function () {
+      if (menu.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    links.forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    function handleScroll() {
+      if (window.scrollY > 100) {
+        scrollHeader.classList.add('visible');
+      } else {
+        scrollHeader.classList.remove('visible');
+      }
+
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      progress.style.width = pct + '%';
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    handleScroll();
+  })();
+</script>
 </body>
 </html>
