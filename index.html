@@ -1061,6 +1061,80 @@
         text-align: left;
       }
     }
+
+    /* ─── Mobile menu ─────────────────────────────────────────── */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 300;
+      position: relative;
+    }
+    .mobile-menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: transform 0.35s var(--ease-out-expo), opacity 0.25s ease;
+    }
+    .mobile-menu-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    @media (max-width: 680px) {
+      .mobile-menu-toggle { display: flex; }
+    }
+
+    #mobileMenu {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 6vw 2.25rem;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(-100%);
+      transition: transform 0.55s var(--ease-out-expo);
+      z-index: 150;
+      box-shadow: 0 12px 32px rgba(17,17,17,0.08);
+    }
+    #mobileMenu.open { transform: translateY(0); }
+
+    .mobile-menu-link {
+      font-family: var(--sans);
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu-link:nth-last-of-type(2) { border-bottom: none; }
+
+    .mobile-menu-cta {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--ink);
+      color: var(--white) !important;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      padding: 1rem 1.5rem;
+      border-radius: 100px;
+      border-bottom: none !important;
+    }
+
+    body.menu-open { overflow: hidden; }
   </style>
 </head>
 <body>
@@ -1083,7 +1157,19 @@
         Work With Me
       </a>
     </nav>
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
+    <a href="#identity" class="mobile-menu-link">About</a>
+    <a href="#work" class="mobile-menu-link">Work</a>
+    <a href="https://colinjanoshegyi.com/works/notesandthoughts/" class="mobile-menu-link">Notes and Thoughts</a>
+    <a href="https://cloaker-checker.colinjanoshegyi.com/" class="mobile-menu-link">Cloaker Checker</a>
+    <a href="#contact" class="mobile-menu-link mobile-menu-cta">Work With Me</a>
+  </nav>
 
   <section id="hero" aria-labelledby="hero-name">
     <!-- decorative rings -->
@@ -1283,12 +1369,12 @@
       </h2>
 
       <nav class="contact-links" aria-label="Contact links">
-        <a href="mailto:colinjanoshegyi@gmail.com" class="contact-link" aria-label="Send email">
+        <a href="/cdn-cgi/l/email-protection#bad9d5d6d3d4d0dbd4d5c9d2dfddc3d3faddd7dbd3d694d9d5d7" class="contact-link" aria-label="Send email">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
             <rect x="1" y="3" width="12" height="9" rx="1.5"/>
             <path d="M1 4l6 4.5L13 4"/>
           </svg>
-          colinjanoshegyi@gmail.com
+          <span class="__cf_email__" data-cfemail="accfc3c0c5c2c6cdc2c3dfc4c9cbd5c5eccbc1cdc5c082cfc3c1">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/colin-john/" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="LinkedIn profile">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
@@ -1323,7 +1409,7 @@
     <p>Made with intention.</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     /* ─── 1. LENIS SMOOTH SCROLL ──────────────────────────────── */
     const lenis = new Lenis({
       duration: 1.35,
@@ -1355,6 +1441,54 @@
     const header = document.getElementById('header');
     lenis.on('scroll', ({ scroll }) => {
       header.classList.toggle('scrolled', scroll > 50);
+    });
+
+    /* ─── 3b. MOBILE MENU TOGGLE ──────────────────────────────── */
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function syncHeaderState(forceScrolled) {
+      header.classList.toggle('scrolled', forceScrolled || window.scrollY > 50);
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      mobileToggle.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+      lenis.start();
+      syncHeaderState(false);
+    }
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      mobileToggle.classList.toggle('active', isOpen);
+      mobileToggle.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+      if (isOpen) {
+        lenis.stop();
+        syncHeaderState(true);
+      } else {
+        closeMobileMenu();
+      }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.classList.contains('open') &&
+          !mobileMenu.contains(e.target) &&
+          !mobileToggle.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        closeMobileMenu();
+      }
     });
 
     /* ─── 4. CUSTOM CURSOR ───────────────────────────────────── */
@@ -1652,5 +1786,6 @@
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
