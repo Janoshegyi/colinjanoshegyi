@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +10,7 @@
   gtag('config', 'G-G99Q8NN92D');
 </script>
 <meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Grace's Resto | Indonesian &amp; Chinese Food from $1.25, Sihanoukville</title>
 <meta name="description" content="Grace's Resto: Indonesian and Chinese-Indonesian food in Sihanoukville, Cambodia, from $1.25 (5,000 Riel). Nasi goreng, mie Jawa, ayam geprek, seafood, and more. Delivery via WhatsApp &amp; Telegram.">
@@ -35,6 +34,7 @@
 <meta name="author" content="Grace's Resto">
 <meta name="geo.region" content="KH-18">
 <meta name="geo.placename" content="Sihanoukville, Cambodia">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#4E0D10">
 <meta property="og:locale" content="id_ID">
 <meta property="og:locale:alternate" content="en_US">
@@ -121,6 +121,7 @@
     border: 1px solid rgba(200,150,60,0.5);
     border-radius: 50%;
     cursor: pointer;
+    position: relative;
     transition: background 0.3s, border-color 0.3s;
   }
   .menu-toggle:hover { background: rgba(200,150,60,0.15); border-color: var(--gold); }
@@ -133,10 +134,26 @@
   }
   .menu-toggle:hover span:nth-child(2) { width: 11px; }
   .menu-toggle.open { background: var(--gold); border-color: var(--gold); }
-  .menu-toggle.open span { background: var(--maroon-deep); }
-  .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .menu-toggle.open span:nth-child(2) { opacity: 0; width: 18px; transform: scaleX(0); }
-  .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .menu-toggle.open span { opacity: 0; transform: scaleX(0); }
+
+  /* fork + spoon that cross into an X when the menu opens */
+  .cutlery {
+    position: absolute; top: 50%; left: 50%;
+    width: 30px; height: 30px; margin: -15px 0 0 -15px;
+    fill: none; stroke: var(--maroon-deep);
+    stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round;
+    opacity: 0; pointer-events: none;
+    transition: transform 0.45s cubic-bezier(.5,0,.75,0), opacity 0.2s;
+  }
+  .cutlery-spoon ellipse { fill: var(--maroon-deep); }
+  .cutlery-fork  { transform: rotate(45deg)  translateY(-75%) scale(0.55); }
+  .cutlery-spoon { transform: rotate(-45deg) translateY(75%)  scale(0.55); }
+  .menu-toggle.open .cutlery {
+    opacity: 1;
+    transition: transform 0.6s cubic-bezier(.2,.9,.3,1.25) 0.12s, opacity 0.25s 0.12s;
+  }
+  .menu-toggle.open .cutlery-fork  { transform: rotate(45deg)  translateY(0) scale(1); }
+  .menu-toggle.open .cutlery-spoon { transform: rotate(-45deg) translateY(0) scale(1); }
 
   .nav-backdrop {
     position: fixed; inset: -40px; z-index: 998;
@@ -233,7 +250,7 @@
     .nav-links a { padding: 18px 4px; font-size: 0.95rem; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .nav-drawer, .nav-backdrop, .nav-links li, .menu-toggle span, .drawer-foot { transition: none !important; }
+    .nav-drawer, .nav-backdrop, .nav-links li, .menu-toggle span, .cutlery, .drawer-foot { transition: none !important; }
   }
 
   /* ===== HERO ===== */
@@ -391,7 +408,7 @@
 
 
   /* ===== SECTION BASE ===== */
-  section { padding: 90px 24px; max-width: 1200px; margin: 0 auto; }
+  section { padding: 64px 24px 56px; max-width: 1200px; margin: 0 auto; position: relative; }
   .section-label {
     font-family: 'Cinzel', serif;
     font-size: 0.62rem;
@@ -429,7 +446,7 @@
     border: none;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 20px 0 40px;
+    margin: 16px 0 26px;
     width: 120px;
   }
 
@@ -444,7 +461,7 @@
     text-align: center;
   }
   .strip-item {
-    padding: 44px 24px;
+    padding: 30px 24px;
     border-right: 1px solid rgba(200,150,60,0.2);
   }
   .strip-item:last-child { border-right: none; }
@@ -475,12 +492,12 @@
   #about .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 48px;
     align-items: center;
   }
   #about .img-wrap { position: relative; }
   #about .img-wrap img {
-    width: 100%; height: 500px;
+    width: 100%; height: 440px;
     object-fit: cover;
     border-radius: 2px;
     display: block;
@@ -516,7 +533,7 @@
   #gallery {
     background: var(--parchment);
     max-width: 100%;
-    padding: 90px 24px;
+    padding: 64px 24px 56px;
   }
 
   #gallery .inner {
@@ -528,7 +545,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
     gap: 12px;
-    margin-top: 40px;
+    margin-top: 26px;
   }
 
   .g-item {
@@ -577,7 +594,7 @@
   .menu-tabs {
     display: flex;
     gap: 0;
-    margin-bottom: 48px;
+    margin-bottom: 26px;
     border-bottom: 2px solid var(--parchment);
   }
   .menu-tab {
@@ -629,7 +646,7 @@
     font-size: 1.15rem;
     padding: 12px 28px;
     border-radius: 40px;
-    margin-bottom: 36px;
+    margin-bottom: 22px;
     font-style: italic;
     border: 1px solid rgba(200,150,60,0.4);
     letter-spacing: 0.04em;
@@ -669,7 +686,7 @@
     color: var(--warm-gray);
     max-width: 640px;
     line-height: 1.7;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .menu-grid {
@@ -681,10 +698,10 @@
     background: var(--white);
     border: 1px solid rgba(200,150,60,0.12);
     border-radius: 2px;
-    padding: 16px 20px;
+    padding: 16px 16px;
     display: flex;
     align-items: flex-start;
-    gap: 14px;
+    gap: 11px;
     transition: all 0.25s;
     position: relative;
     overflow: hidden;
@@ -700,6 +717,9 @@
     transform-origin: bottom;
   }
   .menu-item:hover { border-color: rgba(200,150,60,0.35); box-shadow: 0 4px 18px rgba(122,20,24,0.07); }
+  @media (hover: hover) and (pointer: fine) {
+    .menu-item:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(122,20,24,0.13); }
+  }
   .menu-item:hover::before { transform: scaleY(1); }
   .menu-dot {
     width: 6px; height: 6px;
@@ -729,7 +749,7 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--maroon);
-    margin: 38px 0 16px;
+    margin: 26px 0 14px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -750,7 +770,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 16px 28px;
-    margin-bottom: 36px;
+    margin-bottom: 22px;
   }
   .board-link {
     display: inline-flex;
@@ -849,7 +869,7 @@
 #contact {
     background: var(--maroon-deep);
     max-width: 100%;
-    padding: 90px 24px;
+    padding: 64px 24px 56px;
 }
 
 #contact .inner {
@@ -873,7 +893,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 16px;
-    margin-top: 48px;
+    margin-top: 30px;
 }
 
 /* KEEP ONLY THIS CONTACT CARD */
@@ -881,7 +901,7 @@
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(200,150,60,0.22);
     border-radius: 3px;
-    padding: 32px 24px;
+    padding: 26px 22px;
     text-align: center;
     transition: all 0.3s;
     cursor: pointer;
@@ -942,7 +962,7 @@
   .seo-faq {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 90px 24px;
+    padding: 64px 24px 56px;
     background: var(--cream);
   }
 
@@ -950,7 +970,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
-    margin-top: 44px;
+    margin-top: 26px;
     max-width: 780px;
     margin-left: auto;
     margin-right: auto;
@@ -1085,12 +1105,219 @@
 }
 
 
+
+  /* ===== BATIK + LATTICE PATTERNS ===== */
+  .nav-drawer {
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%23C8963C' stroke-opacity='.13' stroke-width='1'%3E%3Cellipse cx='22' cy='11' rx='6.5' ry='11'/%3E%3Cellipse cx='22' cy='33' rx='6.5' ry='11'/%3E%3Cellipse cx='11' cy='22' rx='11' ry='6.5'/%3E%3Cellipse cx='33' cy='22' rx='11' ry='6.5'/%3E%3C/g%3E%3Ccircle cx='22' cy='22' r='1.4' fill='%23C8963C' fill-opacity='.2'/%3E%3C/svg%3E") center top / 44px 44px,
+      linear-gradient(180deg, var(--maroon-deep) 0%, #3a090c 100%);
+  }
+  .drawer-fret, #gallery::before, #menu::before, #faq::before, #contact::before {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0 10H2V2H10V8H5V5H7' fill='none' stroke='%23C8963C' stroke-width='1'/%3E%3C/svg%3E") repeat-x center / 12px 12px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+  }
+  .drawer-fret { height: 12px; width: 156px; margin: 0 auto 20px; opacity: 0.55; }
+  #gallery::before, #menu::before, #faq::before, #contact::before {
+    content: ''; position: absolute; top: 26px; left: 50%; transform: translateX(-50%);
+    width: min(88%, 640px); height: 12px; opacity: 0.5; pointer-events: none;
+  }
+  #menu, #faq, #gallery, #contact { position: relative; }
+
+  /* ===== HERO STEAM ===== */
+  .hero-logo-wrap { position: relative; display: flex; justify-content: center; }
+  .steam { position: absolute; left: 50%; bottom: 52%; width: 230px; height: 200px; transform: translateX(-50%); pointer-events: none; z-index: 0; }
+  .steam i {
+    position: absolute; bottom: 0; width: 46px; height: 104px; margin-left: -12px; border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(255,238,212,0.34), rgba(255,238,212,0) 68%);
+    filter: blur(11px); opacity: 0;
+    animation: steam-rise 7s ease-in-out infinite;
+  }
+  .steam i:nth-child(1) { left: 18%; animation-duration: 6.4s; animation-delay: 0s; }
+  .steam i:nth-child(2) { left: 36%; animation-duration: 7.6s; animation-delay: 1.6s; height: 116px; }
+  .steam i:nth-child(3) { left: 50%; animation-duration: 6.9s; animation-delay: 3.1s; }
+  .steam i:nth-child(4) { left: 64%; animation-duration: 8.2s; animation-delay: 0.9s; height: 110px; }
+  .steam i:nth-child(5) { left: 80%; animation-duration: 7.2s; animation-delay: 2.4s; }
+  @keyframes steam-rise {
+    0%   { transform: translate(0, 24px) scale(0.6, 0.7); opacity: 0; }
+    22%  { opacity: 0.6; }
+    55%  { transform: translate(14px, -62px) scale(1.05, 1); opacity: 0.32; }
+    100% { transform: translate(-12px, -150px) scale(1.7, 1.2); opacity: 0; }
+  }
+
+  /* ===== ORDER BUTTONS ON DISHES ===== */
+  .menu-name { flex: 1 1 auto; min-width: 0; }
+  .dish-ctl { margin-left: auto; flex: none; align-self: center; display: flex; align-items: center; }
+  .menu-item-price + .dish-ctl { margin-left: 10px; }
+  .menu-item.in-cart { border-color: rgba(122,20,24,0.3); }
+  .menu-item.in-cart::before { transform: scaleY(1); }
+  .add-btn {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--gold); background: transparent; color: var(--maroon);
+    font-family: 'DM Sans', sans-serif; font-size: 1.3rem; line-height: 1; font-weight: 300;
+    display: grid; place-items: center; cursor: pointer; padding: 0 0 2px;
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+  }
+  .add-btn:hover { background: var(--maroon); color: var(--gold-light); border-color: var(--maroon); transform: scale(1.08); }
+  .qty-ctl { display: inline-flex; align-items: center; background: var(--maroon); border-radius: 20px; padding: 2px; }
+  .qty-ctl button {
+    width: 28px; height: 28px; border: none; border-radius: 50%; background: transparent;
+    color: var(--gold-light); font-size: 1.1rem; line-height: 1; cursor: pointer; padding: 0 0 2px; transition: background 0.2s;
+  }
+  .qty-ctl button:hover { background: rgba(255,255,255,0.16); }
+  .q-num { min-width: 22px; text-align: center; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; }
+  @keyframes pop { 0% { transform: scale(0.82); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+  .pop { animation: pop 0.3s ease; }
+  .order-hint {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--warm-gray);
+    margin: -6px 0 18px;
+  }
+  .order-hint b {
+    display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%;
+    border: 1px solid var(--gold); color: var(--maroon); font: 400 0.95rem/1 'DM Sans', sans-serif; font-style: normal; vertical-align: 1px; padding-bottom: 1px;
+  }
+
+  /* ===== FLOATING WHATSAPP BUTTON ===== */
+  .wa-fab {
+    position: fixed; z-index: 900; right: 18px; bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25D366; color: #fff; text-decoration: none;
+    display: grid; place-items: center;
+    box-shadow: 0 8px 22px rgba(37,211,102,0.42), 0 2px 8px rgba(0,0,0,0.28);
+    transition: transform 0.3s, background 0.3s;
+  }
+  .wa-fab svg { width: 32px; height: 32px; fill: currentColor; }
+  .wa-fab::before {
+    content: ''; position: absolute; inset: 0; border-radius: 50%;
+    border: 2px solid #25D366; animation: fab-ring 2.6s ease-out infinite; pointer-events: none;
+  }
+  @keyframes fab-ring { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.7); opacity: 0; } }
+  .wa-fab:hover { background: #1ebe5a; transform: translateY(-3px) scale(1.05); }
+  .wa-fab:focus-visible, .order-bar:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
+  .wa-fab-label {
+    position: absolute; right: calc(100% + 12px); top: 50%; transform: translate(10px, -50%);
+    background: var(--maroon-deep); color: var(--gold-light); white-space: nowrap;
+    font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 10px 16px; border-radius: 30px; border: 1px solid rgba(200,150,60,0.5);
+    opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s;
+  }
+  @media (hover: hover) { .wa-fab:hover .wa-fab-label { opacity: 1; transform: translate(0, -50%); } }
+
+  /* ===== ORDER BAR ===== */
+  .order-bar {
+    position: fixed; z-index: 950; left: 16px; right: 88px; bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    height: 58px; display: flex; align-items: center; gap: 12px; padding: 0 6px 0 9px;
+    background: var(--maroon-deep); color: var(--gold-light);
+    border: 1px solid rgba(200,150,60,0.55); border-radius: 40px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35); cursor: pointer;
+    transform: translateY(150%); opacity: 0; visibility: hidden;
+    transition: transform 0.5s cubic-bezier(.2,.9,.3,1.15), opacity 0.3s, visibility 0.5s;
+  }
+  .order-bar.show { transform: none; opacity: 1; visibility: visible; }
+  .ob-icon { position: relative; width: 40px; height: 40px; border-radius: 50%; background: var(--gold); color: var(--maroon-deep); display: grid; place-items: center; flex: none; }
+  .ob-icon svg { width: 18px; height: 18px; fill: currentColor; }
+  .ob-icon b {
+    position: absolute; top: -5px; right: -5px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px;
+    background: #fff; color: var(--maroon-deep); font: 600 0.7rem/20px 'DM Sans', sans-serif; text-align: center;
+  }
+  .ob-text { flex: 1; text-align: left; font-family: 'Cinzel', serif; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .ob-total { font-family: 'Cinzel', serif; font-weight: 700; font-size: 0.95rem; color: #fff; padding-right: 14px; }
+
+  /* ===== ORDER SHEET ===== */
+  .order-overlay {
+    position: fixed; inset: 0; z-index: 1500; background: rgba(28,20,16,0.6);
+    backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+    opacity: 0; visibility: hidden; transition: opacity 0.35s, visibility 0.35s;
+  }
+  .order-overlay.open { opacity: 1; visibility: visible; }
+  .order-sheet {
+    position: fixed; z-index: 1501; left: 50%; bottom: 0; width: min(480px, 100%);
+    max-height: 88vh; max-height: 88dvh; display: flex; flex-direction: column;
+    background: var(--cream); border-radius: 16px 16px 0 0; overflow: hidden;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.35);
+    transform: translate(-50%, 105%); visibility: hidden;
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1), visibility 0.5s;
+  }
+  .order-sheet.open { transform: translate(-50%, 0); visibility: visible; }
+  .os-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--maroon-deep); border-bottom: 2px solid var(--gold); }
+  .os-head h3 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; }
+  .os-close { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(200,150,60,0.5); background: transparent; color: var(--gold-light); font-size: 1.4rem; line-height: 1; cursor: pointer; transition: background 0.2s; }
+  .os-close:hover { background: rgba(200,150,60,0.2); }
+  .os-body { overflow-y: auto; padding: 8px 20px 18px; }
+  .os-list { list-style: none; }
+  .os-list li { display: grid; grid-template-columns: 1fr auto 62px; gap: 10px; align-items: center; padding: 12px 0; border-bottom: 1px dashed rgba(200,150,60,0.4); }
+  .os-item-name { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--charcoal); line-height: 1.3; }
+  .os-item-name small { display: block; font-size: 0.72rem; color: var(--warm-gray); margin-top: 2px; }
+  .os-line { text-align: right; font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--maroon-deep); font-weight: 600; }
+  .os-total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0 4px; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--maroon); }
+  .os-total strong { font-size: 1.3rem; letter-spacing: 0.02em; color: var(--maroon-deep); }
+  .os-field { display: block; margin-top: 14px; }
+  .os-field > span { display: block; font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--maroon); margin-bottom: 6px; }
+  .os-field input { width: 100%; padding: 11px 12px; font: 400 16px 'DM Sans', sans-serif; color: var(--charcoal); background: var(--white); border: 1px solid rgba(200,150,60,0.55); border-radius: 3px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  .os-field input:focus { border-color: var(--maroon); box-shadow: 0 0 0 3px rgba(122,20,24,0.1); }
+  .os-note { margin-top: 14px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.98rem; color: var(--warm-gray); }
+  .os-actions { display: grid; gap: 10px; padding: 14px 20px calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--white); border-top: 1px solid rgba(200,150,60,0.3); }
+  .os-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; border-radius: 40px; border: 1px solid transparent; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.25s, color 0.25s, transform 0.2s; }
+  .os-btn svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
+  .os-btn:active { transform: scale(0.98); }
+  .os-wa { background: #25D366; color: #fff; }
+  .os-wa:hover { background: #1ebe5a; }
+  .os-tg { background: transparent; color: var(--maroon); border-color: var(--maroon); }
+  .os-tg:hover { background: var(--maroon); color: var(--gold-light); }
+  .os-clear { justify-self: center; background: none; border: none; color: var(--warm-gray); font: 400 0.82rem 'DM Sans', sans-serif; text-decoration: underline; cursor: pointer; padding: 4px 8px; }
+  .os-clear:hover { color: var(--maroon); }
+  body.sheet-open { overflow: hidden; }
+  .toast {
+    position: fixed; z-index: 2000; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    transform: translate(-50%, 20px); max-width: min(92vw, 420px); text-align: center;
+    background: var(--charcoal); color: #fff; font: 400 0.85rem/1.4 'DM Sans', sans-serif;
+    padding: 12px 20px; border-radius: 30px; box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    opacity: 0; visibility: hidden; transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  }
+  .toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+  footer { padding-bottom: 92px; }
+
+  @media (min-width: 769px) {
+    .order-bar { left: 50%; right: auto; width: 380px; transform: translate(-50%, 150%); }
+    .order-bar.show { transform: translate(-50%, 0); }
+    .order-sheet { bottom: auto; top: 50%; border-radius: 10px; max-height: 82vh; transform: translate(-50%, -46%) scale(0.96); opacity: 0; transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.3s, visibility 0.45s; }
+    .order-sheet.open { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  }
+  @media (max-width: 768px) {
+    section, #gallery, #contact, .seo-faq { padding: 46px 20px 40px; }
+    #gallery::before, #menu::before, #faq::before, #contact::before { top: 18px; }
+    #about .grid { gap: 30px; }
+    #about .img-wrap img { height: 320px; }
+    .strip-item { padding: 22px 20px; }
+    .gallery-grid { margin-top: 20px; }
+    .menu-tabs { margin-bottom: 20px; }
+    .contact-cards { margin-top: 22px; }
+    .add-btn { width: 36px; height: 36px; }
+    .qty-ctl button { width: 32px; height: 32px; }
+    .steam { width: 190px; height: 170px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .steam, .wa-fab::before { display: none; }
+    .order-bar, .order-sheet, .order-overlay, .toast, .add-btn, .menu-item { transition: none !important; }
+  }
+
+  #tab-budget .menu-grid { grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); }
+  .qty-ctl button { width: 26px; height: 26px; }
+  .q-num { min-width: 20px; }
+  @media (max-width: 768px) {
+    .price-badge { flex-wrap: wrap; justify-content: center; gap: 4px 10px; padding: 10px 18px; font-size: 1.02rem; border-radius: 28px; text-align: center; }
+    .price-badge span { white-space: nowrap; }
+    .qty-ctl button { width: 30px; height: 30px; }
+    .add-btn { width: 34px; height: 34px; }
+  }
+
   /* ===== LANGUAGE ===== */
   body.lang-id .en { display: none !important; }
   body.lang-en .id { display: none !important; }
 </style>
 </head>
 <body class="lang-en">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-wa" viewBox="0 32 448 448"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157m-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6m101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6"/></symbol><symbol id="i-tg" viewBox="8 8 496 496"><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m115 168.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5c-2.2.5-37.1 23.5-104.6 69.1-9.9 6.8-18.9 10.1-26.9 9.9-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3.6-4.5 6.7-9 18.4-13.7 72.3-31.5 120.5-52.3 144.6-62.3 68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6.5 9.6 2.9 2 1.7 3.2 4.1 3.5 6.7.5 3.2.6 6.5.4 9.8z"/></symbol><symbol id="i-bag" viewBox="0 -32 448 512"><path d="M160 80c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160zm-48 48H48c-26.5 0-48 21.5-48 48v208c0 53 43 96 96 96h256c53 0 96-43 96-96V176c0-26.5-21.5-48-48-48h-64V80c0-61.9-50.1-112-112-112S112 18.1 112 80zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48m152 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0"/></symbol></svg>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="menu-seal" viewBox="0 0 64 64">
     <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.1"/>
@@ -1113,6 +1340,8 @@
     </div>
     <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
       <span></span><span></span><span></span>
+      <svg class="cutlery cutlery-fork" viewBox="0 0 40 40" aria-hidden="true"><path d="M16 4V11a4 4 0 0 0 8 0V4M20 4V36"/></svg>
+      <svg class="cutlery cutlery-spoon" viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="10.5" rx="5.2" ry="7"/><path d="M20 17.5V36"/></svg>
     </button>
   </div>
 </div>
@@ -1128,6 +1357,7 @@
     <li style="--i:4"><a href="#contact"><span class="en">Contact</span><span class="id">Kontak</span></a></li>
   </ul>
   <div class="drawer-foot">
+    <div class="drawer-fret" aria-hidden="true"></div>
     <div class="drawer-lang">
       <div class="drawer-lang-label">Language &middot; Bahasa</div>
       <div class="lang-btns">
@@ -1141,7 +1371,10 @@
 
 <!-- HERO -->
 <section id="hero">
-  <img class="hero-logo-img" src="fotomenu/graceresto-logo.png" alt="Grace's Resto Logo" />
+  <div class="hero-logo-wrap">
+    <div class="steam" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <img class="hero-logo-img" src="fotomenu/graceresto-logo.png" alt="Grace's Resto Logo" />
+  </div>
   <div class="hero-badge en">Indonesian &amp; Chinese-Indonesian Restaurant · Sihanoukville</div>
   <div class="hero-badge id">Restoran Indonesia &amp; Tionghoa-Indonesia · Sihanoukville</div>
   <h1 class="hero-title">
@@ -1284,6 +1517,8 @@
   </div>
 
   <!-- DAILY -->
+  <p class="order-hint"><span class="en">Tap <b>+</b> on any dish to build your order, then send it on WhatsApp or Telegram.</span><span class="id">Ketuk <b>+</b> pada hidangan untuk menyusun pesanan, lalu kirim lewat WhatsApp atau Telegram.</span></p>
+
   <div id="tab-daily" class="menu-panel active reveal">
     <div class="price-badge">
       <span class="en">Daily Specials — all at</span>
@@ -1571,13 +1806,186 @@
   <p>&copy; 2026 <span>Grace's Resto</span> &nbsp;&middot;&nbsp; Sihanoukville, Cambodia &nbsp;&middot;&nbsp; <span>@gracerestomulia</span></p>
 </footer>
 
+<!-- FLOATING ORDER UI -->
+<a id="wa-fab" class="wa-fab" href="https://wa.me/6282123359900" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+  <span class="wa-fab-label"><span class="en">Order on WhatsApp</span><span class="id">Pesan via WhatsApp</span></span>
+  <svg aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+<button id="order-bar" class="order-bar" type="button" aria-label="View your order">
+  <span class="ob-icon"><svg aria-hidden="true"><use href="#i-bag"/></svg><b id="ob-count">0</b></span>
+  <span class="ob-text"><span class="en">View order</span><span class="id">Lihat pesanan</span></span>
+  <span class="ob-total" id="ob-total">$0.00</span>
+</button>
+
+<div class="order-overlay" id="order-overlay"></div>
+<div class="order-sheet" id="order-sheet" role="dialog" aria-modal="true" aria-labelledby="os-title" aria-hidden="true">
+  <div class="os-head">
+    <h3 id="os-title"><span class="en">Your Order</span><span class="id">Pesanan Anda</span></h3>
+    <button class="os-close" id="os-close" type="button" aria-label="Close">&times;</button>
+  </div>
+  <div class="os-body">
+    <ul class="os-list" id="os-list"></ul>
+    <div class="os-total"><span><span class="en">Total</span><span class="id">Total</span></span><strong id="os-total">$0.00</strong></div>
+    <label class="os-field"><span class="en">Your name (optional)</span><span class="id">Nama Anda (opsional)</span><input id="os-name" type="text" autocomplete="name" maxlength="60"></label>
+    <label class="os-field"><span class="en">Delivery location or landmark</span><span class="id">Lokasi pengantaran / patokan</span><input id="os-loc" type="text" maxlength="140"></label>
+    <p class="os-note"><span class="en">We'll confirm your order and delivery details in chat.</span><span class="id">Kami akan konfirmasi pesanan dan pengantaran lewat chat.</span></p>
+  </div>
+  <div class="os-actions">
+    <button class="os-btn os-wa" id="os-wa" type="button"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="en">Send on WhatsApp</span><span class="id">Kirim via WhatsApp</span></button>
+    <button class="os-btn os-tg" id="os-tg" type="button"><svg aria-hidden="true"><use href="#i-tg"/></svg><span class="en">Send on Telegram</span><span class="id">Kirim via Telegram</span></button>
+    <button class="os-clear" id="os-clear" type="button"><span class="en">Clear order</span><span class="id">Kosongkan pesanan</span></button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
   function setLang(lang) {
     document.body.classList.remove('lang-en', 'lang-id');
     document.body.classList.add('lang-' + lang);
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     document.documentElement.lang = lang;
+    if (window.grRefresh) window.grRefresh();
   }
+
+  /* ===== ORDER / CART ===== */
+  (function () {
+    var PHONE = '6282123359900', TG = 'gracerestomulia', KEY = 'grace_order_v1';
+    var cart = Object.create(null), dishes = Object.create(null), lastKey = null, toastTimer = null;
+    var $ = function (id) { return document.getElementById(id); };
+    var isId = function () { return document.body.classList.contains('lang-id'); };
+    var money = function (c) { return '$' + (c / 100).toFixed(2); };
+    var count = function () { var n = 0; for (var k in cart) n += cart[k].qty; return n; };
+    var total = function () { var t = 0; for (var k in cart) t += cart[k].qty * cart[k].cents; return t; };
+
+    function load() {
+      try {
+        var d = JSON.parse(localStorage.getItem(KEY) || '{}');
+        for (var k in d) {
+          var i = d[k], m = dishes[k], q = i ? Math.floor(Number(i.qty)) : 0;
+          if (m && q > 0 && q < 100) cart[k] = { name: m.name, cents: m.cents, qty: q };   // name + price always come from the page, never from storage
+        }
+      } catch (e) {}
+    }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} }
+
+    function greeting() { return isId() ? "Halo Grace's Resto, saya mau pesan\u2026" : "Hello Grace's Resto, I'd like to order\u2026"; }
+    window.grGreeting = greeting;
+    function refreshFab() { $('wa-fab').href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(greeting()); }
+    window.grRefresh = function () { refreshFab(); };
+
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+    function stepper(key, name) {
+      var w = el('div', 'qty-ctl');
+      var m = el('button', null, '\u2212'); m.type = 'button'; m.dataset.act = 'minus'; m.dataset.key = key; m.setAttribute('aria-label', 'Remove one ' + name);
+      var n = el('span', 'q-num', String(cart[key].qty));
+      var p = el('button', null, '+'); p.type = 'button'; p.dataset.act = 'plus'; p.dataset.key = key; p.setAttribute('aria-label', 'Add one ' + name);
+      w.appendChild(m); w.appendChild(n); w.appendChild(p); return w;
+    }
+    function renderDishes() {
+      document.querySelectorAll('.menu-item[data-key]').forEach(function (item) {
+        var key = item.dataset.key, ctl = item.querySelector('.dish-ctl'), it = cart[key];
+        ctl.textContent = '';
+        var node;
+        if (!it) {
+          node = el('button', 'add-btn', '+'); node.type = 'button'; node.dataset.act = 'plus'; node.dataset.key = key;
+          node.setAttribute('aria-label', 'Add ' + item.dataset.name + ' to order');
+        } else node = stepper(key, item.dataset.name);
+        if (key === lastKey) node.classList.add('pop');
+        ctl.appendChild(node);
+        item.classList.toggle('in-cart', !!it);
+      });
+    }
+    function renderSheet() {
+      var list = $('os-list'); list.textContent = '';
+      Object.keys(cart).forEach(function (key) {
+        var it = cart[key], li = el('li');
+        var nm = el('div', 'os-item-name', it.name); nm.appendChild(el('small', null, money(it.cents) + (isId() ? ' / porsi' : ' each')));
+        li.appendChild(nm); li.appendChild(stepper(key, it.name)); li.appendChild(el('div', 'os-line', money(it.qty * it.cents)));
+        list.appendChild(li);
+      });
+      $('os-total').textContent = money(total());
+    }
+    function renderBar() {
+      var n = count(), bar = $('order-bar');
+      $('ob-count').textContent = n; $('ob-total').textContent = money(total());
+      bar.classList.toggle('show', n > 0);
+      if (n === 0) closeSheet();
+    }
+    function update() { save(); renderDishes(); renderBar(); if ($('order-sheet').classList.contains('open')) renderSheet(); lastKey = null; }
+
+    function change(key, delta, meta) {
+      var it = cart[key];
+      if (!it) { if (delta < 0 || !meta) return; it = cart[key] = { name: meta.name, cents: meta.cents, qty: 0 }; }
+      it.qty += delta; lastKey = key;
+      if (it.qty <= 0) delete cart[key]; else if (it.qty > 99) it.qty = 99;
+      update();
+    }
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('button[data-act]'); if (!b) return;
+      var key = b.dataset.key;
+      change(key, b.dataset.act === 'plus' ? 1 : -1, dishes[key] || null);
+    });
+
+    function openSheet() {
+      if (!count()) return;
+      renderSheet();
+      $('order-sheet').classList.add('open'); $('order-overlay').classList.add('open');
+      $('order-sheet').setAttribute('aria-hidden', 'false'); document.body.classList.add('sheet-open');
+      setTimeout(function () { $('os-close').focus(); }, 60);
+    }
+    function closeSheet() {
+      var s = $('order-sheet'); if (!s.classList.contains('open')) return;
+      s.classList.remove('open'); $('order-overlay').classList.remove('open');
+      s.setAttribute('aria-hidden', 'true'); document.body.classList.remove('sheet-open');
+    }
+    function toast(msg) {
+      var t = $('toast'); t.textContent = msg; t.classList.add('show');
+      clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove('show'); }, 4200);
+    }
+    function message() {
+      var id = isId(), L = [];
+      L.push(id ? "Halo Grace's Resto, saya mau pesan (diantar):" : "Hello Grace's Resto, I'd like to order (delivery):", '');
+      Object.keys(cart).forEach(function (k) { var i = cart[k]; L.push(i.qty + 'x ' + i.name + ' - ' + money(i.qty * i.cents)); });
+      L.push('', 'Total: ' + money(total()));
+      var clean = function (v) { return String(v).replace(/[\u0000-\u001f\u007f]+/g, ' ').trim().slice(0, 140); };
+      var name = clean($('os-name').value), loc = clean($('os-loc').value);
+      if (name || loc) L.push('');
+      if (name) L.push((id ? 'Nama: ' : 'Name: ') + name);
+      if (loc) L.push((id ? 'Lokasi pengantaran: ' : 'Delivery location: ') + loc);
+      L.push('', id ? 'Terima kasih!' : 'Thank you!');
+      return L.join('\n');
+    }
+    function copy(text) {
+      try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text); return true; } } catch (e) {}
+      try { var ta = el('textarea'); ta.value = text; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); var ok = document.execCommand('copy'); ta.remove(); return ok; } catch (e) { return false; }
+    }
+    $('order-bar').addEventListener('click', openSheet);
+    $('os-close').addEventListener('click', closeSheet);
+    $('order-overlay').addEventListener('click', closeSheet);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
+    $('os-clear').addEventListener('click', function () { cart = Object.create(null); update(); });
+    $('os-wa').addEventListener('click', function () {
+      window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(message()), '_blank', 'noopener,noreferrer');
+    });
+    $('os-tg').addEventListener('click', function () {
+      var msg = message(), ok = copy(msg);
+      window.open('https://t.me/' + TG + '?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
+      if (ok) toast(isId() ? 'Pesanan disalin. Tempel di chat Telegram, lalu kirim.' : 'Order copied. Paste it into the Telegram chat and send.');
+    });
+
+    // tag every dish with its name + price and give it an order control
+    document.querySelectorAll('.menu-item').forEach(function (item) {
+      var nameEl = item.querySelector('.menu-name'); if (!nameEl) return;
+      var name = Array.prototype.filter.call(nameEl.childNodes, function (n) { return n.nodeType === 3; }).map(function (n) { return n.textContent; }).join('').trim();
+      if (!name) return;
+      var panel = item.closest('.menu-panel'), cents = (panel && panel.id === 'tab-budget') ? 125 : 300;
+      item.dataset.name = name; item.dataset.cents = cents; item.dataset.key = name + '|' + cents;
+      dishes[item.dataset.key] = { name: name, cents: cents };
+      item.appendChild(el('div', 'dish-ctl'));
+    });
+    load(); refreshFab(); update();
+  })();
 
   (function () {
     const bar = document.getElementById('lang-bar');
@@ -1648,11 +2056,11 @@
 </script>
 <script>
 function openWhatsApp() {
-    window.open("https://wa.me/6282123359900", "_blank");
+    window.open("https://wa.me/6282123359900?text=" + encodeURIComponent(window.grGreeting ? window.grGreeting() : "Hello Grace's Resto"), "_blank", "noopener,noreferrer");
 }
 
 function openTelegram() {
-    window.open("https://t.me/gracerestomulia", "_blank");
+    window.open("https://t.me/gracerestomulia", "_blank", "noopener,noreferrer");
 }
 </script>
 <!--Add JSON-LD Schema-->
