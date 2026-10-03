@@ -1133,6 +1133,82 @@
     }
 
     body.menu-open { overflow: hidden; }
+  
+    /* ═══ Mobile + animation-order cleanup ═══ */
+
+    /* Content that reveals on scroll starts hidden (same pattern as the rest of the page) */
+    .seo-summary, .cv-image, .cv-description { opacity: 0; transform: translateY(24px); }
+
+    /* CV button variants: description (desktop) vs under the image (mobile) */
+    .cv-download.cv-download--mobile { display: none; }
+
+    /* Stack the CV on tablets/phones. The old 450px minimum column caused overflow. */
+    @media (max-width: 860px) {
+      .cv-content { display: flex; flex-direction: column-reverse; gap: 1.5rem; margin-top: 2rem; }
+      .cv-image { align-items: center; }
+      .cv-image img { border-radius: 4px; box-shadow: 0 18px 48px rgba(0,0,0,0.4); }
+      .cv-download.cv-download--desktop { display: none; }
+      .cv-download.cv-download--mobile {
+        display: inline-flex;
+        align-self: stretch;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      /* Header */
+      #header { height: 72px; }
+      #header.scrolled { height: 56px; }
+      #mobileMenu { padding-top: 88px; }
+
+      /* Hero: svh avoids the jump when the browser's address bar hides */
+      #hero { min-height: 100vh; min-height: 100svh; padding: 88px 6vw 0; }
+      .hero-greeting { margin-bottom: 1.25rem; }
+      .hero-name { font-size: clamp(3rem, 14vw, 4rem); margin-bottom: 1.5rem; }
+
+      /* Section rhythm */
+      .section { padding: 8vh 6vw; }
+      .section-label { margin-bottom: 2.5rem; }
+
+      /* Who I am: no forced line breaks (they left orphan words on narrow screens) */
+      .identity-blocks { gap: 2.5rem; }
+      .identity-text { font-size: clamp(1.4rem, 6vw, 1.75rem); line-height: 1.4; }
+      .identity-text br { display: none; }
+
+      /* Professional Profile: remove the big double gap above it */
+      #thoughts { padding: 7vh 6vw 8vh; }
+      .thoughts-eyebrow { margin-bottom: 1.25rem; }
+      .seo-summary { margin-top: 0.5rem; font-size: 0.92rem; line-height: 1.75; }
+      .cv-description h3 { font-size: 1.6rem; margin-bottom: 1rem; }
+      .cv-description p { margin-bottom: 1.1rem; line-height: 1.8; font-size: 0.95rem; }
+      .expertise-list { margin: 1.5rem 0 0; gap: 0.5rem; }
+
+      /* Work */
+      .work-grid { margin-top: 0; }
+      .work-card { padding: 1.75rem 1.5rem; }
+      .work-num { margin-bottom: 1.25rem; }
+      .work-arrow { margin-top: 1.25rem; }
+
+      /* Launch panel: remove the extra section padding that stacked on top of the panel */
+      section.launch-section { padding-top: 0; padding-bottom: 0; }
+      .launch-panel { padding: 2rem 1.5rem; gap: 2rem; }
+      .launch-title { margin-bottom: 1.25rem; }
+      .launch-body { margin-bottom: 1.5rem; }
+      .launch-cta { display: flex; justify-content: center; width: 100%; }
+      .launch-tags { margin-top: 1.5rem; }
+      .preview-card { padding: 1.75rem 1.5rem; }
+
+      /* Contact: one set of padding instead of two */
+      #contact { padding: 3rem 6vw 4rem; min-height: 0; }
+      .contact-inner { padding: 0; gap: 2.5rem; }
+      .contact-heading { margin-bottom: 1.75rem; }
+      .contact-photo-wrap { margin-bottom: 1.5rem; }
+
+      /* Footer */
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 6vw; }
+      .footer-left { align-items: center; }
+    }
   </style>
 </head>
 <body>
@@ -1240,6 +1316,18 @@
         alt="Curriculum Vitae of Colin John"
         loading="lazy"
       />
+      <!-- Mobile: button sits directly UNDER the CV image -->
+      <a href="assets/pdf/colin-john-cv.pdf"
+         download
+         class="cv-download cv-download--mobile"
+         aria-label="Download CV as PDF">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7.5" y1="1.5" x2="7.5" y2="10"/>
+          <polyline points="4.5,7 7.5,10 10.5,7"/>
+          <line x1="1.5" y1="12.5" x2="13.5" y2="12.5"/>
+        </svg>
+        Download CV
+      </a>
     </div>
 
     <div class="cv-description">
@@ -1270,10 +1358,10 @@
         <span>Front-End Development</span>
       </div>
 
-      <!-- Mobile: button before image (appears after description, before cv-image in column-reverse) -->
+      <!-- Desktop: button sits under the description -->
       <a href="assets/pdf/colin-john-cv.pdf"
          download
-         class="cv-download cv-download--mobile"
+         class="cv-download cv-download--desktop"
          aria-label="Download CV as PDF">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <line x1="7.5" y1="1.5" x2="7.5" y2="10"/>
@@ -1417,12 +1505,8 @@
       smoothTouch: false,
     });
 
-    // Tick loop
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    // (Lenis is driven by the GSAP ticker below. A second rAF loop here made
+    // it update twice per frame and caused jittery, out-of-order triggers.)
 
     // Sync with GSAP ticker
     gsap.registerPlugin(ScrollTrigger);
@@ -1586,14 +1670,14 @@
     });
 
     /* ─── 11. WORK CARDS ───────────────────────────────────── */
-    gsap.to('.work-card', {
-      opacity: 1, y: 0,
-      duration: 0.85, ease: 'power3.out',
-      stagger: 0.14,
-      scrollTrigger: {
-        trigger: '.work-grid',
-        start: 'top 80%'
-      }
+    ScrollTrigger.batch('.work-card', {
+      start: 'top 88%',
+      once: true,
+      onEnter: batch => gsap.to(batch, {
+        opacity: 1, y: 0,
+        duration: 0.85, ease: 'power3.out',
+        stagger: 0.14
+      })
     });
 
     /* ─── 11b. LAUNCH ANNOUNCEMENT (Cloaker Checker) ────────── */
@@ -1642,10 +1726,22 @@
       scrollTrigger: { trigger: '.cv-subtitle', start: 'top 85%' },
       delay: 0.1
     });
-    gsap.to('.cv-download', {
-      opacity: 1, y: 0,
-      duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: '.cv-download', start: 'top 90%' }
+    ['.seo-summary', '.cv-image', '.cv-description'].forEach((sel, i) => {
+      gsap.to(sel, {
+        opacity: 1, y: 0,
+        duration: 0.9, ease: 'power3.out',
+        delay: sel === '.cv-description' ? 0.1 : 0,
+        scrollTrigger: { trigger: sel, start: 'top 88%', once: true }
+      });
+    });
+    document.querySelectorAll('.cv-download').forEach(btn => {
+      // The variant that's hidden at this screen size never needs to animate
+      if (btn.offsetParent === null) { gsap.set(btn, { opacity: 1, y: 0 }); return; }
+      gsap.to(btn, {
+        opacity: 1, y: 0,
+        duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: btn, start: 'top 94%', once: true }
+      });
     });
 
     /* ─── 13. CONTACT ───────────────────────────────────────── */
@@ -1653,7 +1749,7 @@
       y: '0%',
       duration: 1.1, ease: 'power4.out',
       stagger: 0.12,
-      scrollTrigger: { trigger: '#contact', start: 'top 72%' }
+      scrollTrigger: { trigger: '.contact-heading', start: 'top 88%' }
     });
 
     gsap.to('.contact-link', {
@@ -1675,6 +1771,11 @@
       scrollTrigger: { trigger: '.contact-right', start: 'top 75%' },
       delay: 0.3
     });
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
   </script>
 <script type="application/ld+json">
 {
