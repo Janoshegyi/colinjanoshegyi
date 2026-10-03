@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -290,6 +289,54 @@
     }
     @media (max-width: 620px) {
       .post-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ---- Mobile cleanup ---- */
+    .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .post-card, .post-featured > div { min-width: 0; overflow-wrap: break-word; }
+
+    @media (max-width: 620px) {
+      .post-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      /* Header: shorter bar */
+      #header { height: 72px; }
+      #header.scrolled { height: 56px; }
+
+      /* Hero: title sits higher, less dead space */
+      #blog-hero { padding: 7rem 6vw 3rem; }
+      .blog-hero-eyebrow { margin-bottom: 1.25rem; }
+      .blog-hero-title { font-size: clamp(2.8rem, 15vw, 4rem); max-width: none; line-height: 1.02; }
+      .blog-hero-desc { margin-top: 1.25rem; font-size: .95rem; line-height: 1.7; }
+
+      /* Filters: one swipeable row instead of 4-5 wrapped rows */
+      .filter-bar {
+        padding: 1rem 6vw; gap: .5rem;
+        flex-wrap: nowrap; overflow-x: auto;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .filter-bar::-webkit-scrollbar { display: none; }
+      .filter-label { display: none; }
+      .filter-tag { flex: 0 0 auto; white-space: nowrap; padding: .5rem 1rem; }
+
+      /* Posts */
+      #post-list { padding: 0 6vw 6vh; }
+      .post-featured { padding: 2.5rem 0; gap: 0; }
+      .post-featured-meta { flex-wrap: wrap; gap: .4rem 1rem; margin-bottom: 1rem; }
+      .post-featured-title { font-size: clamp(1.6rem, 7vw, 2rem); margin-bottom: 1rem; }
+      .post-featured-excerpt { font-size: .9rem; line-height: 1.75; max-width: none; }
+      .post-read-link { margin-top: 1.5rem; }
+
+      .post-grid { margin-top: 0; border-left: 0; }
+      .post-card { padding: 1.75rem 0; border-right: 0; }
+      .post-card-meta { flex-wrap: wrap; gap: .3rem 1rem; margin-bottom: 1rem; }
+      .post-card h3 { font-size: 1.35rem; }
+      .post-card p { line-height: 1.75; }
+      .post-card .post-read-link { margin-top: 1.25rem; }
+
+      /* Footer: stack and centre */
+      footer { flex-direction: column; gap: .6rem; text-align: center; padding: 2rem 6vw; }
     }
   </style>
 </head>
@@ -618,6 +665,11 @@ render('All');
       "keywords": [
         "SEO",
         "Security",
+        "Cloaker Checker",
+        "Colin John SEO",
+        "Cloaking Checker",
+        "user-agent cloaking",
+        "Colin John marketing",
         "Cloaking"
       ]
     },
@@ -632,7 +684,9 @@ render('All');
       },
       "description": "A professor once gave me a cruel little test. It tells you exactly who you love—and what you've lost.",
       "keywords": [
-        "Personal"
+        "Personal",
+        "Colin John Writing",
+        "The Universe Owes You Nothing"
       ]
     },
     {
@@ -646,7 +700,8 @@ render('All');
       },
       "description": "How burnt toast unexpectedly became the opening to my speech for the 2025 Prezilimpia public speaking competition, where participants explored the theme \"Artificial Intelligence: The Digital Guardian or the Invisible Threat?\"",
       "keywords": [
-        "Personal"
+        "Personal",
+        "Prezilimpia"
       ]
     },
     {
@@ -662,6 +717,8 @@ render('All');
       "keywords": [
         "SEO",
         "Branding",
+        "Personal Portfolio",
+        "Personal Branding",
         "Personal"
       ]
     },
