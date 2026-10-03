@@ -49,11 +49,12 @@
     --maroon-deep: #4E0D10;
     --maroon-light:#B02428;
     --gold:        #C8963C;
+    --gold-deep:   #785A24; /* darker gold for text on light backgrounds, passes WCAG AA 4.5:1 */
     --gold-light:  #E8C07A;
     --cream:       #FAF5EC;
     --parchment:   #F0E8D8;
     --charcoal:    #1C1410;
-    --warm-gray:   #8A7E74;
+    --warm-gray:   #71675F; /* darkened from #8A7E74 to pass WCAG AA 4.5:1 on cream/parchment/white */
     --white:       #FFFFFF;
   }
 
@@ -413,7 +414,7 @@
     font-size: 0.62rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-deep);
     margin-bottom: 12px;
     display: block;
   }
@@ -897,6 +898,8 @@
 
 /* KEEP ONLY THIS CONTACT CARD */
 .contact-card {
+    display: block;
+    text-decoration: none;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(200,150,60,0.22);
     border-radius: 3px;
@@ -1257,7 +1260,7 @@
   .os-field input:focus { border-color: var(--maroon); box-shadow: 0 0 0 3px rgba(122,20,24,0.1); }
   .os-note { margin-top: 14px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.98rem; color: var(--warm-gray); }
   .os-actions { display: grid; gap: 10px; padding: 14px 20px calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--white); border-top: 1px solid rgba(200,150,60,0.3); }
-  .os-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; border-radius: 40px; border: 1px solid transparent; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.25s, color 0.25s, transform 0.2s; }
+  .os-btn { text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; border-radius: 40px; border: 1px solid transparent; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.25s, color 0.25s, transform 0.2s; }
   .os-btn svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
   .os-btn:active { transform: scale(0.98); }
   .os-wa { background: #25D366; color: #fff; }
@@ -1332,7 +1335,7 @@
 
 <!-- TOP BAR -->
 <div id="lang-bar">
-  <img class="horiz-logo-img" src="fotomenu/graces-resto-banner.png" alt="Grace's Resto" />
+  <img class="horiz-logo-img" src="fotomenu/graces-resto-banner.png" alt="Grace's Resto" width="240" height="60" />
   <div class="bar-right">
     <div class="lang-btns bar-lang">
       <button class="lang-btn active" onclick="setLang('en')" data-lang="en">English</button>
@@ -1373,7 +1376,7 @@
 <section id="hero">
   <div class="hero-logo-wrap">
     <div class="steam" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-    <img class="hero-logo-img" fetchpriority="high" src="fotomenu/graceresto-logo.png" alt="Grace's Resto Logo" />
+    <img class="hero-logo-img" fetchpriority="high" src="fotomenu/graceresto-logo.png" alt="Grace's Resto Logo" width="110" height="110" />
   </div>
   <div class="hero-badge en">Indonesian &amp; Chinese-Indonesian Restaurant · Sihanoukville</div>
   <div class="hero-badge id">Restoran Indonesia &amp; Tionghoa-Indonesia · Sihanoukville</div>
@@ -1422,7 +1425,7 @@
 <section id="about">
   <div class="grid">
     <div class="img-wrap reveal">
-      <img decoding="async" src="fotomenu/ayamtelurasin.png" alt="Indonesian food spread" loading="lazy" />
+      <img decoding="async" src="fotomenu/ayamtelurasin.png" alt="Indonesian food spread" loading="lazy" width="660" height="440" />
       <div class="caption en">Crafted with care</div>
       <div class="caption id">Dimasak dengan cinta</div>
     </div>
@@ -1452,38 +1455,38 @@
     <hr class="ornament reveal" />
     <div class="gallery-grid">
       <div class="g-item reveal">
-        <img decoding="async" src="fotomenu/capcai.png" alt="Capcay rice - Indonesian mixed vegetable stir-fry rice bowl" loading="lazy" />
+        <img decoding="async" src="fotomenu/capcai.png" alt="Capcay rice - Indonesian mixed vegetable stir-fry rice bowl" loading="lazy" width="400" height="400" />
         <div class="g-label en">Capcay Rice</div>
         <div class="g-label id">Nasi Capcai</div>
       </div>
       <div class="g-item reveal">
-        <img decoding="async" src="fotomenu/ikansambal.png" alt="Fried Indian mackerel with chili sambal - Indonesian rice dish" loading="lazy" />
+        <img decoding="async" src="fotomenu/ikansambal.png" alt="Fried Indian mackerel with chili sambal - Indonesian rice dish" loading="lazy" width="400" height="400" />
         <div class="g-label en">Fried Indian Mackerel and Chili Sambal</div>
         <div class="g-label id">Nasi Ikan Goreng Kembung Sambel</div>
       </div>
       <div class="g-item reveal">
-        <img decoding="async" src="fotomenu/loempia.png" alt="Fried chicken wontons - Indonesian pangsit goreng appetizer" loading="lazy" />
+        <img decoding="async" src="fotomenu/loempia.png" alt="Fried chicken wontons - Indonesian pangsit goreng appetizer" loading="lazy" width="400" height="400" />
         <div class="g-label en">Fried Chicken Wontons</div>
         <div class="g-label id">Pangsit Goreng Isi Ayam</div>
       </div>
       <div class="g-item reveal">
-        <img decoding="async" src="fotomenu/miejawaseafood.png" alt="Javanese fried noodles with seafood - mie Jawa seafood" loading="lazy" />
+        <img decoding="async" src="fotomenu/miejawaseafood.png" alt="Javanese fried noodles with seafood - mie Jawa seafood" loading="lazy" width="400" height="400" />
         <div class="g-label en">Javanese Fried Noodle with Seafood</div>
         <div class="g-label id">Mie Jawa Seafood</div>
       </div>
       <div class="g-item reveal">
-        <img decoding="async" src="fotomenu/nasgorayam.png" alt="Special chicken fried rice - nasi goreng ayam spesial" loading="lazy" />
+        <img decoding="async" src="fotomenu/nasgorayam.png" alt="Special chicken fried rice - nasi goreng ayam spesial" loading="lazy" width="400" height="400" />
         <div class="g-label en">Special Chicken Fried Rice </div>
         <div class="g-label id">Nasi Goreng Ayam Spesial</div>
       </div>
       <div class="g-item reveal">
-        <img decoding="async" src="fotomenu/nasiayam.png" alt="Indonesian chicken rice - nasi ayam spesial" loading="lazy" />
+        <img decoding="async" src="fotomenu/nasiayam.png" alt="Indonesian chicken rice - nasi ayam spesial" loading="lazy" width="400" height="400" />
         <div class="g-label en">Indonesian Chicken Rice</div>
         <div class="g-label id">Nasi Ayam Spesial</div>
       </div>
     </div>
-    <p style="text-align:center; margin-top: 28px; font-family:'Cormorant Garamond',serif; font-style:italic; color: var(--warm-gray); font-size:0.95rem;" class="en">Every dish is cooked fresh to order — from duck and beef to a full seafood line-up, all Indonesian and Chinese-Indonesian classics.</p>
-    <p style="text-align:center; margin-top: 28px; font-family:'Cormorant Garamond',serif; font-style:italic; color: var(--warm-gray); font-size:0.95rem;" class="id">Setiap hidangan dimasak segar sesuai pesanan — mulai dari bebek dan sapi hingga aneka seafood, semuanya masakan klasik Indonesia dan Tionghoa-Indonesia.</p>
+    <p style="text-align:center; margin-top: 28px; font-family:'Cormorant Garamond',serif; font-style:italic; color: var(--warm-gray); font-size:0.95rem;" class="en">Every dish is cooked fresh to order, from duck and beef to a full seafood line-up, all Indonesian and Chinese-Indonesian classics.</p>
+    <p style="text-align:center; margin-top: 28px; font-family:'Cormorant Garamond',serif; font-style:italic; color: var(--warm-gray); font-size:0.95rem;" class="id">Setiap hidangan dimasak segar sesuai pesanan, mulai dari bebek dan sapi hingga aneka seafood, semuanya masakan klasik Indonesia dan Tionghoa-Indonesia.</p>
   </div>
 </div>
 
@@ -1495,17 +1498,17 @@
   <h2 class="section-title reveal id"><em>Menu</em> Kami</h2>
   <hr class="ornament reveal" />
   <div class="menu-header-row reveal">
-    <div class="menu-tabs" style="margin-bottom:0;">
-      <button class="menu-tab active" onclick="switchTab('daily', this)">
+    <div class="menu-tabs" style="margin-bottom:0;" role="tablist" aria-label="Menu categories">
+      <button class="menu-tab active" id="tabbtn-daily" role="tab" aria-selected="true" aria-controls="tab-daily" onclick="switchTab('daily', this)">
         <span class="en">Daily Menu</span><span class="id">Menu Harian</span>
       </button>
-      <button class="menu-tab" onclick="switchTab('chicken', this)">
+      <button class="menu-tab" id="tabbtn-chicken" role="tab" aria-selected="false" aria-controls="tab-chicken" onclick="switchTab('chicken', this)">
         <span class="en">Chicken</span><span class="id">Ayam</span>
       </button>
-      <button class="menu-tab" onclick="switchTab('seafood', this)">
+      <button class="menu-tab" id="tabbtn-seafood" role="tab" aria-selected="false" aria-controls="tab-seafood" onclick="switchTab('seafood', this)">
         <span class="en">Seafood</span><span class="id">Seafood</span>
       </button>
-      <button class="menu-tab" onclick="switchTab('budget', this)">
+      <button class="menu-tab" id="tabbtn-budget" role="tab" aria-selected="false" aria-controls="tab-budget" onclick="switchTab('budget', this)">
         <span class="en">Budget $1.25</span><span class="id">Hemat $1.25</span><span class="menu-tab-badge">New</span>
       </button>
     </div>
@@ -1519,14 +1522,14 @@
   <!-- DAILY -->
   <p class="order-hint"><span class="en">Tap <b>+</b> on any dish to build your order, then send it on WhatsApp or Telegram.</span><span class="id">Ketuk <b>+</b> pada hidangan untuk menyusun pesanan, lalu kirim lewat WhatsApp atau Telegram.</span></p>
 
-  <div id="tab-daily" class="menu-panel active reveal">
+  <div id="tab-daily" class="menu-panel active reveal" role="tabpanel" aria-labelledby="tabbtn-daily" tabindex="0">
     <div class="price-badge">
-      <span class="en">Daily Specials — all at</span>
-      <span class="id">Menu Harian — semua</span>
+      <span class="en">Daily Specials · all at</span>
+      <span class="id">Menu Harian · semua</span>
       <strong>$3</strong>
     </div>
-    <p class="menu-intro en">Our daily menu covers Sihanoukville's favourite comfort plates — honey-fried duck, black pepper beef, Javanese-style noodles, and hearty soup rice bowls like nasi sapo tahu and nasi capcai seafood.</p>
-    <p class="menu-intro id">Menu harian kami menghadirkan hidangan favorit di Sihanoukville — bebek goreng madu, sapi lada hitam, mie Jawa, hingga nasi sop seperti nasi sapo tahu dan nasi capcai seafood.</p>
+    <p class="menu-intro en">Our daily menu covers Sihanoukville's favourite comfort plates: honey-fried duck, black pepper beef, Javanese-style noodles, and hearty soup rice bowls like nasi sapo tahu and nasi capcai seafood.</p>
+    <p class="menu-intro id">Menu harian kami menghadirkan hidangan favorit di Sihanoukville: bebek goreng madu, sapi lada hitam, mie Jawa, hingga nasi sop seperti nasi sapo tahu dan nasi capcai seafood.</p>
     <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Duck &amp; Protein Rice</h3>
     <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Nasi Bebek &amp; Protein</h3>
     <div class="menu-grid">
@@ -1579,14 +1582,14 @@
   </div>
 
   <!-- CHICKEN -->
-  <div id="tab-chicken" class="menu-panel reveal">
+  <div id="tab-chicken" class="menu-panel reveal" role="tabpanel" aria-labelledby="tabbtn-chicken" tabindex="0">
     <div class="price-badge">
-      <span class="en">Chicken Menu — all at</span>
-      <span class="id">Menu Ayam — semua</span>
+      <span class="en">Chicken Menu · all at</span>
+      <span class="id">Menu Ayam · semua</span>
       <strong>$3</strong>
     </div>
-    <p class="menu-intro en">Over 30 ways to eat chicken rice at Grace's Resto — from Sihanoukville favourites like ayam geprek and ayam penyet to salted egg, katsu, and Padang-style sauces.</p>
-    <p class="menu-intro id">Lebih dari 30 pilihan nasi ayam di Grace's Resto — mulai dari ayam geprek dan ayam penyet favorit, hingga telur asin, katsu, dan saos Padang.</p>
+    <p class="menu-intro en">Over 30 ways to eat chicken rice at Grace's Resto, from Sihanoukville favourites like ayam geprek and ayam penyet to salted egg, katsu, and Padang-style sauces.</p>
+    <p class="menu-intro id">Lebih dari 30 pilihan nasi ayam di Grace's Resto, mulai dari ayam geprek dan ayam penyet favorit, hingga telur asin, katsu, dan saos Padang.</p>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Sup Baso Ayam<span class="menu-name-en en">Chicken Meatball Soup Rice</span></div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasi Hotdog Ayam<span class="menu-name-en en">Chicken Hotdog Rice</span></div></div>
@@ -1623,14 +1626,14 @@
   </div>
 
   <!-- SEAFOOD -->
-  <div id="tab-seafood" class="menu-panel reveal">
+  <div id="tab-seafood" class="menu-panel reveal" role="tabpanel" aria-labelledby="tabbtn-seafood" tabindex="0">
     <div class="price-badge">
-      <span class="en">Seafood Menu — all at</span>
-      <span class="id">Menu Seafood — semua</span>
+      <span class="en">Seafood Menu · all at</span>
+      <span class="id">Menu Seafood · semua</span>
       <strong>$3</strong>
     </div>
-    <p class="menu-intro en">Fresh squid, prawn, and tilapia rice bowls — black pepper, oyster sauce, salted egg, and Padang-style, all $3 and cooked to order.</p>
-    <p class="menu-intro id">Nasi cumi, udang, dan ikan nila segar — lada hitam, saos tiram, telur asin, hingga saos Padang, semua $3 dan dimasak sesuai pesanan.</p>
+    <p class="menu-intro en">Fresh squid, prawn, and tilapia rice bowls: black pepper, oyster sauce, salted egg, and Padang-style, all $3 and cooked to order.</p>
+    <p class="menu-intro id">Nasi cumi, udang, dan ikan nila segar: lada hitam, saos tiram, telur asin, hingga saos Padang, semua $3 dan dimasak sesuai pesanan.</p>
     <h3 class="menu-section-label en"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Squid (Cumi)</h3>
     <h3 class="menu-section-label id"><svg viewBox="0 0 64 64"><use href="#menu-seal"/></svg>Cumi</h3>
     <div class="menu-grid">
@@ -1669,16 +1672,16 @@
   </div>
 
   <!-- BUDGET -->
-  <div id="tab-budget" class="menu-panel reveal">
+  <div id="tab-budget" class="menu-panel reveal" role="tabpanel" aria-labelledby="tabbtn-budget" tabindex="0">
     <div class="price-badge price-badge-budget">
-      <span class="en">Budget Menu — all at</span>
-      <span class="id">Menu Hemat — semua</span>
+      <span class="en">Budget Menu · all at</span>
+      <span class="id">Menu Hemat · semua</span>
       <strong>$1.25</strong>
       <span class="en">· 5,000 Riel</span>
       <span class="id">· 5.000 Riel</span>
     </div>
-    <p class="menu-intro en">Our most affordable plates yet — simple egg-fried rice and noodles, made fresh, for anyone looking for a quick and easy meal on a tight budget.</p>
-    <p class="menu-intro id">Menu paling hemat kami — nasi goreng dan mie telur sederhana, dimasak segar, untuk siapa saja yang ingin makan cepat dan hemat.</p>
+    <p class="menu-intro en">Our most affordable plates yet: simple egg-fried rice and noodles, made fresh, for anyone looking for a quick and easy meal on a tight budget.</p>
+    <p class="menu-intro id">Menu paling hemat kami: nasi goreng dan mie telur sederhana, dimasak segar, untuk siapa saja yang ingin makan cepat dan hemat.</p>
     <div class="menu-grid">
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Nasgor Telur<span class="menu-name-en en">Fried Rice with Egg</span></div><div class="menu-item-price">$1.25</div></div>
       <div class="menu-item"><div class="menu-dot"></div><div class="menu-name">Indomie Grg Telur<span class="menu-name-en en">Fried Indomie Noodles with Egg</span></div><div class="menu-item-price">$1.25</div></div>
@@ -1768,7 +1771,7 @@
 <div class="contact-cards">
 
 <!-- WhatsApp -->
-<div class="contact-card reveal" onclick="openWhatsApp()">
+<a class="contact-card reveal" id="cc-wa" href="https://wa.me/6282123359900" target="_blank" rel="noopener">
     <span class="cc-icon">
         <svg aria-hidden="true"><use href="#i-wa"/></svg>
     </span>
@@ -1776,10 +1779,10 @@
     <div class="cc-value">
         +62 821-2335-9900
     </div>
-</div>
+</a>
 
 <!-- Telegram -->
-<div class="contact-card reveal" onclick="openTelegram()">
+<a class="contact-card reveal" href="https://t.me/gracerestomulia" target="_blank" rel="noopener">
     <span class="cc-icon">
         <svg aria-hidden="true"><use href="#i-tg"/></svg>
     </span>
@@ -1787,16 +1790,16 @@
     <div class="cc-value">
         @gracerestomulia
     </div>
-</div>
+</a>
 
 <!-- Price -->
-<div class="contact-card reveal" onclick="openTelegram()">
+<a class="contact-card reveal" href="https://t.me/gracerestomulia" target="_blank" rel="noopener">
     <span class="cc-icon-text">$1.25</span>
     <div class="cc-label en">Starting Price</div>
     <div class="cc-label id">Harga Mulai Dari</div>
     <div class="cc-value en">Per Dish, up to $3</div>
     <div class="cc-value id">Per Porsi, hingga $3</div>
-</div>
+</a>
     </div>
   </div>
 </div>
@@ -1832,8 +1835,8 @@
     <p class="os-note"><span class="en">We'll confirm your order and delivery details in chat.</span><span class="id">Kami akan konfirmasi pesanan dan pengantaran lewat chat.</span></p>
   </div>
   <div class="os-actions">
-    <button class="os-btn os-wa" id="os-wa" type="button"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="en">Send on WhatsApp</span><span class="id">Kirim via WhatsApp</span></button>
-    <button class="os-btn os-tg" id="os-tg" type="button"><svg aria-hidden="true"><use href="#i-tg"/></svg><span class="en">Send on Telegram</span><span class="id">Kirim via Telegram</span></button>
+    <a class="os-btn os-wa" id="os-wa" href="https://wa.me/6282123359900" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="en">Send on WhatsApp</span><span class="id">Kirim via WhatsApp</span></a>
+    <a class="os-btn os-tg" id="os-tg" href="https://t.me/gracerestomulia" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg><span class="en">Send on Telegram</span><span class="id">Kirim via Telegram</span></a>
     <button class="os-clear" id="os-clear" type="button"><span class="en">Clear order</span><span class="id">Kosongkan pesanan</span></button>
   </div>
 </div>
@@ -1871,7 +1874,11 @@
 
     function greeting() { return isId() ? "Halo Grace's Resto, saya mau pesan\u2026" : "Hello Grace's Resto, I'd like to order\u2026"; }
     window.grGreeting = greeting;
-    function refreshFab() { $('wa-fab').href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(greeting()); }
+    function refreshFab() {
+      var href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(greeting());
+      $('wa-fab').href = href;
+      var cc = $('cc-wa'); if (cc) cc.href = href;
+    }
     window.grRefresh = function () { refreshFab(); };
 
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -1905,6 +1912,8 @@
         list.appendChild(li);
       });
       $('os-total').textContent = money(total());
+      $('os-wa').href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(message());
+      $('os-tg').href = 'https://t.me/' + TG;
     }
     function renderBar() {
       var n = count(), bar = $('order-bar');
@@ -1965,13 +1974,11 @@
     $('order-overlay').addEventListener('click', closeSheet);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
     $('os-clear').addEventListener('click', function () { cart = Object.create(null); update(); });
-    $('os-wa').addEventListener('click', function () {
-      window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(message()), '_blank', 'noopener,noreferrer');
-    });
+    // os-wa / os-tg are now real links (set in renderSheet) so the phone's own
+    // link-opening logic runs, which is what makes the deep link into the app reliable.
     $('os-tg').addEventListener('click', function () {
-      var msg = message(), ok = copy(msg);
-      window.open('https://t.me/' + TG + '?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
-      if (ok) toast(isId() ? 'Pesanan disalin. Tempel di chat Telegram, lalu kirim.' : 'Order copied. Paste it into the Telegram chat and send.');
+      if (copy(message())) toast(isId() ? 'Pesanan disalin. Tempel di chat Telegram, lalu kirim.' : 'Order copied. Paste it into the Telegram chat and send.');
+      // no preventDefault: the link still opens Telegram normally, same click
     });
 
     // tag every dish with its name + price and give it an order control
@@ -2014,10 +2021,23 @@
   })();
   function switchTab(tab, btn) {
     document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.menu-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
     document.getElementById('tab-' + tab).classList.add('active');
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
   }
+  document.querySelector('[role="tablist"]').addEventListener('keydown', function (e) {
+    if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(e.key)) return;
+    var tabs = Array.prototype.slice.call(this.querySelectorAll('[role="tab"]'));
+    var i = tabs.indexOf(document.activeElement);
+    if (i === -1) return;
+    e.preventDefault();
+    var next = e.key === 'ArrowRight' ? (i + 1) % tabs.length
+      : e.key === 'ArrowLeft' ? (i - 1 + tabs.length) % tabs.length
+      : e.key === 'Home' ? 0 : tabs.length - 1;
+    tabs[next].focus();
+    tabs[next].click();
+  });
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.08 });
@@ -2053,15 +2073,6 @@
     if (e.key === 'ArrowRight') navBoard(1);
     if (e.key === 'ArrowLeft') navBoard(-1);
   });
-</script>
-<script>
-function openWhatsApp() {
-    window.open("https://wa.me/6282123359900?text=" + encodeURIComponent(window.grGreeting ? window.grGreeting() : "Hello Grace's Resto"), "_blank", "noopener,noreferrer");
-}
-
-function openTelegram() {
-    window.open("https://t.me/gracerestomulia", "_blank", "noopener,noreferrer");
-}
 </script>
 <!--Add JSON-LD Schema-->
 <script type="application/ld+json">
@@ -3285,10 +3296,10 @@ function openTelegram() {
   <div class="board-lb-frame">
     <button class="board-lb-close" onclick="closeBoard()" aria-label="Close">✕</button>
     <button class="board-lb-nav board-lb-prev" onclick="navBoard(-1)" aria-label="Previous page">‹</button>
-    <img id="board-lb-img" src="" alt="Grace's Resto printed menu board" />
+    <img id="board-lb-img" src="" alt="Grace's Resto printed menu board" width="640" height="480" />
     <button class="board-lb-nav board-lb-next" onclick="navBoard(1)" aria-label="Next page">›</button>
     <div class="board-lb-caption">
-      <span class="en">Menu Board — Page </span><span class="id">Papan Menu — Halaman </span><span id="board-lb-count"></span>
+      <span class="en">Menu Board · Page </span><span class="id">Papan Menu · Halaman </span><span id="board-lb-count"></span>
     </div>
   </div>
 </div>
