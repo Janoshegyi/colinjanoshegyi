@@ -136,7 +136,7 @@
 
     /* Article layout */
     .article-layout {
-      display: grid; grid-template-columns: 1fr min(700px, 90%) 1fr;
+      display: grid; grid-template-columns: minmax(0, 1fr) min(700px, 90%) minmax(0, 1fr);
       padding: 7vh 0 14vh;
     }
     .article-body { grid-column: 2; }
@@ -223,10 +223,28 @@
     footer a:hover { color: var(--ink); }
 
     @media (max-width: 700px) {
-      .article-layout { grid-template-columns: 1fr; padding: 4vh 6vw 10vh; }
+      .article-layout { grid-template-columns: minmax(0, 1fr); padding: 4vh 6vw 10vh; }
       .article-body { grid-column: 1; }
       .article-nav { flex-direction: column; align-items: flex-start; }
       .article-nav-link.right { text-align: left; margin-left: 0; }
+    }
+  
+    /* ---- Mobile overflow fix: stop wide elements from stretching the grid ---- */
+    .article-body { min-width: 0; overflow-wrap: break-word; }
+    .graph-block { min-width: 0; max-width: 100%; overflow: hidden; box-sizing: border-box; }
+    .graph-block canvas { max-width: 100% !important; }
+    .article-body img, .article-body svg, .article-body iframe { max-width: 100%; }
+    @media (max-width: 700px) {
+      .comparison-table, .article-body table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
+
+    /* ---- Mobile: tighter article header so the title sits higher ---- */
+    @media (max-width: 700px) {
+      .article-header { padding: 6.5rem 6vw 2.5rem; }
+      .article-back { margin-bottom: 1.5rem; }
+      .article-meta { gap: .6rem 1rem; margin-bottom: 1.25rem; align-items: center; }
+      .article-title { font-size: clamp(2rem, 9vw, 2.6rem); line-height: 1.12; }
+      .article-subtitle { margin-top: 1rem; line-height: 1.6; }
     }
   </style>
 </head>
@@ -546,12 +564,18 @@
         "Colin Janoshegyi",
         "Colin Janoshegyi Blog",
         "Colin John University of Szeged",
+        "Colin John SZTE",
         "SEO",
+        "SEO Marketing",
+        "SEO Personal Profile",
+        "Colin John",
         "personal branding",
         "entity SEO",
         "digital strategy",
         "marketing",
+        "SEO Nederland",
         "personal website",
+        "personal website tutorial",
         "personal portfolio"
       ]
     },
