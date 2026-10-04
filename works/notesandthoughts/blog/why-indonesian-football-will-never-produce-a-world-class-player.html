@@ -337,6 +337,12 @@
       float: none; font-size: inherit; line-height: inherit; margin: 0;
       font-family: inherit; font-weight: inherit; color: inherit;
     }
+
+    /* ---- Mobile chart sizing ---- */
+    @media (max-width: 700px) {
+      .graph-block { padding: 1rem; }
+      .chart-box { height: 240px; }
+    }
   </style>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
@@ -736,6 +742,8 @@
 }
 </script>
 <script>
+  const isMobile = window.matchMedia('(max-width: 700px)').matches;
+
   // Small helper: draws each bar's value next to the bar
   const valueLabels = {
     id: 'valueLabels',
@@ -743,7 +751,7 @@
       const { ctx } = chart;
       const horizontal = chart.options.indexAxis === 'y';
       ctx.save();
-      ctx.font = '500 12px Outfit, system-ui, sans-serif';
+      ctx.font = `500 ${Chart.defaults.font.size}px Outfit, system-ui, sans-serif`;
       ctx.fillStyle = '#111111';
       ctx.textBaseline = 'middle';
       chart.getDatasetMeta(0).data.forEach((bar, i) => {
@@ -756,6 +764,7 @@
     }
   };
   Chart.defaults.font.family = "Outfit, system-ui, sans-serif";
+  Chart.defaults.font.size = isMobile ? 11 : 12;
   Chart.defaults.color = '#666666';
 
   const valueCtx = document.getElementById('valueChart');
@@ -763,7 +772,7 @@
     new Chart(valueCtx, {
       type: 'bar',
       data: {
-        labels: ['Thai League 1', 'Indonesia Super League', 'Vietnam V.League 1', 'Malaysia Super League', 'Singapore Premier League'],
+        labels: ['Thailand', 'Indonesia', 'Vietnam', 'Malaysia', 'Singapore'],
         datasets: [{
           label: 'Total squad market value (€ millions)',
           data: [76.84, 71.54, 53.74, 51.09, 19.01],
@@ -775,10 +784,10 @@
         indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
-        layout: { padding: { right: 56 } },
+        layout: { padding: { right: isMobile ? 52 : 60 } },
         plugins: { legend: { display: false }, valueLabels: { prefix: '€', suffix: 'M' } },
         scales: {
-          x: { beginAtZero: true, grid: { color: 'rgba(17,17,17,0.06)' }, title: { display: true, text: 'Total squad market value (€ millions)' } },
+          x: { beginAtZero: true, grid: { color: 'rgba(17,17,17,0.06)' }, ticks: { maxTicksLimit: 5 } },
           y: { grid: { display: false } }
         }
       },
@@ -791,7 +800,7 @@
     new Chart(natCtx, {
       type: 'bar',
       data: {
-        labels: ['June 2024 matchday squad', 'March 2025 provisional squad'],
+        labels: [['June 2024', 'matchday squad'], ['March 2025', 'provisional squad']],
         datasets: [{
           label: 'Naturalized players (% of squad)',
           data: [43, 63],
@@ -806,13 +815,14 @@
         layout: { padding: { top: 24 } },
         plugins: { legend: { display: false }, valueLabels: { suffix: '%' } },
         scales: {
-          y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' }, grid: { color: 'rgba(17,17,17,0.06)' }, title: { display: true, text: 'Share of squad that is naturalized' } },
-          x: { grid: { display: false } }
+          y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%', stepSize: 25 }, grid: { color: 'rgba(17,17,17,0.06)' } },
+          x: { grid: { display: false }, ticks: { maxRotation: 0, minRotation: 0 } }
         }
       },
       plugins: [valueLabels]
     });
   }
 </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
