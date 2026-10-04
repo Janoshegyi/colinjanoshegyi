@@ -13,11 +13,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Why Indonesian Football Will Never Produce a World-Class Player | Colin John</title>
   <link rel="canonical" href="https://colinjanoshegyi.com/works/notesandthoughts/blog/why-indonesian-football-will-never-produce-a-world-class-player" />
-  <meta name="description" content="Indonesia has 270 million people and one of the world's most passionate football cultures. So why hasn't it produced a single world-class player? The answer isn't talent , it's structural economics." />
-  <meta name="keywords" content="Indonesian football, PSSI, Liga 1, Timnas Indonesia, Southeast Asia football, football development, Indonesian sports" />
+  <meta name="description" content="Indonesia has 284 million people and one of the world's most passionate football cultures. So why hasn't it produced a single world-class player? The answer isn't talent, it's structure." />
+  <meta name="keywords" content="Indonesian football, PSSI, Super League Indonesia, Timnas Indonesia, naturalization, Southeast Asia football, football development, Indonesian sports" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Why Indonesian Football Will Never Produce a World Class Player" />
-  <meta property="og:description" content="Indonesia has 270 million people and one of the world's most passionate football cultures. So why hasn't it produced a single world-class player? The answer isn't talent , it's structural economics." />
+  <meta property="og:title" content="Why Indonesian Football Will Never Produce a World-Class Player" />
+  <meta property="og:description" content="Indonesia has 284 million people and one of the world's most passionate football cultures. So why hasn't it produced a single world-class player? The answer isn't talent, it's structure." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/blog/why-indonesian-football-will-never-produce-a-world-class-player" />
   <meta property="og:image" content="https://colinjanoshegyi.com/assets/preview.png" />
@@ -25,9 +25,9 @@
   <meta property="article:author" content="Colin John" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Why Indonesian Football Will Never Produce a World-Class Player" />
-  <meta name="twitter:description" content="Indonesia has 270 million people and one of the world's most passionate football cultures. So why hasn't it produced a single world-class player?" />
+  <meta name="twitter:description" content="Indonesia has 284 million people and one of the world's most passionate football cultures. So why hasn't it produced a single world-class player?" />
   <meta name="twitter:image" content="https://colinjanoshegyi.com/assets/preview.png" />
-  <meta property="article:modified_time" content="2026-05-20" />
+  <meta property="article:modified_time" content="2026-10-04" />
   <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/pdf/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/pdf/favicon-16x16.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -320,9 +320,32 @@
       .article-title { font-size: clamp(2rem, 9vw, 2.6rem); line-height: 1.12; }
       .article-subtitle { margin-top: 1rem; line-height: 1.6; }
     }
+  
+    /* ---- Draft revision additions ---- */
+    .chart-box { position: relative; height: 280px; width: 100%; }
+    .sources-list { font-size: .88rem; line-height: 1.7; padding-left: 1.4rem; }
+    .sources-list li { font-size: .88rem; color: var(--mid); margin-bottom: .55rem; }
+    .update-note {
+      margin-top: 2.5rem; padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border); border-radius: 8px; background: var(--near-white);
+    }
+    .update-note p { font-size: .88rem; line-height: 1.7; color: var(--mid); margin: 0; }
+    /* The drop cap should only apply to the article's opening paragraph */
+    .article-body .stat-cell p::first-letter,
+    .article-body .graph-block p::first-letter,
+    .article-body .update-note p::first-letter {
+      float: none; font-size: inherit; line-height: inherit; margin: 0;
+      font-family: inherit; font-weight: inherit; color: inherit;
+    }
   </style>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      .article-back, .article-meta, .article-title, .article-subtitle { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+  <noscript><style>.article-back, .article-meta, .article-title, .article-subtitle { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
 
@@ -340,52 +363,54 @@
 </header>
 
 <!-- ARTICLE HEADER -->
-<header class="article-header">
+<div class="article-header">
   <a href="https://colinjanoshegyi.com/works/notesandthoughts/" class="article-back">← All notes</a>
   <p class="article-meta">
     <span>17 May 2026</span>
+    <span>Updated 4 Oct 2026</span>
     <span class="article-tag">Football</span>
     <span class="article-tag">Indonesia</span>
     <span class="article-tag">Analysis</span>
-    <span>15 min read</span>
+    <span>8 min read</span>
   </p>
   <h1 class="article-title">Why Indonesian Football Will <em>Never</em> Produce a World Class Player</h1>
-  <p class="article-subtitle">Structural economics, not talent. A look at how broken incentives, rapid naturalization policies, and institutional instability are failing 270 million people.</p>
-</header>
+  <p class="article-subtitle">Structural economics, not talent. A look at how broken incentives, rapid naturalization policies, and institutional instability are failing 284 million people.</p>
+</div>
 
 <!-- ARTICLE BODY -->
 <div class="article-layout">
   <article class="article-body" role="main">
 
     <p>
-      Two hundred and seventy million people. The fourth most populous country on Earth. A nation where football is not just a sport , it is a religion, a language, a reason to stay up all night watching the Champions League match despite working the next day. And yet, in the entire history of professional football, Indonesia has not produced a single player who has competed at the highest level of the game. Not one.
+      Indonesia has more than <a href="https://kabar24.bisnis.com/read/20260505/15/1971460/sensus-bps-jumlah-penduduk-ri-capai-28467-juta-jiwa-2025-tumbuh-melambat" target="_blank" rel="noopener noreferrer">284 million people</a>, the fourth most populous country on Earth, and a nation where football is not just a sport but a religion, a language, a reason to stay up all night for the Champions League with work in the morning.  And yet, in the entire history of professional football, Indonesia has not produced a single player who has competed at the highest level of the game. Not one.
     </p>
 
-    
+    <p>
+      A note on terms, because they matter here. By "world-class" I mean a regular at a top European club or in a World Cup-level national team. By "produced" I mean developed in Indonesia, a very different thing from holding an Indonesian passport from the process of naturalization. That difference has never mattered more, and the naturalization section shows why.
+    </p>
+
     <figure class="feature-image">
       <img loading="lazy" src="https://asset.kompas.com/crops/PEG09r_FbCQwFwAOoLNUC7YemTs=/55x60:695x487/750x500/data/photo/2025/10/18/68f30c591e94d.jpeg" alt="Indonesia national football team">
-      <figcaption>Source: <i>Kompas.com</i><br>The current Indonesia national football team during the federation’s modern rebuilding era. The federation has increasingly relied on overseas recruitment and naturalized talent to accelerate competitiveness throughout SEA and the world.</figcaption>
+      <figcaption>Source: <i>Kompas.com</i><br>The Indonesia national team in the federation's recent rebuilding era. The federation has increasingly recruited overseas-based players with Indonesian ancestry.</figcaption>
     </figure>
 
     <div class="stat-row">
       <div class="stat-cell">
-        <p class="stat-number">270M</p>
-        <p class="stat-label">Indonesia's population</p>
+        <p class="stat-number">284M</p>
+        <p class="stat-label">Indonesia's population (BPS, 2025)</p>
       </div>
       <div class="stat-cell">
-        <p class="stat-number">
-  <span class="stat-value">4</span><span class="stat-unit">M</span></p>
-
-        <p class="stat-label">Croatia's population , multiple World Cup finalists</p>
+        <p class="stat-number">3.8M</p>
+        <p class="stat-label">Croatia's population: World Cup finalist in 2018, third in 2022</p>
       </div>
       <div class="stat-cell">
-        <p class="stat-number">0</p>
-        <p class="stat-label">Indonesians who've played at Europe's top level</p>
+        <p class="stat-number">63%</p>
+        <p class="stat-label">of Indonesia's provisional squad in March 2025 (19 of 30) was naturalized</p>
       </div>
     </div>
 
     <p>
-      Brazil has 215 million people and gave the world Pelé, Ronaldo, Ronaldinho, and Neymar. Argentina produced Messi and Di María in the same generation from 46 million. Croatia , four million people, a nation that emerged from war in the 1990s , has had Modrić, Šuker, Boban, and Rakitić. The easy answer to Indonesia's absence from this list is talent. That Indonesians simply aren't built for football. That answer is lazy. And it is wrong. The real answer is money, and what a broken system chooses to do with it.
+      Brazil has 215 million people and gave the world Pelé, Ronaldo, Ronaldinho, and Neymar. Argentina produced Messi and Di María in the same generation from 46 million. Croatia, almost four million people, a nation that emerged from war in the 1990s, has had Modrić, Šuker, Boban, and Rakitić. The easy answer to Indonesia's absence from this list is talent. That Indonesians simply aren't built for football. That answer is lazy. And it is wrong. The real answer is money, and what a broken system chooses to do with it.
     </p>
 
     <h2>What Football Actually Means Here</h2>
@@ -401,24 +426,15 @@
     </figure>
 
     <p>
-      Before the economics, you need to understand the stakes. This is not a country that is indifferent to football. <a href="https://persija.id" target="_blank" rel="noopener noreferrer">The Jakmania</a> , Persija Jakarta's supporter group , has over four million registered members. That is more than the entire population of New Zealand. Aremania, Bobotoh, Bonek , these are not fan clubs. These are movements. Indonesian supporters have literally died for their clubs. Rivalries here are not metaphorical.
+      Before the structure, let's understand the stakes. This is not a country indifferent to football. <a href="https://en.wikipedia.org/wiki/Gelora_Bung_Karno_Stadium" target="_blank" rel="noopener noreferrer">Gelora Bung Karno</a>, the national stadium in Jakarta, opened in July 1962 for that year's Asian Games, seventeen years after independence. Since its 2018 renovation it has held 77,193 seats. A 1985 match between Persib Bandung and PSMS Medan reportedly drew 150,000. Supporters here are not casual. A home game for Timnas, the national team, stops the country.
     </p>
 
     <p>
-      And then there is Timnas , the national team. Every time Indonesia qualifies for a regional tournament, the entire country stops. Restaurants empty. Traffic disappears. Seventy, eighty thousand people pack into <a href="https://en.wikipedia.org/wiki/Gelora_Bung_Karno_Stadium" target="_blank" rel="noopener noreferrer">Gelora Bung Karno</a>, a stadium older than the nation itself. The hope is always enormous. The heartbreak, almost always guaranteed.
+      The gap between passion and performance is not an accident. It is an outcome. And to understand it, you have to start with who has run the game.
     </p>
 
-    <blockquote>
-      The pride of a football player is playing for the national team. It was never about the money... I can tell that to my children and grandchildren later.
-      <br>
-      - <i>Boaz Solossa, Persipura</i>
-    </blockquote>
+    <h2>A History of Dysfunction</h2>
 
-    <p>
-      The gap between passion and performance is not an accident. It is an outcome. And to understand it, you have to go back to where Indonesian football started , and who was allowed to control it.
-    </p>
-
-    
     <figure class="feature-image">
       <img loading="lazy" src="https://assets.the-afc.com/migration/r/t/rtj42mbbo2qu65arl9qb.jpg" alt="Dutch East Indies 1938 World Cup team">
       <figcaption>The Dutch East Indies team at the 1938 FIFA World Cup, the first Asian side to appear at the tournament.
@@ -427,148 +443,127 @@
       </figcaption>
     </figure>
 
-    <h2>A History of Dysfunction</h2>
-
     <p>
-      <a href="https://en.wikipedia.org/wiki/Football_Association_of_Indonesia" target="_blank" rel="noopener noreferrer">PSSI</a> , the Football Association of Indonesia , was founded in 1930, making it one of the oldest football associations in Asia. Indonesia even sent a team to the 1938 World Cup under Dutch colonial rule, before most of Europe had qualified. But independence brought a different kind of problem: football became a political tool. Presidents, military generals, and regional governors used club ownership and association control to build loyalty and signal prestige. The sport that should belong to the people began to belong to the powerful.
-    </p>
-    <p>
-    The Dutch East Indies team would enter the history books as the only Asian side to appear at a FIFA World Cup before the formation of the Asian Football Confederation , an organization Indonesia itself would later help found in 1954. Since then, the closest the country has come to returning to football’s biggest stage was during the 1986 World Cup qualification campaign, where they were eliminated by South Korea in the penultimate round. For a nation obsessed with the sport, the dream of returning has never disappeared. It has only become more painful with time.
-    </p>
-    <p>
-      The clearest symptom came in 2011, when <a href="https://www.fifa.com" target="_blank" rel="noopener noreferrer">FIFA</a> banned Indonesia from international competition , not for match-fixing or doping, but because the government directly attempted to take over PSSI and install their own appointees. FIFA's rules on government interference are unambiguous. Indonesia ignored them. The country that invented one of Asia's oldest football associations was suspended from the game it helped build.
+      <a href="https://en.wikipedia.org/wiki/Football_Association_of_Indonesia" target="_blank" rel="noopener noreferrer">PSSI</a>, the Football Association of Indonesia, was founded in 1930. In 1938 a team representing the Dutch East Indies became <a href="https://inside.fifa.com/news/dutch-east-indies--asias-first-world-cup-participants-3073794" target="_blank" rel="noopener noreferrer">the first Asian side to play at a World Cup</a>, and lost 6-0 to Hungary in Reims. Indonesia later became a founding member of the Asian Football Confederation, but it has never been back to the finals. In 1986, South Korea knocked it out in the second round of Asian qualifying.
     </p>
 
     <p>
-      The ban was lifted. But nothing structurally changed. Between 2003 and 2020, Indonesia cycled through over twelve different national team head coaches. Some lasted less than a year. One lasted three months. You cannot build a football culture on a foundation that resets every twelve months. By 2023, Indonesia still ranked below Vietnam, Thailand, and the Philippines in the <a href="https://www.the-afc.com" target="_blank" rel="noopener noreferrer">Asian Football Confederation</a> rankings , countries with a fraction of the population, a fraction of the passion, and in some cases, a fraction of the budget.
-    </p>
-
-    
-    <figure class="feature-image">
-      <img loading="lazy" src="https://cdn.antaranews.com/cache/1200x800/2026/04/15/kerja-sama-pelatihan-sepak-bola-wanita-dengan-fff-2772568.jpg" alt="Erick Thohir">
-      <figcaption>PSSI chairman Erick Thohir has become the public face of Indonesia's aggressive naturalization strategy and football restructuring efforts.
-        <br>
-        Source: <i>Antaranews.com</i>
-      </figcaption>
-    </figure>
-
-    <h2>The Economics of Underachievement</h2>
-
-    <p>
-      The BRI Liga 1 , Indonesia's top professional football league , looks serious on paper. Twenty-two clubs. Millions of viewers. Broadcast deals with major platforms. It is the most watched football league in Southeast Asia by local viewership. But here is where the numbers become uncomfortable.
+      Off the pitch, instability has been the pattern. A feud between PSSI and a breakaway association once produced <a href="https://www.thejakartapost.com/news/2015/05/30/fifa-suspends-indonesia-over-long-running-row" target="_blank" rel="noopener noreferrer">two rival leagues</a>. In April 2015 the sports minister froze PSSI, and on 30 May 2015 FIFA suspended Indonesia for government interference. The domestic season was cancelled, clubs and national teams were barred from FIFA and AFC competitions, and Indonesian football lost <a href="https://www.aseanfootball.org/v3/impact-of-fifa-suspension-on-pssi/" target="_blank" rel="noopener noreferrer">access to AFC and FIFA development programmes</a> while the ban lasted. <a href="https://fourfourtwo.com/news/fifa-lifts-indonesia-suspension" target="_blank" rel="noopener noreferrer">FIFA lifted the suspension in May 2016</a>.
     </p>
 
     <p>
-      The total annual revenue of Liga 1, across all clubs combined, is estimated at roughly 300 to 400 billion rupiah , approximately 20 to 25 million US dollars. That sounds substantial until context is applied. Manchester City spends more than that in a single week on wages. The comparison is not chosen for shock value; it illustrates the structural gap with precision.
+      The national team has seen the same churn. Shin Tae-yong was sacked in January 2025 while Indonesia was still chasing a place at the 2026 World Cup. <a href="https://www.soccerway.com/news/patrick-kluivert-announced-as-the-new-manager-of-indonesia/zPifIIEi" target="_blank" rel="noopener noreferrer">Patrick Kluivert replaced him</a> and was dismissed in October 2025. <a href="https://inp.polri.go.id/artikel/john-herdman-appointed-head-coach-of-indonesia-national-football-team" target="_blank" rel="noopener noreferrer">John Herdman was appointed on 3 January 2026</a>. Three head coaches in just over a year. You cannot build a football culture on a foundation that resets every few months.
     </p>
 
-    <table class="comparison-table" aria-label="Football league revenue comparison">
+    <p>
+      The recent past is not all bad, and it would be dishonest to pretend otherwise. Indonesia <a href="https://jfajp-img.jh.bit-drive.ne.jp/eng/samuraiblue/news/00035136/" target="_blank" rel="noopener noreferrer">reached the Asian Cup round of 16 for the first time in January 2024</a>, reached the final group stage of World Cup qualifying for the first time, and then went on to a <a href="https://www.fightful.com/?p=321029" target="_blank" rel="noopener noreferrer">fourth round</a>. It still did not qualify, and in the July 2026 FIFA rankings it sat <a href="https://rri.co.id/bengkalis/sepak-bola/2622346/perbandingan-ranking-fifa-indonesia-vs-vietnam-jelang-piala-aff-2026" target="_blank" rel="noopener noreferrer">118th</a>, behind Vietnam (99th) and <a href="https://baodongthap.vn/en/viet-nam-retain-place-in-fifa-top-100-after-world-cup-rankings-reshuffle-a243542.html" target="_blank" rel="noopener noreferrer">Thailand (94th)</a>.
+    </p>
+
+    <h2>What the Numbers Actually Show</h2>
+
+    <p>
+      To compare leagues I'm using Transfermarkt's estimates of total squad market value. They are estimates, and they measure what players are worth rather than what clubs earn — but they treat every league the same way, and anyone can check them.
+    </p>
+
+    <p>
+      At the start of the 2025-26 season, <a href="https://ovietnam.vietnamnews.vn/vleague-1-rises-to-top-3-most-valuable-tournaments-in-southeast-asia-post382912.html" target="_blank" rel="noopener noreferrer">Transfermarkt valued Thailand's top flight at about €76.8 million and Indonesia's at about €71.5 million</a>. Indonesia's league (now called the BRI Super League, with 18 clubs) sat ahead of Vietnam's V.League 1 at €53.7 million.
+    </p>
+
+    <table class="comparison-table" aria-label="Southeast Asia: league squad value and FIFA ranking">
       <thead>
         <tr>
-          <th>League</th>
           <th>Country</th>
-          <th>Est. Annual Revenue</th>
+          <th>Top-flight squad value (Aug 2025)</th>
+          <th>FIFA ranking (July 2026)</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="highlight-row">
-          <td>BRI Liga 1</td>
-          <td>Indonesia</td>
-          <td>~$22M USD</td>
-        </tr>
         <tr>
-          <td>Thai Premier League</td>
           <td>Thailand</td>
-          <td>~$60M USD</td>
+          <td>€76.84M</td>
+          <td>94th</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Indonesia</td>
+          <td>€71.54M</td>
+          <td>118th</td>
         </tr>
         <tr>
-          <td>MLS</td>
-          <td>United States</td>
-          <td>~$1.4B USD</td>
-        </tr>
-        <tr>
-          <td>J-League</td>
-          <td>Japan</td>
-          <td>~$400M USD</td>
-        </tr>
-        <tr>
-          <td>Premier League</td>
-          <td>England</td>
-          <td>~$7B USD</td>
+          <td>Vietnam</td>
+          <td>€53.74M</td>
+          <td>99th</td>
         </tr>
       </tbody>
     </table>
 
     <p class="source-note">
-      Sources:
-      <a href="https://www.deloitte.com/uk/en/services/consulting/research/annual-review-of-football-finance-premier-league-clubs.html" target="_blank" rel="noopener noreferrer">Deloitte Annual Review of Football Finance</a>,
-      <a href="https://aboutj.jleague.jp/seasonreview2024/en/management/m_2/" target="_blank" rel="noopener noreferrer">J.League 2024 Financial Report</a>,
-      AFC market reporting, and Southeast Asian football industry revenue estimates.
+      Sources: Transfermarkt via <a href="https://ovietnam.vietnamnews.vn/vleague-1-rises-to-top-3-most-valuable-tournaments-in-southeast-asia-post382912.html" target="_blank" rel="noopener noreferrer">Viet Nam News</a>; FIFA rankings via <a href="https://rri.co.id/bengkalis/sepak-bola/2622346/perbandingan-ranking-fifa-indonesia-vs-vietnam-jelang-piala-aff-2026" target="_blank" rel="noopener noreferrer">RRI</a> and <a href="https://baodongthap.vn/en/viet-nam-retain-place-in-fifa-top-100-after-world-cup-rankings-reshuffle-a243542.html" target="_blank" rel="noopener noreferrer">Nhan Dan</a>.
     </p>
-
-
-    <p>
-      The Thai Premier League , a country with 70 million people, less than a third of Indonesia's population , generates nearly three times the Liga 1 figure. Japan's J-League generates twenty times more. Revenue alone does not determine player development. But it funds everything that does: academies, coaching staff, sports science, nutrition programmes, scouting networks, youth tournaments. These are not luxuries. They are the pipeline.
-    </p>
-
-    <h3>The Academy Problem</h3>
-
-    <p>
-      A credible football academy costs a minimum of 2 to 3 million dollars per year to operate properly , qualified coaches, facilities that meet international standards, full-time medical staff, and educational support for young players. The average club academy budget in Indonesia is estimated at under 500,000 dollars annually. Many operate with part-time coaches holding no <a href="https://www.uefa.com/insideuefa/football-development/coaches/" target="_blank" rel="noopener noreferrer">UEFA</a> or AFC-equivalent licenses.
-    </p>
-
-    <p>
-      Compare that to <a href="https://www.gamba-osaka.net/en/" target="_blank" rel="noopener noreferrer">Gamba Osaka</a>'s academy in Japan, or the youth development programme at Jeonbuk Hyundai Motors in South Korea , clubs with full-time sports scientists, psychologists, and tactical analysts dedicated exclusively to under-12s. Indonesia's best academies are producing players for Liga 1. Japan's best academies are producing players for the Bundesliga. That is not a talent gap. That is an investment gap.
-    </p>
-
-    <h3>Comfortable Wages and the Incentive Trap</h3>
-
-    <p>
-      The average Liga 1 player earns between 30 and 80 million rupiah per month , roughly 2,000 to 5,000 US dollars. For Indonesia, that is an upper-middle-class income. It is comfortable. And comfortable is the enemy of greatness.
-    </p>
-
-    <p>
-      When a young Indonesian player with genuine potential reaches Liga 1, they face a choice that players in Europe rarely encounter. Leave , go abroad, earn less initially, navigate language barriers, compete against far better players, and risk public failure. Or stay in Indonesia, be treated like a local celebrity, earn a good salary, and never be truly tested. Without financial pressure or institutional infrastructure pushing players abroad, the rational economic decision is to stay.
-    </p>
-
-    <blockquote>
-      "Individual rationality. Collective failure." <br>
-      - The Stanford Encyclopedia of Philosophy (Winter 2023 Edition)
-    </blockquote>
-
-    <p>
-      Thailand and Vietnam have addressed part of this problem deliberately. Their associations partnered with foreign clubs to create loan pipelines , young Thai players at clubs in Japan, Belgium, the Netherlands, with government subsidy behind them. Indonesia has no equivalent programme. No structural pathway. You either make it abroad alone, or you do not make it abroad at all.
-    </p>
-
-    
-    <div class="graph-block">
-      <h3>League Revenue Comparison</h3>
-      <canvas id="revenueChart" height="140"></canvas>
-    </div>
 
     <div class="graph-block">
-      <h3>Estimated Annual Youth Development Investment (Industry Benchmarks)</h3>
-      <canvas id="academyChart" height="140"></canvas>
+      <h3>Total Squad Market Value, Southeast Asian Leagues</h3>
+      <div class="chart-box"><canvas id="valueChart"></canvas></div>
+      <p class="source-note">Transfermarkt estimates at the start of 2025-26, in € millions</p>
     </div>
 
-    <p class="source-note">
-      Sources:
-      AFC coaching development reports,
-      UEFA coaching licensing framework,
-      J.League academy financial disclosures,
-      K-League youth development studies,
-      and professional football academy operational benchmarks.
+    <p>
+      By regional standards, Indonesia's league is not poor. That rules out the convenient excuse. The real gap is between Southeast Asia and the leagues that produce elite players. At the start of 2025-26, Manchester City's squad alone was valued at <a href="https://www.planetfootball.com/premier-league/premier-league-teams-market-value-2025-26-arsenal-man-city" target="_blank" rel="noopener noreferrer">about €1.32 billion</a>, roughly 18 times the combined value of every squad in Indonesia's top flight.
     </p>
 
+    <p>
+      Two things follow. No league in the region is big enough to turn a promising teenager into a world-class player on its own, so the route runs through Europe. And league wealth doesn't explain the differences inside the region: Indonesia's league is valued well above Vietnam's, yet Vietnam ranks 19 places higher.
+    </p>
+
+    <h2>The Pathway Problem</h2>
+
+    <p>
+      If a domestic league can't produce elite players alone, a young Indonesian needs a way to reach somewhere that can. People have tried. PSSI has sent young players to <a href="https://www.goodnewsfromindonesia.id/2018/03/13/sebelum-egy-maulana-vikri-ini-pesepakbola-indonesia-yang-merumput-di-eropa" target="_blank" rel="noopener noreferrer">Italy and Uruguay</a> through its Primavera and SAD programmes, and to England through <a href="https://m.antaranews.com/amp/berita/1828320/21-pemain-garuda-select-iii-siap-terbang-ke-inggris" target="_blank" rel="noopener noreferrer">Garuda Select</a>, whose third edition picked 21 players in 2020 for training there. In 2018 the teenager <a href="https://www.thejakartapost.com/news/2018/03/24/egy-maulana-further-career-europe.html" target="_blank" rel="noopener noreferrer">Egy Maulana Vikri signed a three-year deal</a> with Lechia Gdańsk in Poland's top flight and made his Ekstraklasa debut that December.
+    </p>
+
+    <p>
+      The Indonesian who has actually reached one of Europe's top leagues came through none of those routes. <a href="https://en.wikipedia.org/wiki/Jay_Idzes" target="_blank" rel="noopener noreferrer">Jay Idzes</a> was born in Mierlo in the Netherlands and <a href="https://voi.id/en/sports/503772" target="_blank" rel="noopener noreferrer">came up through PSV's academy</a>. He made his Serie A debut for Venezia in August 2024 and told the PSSI website he was <a href="https://en.republika.co.id/berita/siweh6415/jay-idzes-is-proud-to-be-the-first-indonesian-player-to-play-in-serie-a-ready-to-join-the-national-team" target="_blank" rel="noopener noreferrer">"very proud to be the first Indonesian player to play in Serie A."</a> He took Indonesian citizenship in December 2023 through his mother's family, joined Sassuolo in 2025, and captains the national team.
+    </p>
+
+    <p>
+      None of this is a criticism of him. It simply shows where the first Indonesian to play in Serie A was actually built, and it was not in Indonesia.
+    </p>
+
+    <h2>The Naturalization Shortcut</h2>
+
+    <figure class="feature-image">
+      <img loading="lazy" src="https://cdn.antaranews.com/cache/1200x800/2026/04/15/kerja-sama-pelatihan-sepak-bola-wanita-dengan-fff-2772568.jpg" alt="Erick Thohir">
+      <figcaption>PSSI chairman Erick Thohir has been closely associated with the federation's drive to recruit players abroad.
+        <br>
+        Source: <i>Antaranews.com</i>
+      </figcaption>
+    </figure>
+
+    <p>
+      Under chairman Erick Thohir, the federation has leaned heavily on recruiting players abroad who qualify through Indonesian ancestry. Databoks counted <a href="https://databoks.katadata.co.id/en/consumer-services/statistics/67cfb0427ae59/indonesia-national-team-provisional-squad-march-2025-63-naturalized" target="_blank" rel="noopener noreferrer">19 of the 30 players (63%) on the provisional list for the March 2025 World Cup qualifiers as naturalized</a>, all of them with Indonesian parents or grandparents. For the <a href="https://databoks.katadata.co.id/en/tags/naturalized-player" target="_blank" rel="noopener noreferrer">June 2024 matchday squad</a>, the share was 43%.
+    </p>
+
+    <div class="graph-block">
+      <h3>Naturalized Players as a Share of Indonesia Squads</h3>
+      <div class="chart-box"><canvas id="naturalizedChart"></canvas></div>
+      <p class="source-note">Databoks (Katadata), squad lists for June 2024 and March 2025.</p>
+    </div>
+
+    <p>
+      Those years also brought new highs for the team: a first Asian Cup knockout round in January 2024 and a first appearance in the final group stage of World Cup qualifying. There is nothing improper in the approach: Indonesia's version rests on ancestry, and a federation under pressure to win would be tempted by it anywhere.
+    </p>
+
+    <p>
+      But this answers a different question from the one this article asks. It makes the national team stronger. It does not show that Indonesia can develop elite players itself, and it removes the pressure to build the systems that would. This is the incentive trap at national scale: every naturalized call-up is a result the federation did not have to build a pipeline to earn, and a pipeline pays off in fifteen years while the next qualifier is next month. A national team full of players developed in Dutch academies says nothing about whether a child in Medan or Makassar has a realistic path.
+    </p>
 
     <h2>The Croatia Verdict</h2>
 
     <p>
-      Croatia is the most instructive comparison available , not because it is flattering, but because it removes every convenient excuse. In the 1990s, Croatia had a GDP per capita not dramatically different from Indonesia's. A nation emerging from war. Limited infrastructure. Four million people. And yet it has produced Luka Modrić, Davor Šuker, Zvonimir Boban, Ivan Rakitić, and a generation of players who have competed at the highest levels of club and international football.
+      Croatia is the most instructive comparison available, because it removes the population excuse. <a href="https://english.ahram.org.eg/News/478534.aspx" target="_blank" rel="noopener noreferrer">With 3.8 million people</a>, it finished third at its first World Cup in 1998, after the break-up of Yugoslavia, and as of 2022 had missed only one World Cup since. It reached the 2018 final and <a href="https://www.fifa.com/news/fifa-president-talks-football-with-croatian-counterpart-zoran-milanovic" target="_blank" rel="noopener noreferrer">finished third again in 2022</a>.
     </p>
 
     <p>
-      What Croatia had was a deliberate system. The Croatian Football Federation created a centralised youth development model. Every qualified youth coach in the country was trained under the same methodology. <a href="https://gnkdinamo.hr/en" target="_blank" rel="noopener noreferrer">Dinamo Zagreb's academy</a> became a deliberate feeder to Europe. The culture was not 'play football' , it was 'become European-ready.'
+      The AP puts Croatia's success down to a passionate fan base and elite youth academies at clubs such as Dinamo Zagreb. FIFA's president has called the Croatian federation an example of an association punching above its weight, and FIFA Forward funding has supported its grassroots development. Luka Modrić, the 2018 world player of the year, was <a href="https://global.espn.com/football/croatia-cro/story/4830970/croatia-luka-modric-ready-to-fight-for-world-cup-final-spot" target="_blank" rel="noopener noreferrer">born in Zadar</a>, a city of fewer than 100,000 people, and <a href="https://www.timeout.com/croatia/news/110-years-and-counting-the-remarkable-journey-of-croatian-football-111422" target="_blank" rel="noopener noreferrer">learned the game in its streets and car parks</a>.
     </p>
 
     <figure class="feature-image">
@@ -576,8 +571,7 @@
           src="https://cdn-assets.jawapos.com/images/1/2024/11/16/Snapinstaapp_467323218_18065937358677792_3276774666292702839_n_1080-2910416654.jpg"
           alt="Indonesian children posing with Ole Romeny after playing a game together">
       <figcaption>
-        Ole Romeny with enthusiastic Indonesian children after playing football with them.
-        Grassroots football remains widespread across Indonesia, but infrastructure and development pathways remain inconsistent.
+        Ole Romeny with Indonesian children after playing football with them. Grassroots football is widespread across Indonesia.
       <br>
       Source: <i>Jawa Pos</i>
       </figcaption>
@@ -593,22 +587,48 @@
 
     <hr />
 
-    <h2>It Is Not Biology. It Is Choice.</h2>
+    <h2>What Is Still Missing</h2>
 
     <p>
-      Individual exceptions exist. <a href="https://en.wikipedia.org/wiki/Egy_Maulana_Vikri" target="_blank" rel="noopener noreferrer">Egy Maulana Vikri</a> went to Lechia Gdańsk. Witan Sulaeman tried his luck in Europe. Marselino Ferdinan is the most technically gifted young player the country has produced in a generation. But individual exceptions do not make a system. And a system that relies on exceptions is not a development model , it is a lottery.
+      Exceptions exist. Egy Maulana Vikri went to Lechia Gdańsk. Witan Sulaeman tried his luck in Europe. Marselino Ferdinan is the most technically gifted young player the country has produced in a generation. But individual exceptions do not make a system. And a system that relies on exceptions is not a development model, it is a lottery.
     </p>
 
     <p>
-      Every structural incentive in Indonesian football , the political control, the low academy investment, the comfortable domestic wages, the absence of a foreign pathway , points away from producing greatness. This is not an accident. It is the cumulative result of choices made at every level of the sport's governance, repeated over decades.
+      Four problems run through everything above, and not one of them is talent. Governance has been unstable, from the 2015 suspension to the revolving door of national team coaches. The pathway to Europe is thin: overseas programmes have run, but I couldn't find one that produced an established starter at a top European club. The domestic league is small by global standards. And the latest strategy imports results instead of building the system that would produce them. Every one of these is a choice, repeated for decades.
     </p>
 
     <p>
-      There are kids in Makassar, in Medan, in Papua , with the physical tools, the hunger, and the football intelligence to play at the highest level. The question has never been whether the talent exists. Brazil does not produce great players because Brazilians are born with something different in their blood. Brazil produces great players because Brazil built a machine that turns talent into greatness. Indonesia has the talent. It just has not decided to build the machine.
+      So yes, "never" is the honest answer to the system as it stands today. It is not a verdict on the children.
     </p>
+
+    <p>
+      There are kids in Makassar, in Medan, in Papua — with the physical tools, the hunger, and the football intelligence to play at the highest level. The question has never been whether the talent exists. Brazil does not produce great players because Brazilians are born with something different in their blood. Brazil produces great players because Brazil built a machine that turns talent into greatness. Indonesia has the talent. It just has not decided to build the machine.
+    </p>
+
+    <h2>Sources and Notes</h2>
+
+    <ol class="sources-list">
+      <li>Population: <a href="https://kabar24.bisnis.com/read/20260505/15/1971460/sensus-bps-jumlah-penduduk-ri-capai-28467-juta-jiwa-2025-tumbuh-melambat" target="_blank" rel="noopener noreferrer">BPS 2025 Intercensal Population Survey, via Bisnis.com</a> (284.67 million); <a href="https://en.wikipedia.org/wiki/Demographics_of_Indonesia" target="_blank" rel="noopener noreferrer">Demographics of Indonesia</a> (284.44 million, mid-2025 estimate).</li>
+      <li>Stadium: <a href="https://gbk.id/venue/id_stadion-utama-gelora-bung-karno" target="_blank" rel="noopener noreferrer">Gelora Bung Karno official site</a>; <a href="https://en.wikipedia.org/wiki/Gelora_Bung_Karno_Stadium" target="_blank" rel="noopener noreferrer">Wikipedia</a> (opening date, 1985 attendance).</li>
+      <li>World Cup history: <a href="https://inside.fifa.com/news/dutch-east-indies--asias-first-world-cup-participants-3073794" target="_blank" rel="noopener noreferrer">FIFA, "Dutch East Indies: Asia's first World Cup participants"</a> (1938 match, AFC membership, 1986 qualifying).</li>
+      <li>FIFA suspension: <a href="https://www.thejakartapost.com/news/2015/05/30/fifa-suspends-indonesia-over-long-running-row" target="_blank" rel="noopener noreferrer">The Jakarta Post, 30 May 2015</a>; <a href="https://en.tempo.co/amp/671023/fifa-suspends-pssi" target="_blank" rel="noopener noreferrer">Tempo</a>; <a href="https://www.aseanfootball.org/v3/impact-of-fifa-suspension-on-pssi/" target="_blank" rel="noopener noreferrer">ASEAN Football Federation</a>; lifted: <a href="https://fourfourtwo.com/news/fifa-lifts-indonesia-suspension" target="_blank" rel="noopener noreferrer">FourFourTwo</a>.</li>
+      <li>Coaching changes: <a href="https://www.soccerway.com/news/patrick-kluivert-announced-as-the-new-manager-of-indonesia/zPifIIEi" target="_blank" rel="noopener noreferrer">Soccerway/Reuters</a>; <a href="https://inp.polri.go.id/artikel/john-herdman-appointed-head-coach-of-indonesia-national-football-team" target="_blank" rel="noopener noreferrer">Antara via INP Polri</a>.</li>
+      <li>Qualifying and Asian Cup: <a href="https://jfajp-img.jh.bit-drive.ne.jp/eng/samuraiblue/news/00035136/" target="_blank" rel="noopener noreferrer">Japan Football Association match preview, June 2025</a>; <a href="https://www.fightful.com/?p=321029" target="_blank" rel="noopener noreferrer">Fightful</a> (fourth round).</li>
+      <li>Rankings: <a href="https://rri.co.id/bengkalis/sepak-bola/2622346/perbandingan-ranking-fifa-indonesia-vs-vietnam-jelang-piala-aff-2026" target="_blank" rel="noopener noreferrer">RRI</a>; <a href="https://baodongthap.vn/en/viet-nam-retain-place-in-fifa-top-100-after-world-cup-rankings-reshuffle-a243542.html" target="_blank" rel="noopener noreferrer">Nhan Dan</a>; <a href="https://en.thairath.co.th/sport/thaifootball/2924028" target="_blank" rel="noopener noreferrer">Thairath</a> (March 2026 ASEAN table).</li>
+      <li>League values: Transfermarkt via <a href="https://ovietnam.vietnamnews.vn/vleague-1-rises-to-top-3-most-valuable-tournaments-in-southeast-asia-post382912.html" target="_blank" rel="noopener noreferrer">Viet Nam News</a> and <a href="https://www.jawapos.com/sepak-bola-indonesia/016552993/ranking-klub-paling-berharga-di-super-league-20252026-persib-unggul-persebaya-surabaya-bukan-5-besar-semen-padang-dua-terbawah" target="_blank" rel="noopener noreferrer">Jawa Pos</a>; Manchester City: <a href="https://www.planetfootball.com/premier-league/premier-league-teams-market-value-2025-26-arsenal-man-city" target="_blank" rel="noopener noreferrer">Planet Football</a>.</li>
+      <li>Overseas programmes and Egy Maulana Vikri: <a href="https://www.goodnewsfromindonesia.id/2018/03/13/sebelum-egy-maulana-vikri-ini-pesepakbola-indonesia-yang-merumput-di-eropa" target="_blank" rel="noopener noreferrer">Good News From Indonesia</a>; <a href="https://m.antaranews.com/amp/berita/1828320/21-pemain-garuda-select-iii-siap-terbang-ke-inggris" target="_blank" rel="noopener noreferrer">Antara</a>; <a href="https://www.thejakartapost.com/news/2018/03/24/egy-maulana-further-career-europe.html" target="_blank" rel="noopener noreferrer">The Jakarta Post</a>; <a href="https://www.goal.com/id/berita/goal-25-2018-18-egy-maulana-vikri/k2hzubzq0h7r1bmxevk7z8n4l" target="_blank" rel="noopener noreferrer">Goal</a>.</li>
+      <li>Jay Idzes: <a href="https://en.wikipedia.org/wiki/Jay_Idzes" target="_blank" rel="noopener noreferrer">Wikipedia</a>; <a href="https://en.republika.co.id/berita/siweh6415/jay-idzes-is-proud-to-be-the-first-indonesian-player-to-play-in-serie-a-ready-to-join-the-national-team" target="_blank" rel="noopener noreferrer">Republika</a>; <a href="https://voi.id/en/sports/503772" target="_blank" rel="noopener noreferrer">VOI</a>.</li>
+      <li>Naturalized players: <a href="https://databoks.katadata.co.id/en/consumer-services/statistics/67cfb0427ae59/indonesia-national-team-provisional-squad-march-2025-63-naturalized" target="_blank" rel="noopener noreferrer">Databoks, March 2025</a>; <a href="https://databoks.katadata.co.id/en/tags/naturalized-player" target="_blank" rel="noopener noreferrer">Databoks, June 2024 (43%)</a>.</li>
+      <li>Croatia: <a href="https://english.ahram.org.eg/News/478534.aspx" target="_blank" rel="noopener noreferrer">AP</a>; <a href="https://www.fifa.com/news/fifa-president-talks-football-with-croatian-counterpart-zoran-milanovic" target="_blank" rel="noopener noreferrer">FIFA</a>; <a href="https://global.espn.com/football/croatia-cro/story/4830970/croatia-luka-modric-ready-to-fight-for-world-cup-final-spot" target="_blank" rel="noopener noreferrer">ESPN</a>; <a href="https://www.timeout.com/croatia/news/110-years-and-counting-the-remarkable-journey-of-croatian-football-111422" target="_blank" rel="noopener noreferrer">Time Out</a>.</li>
+    </ol>
+
+    <div class="update-note">
+      <p><strong>Updated 4 October 2026.</strong> This article was revised to correct errors and to replace unsourced estimates with cited data. Corrections include the year of the FIFA suspension (2015, not 2011), the number of clubs in the league (18) and the stadium's age. League revenue and academy spending figures were removed because I couldn't source them, and a section on naturalization was added. Market values are Transfermarkt estimates and change over time.</p>
+    </div>
+
 
     <div class="article-tags">
-      <span class="article-tags-label">Topics ,</span>
+      <span class="article-tags-label">Topics</span>
       <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Football</a>
       <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Indonesia</a>
       <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Analysis</a>
@@ -632,7 +652,7 @@
 
 <script>
   const lenis = new Lenis({ duration: 1.35, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-  (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
+  // Lenis is driven by the GSAP ticker below; a second rAF loop made it update twice per frame.
   gsap.registerPlugin(ScrollTrigger);
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(t => lenis.raf(t * 1000));
@@ -666,7 +686,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Why Indonesian Football Will Never Produce a World Class Player",
-  "description": "Indonesia has 270 million people and one of the world's most passionate football cultures. So why hasn't it produced a single world-class player? The answer isn't talent, it's structural economics.",
+  "description": "Indonesia has 284 million people and one of the world's most passionate football cultures. So why hasn't it produced a single world-class player? The answer isn't talent, it's structure.",
   "image": "https://colinjanoshegyi.com/assets/preview.png",
   "url": "https://colinjanoshegyi.com/works/notesandthoughts/blog/why-indonesian-football-will-never-produce-a-world-class-player",
   "mainEntityOfPage": {
@@ -674,12 +694,12 @@
     "@id": "https://colinjanoshegyi.com/works/notesandthoughts/blog/why-indonesian-football-will-never-produce-a-world-class-player"
   },
   "datePublished": "2026-05-17",
-  "dateModified": "2026-05-20",
+  "dateModified": "2026-10-04",
   "articleSection": "Sports Economics",
   "keywords": [
     "Indonesian football",
     "PSSI",
-    "Liga 1",
+    "BRI Super League",
     "Timnas Indonesia",
     "Southeast Asia football",
     "football development",
@@ -712,47 +732,85 @@
   "url": "https://colinjanoshegyi.com/",
   "name": "Colin John",
   "alternateName": "Colin Janoshegyi",
-  "publisher": {
-    "@id": "https://colinjanoshegyi.com/#person"
-  },
   "inLanguage": "en"
 }
 </script>
 <script>
-  const revenueCtx = document.getElementById('revenueChart');
-  if (revenueCtx) {
-    new Chart(revenueCtx, {
+  // Small helper: draws each bar's value next to the bar
+  const valueLabels = {
+    id: 'valueLabels',
+    afterDatasetsDraw(chart, args, opts) {
+      const { ctx } = chart;
+      const horizontal = chart.options.indexAxis === 'y';
+      ctx.save();
+      ctx.font = '500 12px Outfit, system-ui, sans-serif';
+      ctx.fillStyle = '#111111';
+      ctx.textBaseline = 'middle';
+      chart.getDatasetMeta(0).data.forEach((bar, i) => {
+        const v = chart.data.datasets[0].data[i];
+        const text = (opts.prefix || '') + v + (opts.suffix || '');
+        if (horizontal) { ctx.textAlign = 'left'; ctx.fillText(text, bar.x + 8, bar.y); }
+        else { ctx.textAlign = 'center'; ctx.fillText(text, bar.x, bar.y - 10); }
+      });
+      ctx.restore();
+    }
+  };
+  Chart.defaults.font.family = "Outfit, system-ui, sans-serif";
+  Chart.defaults.color = '#666666';
+
+  const valueCtx = document.getElementById('valueChart');
+  if (valueCtx) {
+    new Chart(valueCtx, {
       type: 'bar',
       data: {
-        labels: ['Liga 1', 'Thai League', 'J-League', 'Premier League'],
+        labels: ['Thai League 1', 'Indonesia Super League', 'Vietnam V.League 1', 'Malaysia Super League', 'Singapore Premier League'],
         datasets: [{
-          label: 'Estimated Annual Revenue (USD)',
-          data: [22, 60, 400, 7000]
+          label: 'Total squad market value (€ millions)',
+          data: [76.84, 71.54, 53.74, 51.09, 19.01],
+          backgroundColor: ['rgba(17,17,17,0.22)', '#111111', 'rgba(17,17,17,0.22)', 'rgba(17,17,17,0.22)', 'rgba(17,17,17,0.22)'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: { padding: { right: 56 } },
+        plugins: { legend: { display: false }, valueLabels: { prefix: '€', suffix: 'M' } },
+        scales: {
+          x: { beginAtZero: true, grid: { color: 'rgba(17,17,17,0.06)' }, title: { display: true, text: 'Total squad market value (€ millions)' } },
+          y: { grid: { display: false } }
+        }
+      },
+      plugins: [valueLabels]
+    });
+  }
+
+  const natCtx = document.getElementById('naturalizedChart');
+  if (natCtx) {
+    new Chart(natCtx, {
+      type: 'bar',
+      data: {
+        labels: ['June 2024 matchday squad', 'March 2025 provisional squad'],
+        datasets: [{
+          label: 'Naturalized players (% of squad)',
+          data: [43, 63],
+          backgroundColor: ['rgba(17,17,17,0.22)', '#111111'],
+          borderWidth: 0,
+          maxBarThickness: 90
         }]
       },
       options: {
         responsive: true,
-        plugins: {
-          legend: { display: false }
+        maintainAspectRatio: false,
+        layout: { padding: { top: 24 } },
+        plugins: { legend: { display: false }, valueLabels: { suffix: '%' } },
+        scales: {
+          y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' }, grid: { color: 'rgba(17,17,17,0.06)' }, title: { display: true, text: 'Share of squad that is naturalized' } },
+          x: { grid: { display: false } }
         }
-      }
-    });
-  }
-
-  const academyCtx = document.getElementById('academyChart');
-  if (academyCtx) {
-    new Chart(academyCtx, {
-      type: 'line',
-      data: {
-        labels: ['Indonesia', 'Thailand', 'Japan', 'South Korea'],
-        datasets: [{
-          label: 'Estimated Youth Investment Per Club (USD Millions)',
-          data: [0.5, 1.2, 3.5, 3.1]
-        }]
       },
-      options: {
-        responsive: true
-      }
+      plugins: [valueLabels]
     });
   }
 </script>
