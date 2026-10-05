@@ -13,8 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Colin John | SEO Specialist, Digital Marketer & Front-End Developer</title>
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Colin John | SEO & Digital Marketing" />
-  <meta name="twitter:description" content="SEO, branding, and front-end development across cultures." />
+  <meta name="twitter:title" content="Colin John | SEO Specialist & Digital Marketer" />
+  <meta name="twitter:description" content="SEO, technical SEO, content strategy, and front-end web development." />
   <meta name="twitter:image" content="https://colinjanoshegyi.com/assets/preview.png" />
   <link rel="canonical" href="https://colinjanoshegyi.com/" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/pdf/apple-touch-icon.png">
@@ -150,7 +150,6 @@
     }
     .header-nav a:hover { color: var(--ink); }
 
-    /* "Work With Me" CTA — ALWAYS VISIBLE */
     .cta-btn {
       display: inline-flex;
       align-items: center;
@@ -259,7 +258,6 @@
       transform: translateY(16px);
     }
 
-    /* Decorative ring */
     .hero-ring {
       position: absolute;
       width: clamp(300px, 50vw, 700px);
@@ -383,7 +381,7 @@
       background: var(--ink);
       color: #FAFAFA;
       text-align: left;
-      padding: 18vh 5vw;
+      padding: 10vh 5vw;
     }
 
     #thoughts .thoughts-eyebrow {
@@ -516,10 +514,7 @@
       color: var(--ink);
     }
 
-    /* ─── Launch announcement (Cloaker Checker) ─────────────── */
     .launch-section { padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; }
-    /* Trim only the sides of #work/#contact that face this section, so the
-       site's normal 14vh section rhythm is untouched everywhere else. */
     #work { padding-bottom: 3rem; }
     #contact { padding-top: 3rem; }
 
@@ -696,7 +691,6 @@
       }
     }
 
-    /* CV Section */
     .cv-section {
       margin-top: 8rem;
       padding-top: 6rem;
@@ -741,8 +735,8 @@
     .cv-content {
       display: grid;
       grid-template-columns: minmax(450px, 500px) 1fr;
-      gap: 4rem;
-      margin-top: 3rem;
+      gap: 3rem;
+      margin-top: 2rem;
     }
 
     .cv-image img {
@@ -797,7 +791,6 @@
         font-size: 0.9rem;
     }
 
-    /* CV download button positioning */
     .cv-image {
       display: flex;
       flex-direction: column;
@@ -908,7 +901,6 @@
     .contact-link:hover { color: var(--ink); }
     .contact-link:hover::after { transform: scaleX(1); }
 
-    /* Right side — photo */
     .contact-right {
       display: flex;
       justify-content: center;
@@ -921,8 +913,6 @@
       width: clamp(260px, 28vw, 420px);
       aspect-ratio: 3/4;
     }
-
-    /* Decorative frame removed */
 
     .contact-photo {
       position: relative;
@@ -949,7 +939,6 @@
       transform: translateY(8px);
     }
 
-    /* Floating tag */
     .contact-tag {
       position: absolute;
       top: -1.5rem;
@@ -1060,7 +1049,6 @@
       }
     }
 
-    /* ─── Mobile menu ─────────────────────────────────────────── */
     .mobile-menu-toggle {
       display: none;
       flex-direction: column;
@@ -1133,16 +1121,9 @@
     }
 
     body.menu-open { overflow: hidden; }
-  
-    /* ═══ Mobile + animation-order cleanup ═══ */
-
-    /* Content that reveals on scroll starts hidden (same pattern as the rest of the page) */
     .seo-summary, .cv-image, .cv-description { opacity: 0; transform: translateY(24px); }
-
-    /* CV button variants: description (desktop) vs under the image (mobile) */
     .cv-download.cv-download--mobile { display: none; }
 
-    /* Stack the CV on tablets/phones. The old 450px minimum column caused overflow. */
     @media (max-width: 860px) {
       .cv-content { display: flex; flex-direction: column-reverse; gap: 1.5rem; margin-top: 2rem; }
       .cv-image { align-items: center; }
@@ -1157,26 +1138,22 @@
     }
 
     @media (max-width: 700px) {
-      /* Header */
+
       #header { height: 72px; }
       #header.scrolled { height: 56px; }
       #mobileMenu { padding-top: 88px; }
 
-      /* Hero: svh avoids the jump when the browser's address bar hides */
       #hero { min-height: 100vh; min-height: 100svh; padding: 88px 6vw 0; }
       .hero-greeting { margin-bottom: 1.25rem; }
       .hero-name { font-size: clamp(3rem, 14vw, 4rem); margin-bottom: 1.5rem; }
 
-      /* Section rhythm */
       .section { padding: 8vh 6vw; }
       .section-label { margin-bottom: 2.5rem; }
 
-      /* Who I am: no forced line breaks (they left orphan words on narrow screens) */
       .identity-blocks { gap: 2.5rem; }
       .identity-text { font-size: clamp(1.4rem, 6vw, 1.75rem); line-height: 1.4; }
       .identity-text br { display: none; }
 
-      /* Professional Profile: remove the big double gap above it */
       #thoughts { padding: 7vh 6vw 8vh; }
       .thoughts-eyebrow { margin-bottom: 1.25rem; }
       .seo-summary { margin-top: 0.5rem; font-size: 0.92rem; line-height: 1.75; }
@@ -1184,13 +1161,11 @@
       .cv-description p { margin-bottom: 1.1rem; line-height: 1.8; font-size: 0.95rem; }
       .expertise-list { margin: 1.5rem 0 0; gap: 0.5rem; }
 
-      /* Work */
       .work-grid { margin-top: 0; }
       .work-card { padding: 1.75rem 1.5rem; }
       .work-num { margin-bottom: 1.25rem; }
       .work-arrow { margin-top: 1.25rem; }
 
-      /* Launch panel: remove the extra section padding that stacked on top of the panel */
       section.launch-section { padding-top: 0; padding-bottom: 0; }
       .launch-panel { padding: 2rem 1.5rem; gap: 2rem; }
       .launch-title { margin-bottom: 1.25rem; }
@@ -1199,14 +1174,12 @@
       .launch-tags { margin-top: 1.5rem; }
       .preview-card { padding: 1.75rem 1.5rem; }
 
-      /* Contact: one set of padding instead of two */
       #contact { padding: 3rem 6vw 4rem; min-height: 0; }
       .contact-inner { padding: 0; gap: 2.5rem; }
       .contact-heading { margin-bottom: 1.75rem; }
       .contact-photo-wrap { margin-bottom: 1.5rem; }
     }
   
-    /* ═══ Contact: intro sentence + real buttons ═══ */
     .contact-heading { margin-bottom: 1.75rem; }
 
     .contact-intro {
@@ -1260,14 +1233,58 @@
       .contact-btn { width: 100%; }
       .contact-address { align-self: center; }
     }
+
+    #thoughts .thoughts-eyebrow { text-align: left; }
+    .cv-description p { max-width: 56ch; }
+    .cv-image img {
+      border-radius: 4px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.4);
+    }
+
+    @media (min-width: 861px) {
+      .cv-image { align-items: center; }
+      .cv-download.cv-download--mobile { display: inline-flex; margin-top: 2rem; }
+    }
+
+    .expertise-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.5rem;
+      margin-top: 2.5rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(250,250,250,0.12);
+      border-bottom: 1px solid rgba(250,250,250,0.12);
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .expertise-strip span {
+      white-space: nowrap;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,250,250,0.75);
+    }
+    @media (max-width: 700px) {
+      .expertise-strip {
+        justify-content: center;
+        gap: 0.35rem 1.1rem;
+        margin-top: 1.75rem;
+        padding: 0.85rem 0;
+      }
+      .expertise-strip span {
+        font-size: 0.64rem;
+        letter-spacing: 0.1em;
+      }
+      .cv-image img { max-width: 320px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Reading progress bar -->
   <div id="progress"></div>
 
-  <!-- Custom cursor (desktop only) -->
   <div id="cursor-dot"></div>
   <div id="cursor-ring"></div>
 
@@ -1277,7 +1294,6 @@
     <nav class="header-nav" aria-label="Main navigation">
       <a href="#identity">About</a>
       <a href="#work">Work</a>
-      <!-- PERSISTENT CTA — always visible -->
       <a href="#contact" class="cta-btn" aria-label="Work with me">
         Work With Me
       </a>
@@ -1297,13 +1313,12 @@
   </nav>
 
   <section id="hero" aria-labelledby="hero-name">
-    <!-- decorative rings -->
     <div class="hero-ring" aria-hidden="true"></div>
     <div class="hero-ring" aria-hidden="true"></div>
     <div class="hero-ring" aria-hidden="true"></div>
 
     <div class="hero-inner">
-      <p class="hero-greeting" aria-hidden="true">Digital Marketer</p>
+      <p class="hero-greeting" aria-hidden="true">Digital Marketer & SEO Specialist</p>
 
       <h1 class="hero-name" id="hero-name">
         <span class="clip"><span>Hi, I'm Colin.</span></span>
@@ -1355,7 +1370,7 @@
       </p>
 
     <p class="seo-summary">
-      Living across different countries taught me how people think, choose, and connect. That curiosity eventually led me to marketing, where understanding human behavior is just as important as understanding algorithms.
+      My work sits at the intersection of marketing, technology, and search. I combine a business background with hands-on experience in SEO and web development, using both strategic thinking and technical implementation to solve problems.
     </p>
   </div>
 
@@ -1367,7 +1382,7 @@
         alt="Curriculum Vitae of Colin John"
         loading="lazy"
       />
-      <!-- Mobile: button sits directly UNDER the CV image -->
+
       <a href="assets/pdf/colin-john-cv.pdf"
          download
          class="cv-download cv-download--mobile"
@@ -1391,40 +1406,21 @@
       </p>
 
       <p>
-        My goal is simple: help websites become more visible, more useful, and easier to discover.
+        I’m particularly interested in the future of search, including Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), entity-based SEO, and AI-driven search experiences. As search engines and AI assistants increasingly shape how people find information, I’m interested in how brands can remain discoverable as the rules of discovery change.
       </p>
 
       <p>
-        I am particularly interested in the future of search, including Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), entity-based SEO, and AI-driven search experiences. As search engines and AI assistants increasingly shape how people find information, I enjoy exploring how brands can adapt and remain discoverable.
+        My academic background in business administration and marketing at the University of Szeged continues to shape how I approach this work, particularly when it comes to strategy, consumer behavior, and understanding why people make the choices they do.
       </p>
-
-      <p>
-        My academic background at the University of Szeged provided a foundation in business strategy, consumer behavior, and marketing principles that continue to influence my approach to SEO and digital marketing today.
-      </p>
-
-      <div class="expertise-list">
-        <span>SEO Strategy</span>
-        <span>Technical SEO</span>
-        <span>Content Marketing</span>
-        <span>Front-End Development</span>
-      </div>
-
-      <!-- Desktop: button sits under the description -->
-      <a href="assets/pdf/colin-john-cv.pdf"
-         download
-         class="cv-download cv-download--desktop"
-         aria-label="Download CV as PDF">
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="7.5" y1="1.5" x2="7.5" y2="10"/>
-          <polyline points="4.5,7 7.5,10 10.5,7"/>
-          <line x1="1.5" y1="12.5" x2="13.5" y2="12.5"/>
-        </svg>
-        Download CV
-      </a>
-
     </div>
   </div>
-</div>
+
+  <div class="expertise-strip">
+    <span>SEO Strategy</span>
+    <span>Technical SEO</span>
+    <span>Content Strategy</span>
+    <span>Front-End Development</span>
+  </div>
 </section>
 
   <section id="work" class="section" aria-label="Selected work and CV">
@@ -1550,7 +1546,7 @@
     <p>Made with intention.</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     /* ─── 1. LENIS SMOOTH SCROLL ──────────────────────────────── */
     const lenis = new Lenis({
       duration: 1.35,
@@ -1781,7 +1777,7 @@
       scrollTrigger: { trigger: '.cv-subtitle', start: 'top 85%' },
       delay: 0.1
     });
-    ['.seo-summary', '.cv-image', '.cv-description'].forEach((sel, i) => {
+    ['.seo-summary', '.cv-image', '.cv-description', '.expertise-strip'].forEach((sel, i) => {
       gsap.to(sel, {
         opacity: 1, y: 0,
         duration: 0.9, ease: 'power3.out',
@@ -1827,9 +1823,6 @@
       delay: 0.3
     });
 
-    /* ─── 14. RE-MEASURE AFTER IMAGES + FONTS LOAD ──────────── */
-    // Lazy images and web fonts change page height after load, which shifts every
-    // trigger position and makes animations fire early or out of order.
     window.addEventListener('load', () => ScrollTrigger.refresh());
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => ScrollTrigger.refresh());
@@ -1942,7 +1935,5 @@
   ]
 }
 </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8911af05a9fa40d5af9509ee831049a6","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
