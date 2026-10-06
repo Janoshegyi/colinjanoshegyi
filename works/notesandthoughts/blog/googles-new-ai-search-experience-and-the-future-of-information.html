@@ -13,13 +13,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Google’s New AI Search Experience and the Future of Information | Colin John</title>
   <link rel="canonical" href="https://colinjanoshegyi.com/works/notesandthoughts/blog/googles-new-ai-search-experience-and-the-future-of-information" />
-  <meta name="description" content="Google’s AI-powered Search experience could fundamentally change how billions of people consume information online. A closer analysis of AI agents, misinformation risks, platform power, and the future of digital trust." />
+  <meta name="description" content="Google’s new AI Search is a real step forward in convenience and access. A closer look at AI agents, misinformation risks, publisher traffic, and the future of digital trust." />
   <meta name="keywords" content="Google AI Search, AI Mode, Gemini, Google I/O 2026, AI Search, digital trust, misinformation, AI agents, SEO, Google Search analysis" />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Google’s New AI Search Experience and the Future of Information" />
-  <meta property="og:description" content="Google’s AI-powered Search experience could fundamentally change how billions of people consume information online." />
+  <meta property="og:description" content="Google’s new AI Search is a real step forward in convenience and access. Its effect on how people find and trust information is less settled." />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/blog/google-ai-search-future-of-information" />
+  <meta property="og:url" content="https://colinjanoshegyi.com/works/notesandthoughts/blog/googles-new-ai-search-experience-and-the-future-of-information" />
   <meta property="og:image" content="https://colinjanoshegyi.com/assets/preview.png" />
   <meta property="article:published_time" content="2026-05-22" />
   <meta property="article:author" content="Colin John" />
@@ -32,10 +32,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.js"></script>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -229,8 +229,6 @@
       text-decoration: none;
       transition: color .3s, gap .3s;
       margin-bottom: 3rem;
-      opacity: 0;
-      transform: translateX(-8px);
     }
 
     .article-back:hover {
@@ -247,8 +245,6 @@
       gap: 2rem;
       flex-wrap: wrap;
       margin-bottom: 2rem;
-      opacity: 0;
-      transform: translateY(10px);
     }
 
     .article-tag {
@@ -262,14 +258,13 @@
       font-family: var(--serif);
       font-size: clamp(2.4rem, 5.5vw, 5rem);
       font-weight: 300; line-height: 1.1; letter-spacing: -.02em;
-      opacity: 0; transform: translateY(24px);
     }
     .article-title em { font-style: italic; }
     .article-subtitle {
       margin-top: 1.5rem;
       font-size: clamp(1rem, 1.4vw, 1.2rem);
       color: var(--mid); font-weight: 300; line-height: 1.7;
-      max-width: 54ch; opacity: 0; transform: translateY(16px);
+      max-width: 54ch;
     }
 
     .article-subtitle {
@@ -279,8 +274,6 @@
       font-weight: 300;
       line-height: 1.7;
       max-width: 56ch;
-      opacity: 0;
-      transform: translateY(16px);
     }
 
     .article-layout {
@@ -405,7 +398,7 @@
       margin: 2.5rem 0;
     }
 
-    .concern-block h4 {
+    .concern-block h3 {
       font-size: .85rem;
       font-weight: 500;
       letter-spacing: .06em;
@@ -556,6 +549,31 @@
       .article-title { font-size: clamp(2rem, 9vw, 2.6rem); line-height: 1.12; }
       .article-subtitle { margin-top: 1rem; line-height: 1.6; }
     }
+    /* ---- Charts: finding as title, fixed-height wrapper, mobile sizing ---- */
+    .chart-wrap { position: relative; width: 100%; height: var(--h, 260px); }
+    .graph-block h3.graph-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; letter-spacing: -.005em; text-transform: none; line-height: 1.25; color: var(--ink); margin-bottom: .35rem; }
+    .chart-sub { font-size: .8rem; color: var(--mid); line-height: 1.5; margin: 0 0 1rem !important; }
+    .graph-block .source-note { margin-bottom: 0 !important; }
+    @media (max-width: 700px) {
+      .graph-block { padding: 1.1rem .85rem; margin: 2.25rem 0; }
+      .chart-wrap { height: var(--hm, 280px); }
+      .graph-block h3.graph-title { font-size: 1.2rem; }
+    }
+    /* ---- SEO additions ---- */
+    .takeaways { margin: 2.5rem 0; padding: 1.4rem 1.5rem; border: 1px solid var(--border); border-radius: 8px; background: var(--near-white); }
+    .takeaways-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; margin: 0 0 .6rem !important; color: var(--ink); }
+    .article-body .takeaways ul { padding-left: 1.1rem; }
+    .article-body .takeaways li { font-size: .98rem; line-height: 1.7; color: #2a2a2a; margin-bottom: .6rem; }
+    .chart-data { margin-top: 1rem; font-size: .8rem; }
+    .chart-data summary { cursor: pointer; color: var(--mid); }
+    .tbl-scroll { overflow-x: auto; margin-top: .6rem; }
+    .chart-data table { width: 100%; border-collapse: collapse; }
+    .chart-data th, .chart-data td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--border); line-height: 1.45; vertical-align: top; }
+    .chart-data th { font-weight: 500; color: var(--ink); }
+    .sources-list { padding-left: 1.25rem; font-size: .88rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.5rem; }
+    .sources-list li { margin-bottom: .45rem; }
+    .article-body a { text-underline-offset: 3px; }
+    @media (max-width: 700px) { .takeaways { padding: 1.1rem 1rem; } }
   </style>
 </head>
 
@@ -586,7 +604,8 @@
     <span class="article-tag">AI</span>
     <span class="article-tag">Google</span>
     <span class="article-tag">Analysis</span>
-    <span>12 min read</span>
+    <span>Updated 7 Oct 2026</span>
+    <span>7 min read</span>
   </p>
 
   <h1 class="article-title">
@@ -594,32 +613,42 @@
   </h1>
 
   <p class="article-subtitle">
-    Google’s AI-powered Search ecosystem may fundamentally reshape how billions of people consume information online. The technology is impressive. The long-term implications are much more complicated.
+    Google’s new AI Search is a real step forward in convenience and access. Its effect on how people find and trust information is less settled.
   </p>
 
 </header>
 
-<div class="article-layout">
+<main class="article-layout">
 
-  <article class="article-body" role="main">
+  <article class="article-body">
 
     <p>
-      In May 2026, Google introduced one of the largest transformations in the history of Search during Google I/O 2026. The company expanded AI Mode globally, introduced background information agents, redesigned Search for multimodal interaction, and showcased generative systems capable of building personalized tools instantly.
+      At Google I/O 2026 in May, Google announced the biggest upgrade to the Search box in over 25 years. Gemini 3.5 Flash is now the default model in AI Mode worldwide, the box accepts text, images, files, videos and Chrome tabs, and Google introduced background information agents and interfaces that build custom tools from a prompt.
+    </p>
+
+    <aside class="takeaways" aria-label="Key takeaways">
+      <p class="takeaways-title">Key takeaways</p>
+      <ul>
+        <li>AI Mode passed one billion monthly users a year after launch, and Gemini 3.5 Flash is now its default model worldwide.</li>
+        <li>In Pew Research data, people clicked a result link in 8% of visits with an AI summary and 15% without, and clicked a link inside the summary in just 1%.</li>
+        <li>Chartbeat measured Google search referrals to news sites down 33% globally over twelve months, and the EBU and BBC found 45% of AI answers to news questions had a significant issue.</li>
+      </ul>
+    </aside>
+
+    <p>
+      The scale makes this more than a product update. Google Search is one of the most widely used information systems ever built. When people read an AI summary instead of the sources behind it, questions about transparency, trust and responsibility for errors start to matter more than the convenience.
     </p>
 
     <p>
-      The scale alone matters. Google Search is not a niche platform. It is one of the most influential information systems ever created. When billions of people increasingly rely on AI-generated summaries instead of directly interacting with original sources, the conversation moves beyond convenience alone. Questions surrounding transparency, misinformation, digital trust, and platform responsibility become significantly more important.
-    </p>
-
-    <p>
-      At the same time, many of these tools are genuinely useful. AI-assisted Search could dramatically improve accessibility, simplify research, and reduce technical barriers for average users. The technology itself is impressive. The long-term implications are much more complicated.
+      Much of the new technology is also useful. It could make research easier for people who have never been comfortable with search, and that deserves to be taken seriously.
     </p>
 
     <figure class="feature-image">
       <img
         loading="lazy"
-        src="https://search.google/static/images/ai-in-search-hero.webp"
-        alt="Google AI Search interface">
+        src="/assets/blog/google-ai-search-hero.webp"
+        width="1600" height="900" decoding="async"
+        alt="Google's redesigned Search box and AI Mode interface, announced at Google I/O 2026">
       <figcaption>
         Google’s redesigned AI Search experience introduced during Google I/O 2026.
         <br>
@@ -633,21 +662,21 @@
       <div class="stat-cell">
         <p class="stat-number">1 Billion</p>
         <p class="stat-label">
-          Monthly AI Mode users within one year after launch
+          Monthly AI Mode users, one year after launch
         </p>
       </div>
 
       <div class="stat-cell">
-        <p class="stat-number">2 Times</p>
+        <p class="stat-number">More than 2x</p>
         <p class="stat-label">
-          Quarterly query growth since AI Mode launched
+          Quarterly growth in AI Mode queries since launch
         </p>
       </div>
 
       <div class="stat-cell">
-        <p class="stat-number">200 Countries</p>
+        <p class="stat-number">Nearly 200</p>
         <p class="stat-label">
-          Receiving Google’s Personal Intelligence rollout
+          Countries and territories getting Personal Intelligence in AI Mode
         </p>
       </div>
 
@@ -656,11 +685,11 @@
     <h2>What Google Actually Announced</h2>
 
     <p>
-      Google’s announcements extended far beyond a traditional Search update. AI Mode now supports text, images, files, videos, and browser tabs simultaneously. AI agents are capable of continuously monitoring information in the background and delivering personalized updates. Google also demonstrated generative interfaces capable of building custom tools instantly from natural language prompts.
+      The new Search box expands to fit longer, more conversational questions, and users can ask a follow-up on an AI Overview and continue into AI Mode. Both were live at announcement. The larger features came with conditions. Google said information agents and the mini-app builder would reach AI Pro and Ultra subscribers first this summer, while generative UI would be free for everyone.
     </p>
 
     <p>
-      On a functional level, many of these improvements are genuinely useful. A user searching for apartments, flights, financial updates, or product recalls could theoretically save enormous amounts of time by delegating repetitive monitoring tasks to AI systems. The multimodal interface also reflects how people naturally search for information today. Most users do not think exclusively through keywords anymore.
+      The agents are the most significant change. They run in the background and send updates, so someone searching for an apartment, a flight or a product recall notice could hand the repetitive checking to Search. The multimodal box also reflects how people search now, since few of us rely on keywords alone.
     </p>
 
     <blockquote>
@@ -669,86 +698,98 @@
       - Lisa Eadicicco, CNN Business Tech
     </blockquote>
 
+    <p>
+      The longer questions matter for a measurable reason. AI summaries show up far more often on long, conversational searches, which is what the redesigned box invites, and what people do after seeing one is different.
+    </p>
+
     <div class="graph-block">
-      <h3>AI Overview vs. Standard Search: Click-Through Rate</h3>
-      <canvas id="searchChart" height="120"></canvas>
-      <p class="source-note">Source: Pew Research Center, “Google users are less likely to click on links when an AI summary appears in the results,” July 2025. Study tracked 68,879 real Google searches by 900 U.S. adults in March 2025.</p>
+      <h3 class="graph-title">AI summaries appear most on long, conversational questions</h3>
+      <p class="chart-sub">Share of Google searches that produced an AI summary, by type of search</p>
+      <div class="chart-wrap" style="--h:250px;--hm:270px"><canvas id="triggerChart" role="img" aria-label="AI summaries appear most on long, conversational questions"></canvas></div>
+      <details class="chart-data"><summary>View chart data</summary><div class="tbl-scroll"><table><thead><tr><th scope="col">Type of Google search</th><th scope="col">Share that produced an AI summary</th></tr></thead><tbody><tr><td>All searches</td><td>18%</td></tr><tr><td>One- or two-word searches</td><td>8%</td></tr><tr><td>Searches of ten words or more</td><td>53%</td></tr><tr><td>Searches starting with who, what, when or why</td><td>60%</td></tr></tbody></table></div></details>
+      <p class="source-note">Source: <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/" target="_blank" rel="noopener noreferrer">Pew Research Center, July 2025</a>. 68,879 searches by 900 U.S. adults, March 2025. The redesigned search box encourages exactly the longer, question-style queries at the top of this chart.</p>
+    </div>
+
+    <div class="graph-block">
+      <h3 class="graph-title">With an AI summary, clicks roughly halve and more visits end there</h3>
+      <p class="chart-sub">Share of Google visits, with and without an AI summary on the results page</p>
+      <div class="chart-wrap" style="--h:250px;--hm:270px"><canvas id="searchChart" role="img" aria-label="With an AI summary, clicks roughly halve and more visits end there"></canvas></div>
+      <details class="chart-data"><summary>View chart data</summary><div class="tbl-scroll"><table><thead><tr><th scope="col">Outcome</th><th scope="col">AI summary shown</th><th scope="col">No AI summary</th></tr></thead><tbody><tr><td>Clicked a result link</td><td>8%</td><td>15%</td></tr><tr><td>Ended the browsing session</td><td>26%</td><td>16%</td></tr><tr><td>Clicked a link inside the AI summary</td><td>1%</td><td>Not applicable</td></tr></tbody></table></div></details>
+      <p class="source-note">Source: <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/" target="_blank" rel="noopener noreferrer">Pew Research Center, July 2025</a>. Users clicked a link inside the AI summary itself in just 1% of visits. About two-thirds of all searches ended with no click on any result, with or without a summary.</p>
     </div>
 
     <h2>The Benefits Are Real</h2>
 
     <p>
-      For many users, especially those without technical expertise, AI-powered Search may genuinely make the internet easier to navigate. That accessibility should not be dismissed simply because the long-term concerns are serious. Complex tasks that previously required specialized knowledge, technical literacy, or hours of manual research may become significantly easier.
+      Users without technical skills may gain the most. Tasks that once required specialist knowledge or hours of research could become much easier, and that matters even though the larger concerns are serious. Students can request an interactive simulation on the spot. Shoppers can evaluate a product from photos and reviews together. People without a personal assistant or paid services can hand off tasks that used to take up their time.
     </p>
 
     <p>
-      Students can request interactive educational simulations instantly. Consumers can analyse products using uploaded images and reviews simultaneously. Users without access to expensive services or personal assistants can automate tasks that previously demanded substantial time and effort.
-    </p>
-
-    <p>
-      The global rollout of AI-powered assistance across hundreds of countries and dozens of languages is particularly significant. Historically, advanced digital tools were concentrated primarily in wealthier English-speaking markets. Google’s expansion could reduce part of that accessibility gap substantially.
+      The reach matters as well. Personal Intelligence is rolling out to nearly 200 countries and territories in 98 languages, with no subscription required. Advanced digital tools have mostly arrived first in wealthier, English-speaking markets, so this could close part of that gap.
     </p>
 
     <h2>The Information Problem</h2>
 
     <p>
-      Traditional Search engines primarily presented users with links. The system was imperfect and heavily influenced by SEO, advertising, and algorithmic ranking incentives. However, users still retained direct access to original sources.
+      Traditional search gave users links. It was imperfect and shaped by SEO, advertising and ranking incentives, but users still reached the original source. AI synthesis changes that relationship. Instead of comparing sources, users get a single confident summary.
     </p>
 
     <p>
-      AI-generated synthesis changes that relationship fundamentally. Instead of comparing multiple sources, users are increasingly presented with a single confident summary.
+      Writers describe a related trap as the Tiffany Problem. Tiffany sounds like a modern name, so readers assume it would be out of place in a medieval story. It is not. The name goes back centuries, from the Greek Theophania. The facts were sound, but readers trusted what sounded believable over what was true.
     </p>
 
     <p>
-      There is a concept among writers sometimes referred to as “The Tiffany Problem”. The name Tiffany sounds modern to many readers, so people often assume it would feel historically inaccurate inside a medieval story. In reality, the name dates back centuries through the Greek name Theophania. The issue is not factual accuracy itself. The issue is that people often trust what sounds believable more than what is historically correct.
+      Language models pull in the same direction. They produce fluent, natural answers, and a confident answer that sounds right can easily outperform a more careful one that is actually accurate. Whether an answer is correct matters, and so does whether users can see how it was reached.
     </p>
 
-    <p>
-      That dynamic becomes increasingly relevant in the age of AI-generated information. Large language models are fundamentally designed to produce responses that appear coherent, persuasive, and natural. In many situations, a confident answer that sounds correct may psychologically outperform a more nuanced or technically accurate explanation.
-    </p>
-
-    <p>
-      The concern is not simply whether AI systems are correct or incorrect. The larger issue is whether users can meaningfully understand how conclusions are being generated in the first place.
-    </p>
+    <div class="graph-block">
+      <h3 class="graph-title">Nearly half of AI answers to news questions had a significant problem</h3>
+      <p class="chart-sub">Share of answers with at least one significant issue, by assistant (all four combined: 45%)</p>
+      <div class="chart-wrap" style="--h:240px;--hm:250px"><canvas id="accuracyChart" role="img" aria-label="Nearly half of AI answers to news questions had a significant problem"></canvas></div>
+      <details class="chart-data"><summary>View chart data</summary><div class="tbl-scroll"><table><thead><tr><th scope="col">Assistant</th><th scope="col">Answers with a significant issue</th></tr></thead><tbody><tr><td>Gemini</td><td>76%</td></tr><tr><td>Copilot</td><td>37%</td></tr><tr><td>ChatGPT</td><td>36%</td></tr><tr><td>Perplexity</td><td>30%</td></tr><tr><td>All four combined</td><td>45%</td></tr></tbody></table></div></details>
+      <p class="source-note">Source: <a href="https://www.journalism.co.uk/nearly-half-of-ai-generated-answers-contain-an-error-ebu-bbc-report/" target="_blank" rel="noopener noreferrer">EBU and BBC, October 2025</a>. Over 3,000 answers in 14 languages, rated by journalists from 22 public media organisations. It tested the Gemini assistant, not AI Mode with Gemini 3.5 Flash, so it shows the sourcing problem rather than how today's Search performs.</p>
+    </div>
 
     <div class="concern-block">
-      <h4>Misinformation amplification</h4>
+      <h3>Misinformation amplification</h3>
 
       <p>
-        Information agents continuously process blogs, videos, social media discussions, and real-time web content. While this increases convenience, it also creates the possibility for inaccurate information to spread rapidly through AI-generated summaries before meaningful verification occurs.
+        Information agents draw on blogs, videos, social discussions and live web content. That is convenient, but an inaccurate claim can spread through AI summaries before anyone has verified it.
       </p>
     </div>
 
     <div class="concern-block">
-      <h4>Reduced source transparency</h4>
+      <h3>Reduced source transparency</h3>
 
       <p>
-        The more polished and conversational an AI response becomes, the less likely users are to question it. Users may increasingly consume conclusions without interacting directly with the underlying sources that produced them.
+        The smoother and more conversational an answer becomes, the less likely users are to question it. Many will take the conclusion without opening the sources behind it.
       </p>
     </div>
 
     <div class="concern-block">
-      <h4>Publisher dependency</h4>
+      <h3>Publisher dependency</h3>
 
       <p>
-        AI systems rely heavily on publishers, journalists, forums, researchers, and creators for training and information synthesis. However, if AI-generated answers reduce traffic to original websites, the economic incentives supporting high-quality information production may weaken substantially over time.
+        AI systems rely on publishers, journalists, forums, researchers and creators. If AI answers send less traffic to those sites, the revenue that pays for good information could shrink over time.
       </p>
     </div>
 
     <div class="graph-block">
-      <h3>Google Referral Traffic to Publishers: Year-on-Year Change</h3>
-      <canvas id="trustChart" height="120"></canvas>
-      <p class="source-note">Source: Digital Content Next (DCN) member survey, August 2025. Covers 19 publishers including The New York Times, Condé Nast, and Vox over 8 weeks in May–June 2025. Losses outpaced gains two-to-one.</p>
+      <h3 class="graph-title">Publishers are losing search traffic, and the smallest are losing the most</h3>
+      <p class="chart-sub">Decline in Google or search referral traffic to publishers, by measurement</p>
+      <div class="chart-wrap" style="--h:360px;--hm:380px"><canvas id="trustChart" role="img" aria-label="Publishers are losing search traffic, and the smallest are losing the most"></canvas></div>
+      <details class="chart-data"><summary>View chart data</summary><div class="tbl-scroll"><table><thead><tr><th scope="col">Measurement</th><th scope="col">Source and period</th><th scope="col">Decline</th></tr></thead><tbody><tr><td>Small publishers</td><td>Chartbeat, two years to early 2026</td><td>60%</td></tr><tr><td>Google search, US</td><td>Chartbeat, November 2024 to November 2025</td><td>38%</td></tr><tr><td>Google search, global</td><td>Chartbeat, November 2024 to November 2025</td><td>33%</td></tr><tr><td>Non-news brands</td><td>DCN median, May–June 2025</td><td>14%</td></tr><tr><td>All 19 publishers</td><td>DCN median, May–June 2025</td><td>10%</td></tr><tr><td>News brands</td><td>DCN median, May–June 2025</td><td>7%</td></tr></tbody></table></div></details>
+      <p class="source-note">Sources: <a href="https://digiday.com/media/google-ai-overviews-linked-to-25-drop-in-publisher-referral-traffic-new-data-shows/" target="_blank" rel="noopener noreferrer">Digital Content Next</a> (median year-on-year change across 19 member publishers, May–June 2025); <a href="https://pressgazette.co.uk/media-audience-and-business-data/google-traffic-down-2025-trends-report-2026/" target="_blank" rel="noopener noreferrer">Chartbeat via the Reuters Institute</a> (news sites, November 2024 to November 2025); <a href="https://ppc.land/small-publishers-lost-60-of-search-traffic-as-ai-reshapes-the-web/" target="_blank" rel="noopener noreferrer">Chartbeat via Axios</a> (outlets with 1,000–10,000 daily page views, two years to early 2026). Samples and periods differ, so compare the direction rather than the exact gaps.</p>
     </div>
 
     <h2>The Important Counterargument</h2>
 
     <p>
-      At the same time, traditional Search systems were already deeply flawed. SEO spam, low-quality content farms, manipulative ranking practices, and misleading clickbait content existed long before generative AI entered Search. Most users rarely verified sources independently even under the older system.
+      Search was already flawed. SEO spam, content farms, manipulative ranking and clickbait all predate generative AI, and most users rarely checked sources even then. AI synthesis might improve information quality for the average user by cutting noise and filtering obvious misinformation better than ranking did. The question is therefore less whether AI belongs in Search than whether transparency and accountability will keep pace with it.
     </p>
 
     <p>
-      In some situations, AI-assisted synthesis may actually improve information quality for average users by reducing noise and filtering obvious misinformation more effectively than traditional ranking systems. The question therefore is not whether AI should exist inside Search. The real question is whether transparency and accountability mechanisms will evolve alongside these capabilities.
+      Google disputes the strongest readings of this data. Its head of Search has argued that third-party studies overstate declines in overall traffic, and the company says the clicks that remain are higher quality. Both sides can be partly right. Pew followed 900 people and DCN surveyed 19 publishers, and neither can see Google's own totals.
     </p>
 
     <blockquote>
@@ -760,15 +801,29 @@
     <h2>Where This Leaves the Open Web</h2>
 
     <p>
-      One of the least discussed consequences of AI-powered Search is its impact on the broader information ecosystem. Search engines historically acted as gateways that directed users toward publishers, forums, researchers, and independent websites. AI-generated synthesis increasingly keeps users inside the platform itself.
+      Search has historically sent users to publishers, forums, researchers and independent sites. AI synthesis tends to keep them on Google. If users stop visiting sources, publishers lose advertising revenue and subscriptions, and the systems that depend on the open web end up weakening what sustains it.
     </p>
 
     <p>
-      If users stop visiting original sources directly, publishers may lose advertising revenue, subscription growth, and long-term sustainability. Ironically, the same systems that depend on the open web for information may gradually weaken the economic structure that keeps that information ecosystem alive.
+      Smaller publishers, independent sites and original analysis are the most exposed. The relationship between AI platforms and content creators will probably be one of the main economic questions of the next decade.
+    </p>
+
+    <h2>What This Means for SEO</h2>
+
+    <p>
+      Clicks are no longer the only measure of search visibility. With only 1% of visits clicking a link inside an AI summary, a page can be cited and still earn almost no traffic, so track impressions, brand mentions and branded searches next to sessions.
     </p>
 
     <p>
-      This is particularly important for independent websites, smaller publishers, niche researchers, and original analysis platforms. The future relationship between AI platforms and content creators will likely become one of the defining digital economic questions of the next decade.
+      Original data gives AI summaries something worth citing and gives readers a reason to click through. Summaries repackage what already exists, so first-hand research, clear methods and named sources are harder to replace than a general explainer.
+    </p>
+
+    <p>
+      Question-style searches are where summaries appear most, so write headings that match real questions and answer each one directly in the first sentences. Pages that are easy to crawl and easy to quote are also the easiest for answer engines to use. Audiences built outside Google matter too, such as direct visitors, newsletters and video, which is where the Reuters Institute found publishers putting more effort.
+    </p>
+
+    <p>
+      If you want to adapt a site to AI search, see <a href="https://colinjanoshegyi.com/#work">my work</a> or <a href="https://colinjanoshegyi.com/#contact">get in touch</a>.
     </p>
 
     <hr>
@@ -776,32 +831,37 @@
     <h2>Final Thoughts</h2>
 
     <p>
-      Google’s AI Search ecosystem represents a genuine technological milestone. The improvements in accessibility, convenience, and user interaction are significant.
+      This is a genuine technological milestone, and the gains in accessibility and convenience are significant. At this scale, though, Google shapes how people understand information: what they trust, which publishers survive, and how the public forms its picture of events.
     </p>
 
     <p>
-      However, systems operating at this scale inevitably shape how people understand information itself. They influence what users trust, what publishers can survive economically, and how digital platforms mediate public understanding.
+      Search will almost certainly become more AI-driven. It remains to be seen whether transparency, accountability and visible sources will keep pace with the influence these systems already have.
     </p>
 
-    <p>
-      The future of Search will almost certainly become increasingly AI-driven. The more important question is whether transparency, accountability, and source visibility will evolve quickly enough to match the scale of influence these systems already possess.
-    </p>
+    <h2>Sources and Notes</h2>
+
+    <ol class="sources-list">
+      <li>Google announcements: <a href="https://blog.google/products-and-platforms/products/search/search-io-2026/" target="_blank" rel="noopener noreferrer">Google Search at I/O 2026</a> (AI Mode users, Gemini 3.5 Flash, information agents, Personal Intelligence).</li>
+      <li>Click behaviour and when summaries appear: <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/" target="_blank" rel="noopener noreferrer">Pew Research Center, July 2025</a>.</li>
+      <li>Publisher referrals, DCN survey and Google's response: <a href="https://digiday.com/media/google-ai-overviews-linked-to-25-drop-in-publisher-referral-traffic-new-data-shows/" target="_blank" rel="noopener noreferrer">Digiday</a>.</li>
+      <li>Global and US search referrals, publisher expectations: <a href="https://pressgazette.co.uk/media-audience-and-business-data/google-traffic-down-2025-trends-report-2026/" target="_blank" rel="noopener noreferrer">Press Gazette on the Reuters Institute and Chartbeat report</a>.</li>
+      <li>Small publishers: <a href="https://ppc.land/small-publishers-lost-60-of-search-traffic-as-ai-reshapes-the-web/" target="_blank" rel="noopener noreferrer">PPC Land on Chartbeat data first reported by Axios</a>.</li>
+      <li>AI news accuracy: <a href="https://www.journalism.co.uk/nearly-half-of-ai-generated-answers-contain-an-error-ebu-bbc-report/" target="_blank" rel="noopener noreferrer">EBU and BBC study, via Journalism.co.uk</a>. It tested the Gemini assistant, not AI Mode with Gemini 3.5 Flash.</li>
+      <li>Quotes: Lisa Eadicicco, CNN Business, on the redesigned search box; <a href="https://www.youtube.com/watch?v=8MLbOulrLA0&t=1265s" target="_blank" rel="noopener noreferrer">Hank Green</a>.</li>
+    </ol>
 
     <p class="source-note">
-      Source:
-      <a href="https://blog.google/products-and-platforms/products/search/search-io-2026/" target="_blank" rel="noopener noreferrer">
-        Google Search at I/O 2026
-      </a>
+      Updated 7 October 2026. The charts were rebuilt around cited studies. Figures come from studies run between March 2025 and early 2026, and samples and periods differ between charts.
     </p>
 
     <div class="article-tags">
       <span class="article-tags-label">Topics ,</span>
 
-      <a href="#">AI</a>
-      <a href="#">Google Search</a>
-      <a href="#">Technology</a>
-      <a href="#">Digital Trust</a>
-      <a href="#">Analysis</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">AI</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Google Search</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Technology</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Digital Trust</a>
+      <a href="https://colinjanoshegyi.com/works/notesandthoughts/">Analysis</a>
     </div>
 
     <nav class="article-nav" aria-label="Post navigation">
@@ -815,7 +875,7 @@
 
   </article>
 
-</div>
+</main>
 
 <footer role="contentinfo">
   <p>© 2026 Colin John (Janoshegyi). All rights reserved.</p>
@@ -828,6 +888,7 @@
 </footer>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
   const lenis = new Lenis({
     duration: 1.35,
     easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t))
@@ -886,135 +947,74 @@
     ring.classList.toggle('hover', !!e.target.closest('a, button'));
   });
 
-  gsap.to('.article-back', {
-    opacity: 1,
-    x: 0,
-    duration: .8,
-    ease: 'power3.out',
-    delay: .2
-  });
+  const small = () => window.innerWidth < 700;
+  const fs = () => small() ? 11 : 12.5;
+  const valLabels = {
+    id: 'valLabels',
+    afterDatasetsDraw(c) {
+      const x = c.ctx;
+      x.save();
+      x.font = '500 ' + fs() + 'px Outfit, sans-serif';
+      x.fillStyle = '#111';
+      x.textBaseline = 'middle';
+      c.data.datasets.forEach((d, i) => c.getDatasetMeta(i).data.forEach((b, j) => {
+        const v = d.data[j];
+        x.fillText(d.fmt ? d.fmt(v) : v + '%', b.x + 6, b.y);
+      }));
+      x.restore();
+    }
+  };
 
-  gsap.to('.article-meta', {
-    opacity: 1,
-    y: 0,
-    duration: .8,
-    ease: 'power3.out',
-    delay: .35
-  });
-
-  gsap.to('.article-title', {
-    opacity: 1,
-    y: 0,
-    duration: 1.1,
-    ease: 'power3.out',
-    delay: .5
-  });
-
-  gsap.to('.article-subtitle', {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: 'power3.out',
-    delay: .65
-  });
-
-  const searchChart = document.getElementById('searchChart');
-
-  if (searchChart) {
-    new Chart(searchChart, {
+  function hbar(id, labels, datasets, max) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    new Chart(el, {
       type: 'bar',
-      data: {
-        labels: ['With AI Overview', 'Without AI Overview'],
-        datasets: [{
-          label: 'Click-through rate (%)',
-          data: [8, 15],
-          backgroundColor: ['rgba(17,17,17,0.75)', 'rgba(17,17,17,0.2)'],
-          borderColor: ['rgba(17,17,17,1)', 'rgba(17,17,17,0.4)'],
-          borderWidth: 1
-        }]
-      },
+      data: { labels, datasets },
+      plugins: [valLabels],
       options: {
+        indexAxis: 'y',
         responsive: true,
+        maintainAspectRatio: false,
+        layout: { padding: { right: 44 } },
         plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx => ctx.parsed.y + '%'
-            }
-          }
+          legend: {
+            display: datasets.length > 1,
+            position: 'bottom',
+            labels: { boxWidth: 10, boxHeight: 10, color: '#444', font: { family: 'Outfit', size: fs() } }
+          },
+          tooltip: { callbacks: { label: c => (c.dataset.label ? c.dataset.label + ': ' : '') + (c.dataset.fmt ? c.dataset.fmt(c.parsed.x) : c.parsed.x + '%') } }
         },
         scales: {
-          y: {
-            beginAtZero: true,
-            max: 20,
-            ticks: {
-              callback: val => val + '%',
-              color: '#666',
-              font: { family: 'Outfit', size: 11 }
-            },
-            grid: { color: 'rgba(17,17,17,0.06)' }
-          },
-          x: {
-            ticks: {
-              color: '#666',
-              font: { family: 'Outfit', size: 11 }
-            },
-            grid: { display: false }
-          }
+          x: { min: 0, max, ticks: { callback: v => v + '%', color: '#666', maxTicksLimit: 5, font: { family: 'Outfit', size: fs() - 1 } }, grid: { color: 'rgba(17,17,17,0.06)' } },
+          y: { ticks: { color: '#333', font: { family: 'Outfit', size: fs() } }, grid: { display: false } }
         }
       }
     });
   }
 
+  const dark = 'rgba(17,17,17,0.85)', mid = 'rgba(17,17,17,0.5)', light = 'rgba(17,17,17,0.18)';
 
- const trustChart = document.getElementById('trustChart');
+  hbar('triggerChart',
+    ['All searches', ['One or two', 'words'], ['Ten words', 'or more'], ['Starts with who,', 'what, when, why']],
+    [{ label: 'Searches with an AI summary', data: [18, 8, 53, 60], backgroundColor: [light, mid, dark, dark], borderRadius: 2 }], 70);
 
-  if (trustChart) {
-    new Chart(trustChart, {
-      type: 'bar',
-      data: {
-        labels: ['Overall', 'News Brands', 'Non-News Brands'],
-        datasets: [{
-          label: 'YoY Traffic Change (%)',
-          data: [-10, -7, -14],
-          backgroundColor: ['rgba(17,17,17,0.55)', 'rgba(17,17,17,0.35)', 'rgba(17,17,17,0.75)'],
-          borderColor: ['rgba(17,17,17,0.8)', 'rgba(17,17,17,0.5)', 'rgba(17,17,17,1)'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx => ctx.parsed.y + '%'
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: false,
-            min: -18,
-            max: 0,
-            ticks: {
-              callback: val => val + '%',
-              color: '#666',
-              font: { family: 'Outfit', size: 11 }
-            },
-            grid: { color: 'rgba(17,17,17,0.06)' }
-          },
-          x: {
-            ticks: {
-              color: '#666',
-              font: { family: 'Outfit', size: 11 }
-            },
-            grid: { display: false }
-          }
-        }
-      }
-    });
-  }
+  hbar('searchChart',
+    [['Clicked a', 'result link'], ['Ended the', 'browsing session']],
+    [
+      { label: 'AI summary shown', data: [8, 26], backgroundColor: dark, borderRadius: 2 },
+      { label: 'No AI summary', data: [15, 16], backgroundColor: light, borderRadius: 2 }
+    ], 35);
+
+  hbar('accuracyChart',
+    ['Gemini', 'Copilot', 'ChatGPT', 'Perplexity'],
+    [{ label: 'Answers with a significant issue', data: [76, 37, 36, 30], backgroundColor: [dark, light, light, light], borderRadius: 2 }], 100);
+
+  hbar('trustChart',
+    [['Small publishers', 'Chartbeat, 2 years'], ['Google search, US', 'Chartbeat, 12 months'], ['Google search, global', 'Chartbeat, 12 months'], ['Non-news brands', 'DCN median, 8 weeks'], ['All 19 publishers', 'DCN median, 8 weeks'], ['News brands', 'DCN median, 8 weeks']],
+    [{ label: 'Traffic decline', data: [60, 38, 33, 14, 10, 7], fmt: v => '\u2212' + v + '%', backgroundColor: [dark, dark, mid, light, light, light], borderRadius: 2 }], 75);
+
+});
 </script>
 <script type="application/ld+json">
 {
@@ -1026,14 +1026,14 @@
       "headline": "Google's New AI Search Experience and the Future of Information",
       "url": "https://colinjanoshegyi.com/works/notesandthoughts/blog/googles-new-ai-search-experience-and-the-future-of-information",
       "datePublished": "2026-05-22",
-      "dateModified": "2026-05-22",
+      "dateModified": "2026-10-07",
       "author": {
         "@id": "https://colinjanoshegyi.com/#person"
       },
       "publisher": {
         "@id": "https://colinjanoshegyi.com/#person"
       },
-      "description": "Google's AI-powered Search experience could fundamentally change how billions of people consume information online. A closer analysis of AI agents, misinformation risks, platform power, and the future of digital trust.",
+      "description": "Google's new AI Search is a real step forward in convenience and access. A closer look at AI agents, misinformation risks, publisher traffic, and the future of digital trust.",
       "keywords": ["Google AI Search", "AI Mode", "Gemini", "Google I/O 2026", "digital trust", "misinformation", "SEO"],
       "articleSection": "Analysis",
       "inLanguage": "en",
