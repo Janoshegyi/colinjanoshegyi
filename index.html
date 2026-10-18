@@ -369,11 +369,6 @@
       color: rgba(250,250,250,0.75);
     }
 
-    #thoughts .expertise-list span {
-      border-color: rgba(250,250,250,0.15);
-      color: #FAFAFA;
-    }
-
     #thoughts .cv-section {
       margin-top: 0;
       padding-top: 0;
@@ -386,29 +381,6 @@
       text-transform: uppercase;
       color: rgba(250,250,250,0.35);
       margin-bottom: 2rem;
-    }
-
-    .thought-block {
-      margin-bottom: 7rem;
-    }
-    .thought-block:last-child { margin-bottom: 0; }
-
-    .thought-text {
-      font-family: var(--serif);
-      font-size: clamp(1.7rem, 3.5vw, 3rem);
-      font-weight: 300;
-      line-height: 1.4;
-      letter-spacing: -0.015em;
-      color: rgba(250,250,250,0.92);
-      max-width: 700px;
-      margin: 0 auto;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .thought-dim {
-      color: rgba(250,250,250,0.38) !important;
     }
 
     #work { }
@@ -484,7 +456,6 @@
     #work { padding-bottom: 3rem; }
     #contact { padding-top: 3rem; }
 
-    /* ─── Cloaker Checker panel (light, two cells, uses the tool's palette) ─── */
     .cc-panel {
       --cc: #a4482f;
       --cc-d: #7f3320;
@@ -499,8 +470,6 @@
     }
 
     .cc-copy { padding: 3rem 3.25rem; display: flex; flex-direction: column; align-items: flex-start; }
-
-    /* two-link mark: slides apart only while the cursor is on the logo (same as Cloaker Checker) */
     .cc-mark { position: relative; display: block; width: 48px; aspect-ratio: 252 / 204; margin-bottom: 1.5rem; }
     .cc-mark img {
       position: absolute; left: 0; top: 0; width: 100%; height: 100%;
@@ -543,7 +512,6 @@
     .cc-go span { display: inline-block; transition: transform 0.3s; }
     .cc-go:hover span { transform: translateX(4px); }
 
-    /* right cell: the sample report, on the tool's cream */
     .cc-report { background: #faf3e8; padding: 3rem 3.25rem; display: flex; flex-direction: column; }
     .cc-label {
       font-size: 0.68rem;
@@ -620,10 +588,6 @@
       border-top: 1px solid var(--border);
     }
 
-    .cv-header {
-      margin-bottom: 3rem;
-    }
-
     .cv-subtitle {
       font-size: 0.92rem;
       color: var(--mid);
@@ -668,22 +632,6 @@
       color: var(--mid);
       line-height: 1.9;
       margin-bottom: 1.5rem;
-    }
-
-    .expertise-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin: 2rem 0;
-    }
-
-    .expertise-list span {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.5rem 1rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
     .cv-image {
@@ -1044,7 +992,6 @@
       .seo-summary { margin-top: 0.5rem; font-size: 0.92rem; line-height: 1.75; }
       .cv-description h3 { font-size: 1.6rem; margin-bottom: 1rem; }
       .cv-description p { margin-bottom: 1.1rem; line-height: 1.8; font-size: 0.95rem; }
-      .expertise-list { margin: 1.5rem 0 0; gap: 0.5rem; }
 
       .work-grid { margin-top: 0; }
       .work-card { padding: 1.75rem 1.5rem; }
@@ -1152,14 +1099,14 @@
         row-gap: 0.5em;
         margin-top: 1.75rem;
         padding: 0.85rem 0;
-        font-size: min(0.64rem, 3.1vw); /* scales down on narrow phones */
+        font-size: min(0.64rem, 3.1vw); 
       }
       .expertise-strip span {
-        font-size: 1em; /* inherit from the strip */
+        font-size: 1em; 
         letter-spacing: 0.1em;
         white-space: nowrap;
       }
-      /* Force "Front-End Development" onto its own centered row */
+
       .expertise-strip span:nth-child(4) {
         flex-basis: 100%;
         text-align: center;
@@ -1443,7 +1390,7 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const lenis = new Lenis({
       duration: 1.35,
-      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo out
       smooth: true,
       mouseMultiplier: 1.1,
       smoothTouch: false,
@@ -1588,19 +1535,6 @@
         delay: i * 0.07
       });
     });
-
-    gsap.utils.toArray('.thought-text').forEach((el, i) => {
-      gsap.to(el, {
-        opacity: 1, y: 0,
-        duration: 1.1, ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 80%',
-        },
-        delay: i * 0.1
-      });
-    });
-
     ScrollTrigger.batch('.work-card', {
       start: 'top 88%',
       once: true,
@@ -1655,7 +1589,6 @@
               bot.textContent = 38 + Math.round(214 * n.p);
             }
           });
-  
           tl.fromTo(stamp,
             { opacity: 0, scale: 2.4, rotation: -16 },
             { opacity: 1, scale: 1, rotation: -6, duration: 0.45, ease: 'back.out(1.6)' },
