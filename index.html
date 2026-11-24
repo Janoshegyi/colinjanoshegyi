@@ -964,24 +964,76 @@
     footer {
       padding: 2.5rem 5vw;
       border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
       align-items: center;
       background: var(--white);
     }
     footer p {
+      margin: 0;
       font-size: 0.72rem;
+      line-height: 1.7;
       color: var(--mid);
       letter-spacing: 0.06em;
     }
     .footer-left {
+      justify-self: start;
+      text-align: left;
+    }
+    .footer-links {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+    }
+    .footer-right {
+      justify-self: end;
+      text-align: right;
+    }
+    .footer-intention {
+      display: inline;
     }
     footer a {
       text-decoration: none;
+    }
+    @media (max-width: 580px) {
+      footer {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+          "copyright signature"
+          "links links";
+        column-gap: 0.5rem;
+        row-gap: 0.65rem;
+        padding: 2rem 6vw;
+      }
+      .footer-left {
+        grid-area: copyright;
+        align-self: center;
+      }
+      .footer-right {
+        grid-area: signature;
+        justify-self: end;
+        align-self: center;
+        max-width: 6.5rem;
+      }
+      .footer-intention {
+        display: block;
+      }
+      .footer-links {
+        grid-area: links;
+        justify-self: center;
+        gap: 0.4rem 0.55rem;
+        white-space: nowrap;
+        font-size: 0.66rem;
+        text-align: center;
+      }
+      footer p {
+        font-size: 0.68rem;
+      }
     }
 
     #progress {
@@ -1597,10 +1649,16 @@
 
   <footer role="contentinfo">
     <div class="footer-left">
-      <p>© 2026 Colin John (Janoshegyi). <br> All rights reserved.</p>
-      <p><a href="/ai-instructions">AI Instructions</a> · <a href="https://cloaker-checker.colinjanoshegyi.com/">Cloaker Checker</a> · <a href="https://blaeu.colinjanoshegyi.com/">Blaeu</a></p>
+      <p>© 2026 Colin John (Janoshegyi).<br>All rights reserved.</p>
     </div>
-    <p>Made with intention.</p>
+    <nav class="footer-links" aria-label="Related projects">
+      <a href="/ai-instructions">AI Instructions</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://cloaker-checker.colinjanoshegyi.com/">Cloaker Checker</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://blaeu.colinjanoshegyi.com/">Blaeu</a>
+    </nav>
+    <p class="footer-right">Made with <span class="footer-intention">Intention</span></p>
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
